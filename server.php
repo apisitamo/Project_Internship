@@ -2,7 +2,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "regiater"; //ชื่อโฟลเดอ ใน PHPmyadmin
+$dbname = "bsa"; //ชื่อโฟลเดอ ใน PHPmyadmin
 
 $conn = mysqli_connect($servername, $username, $password, $dbname);
 

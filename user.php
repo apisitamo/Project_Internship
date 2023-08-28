@@ -84,17 +84,17 @@ include('server.php');
                     </div>
                     <div class="input-group">
                         <label for="username">ชื่อ-นามสกุล</label>
-                        <input tel="number" name="username">
+                        <input type="text">
                     </div>
                     <div class="input-group">
                         <label for="username">เบอร์โทร</label>
-                        <input tel="number" name="username">
+                        <input type="number">
                     </div>
                 </div>
                 <div class="right-box">
                     <div class="input-group">
                         <label for="username">ที่อยู่</label>
-                        <input tel="number" name="username">
+                        <input type="text">
                     </div>
                 </div>
             </div>
@@ -113,7 +113,7 @@ include('server.php');
                     $db = mysqli_connect($servername, $username, $password, $dbname);
 
                     // ดึงข้อมูลจากฐานข้อมูล
-                    $query = "SELECT * FROM user ORDER BY id DESC";
+                    $query = "SELECT * FROM order ORDER BY id DESC";
                     $result = mysqli_query($db, $query);
 
                     $order = 1;
