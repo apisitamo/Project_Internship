@@ -83,7 +83,7 @@ include('server.php');
                         <?php endif ?>
                     </div>
                     <div class="input-group">
-                        <label for="username">เบอร์โทร</label>
+                        <label for="username">ชื่อ-นามสกุล</label>
                         <input tel="number" name="username">
                     </div>
                     <div class="input-group">
@@ -93,7 +93,7 @@ include('server.php');
                 </div>
                 <div class="right-box">
                     <div class="input-group">
-                        <label for="username">เบอร์โทร</label>
+                        <label for="username">ที่อยู่</label>
                         <input tel="number" name="username">
                     </div>
                 </div>
