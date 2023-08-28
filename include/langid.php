@@ -8,6 +8,9 @@ if($langId == 1){
     $confirmorder="ยืนยันการสั่งซื้อ";
     $confirm="ยืนยัน";
     $cancle="ยกเลิก";
+    $logout = 'ออกจากระบบ';
+    $user = 'ข้อมูลผู้ใช้งาน';
+    $admin='แอดมินเท่านั้น';
 
 }else{
     $login = "LOGIN";
@@ -18,6 +21,9 @@ if($langId == 1){
     $confirmorder="CONFIRM ORDER";
     $confirm="CONFIRM";
     $cancle="CANCLE";
+    $logout = 'Logout';
+    $user = 'User Detail';
+    $admin='For Admin';
 
 }
 ?>

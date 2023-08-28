@@ -1,6 +1,7 @@
 <?php
 session_start();
 
+
 if (!empty($_POST['lang'])) {
     $_SESSION['lang'] = $_POST['lang'];
 }
@@ -10,23 +11,22 @@ if (empty($_SESSION['lang']) || $_SESSION['lang'] == 1) {
     $flag = 'thflag.png';
     $profile = 'profile.png';
     $langId = 1;
-    $home = 'หน้าเเรก';
-    $aboutus = 'เกี่ยวกับเรา';
     $login = 'เข้าสู่ระบบ';
-    $register = 'สมัครสมาชิก';
-    $user = 'ข้อมูลผู้ใช้งาน';
     $admin='แอดมินเท่านั้น';
+    $logout = 'ออกจากระบบ';
+    $product_order='คำสั่งซื้อผลิตภัณฑ์';
+    $course_order='คำสั่งซื้อหลักสูตร';
+
 } else {
     $_SESSION['lang'] = 2;
     $flag = 'enflag.png';
     $profile = 'profile.png';
     $langId = 2;
-    $home = 'Home';
-    $aboutus = 'About us';
     $login = 'Login';
-    $register = 'Register';
-    $user = 'User Detail';
     $admin='For Admin';
+    $logout = 'Logout';
+    $product_order='Product Order';
+    $course_order='Course Order';
 
 }
 
@@ -36,11 +36,11 @@ if (empty($_SESSION['lang']) || $_SESSION['lang'] == 1) {
 //     session_destroy();
 // }
 
-if (isset($_GET['logout'])) {
-    session_destroy();
-    unset($_SESSION['username']);
-    header('location:index.php');
-}
+// if (isset($_GET['logout'])) {
+//     session_destroy();
+//     unset($_SESSION['username']);
+//     header('location:index.php');
+// }
 
 ?>
 
@@ -72,7 +72,7 @@ if (isset($_GET['logout'])) {
 
 <section class="navbar-header">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="index.php">
+        <a class="navbar-brand" href="">
             <img src="assets/images/logo.png" alt="" class="logo">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="true" aria-label="Toggle navigation">
@@ -81,10 +81,10 @@ if (isset($_GET['logout'])) {
         <div class="navbar-collapse collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="index.php"><?= $home ?></a>
+                    <a class="nav-link" aria-current="page" href="productorder.php"><?= $product_order ?></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="aboutus.php"><?= $aboutus ?></a>
+                    <a class="nav-link" href="courseorder.php"><?= $course_order ?></a>
                 </li>
 
                 <li class="nav-item dropdown">
@@ -94,21 +94,10 @@ if (isset($_GET['logout'])) {
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
                         <?php if (isset($_SESSION['username'])) { ?>
                             <li class="nav-item">
-                                <a class="nav-link" href="user.php"><?= $user ?></a>
-                            </li>
-                            <li class="nav-item">
                                 <a class="nav-link" href="index.php?logout='1'"><?= $logout ?></a>
                             </li>
                         <?php } else { ?>
-                            <li class="nav-item">
-                                <a class="nav-link" href="login.php"><?= $login ?></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="register.php"><?= $register ?></a>
-                            </li>
-                            <li class="nav-item" >
-                                <a class="nav-admin" href="adminlogin.php"><?= $admin ?></a>
-                            </li>
+                           
                         <?php } ?>
                     </ul>
                 </li>

@@ -28,7 +28,7 @@
             if(mysqli_num_rows($result)==1){
                 $_SESSION['username']= $username;
                 $_SESSION['success']="you are now login";
-                header("location: admin.php");
+                header("location: productorder.php");
             }
             else{
                 array_push($errors,"worng data");
