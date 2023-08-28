@@ -1,3 +1,21 @@
+<?php
+// Start the session
+session_start();
+
+// Check if 'alert' session is set and is true
+if (isset($_SESSION['save_success']) && $_SESSION['save_success']) {
+    echo "<script>alert('บันทึกข้อมูลเรียบร้อย');</script>";
+    // Clear the session flag
+    $_SESSION['save_success'] = false;
+}
+
+// Check if 'save_error' session is set and show the error message
+if (isset($_SESSION['save_error'])) {
+    echo "<script>alert('" . $_SESSION['save_error'] . "');</script>";
+    // Clear the error message
+    unset($_SESSION['save_error']);
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -92,17 +110,21 @@ include('server.php');
                             ?>
                         <?php endif ?>
                     </div>
-
-                    <div class="input-group">
-                        <label for="fullname">ชื่อ-นามสกุล</label>
-                        <input type="text" id="fullname" name="fullname">
-                        <button>บันทึก</button>
-                    </div>
-
-                    <div class="input-group">
-                        <label for="username">เบอร์โทร</label>
-                        <input type="phone">
-                    </div>
+                    <form action="savefullname.php" method="post">
+                        <div class="input-group">
+                            <label for="fullname">ชื่อ-นามสกุล</label>
+                            <input type="text" id="fullname" name="fullname" disabled>
+                            <button type="submit">แก้ไข</button>
+                            <button type="submit">บันทึก</button>
+                        </div>
+                    </form>
+                    <form action="savephone.php" method="post">
+                        <div class="input-group">
+                            <label for="phone">เบอร์โทร</label>
+                            <input type="text" id="phone" name="phone">
+                            <button type="submit">บันทึก</button>
+                        </div>
+                    </form>
                 </div>
                 <div class="right-box">
                     <div class="input-group">
