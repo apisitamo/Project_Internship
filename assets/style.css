@@ -1567,7 +1567,31 @@ a {
     color:  #945834 !important ;
 }
 
+.navbar-light .navbar-nav .dropdown-menu .nav-link:hover {
+    color:  white !important ;
+    background-color: #945834 !important;
+}
+
+.navbar-light .navbar-nav .dropdown-menu .nav-item:nth-child(3):hover {
+    color:  white !important ;
+    background-color: #945834 !important;
+    transition: 0.5s;
+}
+
+.navbar-light .navbar-nav .dropdown-menu .nav-item:nth-child(3) {
+    padding-left: 7px;
+    padding-bottom: 7px;
+    padding-top: 5px;
+    font-size: 18px;
+}
+
 .profile-icon{
     max-width: 20px;
     max-height: 20px;
+}
+
+.course-detail button{
+    border: none;
+    border-radius: 20px;
+    background: white;
 }

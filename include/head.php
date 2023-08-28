@@ -143,11 +143,13 @@ if (isset($_GET['logout'])) {
                         <li>
                             <a class="dropdown-item" onclick="changeLng(1)">
                                 <img src="assets/images/thflag.png" alt="">
+                                <h10>ภาษาไทย</h10>
                             </a>
                         </li>
                         <li>
                             <a class="dropdown-item" onclick="changeLng(2)">
                                 <img src="assets/images/enflag.png" alt="">
+                                <h10>English language</h10>
                             </a>
                         </li>
                     </ul>
