@@ -88,7 +88,7 @@ include('server.php');
                     </div>
                     <div class="input-group">
                         <label for="username">เบอร์โทร</label>
-                        <input type="number">
+                        <input type="phone">
                     </div>
                 </div>
                 <div class="right-box">
