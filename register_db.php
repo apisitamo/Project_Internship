@@ -38,7 +38,7 @@
         }
         
         if(count($errors)==0){
-            $password = md5($password_1);
+            $password = ($password_1);
 
             $sql="INSERT INTO user (username,email,password) VALUES ('$username','$email','$password')";
             mysqli_query($conn,$sql);
