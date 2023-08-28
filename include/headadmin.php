@@ -12,12 +12,7 @@ if (empty($_SESSION['lang']) || $_SESSION['lang'] == 1) {
     $langId = 1;
     $home = 'หน้าเเรก';
     $aboutus = 'เกี่ยวกับเรา';
-    $allcourse = 'หลักสูตร';
-    $product7 = 'ผลิตภัณฑ์สปา';
-    $gallery = 'แกลเลอรี';
-    $contactus = 'ติดต่อเรา';
     $login = 'เข้าสู่ระบบ';
-    $logout = 'ออกจากระบบ';
     $register = 'สมัครสมาชิก';
     $user = 'ข้อมูลผู้ใช้งาน';
     $admin='แอดมินเท่านั้น';
@@ -28,15 +23,11 @@ if (empty($_SESSION['lang']) || $_SESSION['lang'] == 1) {
     $langId = 2;
     $home = 'Home';
     $aboutus = 'About us';
-    $allcourse = 'Course';
-    $product7 = 'Product';
-    $gallery = 'Gallery';
-    $contactus = 'Contact us ';
     $login = 'Login';
-    $logout = 'Logout';
     $register = 'Register';
     $user = 'User Detail';
     $admin='For Admin';
+
 }
 
 // if (!isset($_SESSION['username'])) {
@@ -95,18 +86,7 @@ if (isset($_GET['logout'])) {
                 <li class="nav-item">
                     <a class="nav-link" href="aboutus.php"><?= $aboutus ?></a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="allcourse.php"><?= $allcourse ?></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="product.php"><?= $product7 ?></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link " href="gallery.php"><?= $gallery ?></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="contactus.php"><?= $contactus ?></a>
-                </li>
+
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <img src="assets/images/<?= $profile ?>" alt="" class='profile-icon'>
@@ -140,13 +120,13 @@ if (isset($_GET['logout'])) {
                         <li>
                             <a class="dropdown-item" onclick="changeLng(1)">
                                 <img src="assets/images/thflag.png" alt="">
-                                <h10>TH</h10>
+                                <h10>ภาษาไทย</h10>
                             </a>
                         </li>
                         <li>
                             <a class="dropdown-item" onclick="changeLng(2)">
                                 <img src="assets/images/enflag.png" alt="">
-                                <h10>ENG</h10>
+                                <h10>English language</h10>
                             </a>
                         </li>
                     </ul>
