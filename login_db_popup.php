@@ -11,7 +11,7 @@
         if(empty($username)){
             array_push($errors,"username is required");
         }
-        if(empty($password)){
+        elseif(empty($password)){
             array_push($errors,"password is required");
         }
 

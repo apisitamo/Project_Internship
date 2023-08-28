@@ -65,7 +65,6 @@ include('server.php');
 <body>
     <section>
         <div class="homeheader">
-            <h2 style="text-align: center;">User detail</h2>
         </div>
         <div class="container">
             <div class="container-top">

@@ -164,6 +164,10 @@ if ($langId == 1) {
     .course-product .pop1 p a {
         color: #0a58ca !important;
     }
+    .error{
+        color: red;
+        text-align: center;
+    }
 
     /*...............*/
 
@@ -503,7 +507,7 @@ if ($langId == 1) {
                             <div class="container">
                                 <div class="row">
                                     <div class="titlebox">
-                                        <h1>กรุณาเข้าสู่ระบบ</h1>
+                                        <h1><?= $pleasesignin ?></h1>
                                     </div>
 
                                     <div class="col-lg-6 aos-init aos-animate" data-aos="zoom-in" data-aos-duration="2000">
@@ -513,17 +517,17 @@ if ($langId == 1) {
                                         <div class="content">
                                             <form action="login_db_popup.php" method="post" class="pop1">
                                                 <div class="input-group">
-                                                    <label for="username">อีเมล</label>
+                                                    <label for="username"><?= $email ?></label>
                                                     <input type="text" name="username">
                                                 </div>
                                                 <div class="input-group">
-                                                    <label for="password">รหัสผ่าน</label>
+                                                    <label for="password"><?= $password ?></label>
                                                     <input type="password" name="password">
                                                 </div>
                                                 <div class="input-group">
-                                                    <button type="submit" name="login_user" class="btn">เข้าสู่ระบบ</button>
+                                                    <button type="submit" name="login_user" class="btn"><?= $signin ?></button>
                                                 </div>
-                                                <p>มีบัญชีแล้วหรือยัง ? <a href="register.php">ลงทะเบียน</a>
+                                                <p><?= $notyet ?> <a href="register.php"><?= $register ?></a>
                                                 </p>
                                             </form>
 

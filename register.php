@@ -17,7 +17,7 @@ if ($langId == 1) {
     $register = "REGISTER";
     $email = "EMAIL";
     $username = "USERNAME";
-    $PASSWORD = "PASSWORD";
+    $password = "PASSWORD";
     $confirm = "CONFIRM PASSWORD";
     $submit = "SUBMIT";
     $alredy = "ALREADY MEMBER ?";

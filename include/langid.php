@@ -11,6 +11,11 @@ if($langId == 1){
     $logout = 'ออกจากระบบ';
     $user = 'ข้อมูลผู้ใช้งาน';
     $admin='แอดมินเท่านั้น';
+    $email = "อีเมลล์";
+    $register = "ลงทะเบียน";
+    $signin = "เข้าสู่ระบบ";
+    $pleasesignin ='กรุณาเข้าสู่ระบบ';
+    
 
 }else{
     $login = "LOGIN";
@@ -24,6 +29,10 @@ if($langId == 1){
     $logout = 'Logout';
     $user = 'User Detail';
     $admin='For Admin';
+    $register = "REGISTER";
+    $email = "EMAIL";
+    $signin = "SIGN IN";
+    $pleasesignin ='PLEASE SIGNIN';
 
 }
 ?>
