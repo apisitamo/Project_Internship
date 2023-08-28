@@ -38,7 +38,7 @@ if (!isset($_SESSION['admin'])) {
 <body>
     <section>
         <div class="homeheader">
-            <h2 style="text-align: center;">product order</h2>
+            <h2 style="text-align: center;"><?= $product_order ?></h2>
         </div>
         <div class="container">
             <div class="bottom-box">

@@ -184,7 +184,7 @@ if ($langId == 1) {
     }
 
     .course-product .btn:hover {
-        background-color: #36863A;
+        background-color: #4E240A;
         /* สีพื้นหลังเมื่อชี้เมาส์ไป */
     }
 

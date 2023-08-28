@@ -38,7 +38,7 @@ if (!isset($_SESSION['admin'])) {
 <body>
     <section>
         <div class="homeheader">
-            <h2 style="text-align: center;">course order</h2>
+            <h2 style="text-align: center;"><?= $course_order ?></h2>
         </div>
         <div class="container">
             <div class="bottom-box">
