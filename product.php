@@ -484,10 +484,10 @@ if ($langId == 1) {
                             <p style="text-align: center;">
                                 <?= $confirmorder ?>
                             </p>
-                            <button class="button-success" id="button-success1" style="color: green;">
+                            <button class="button-success" id="button-success1">
                                 <?= $confirm ?>
                             </button>
-                            <button class="button-close" id="button-close1" style="color: red;">
+                            <button class="button-close" id="button-close1">
                                 <?= $cancle ?>
                             </button>
                         </div>
@@ -586,8 +586,8 @@ if ($langId == 1) {
                 <span class="close-popup" id="close-popup2">&times;</span>
                 <div>
                     <p style="text-align: center;">second popup</p>
-                    <button class="button-success" id="button-success2" style="color: green;">ยืนยัน</button>
-                    <button class="button-close" id="button-close2" style="color: red;">ปิด</button>
+                    <button class="button-success" id="button-success2">ยืนยัน</button>
+                    <button class="button-close" id="button-close2">ปิด</button>
                 </div>
             </div>
         </div>
@@ -599,8 +599,10 @@ if ($langId == 1) {
                 <span class="close-popup" id="close-popup3">&times;</span>
                 <div>
                     <p style="text-align: center;">third popup</p>
-                    <button class="button-success" id="button-success3" style="color: green;">ยืนยัน</button>
-                    <button class="button-close" id="button-close3" style="color: red;">ปิด</button>
+                    <button class="button-success" id="button-success3">
+                        <a href="user.php"><?= $purchase_history ?></a>
+                    </button>
+                    <button class="button-close" id="button-close3">ปิด</button>
                 </div>
             </div>
         </div>

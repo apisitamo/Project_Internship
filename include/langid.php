@@ -15,6 +15,7 @@ if($langId == 1){
     $register = "ลงทะเบียน";
     $signin = "เข้าสู่ระบบ";
     $pleasesignin ='กรุณาเข้าสู่ระบบ';
+    $purchase_history = 'ประวัติการซื้อ';
     
 
 }else{
@@ -33,6 +34,7 @@ if($langId == 1){
     $email = "EMAIL";
     $signin = "SIGN IN";
     $pleasesignin ='PLEASE SIGNIN';
+    $purchase_history = 'PURCHASE HISTORY';
 
 }
 ?>
