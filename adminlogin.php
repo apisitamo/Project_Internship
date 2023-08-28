@@ -1,17 +1,19 @@
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <?php
-include 'include/headadmin.php';
+include 'include/head.php';
 include('server.php');
 
 if ($langId == 1) {
     $admin = "แอดมิน";
     $username = "ชื่อผู้ใช้";
     $password = "รหัสผ่าน";
+    $employee_code = "รหัสพนักงาน";
 } else {
     $admin = "Admin";
     $username = "USERNAME";
     $password = "PASSWORD";
+    $employee_code = "Employee Code";
 }
 
 ?>
@@ -78,7 +80,7 @@ if ($langId == 1) {
             <h2><?= $admin ?></h2>
         </div>
         <div class="header-mid">
-            <form action="login_db.php" method="post">
+            <form action="adminlogin_db.php" method="post">
                 <?php if (isset($_SESSION['error'])) : ?>
                     <div class="error">
                         <h3>
@@ -98,7 +100,11 @@ if ($langId == 1) {
                     <input type="password" name="password">
                 </div>
                 <div class="input-group">
-                    <button type="submit" name="login_user" class="btn"><?= $login ?></button>
+                    <label for="employee_code"><?= $employee_code ?></label>
+                    <input type="password" name="employee_code">
+                </div>
+                <div class="input-group">
+                    <button type="submit" name="login_admin" class="btn"><?= $login ?></button>
                 </div>
             </form>
         </div>
