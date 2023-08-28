@@ -72,16 +72,14 @@ include('server.php');
                 <div class="left-box">
                     <div class="homecontent">
                         <?php if (isset($_SESSION['username'])) : ?>
-                            <p style="text-align: center;">welcome <strong>
-                                    <?php echo $_SESSION['username'] ?>
-                                </strong></p>
+                            <label for="username">ชื่อผู้ใช้</label>
+                            <input type="text" value="<?php echo $_SESSION['username'] ?>" disabled>
                         <?php endif ?>
                     </div>
                     <div class="homecontent">
-                        <?php if (isset($_SESSION['username'])) : ?>
-                            <p style="text-align: center;">welcome <strong>
-                                    <?php echo $_SESSION['username'] ?>
-                                </strong></p>
+                    <?php if (isset($_SESSION['username'])) : ?>
+                            <label for="username">อีเมล์</label>
+                            <input type="text" value="<?php echo $email ?>" disabled>
                         <?php endif ?>
                     </div>
                     <div class="input-group">
