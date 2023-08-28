@@ -164,7 +164,8 @@ if ($langId == 1) {
     .course-product .pop1 p a {
         color: #0a58ca !important;
     }
-    .error{
+
+    .error {
         color: red;
         text-align: center;
     }
@@ -478,7 +479,7 @@ if ($langId == 1) {
             <div class="popup-content">
                 <span class="close-popup" id="close-popup1">&times;</span>
                 <div class="homecontent">
-                    <?php if (isset($_SESSION['username'])): ?>
+                    <?php if (isset($_SESSION['username'])) : ?>
                         <div>
                             <p style="text-align: center;">
                                 <?= $confirmorder ?>
@@ -490,8 +491,8 @@ if ($langId == 1) {
                                 <?= $cancle ?>
                             </button>
                         </div>
-                    <?php else: ?>
-                        <?php if (isset($_SESSION['error'])): ?>
+                    <?php else : ?>
+                        <?php if (isset($_SESSION['error'])) : ?>
                             <div class="error">
                                 <h3>
                                     <?php
@@ -502,14 +503,11 @@ if ($langId == 1) {
                             </div>
                         <?php endif ?>
                         <div class="box">
-
-
                             <div class="container">
                                 <div class="row">
                                     <div class="titlebox">
                                         <h1><?= $pleasesignin ?></h1>
                                     </div>
-
                                     <div class="col-lg-6 aos-init aos-animate" data-aos="zoom-in" data-aos-duration="2000">
                                         <img src="assets/images/BSA.png" alt="" class="BSAlogo">
                                     </div>
@@ -530,7 +528,6 @@ if ($langId == 1) {
                                                 <p><?= $notyet ?> <a href="register.php"><?= $register ?></a>
                                                 </p>
                                             </form>
-
                                         </div>
                                     </div>
                                 </div>
