@@ -77,15 +77,29 @@ include('server.php');
                         <?php endif ?>
                     </div>
                     <div class="homecontent">
-                    <?php if (isset($_SESSION['username'])) : ?>
+                        <?php if (isset($_SESSION['username'])) : ?>
                             <label for="username">อีเมล์</label>
-                            <input type="text" value="<?php echo $email ?>" disabled>
+                            <?php
+                            // เชื่อมต่อฐานข้อมูล
+                            $db = mysqli_connect($servername, $username, $password, $dbname);
+                            // ดึงข้อมูล email จากฐานข้อมูล
+                            $username = $_SESSION['username'];
+                            $query = "SELECT email FROM user WHERE username='$username'";
+                            $result = mysqli_query($db, $query);
+                            $row = mysqli_fetch_assoc($result);
+                            $email = $row['email'];
+                            // แสดงผล email
+                            echo '<input type="text" value="' . $email . '" disabled>';
+                            ?>
                         <?php endif ?>
                     </div>
+
                     <div class="input-group">
-                        <label for="username">ชื่อ-นามสกุล</label>
-                        <input type="text">
+                        <label for="fullname">ชื่อ-นามสกุล</label>
+                        <input type="text" id="fullname" name="fullname">
+                        <button>บันทึก</button>
                     </div>
+
                     <div class="input-group">
                         <label for="username">เบอร์โทร</label>
                         <input type="phone">
