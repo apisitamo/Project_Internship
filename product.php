@@ -35,18 +35,20 @@ if ($langId == 1) {
     .popup {
         display: none;
         z-index: 1000;
-        width: 900px;
+        /* width: 900px;
         height: 600px;
-        background-color: #fff;
+        background-color: #fff;*/
         padding: 20px;
         border-radius: 5px;
-        max-width: 80%;
+        /* max-width: 80%;*/
         position: fixed;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        /* text-align: center; */
         justify-content: center;
+        /* background-image: url("assets\images\Frame 7961.png");*/
+        background: #FFFAF5;
+        border-radius: 10px;
     }
 
 
@@ -69,9 +71,9 @@ if ($langId == 1) {
     .close-popup {
         position: absolute;
         top: 5px;
-        right: 20px;
+        right: 15px;
         cursor: pointer;
-        font-size: 40px;
+        font-size: 50px;
     }
 
     .open-popup {
@@ -82,44 +84,92 @@ if ($langId == 1) {
         /* ถ้าคุณต้องการให้พื้นหลังเป็นโปร่งแสง */
     }
 
-    .header {
+    /*.header {
         display: flex;
         justify-content: center;
         align-items: center;
         height: 10vh;
         width: 100vh;
         margin: 1;
-        background-color: #DAB437B9;
-    }
+    }*/
 
-    .header-right {
+    /* .header-right {
         display: flex;
         justify-content: center;
         align-items: center;
         height: 51vh;
         margin: 0;
         background-color: #FFFFFFB9;
+    }*/
+
+
+    /*css ส่วนเข้าสู่ระบบ */
+    .course-product .titlebox {
+        color: #945834;
     }
 
-    .input-group {
+    .course-product .content {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        justify-content: space-between;
+    }
+
+    .course-product h1 {
+        text-align: center;
+        padding-top: 15px;
+        padding-bottom: 55px;
+        margin-top: 1rem;
+        font-weight: bold;
+    }
+
+    .course-product .input-group {
         margin-bottom: 10px;
         display: flex;
         flex-direction: column;
-        align-items: flex-start;
+        text-align: initial;
     }
 
-    .input-group label {
-        width: 100%;
+    .course-product .input-group input {
+        padding: 8px;
+        border-radius: 10px;
+        border-top-left-radius: 10px !important;
+        border-bottom-left-radius: 10px !important;
+        border-color: #AFAFAF;
     }
 
-    .input-group input {
-        width: 50%;
-        padding: 5px;
-        margin-top: 5px;
+    .course-product .BSAlogo {
+        width: 70%;
     }
 
-    .btn {
-        background-color: #6ACC6D;
+    .course-product .col-lg-6 {
+        text-align: center;
+    }
+
+    .course-product .box {
+        padding-bottom: 40px;
+        padding-left: 10px;
+        padding-right: 10px;
+        color: #A97C53;
+    }
+
+    .course-product .pop1 .input-group:nth-child(3) {
+        margin-top: 20px;
+    }
+
+    .course-product .pop1 p {
+        font-size: 15px;
+    }
+
+    .course-product .pop1 p a {
+        color: #0a58ca !important;
+    }
+
+    /*...............*/
+
+
+    .course-product .btn {
+        background-color: #945834;
         /* เปลี่ยนสีพื้นหลังปุ่ม */
         color: white;
         /* เปลี่ยนสีตัวอักษร */
@@ -129,25 +179,20 @@ if ($langId == 1) {
         /* ไม่แสดงเส้นขอบ */
         cursor: pointer;
         /* เปลี่ยนเคอร์เซอร์เป็นรูปแบบชี้ไป */
+        border-radius: 10px;
+        /* เปลี่ยนมุมกรอบ */
     }
 
-    .btn:hover {
+    .course-product .btn:hover {
         background-color: #36863A;
         /* สีพื้นหลังเมื่อชี้เมาส์ไป */
     }
-    .bottom-left,
-    .bottom-right {
+
+    .course-product .bottom-left,
+    .course-product .bottom-right {
         flex: 1;
         padding: 0px;
         box-sizing: border-box;
-    }
-
-    .bottom-left {
-        background-color: #E62525;
-    }
-
-    .bottom-right {
-        background-color: #C3ED07;
     }
 </style>
 
@@ -156,9 +201,13 @@ if ($langId == 1) {
     <section class="banner-product" data-aos="flip-down" data-aos-duration="2000">
         <div class="wrap">
             <div class="fe">
-                <p class="title"><?= $title ?></p>
+                <p class="title">
+                    <?= $title ?>
+                </p>
                 <img src="assets/images/bn-product.png" alt="">
-                <p class="detail"><?= $detailtitle ?></p>
+                <p class="detail">
+                    <?= $detailtitle ?>
+                </p>
             </div>
         </div>
     </section>
@@ -182,19 +231,25 @@ if ($langId == 1) {
                                             <div class="card-body">
                                                 <h5 class="card-title">Curcuma + Grape Seed Salt Scrub</h5>
                                                 <h5 class="card-title">เกลือขมิ้นผสมเมล็ดองุ่น</h5>
-                                                <p class="card-text"><i class="fa-sharp fa-solid fa-circle-check"></i> <?= $product1 ?></p>
+                                                <p class="card-text"><i class="fa-sharp fa-solid fa-circle-check"></i>
+                                                    <?= $product1 ?>
+                                                </p>
                                             </div>
                                             <div class="card-footer">
                                                 <div class="wrap">
                                                     <div class="title">
                                                         <p>Wholesale Price :</p>
-                                                        <p class="ship"><?= $price1 ?></p>
+                                                        <p class="ship">
+                                                            <?= $price1 ?>
+                                                        </p>
                                                     </div>
                                                     <div class="price">
                                                         <p class="price-product">800</p>
                                                         <div class="rate">
                                                             <p>THB/kg</p>
-                                                            <p><?= $price2 ?></p>
+                                                            <p>
+                                                                <?= $price2 ?>
+                                                            </p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -210,19 +265,25 @@ if ($langId == 1) {
                                             <div class="card-body">
                                                 <h5 class="card-title">Papaya Salt Scrub</h5>
                                                 <h5 class="card-title">เกลือมะละกอ</h5>
-                                                <p class="card-text"><i class="fa-sharp fa-solid fa-circle-check"></i><?= $product2 ?></p>
+                                                <p class="card-text"><i class="fa-sharp fa-solid fa-circle-check"></i>
+                                                    <?= $product2 ?>
+                                                </p>
                                             </div>
                                             <div class="card-footer">
                                                 <div class="wrap">
                                                     <div class="title">
                                                         <p>Wholesale Price :</p>
-                                                        <p class="ship"><?= $price1 ?></p>
+                                                        <p class="ship">
+                                                            <?= $price1 ?>
+                                                        </p>
                                                     </div>
                                                     <div class="price">
                                                         <p class="price-product">800</p>
                                                         <div class="rate">
                                                             <p>THB/kg</p>
-                                                            <p><?= $price2 ?></p>
+                                                            <p>
+                                                                <?= $price2 ?>
+                                                            </p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -249,19 +310,25 @@ if ($langId == 1) {
                                             <div class="card-body">
                                                 <h5 class="card-title">Volcano Clay Mask</h5>
                                                 <h5 class="card-title">มาส์กโคลนภูเขาไฟ</h5>
-                                                <p class="card-text"><i class="fa-sharp fa-solid fa-circle-check"></i><?= $product3 ?></p>
+                                                <p class="card-text"><i class="fa-sharp fa-solid fa-circle-check"></i>
+                                                    <?= $product3 ?>
+                                                </p>
                                             </div>
                                             <div class="card-footer">
                                                 <div class="wrap">
                                                     <div class="title">
                                                         <p>Wholesale Price :</p>
-                                                        <p class="ship"><?= $price1 ?></p>
+                                                        <p class="ship">
+                                                            <?= $price1 ?>
+                                                        </p>
                                                     </div>
                                                     <div class="price">
                                                         <p class="price-product">950</p>
                                                         <div class="rate">
                                                             <p>THB/kg</p>
-                                                            <p><?= $price2 ?></p>
+                                                            <p>
+                                                                <?= $price2 ?>
+                                                            </p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -294,20 +361,26 @@ if ($langId == 1) {
                                 <div class="card-body">
                                     <h5 class="card-title">Spirit of Lanna</h5>
                                     <h5 class="card-title">มนต์เสน่ห์แห่งล้านนา</h5>
-                                    <p class="card-text"><i class="fa-sharp fa-solid fa-circle-check"></i><?= $product4 ?></p>
+                                    <p class="card-text"><i class="fa-sharp fa-solid fa-circle-check"></i>
+                                        <?= $product4 ?>
+                                    </p>
                                     <p class="mt-3 mb-0">Aroma Scents : Ylang Ylang Oil & Lavender Oil</p>
                                 </div>
                                 <div class="card-footer">
                                     <div class="wrap">
                                         <div class="title">
                                             <p>Wholesale Price :</p>
-                                            <p class="ship"><?= $price1 ?></p>
+                                            <p class="ship">
+                                                <?= $price1 ?>
+                                            </p>
                                         </div>
                                         <div class="price">
                                             <p class="price-product">800</p>
                                             <div class="rate">
                                                 <p>THB/kg</p>
-                                                <p><?= $price2 ?></p>
+                                                <p>
+                                                    <?= $price2 ?>
+                                                </p>
                                             </div>
                                         </div>
                                     </div>
@@ -323,7 +396,9 @@ if ($langId == 1) {
                                 <div class="card-body">
                                     <h5 class="card-title">Spirit of Ayothaya</h5>
                                     <h5 class="card-title">มนต์เสน่ห์แห่งอโยธยา</h5>
-                                    <p class="card-text"><i class="fa-sharp fa-solid fa-circle-check"></i><?= $product5 ?></p>
+                                    <p class="card-text"><i class="fa-sharp fa-solid fa-circle-check"></i>
+                                        <?= $product5 ?>
+                                    </p>
                                     <p class="mt-3 mb-0">Aroma Scents : Eucalyptus Oil & Lavender Oil</p>
 
                                 </div>
@@ -331,13 +406,17 @@ if ($langId == 1) {
                                     <div class="wrap">
                                         <div class="title">
                                             <p>Wholesale Price :</p>
-                                            <p class="ship"><?= $price1 ?></p>
+                                            <p class="ship">
+                                                <?= $price1 ?>
+                                            </p>
                                         </div>
                                         <div class="price">
                                             <p class="price-product">800</p>
                                             <div class="rate">
                                                 <p>THB/kg</p>
-                                                <p><?= $price2 ?></p>
+                                                <p>
+                                                    <?= $price2 ?>
+                                                </p>
                                             </div>
                                         </div>
                                     </div>
@@ -353,20 +432,26 @@ if ($langId == 1) {
                                 <div class="card-body">
                                     <h5 class="card-title">Spirit of Srivichai</h5>
                                     <h5 class="card-title">มนต์เสน่ห์แห่งศรีวิชัย</h5>
-                                    <p class="card-text"><i class="fa-sharp fa-solid fa-circle-check"></i><?= $product6 ?></p>
+                                    <p class="card-text"><i class="fa-sharp fa-solid fa-circle-check"></i>
+                                        <?= $product6 ?>
+                                    </p>
                                     <p class="mt-3 mb-0">Aroma Scents : Peppermint Oil & Lemon Oil</p>
                                 </div>
                                 <div class="card-footer">
                                     <div class="wrap">
                                         <div class="title">
                                             <p>Wholesale Price :</p>
-                                            <p class="ship"><?= $price1 ?></p>
+                                            <p class="ship">
+                                                <?= $price1 ?>
+                                            </p>
                                         </div>
                                         <div class="price">
                                             <p class="price-product">800</p>
                                             <div class="rate">
                                                 <p>THB/kg</p>
-                                                <p><?= $price1 ?></p>
+                                                <p>
+                                                    <?= $price1 ?>
+                                                </p>
                                             </div>
                                         </div>
                                     </div>
@@ -379,92 +464,146 @@ if ($langId == 1) {
         </div>
     </section>
 
-    <div class="click-overlay" id="click-overlay1"></div>
 
-    <!-- เป็นส่วนของ popup ตอนเด้งขึ้นมา ขั้่น 1-->
+    <section class="course-product">
+        <div class="click-overlay" id="click-overlay1"></div>
 
-    <div class="popup" id="popup1">
-        <div class="popup-content">
-            <span class="close-popup" id="close-popup1">&times;</span>
-            <div class="homecontent">
-                <?php if (isset($_SESSION['username'])) : ?>
-                    <div>
-                        <p style="text-align: center;"><?= $confirmorder ?></p>
-                        <button class="button-success" id="button-success1" style="color: green;"><?= $confirm ?></button>
-                        <button class="button-close" id="button-close1" style="color: red;"><?= $cancle ?></button>
-                    </div>
-                <?php else : ?>
-                    <?php if (isset($_SESSION['error'])) : ?>
-                        <div class="error">
-                            <h3>
-                                <?php
-                                echo $_SESSION['error'];
-                                unset($_SESSION['error']);
-                                ?>
-                            </h3>
+        <!-- เป็นส่วนของ popup ตอนเด้งขึ้นมา ขั้่น 1-->
+
+        <div class="popup" id="popup1">
+            <div class="popup-content">
+                <span class="close-popup" id="close-popup1">&times;</span>
+                <div class="homecontent">
+                    <?php if (isset($_SESSION['username'])): ?>
+                        <div>
+                            <p style="text-align: center;">
+                                <?= $confirmorder ?>
+                            </p>
+                            <button class="button-success" id="button-success1" style="color: green;">
+                                <?= $confirm ?>
+                            </button>
+                            <button class="button-close" id="button-close1" style="color: red;">
+                                <?= $cancle ?>
+                            </button>
+                        </div>
+                    <?php else: ?>
+                        <?php if (isset($_SESSION['error'])): ?>
+                            <div class="error">
+                                <h3>
+                                    <?php
+                                    echo $_SESSION['error'];
+                                    unset($_SESSION['error']);
+                                    ?>
+                                </h3>
+                            </div>
+                        <?php endif ?>
+                        <div class="box">
+
+
+                            <div class="container">
+                                <div class="row">
+                                    <div class="titlebox">
+                                        <h1>กรุณาเข้าสู่ระบบ</h1>
+                                    </div>
+
+                                    <div class="col-lg-6 aos-init aos-animate" data-aos="zoom-in" data-aos-duration="2000">
+                                        <img src="assets/images/BSA.png" alt="" class="BSAlogo">
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="content">
+                                            <form action="login_db_popup.php" method="post" class="pop1">
+                                                <div class="input-group">
+                                                    <label for="username">อีเมล</label>
+                                                    <input type="text" name="username">
+                                                </div>
+                                                <div class="input-group">
+                                                    <label for="password">รหัสผ่าน</label>
+                                                    <input type="password" name="password">
+                                                </div>
+                                                <div class="input-group">
+                                                    <button type="submit" name="login_user" class="btn">เข้าสู่ระบบ</button>
+                                                </div>
+                                                <p>มีบัญชีแล้วหรือยัง ? <a href="register.php">ลงทะเบียน</a>
+                                                </p>
+                                            </form>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <!--<div class="header">
+                                <h2>
+                                    <?= $login ?>
+                                </h2>
+                            </div>
+                            <div class="bottom">
+                                <div class="bottom-left">
+                                    <img src="assets/images/logohead.png" alt="logo">
+                                </div>
+                                <div class="bottom-right">
+                                    <form action="login_db_popup.php" method="post">
+                                        <div class="input-group">
+                                            <label for="username">
+                                                <?= $username ?>
+                                            </label>
+                                            <input type="text" name="username">
+                                        </div>
+                                        <div class="input-group">
+                                            <label for="password">
+                                                <?= $password ?>
+                                            </label>
+                                            <input type="password" name="password">
+                                        </div>
+                                        <div class="input-group">
+                                            <button type="submit" name="login_user" class="btn">
+                                                <?= $login ?>
+                                            </button>
+                                        </div>
+                                        <p>
+                                            <?= $notyet ?>
+                                            <a href="register.php">
+                                                <?= $signup ?>
+                                            </a>
+                                        </p>
+                                    </form>
+                                </div>
+                            </div>-->
                         </div>
                     <?php endif ?>
-                    <div class="box">
-                        <div class="header">
-                            <h2><?= $login ?></h2>
-                        </div>
-                        <div class="bottom">
-                            <div class="bottom-left">
-                                <img src="assets/images/logohead.png" alt="logo">
-                            </div>
-                            <div class="bottom-right">
-                                <form action="login_db_popup.php" method="post">
-                                    <div class="input-group">
-                                        <label for="username"><?= $username ?></label>
-                                        <input type="text" name="username">
-                                    </div>
-                                    <div class="input-group">
-                                        <label for="password"><?= $password ?></label>
-                                        <input type="password" name="password">
-                                    </div>
-                                    <div class="input-group">
-                                        <button type="submit" name="login_user" class="btn"><?= $login ?></button>
-                                    </div>
-                                    <p><?= $notyet ?>
-                                        <a href="register.php"><?= $signup ?></a>
-                                    </p>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                <?php endif ?>
+                </div>
             </div>
         </div>
-    </div>
 
 
 
 
-    <!-- เป็นส่วนของ popup ตอนเด้งขึ้นมา ขั้่น 2-->
-    <div class="popup" id="popup2">
-        <div class="popup-content">
-            <span class="close-popup" id="close-popup2">&times;</span>
-            <div>
-                <p style="text-align: center;">second popup</p>
-                <button class="button-success" id="button-success2" style="color: green;">ยืนยัน</button>
-                <button class="button-close" id="button-close2" style="color: red;">ปิด</button>
+        <!-- เป็นส่วนของ popup ตอนเด้งขึ้นมา ขั้่น 2-->
+        <div class="popup" id="popup2">
+            <div class="popup-content">
+                <span class="close-popup" id="close-popup2">&times;</span>
+                <div>
+                    <p style="text-align: center;">second popup</p>
+                    <button class="button-success" id="button-success2" style="color: green;">ยืนยัน</button>
+                    <button class="button-close" id="button-close2" style="color: red;">ปิด</button>
+                </div>
             </div>
         </div>
-    </div>
 
 
-    <!-- เป็นส่วนของ popup ตอนเด้งขึ้นมา ขั้่น 3-->
-    <div class="popup" id="popup3">
-        <div class="popup-content">
-            <span class="close-popup" id="close-popup3">&times;</span>
-            <div>
-                <p style="text-align: center;">third popup</p>
-                <button class="button-success" id="button-success3" style="color: green;">ยืนยัน</button>
-                <button class="button-close" id="button-close3" style="color: red;">ปิด</button>
+        <!-- เป็นส่วนของ popup ตอนเด้งขึ้นมา ขั้่น 3-->
+        <div class="popup" id="popup3">
+            <div class="popup-content">
+                <span class="close-popup" id="close-popup3">&times;</span>
+                <div>
+                    <p style="text-align: center;">third popup</p>
+                    <button class="button-success" id="button-success3" style="color: green;">ยืนยัน</button>
+                    <button class="button-close" id="button-close3" style="color: red;">ปิด</button>
+                </div>
             </div>
         </div>
-    </div>
-
+    </section>
 
 
     <?php include 'include/footer.php'; ?>
