@@ -111,7 +111,7 @@ include('server.php');
                             ?>
                         <?php endif ?>
                     </div>
-                    <form action="savefullname.php" method="post">
+                    <form action="save_fullname.php" method="post">
                         <div class="input-group">
                             <label for="fullname">ชื่อ-นามสกุล</label>
                             <?php
@@ -130,7 +130,7 @@ include('server.php');
                             <button type="submit" <?php if (!isset($_SESSION['edit_fullname'])); ?>>บันทึก</button>
                         </div>
                     </form>
-                    <form action="savephone.php" method="post">
+                    <form action="save_phone.php" method="post">
                         <div class="input-group">
                             <label for="phone">เบอร์โทร</label>
                             <?php
@@ -151,7 +151,7 @@ include('server.php');
                     </form>
                 </div>
                 <div class="right-box">
-                    <form action="saveaddress.php" method="post">
+                    <form action="save_address.php" method="post">
                         <div class="input-group">
                             <label for="address">ที่อยู่</label>
                             <?php
@@ -221,7 +221,7 @@ include('server.php');
         document.getElementById('fullname').setAttribute('disabled', 'disabled');
         document.getElementById('cancelButton').style.display = 'none';
         document.getElementById('editButton').style.display = 'block';
-        document.querySelector('form[action="savefullname.php"] button[type="submit"]').setAttribute('disabled', 'disabled');
+        document.querySelector('form[action="save_fullname.php"] button[type="submit"]').setAttribute('disabled', 'disabled');
         <?php unset($_SESSION['edit_fullname']); ?>
     }
 
@@ -234,7 +234,7 @@ include('server.php');
     function cancelPhoneEdit() {
         document.getElementById('phone').setAttribute('disabled', 'disabled');
         document.getElementById('editPhoneButton').style.display = 'block';
-        document.querySelector('form[action="savephone.php"] button[type="submit"]').setAttribute('disabled', 'disabled');
+        document.querySelector('form[action="save_phone.php"] button[type="submit"]').setAttribute('disabled', 'disabled');
         <?php unset($_SESSION['edit_phone']); ?>
     }
 
@@ -247,7 +247,7 @@ include('server.php');
     function cancelAddressEdit() {
         document.getElementById('address').setAttribute('disabled', 'disabled');
         document.getElementById('editAddressButton').style.display = 'block';
-        document.querySelector('form[action="saveaddress.php"] button[type="submit"]').setAttribute('disabled', 'disabled');
+        document.querySelector('form[action="save_address.php"] button[type="submit"]').setAttribute('disabled', 'disabled');
         <?php unset($_SESSION['edit_address']); ?>
     }
 </script>

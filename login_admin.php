@@ -80,7 +80,7 @@ if ($langId == 1) {
             <h2><?= $admin ?></h2>
         </div>
         <div class="header-mid">
-            <form action="adminlogin_db.php" method="post">
+            <form action="login_admin_db.php" method="post">
                 <?php if (isset($_SESSION['error'])) : ?>
                     <div class="error">
                         <h3>

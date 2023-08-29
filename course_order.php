@@ -9,7 +9,7 @@ include('server.php');
 
 if (!isset($_SESSION['admin'])) {
     $_SESSION['msg'] = "you must login first";
-    header('location:adminlogin.php');
+    header('location:login_admin.php');
     // session_destroy(); 
 }
 ?>

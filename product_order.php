@@ -9,7 +9,7 @@ include('server.php');
 
 if (!isset($_SESSION['admin'])) {
     $_SESSION['msg'] = "you must login first";
-    header('location:adminlogin.php');
+    header('location:login_admin.php');
     // session_destroy(); 
 }
 
@@ -78,7 +78,17 @@ $result = mysqli_query($db, $query);
                             <td><?php echo $row['item']; ?></td>
                             <td><?php echo $row['quantity']; ?></td>
                             <td><?php echo $row['price']; ?></td>
-                            <td><?php echo $row['status']; ?></td>
+                            <td>
+                                <select class="status-dropdown" data-row-id="<?php echo $row['id']; ?>" disabled>
+                                    <option value="รอตรวจสอบ" <?php if ($row['status'] === 'รอตรวจสอบ') echo 'selected'; ?>>รอตรวจสอบ</option>
+                                    <option value="สำเร็จ" <?php if ($row['status'] === 'สำเร็จ') echo 'selected'; ?>>สำเร็จ</option>
+                                    <option value="ปฏิเสธ" <?php if ($row['status'] === 'ปฏิเสธ') echo 'selected'; ?>>ปฏิเสธ</option>
+                                </select>
+                                <button class="edit-button" data-row-id="<?php echo $row['id']; ?>">แก้ไข</button>
+                                <button class="save-button" data-row-id="<?php echo $row['id']; ?>">บันทึก</button>
+
+
+                            </td>
                         </tr>
                     <?php endwhile; ?>
                 </table>
@@ -88,6 +98,31 @@ $result = mysqli_query($db, $query);
 </body>
 
 <script>
+    const editButtons = document.querySelectorAll('.edit-button');
+    const saveButtons = document.querySelectorAll('.save-button');
+
+    editButtons.forEach(button => {
+        const rowId = button.getAttribute('data-row-id');
+        button.addEventListener('click', function() {
+            const row = button.closest('tr'); // หาแถวที่ปุ่มอยู่
+            const statusDropdown = row.querySelector(`select[data-row-id="${rowId}"]`);
+            statusDropdown.removeAttribute('disabled');
+            button.style.display = 'none';
+            const saveButton = row.querySelector(`button.save-button[data-row-id="${rowId}"]`);
+            saveButton.style.display = 'block';
+        });
+    });
+
+    saveButtons.forEach(button => {
+        const rowId = button.getAttribute('data-row-id');
+        button.addEventListener('click', function() {
+            const row = button.closest('tr'); // หาแถวที่ปุ่มอยู่
+            const statusDropdown = row.querySelector(`select[data-row-id="${rowId}"]`);
+            const newStatus = statusDropdown.value;
+            updateStatus(rowId, newStatus, row); // ส่งตัวแปร row เพิ่มเข้าไป
+        });
+    });
+
     const filterButtons = document.querySelectorAll('.filter-buttons button');
     const tableRows = document.querySelectorAll('.table_order table tr');
 
@@ -106,6 +141,26 @@ $result = mysqli_query($db, $query);
             });
         });
     });
+
+    function updateStatus(rowId, newStatus, row) {
+        const xhr = new XMLHttpRequest();
+        xhr.open('POST', 'update_status_order.php', true);
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                if (xhr.status === 200) {
+                    const statusCell = row.querySelector('.status-dropdown');
+                    statusCell.value = newStatus; // ตั้งค่าเนื้อหาใน statusCell
+                } else {
+                    console.error('การอัพเดตไม่สำเร็จ');
+                }
+            }
+        };
+
+        const data = `rowId=${rowId}&newStatus=${newStatus}`;
+        xhr.send(data);
+    }
 </script>
 
 </html>

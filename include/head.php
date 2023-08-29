@@ -127,7 +127,7 @@ if (isset($_GET['logout'])) {
                                 <a class="nav-link" href="register.php"><?= $register ?></a>
                             </li>
                             <li class="nav-item" >
-                                <a class="nav-admin" href="adminlogin.php"><?= $admin ?></a>
+                                <a class="nav-admin" href="login_admin.php"><?= $admin ?></a>
                             </li>
                         <?php } ?>
                     </ul>

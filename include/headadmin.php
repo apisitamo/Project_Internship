@@ -81,10 +81,10 @@ if (empty($_SESSION['lang']) || $_SESSION['lang'] == 1) {
         <div class="navbar-collapse collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="productorder.php"><?= $product_order ?></a>
+                    <a class="nav-link" aria-current="page" href="product_order.php"><?= $product_order ?></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="courseorder.php"><?= $course_order ?></a>
+                    <a class="nav-link" href="course_order.php"><?= $course_order ?></a>
                 </li>
 
                 <li class="nav-item dropdown">

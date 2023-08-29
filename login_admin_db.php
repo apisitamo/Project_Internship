@@ -28,19 +28,19 @@
             if(mysqli_num_rows($result)==1){
                 $_SESSION['username']= $username;
                 $_SESSION['success']="you are now login";
-                header("location: productorder.php");
+                header("location: product_order.php");
             }
             else{
                 array_push($errors,"worng data");
                 $_SESSION['error']="try again";
-                header("location: adminlogin.php");
+                header("location: login_admin.php");
             }
 
 
         }else {
             // Notify the user to fill in both fields
             $_SESSION['error'] = "Please fill input";
-            header("location: adminlogin.php");
+            header("location: login_admin.php");
         }
 
 
