@@ -51,9 +51,9 @@ if($langId == 1){
                     <div class="wrap">
                         <h4 class="footer-title"><?=$followus?></h4>
                         <div class="group-icon">
-                            <a href="https://th-th.facebook.com/BSABangkok/" class="icon"><i class="bi bi-facebook"></i></a>
-                            <a href="https://line.me/ti/p/~@108toots" class="icon"><i class="bi bi-line"></i></a>
-                            <a href="https://www.youtube.com/channel/UCYaxWe0tJ0N6WX6pMyqyAbA" class="icon"><i class="bi bi-youtube"></i></a>
+                            <a href="https://th-th.facebook.com/BSABangkok/" class="icon" target="_blank"><i class="bi bi-facebook"></i></a>
+                            <a href="https://line.me/ti/p/~@108toots" class="icon" target="_blank"><i class="bi bi-line"></i></a>
+                            <a href="https://www.youtube.com/channel/UCYaxWe0tJ0N6WX6pMyqyAbA" class="icon" target="_blank"><i class="bi bi-youtube"></i></a>
                         </div>
                     </div>
                 </div>

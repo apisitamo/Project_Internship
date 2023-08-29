@@ -32,13 +32,13 @@ if($langId == 1){
             <div class="head">
                 <p>Click</p>
             </div>
-            <a href="https://line.me/ti/p/~@108toots" class="first">
+            <a href="https://line.me/ti/p/~@108toots" class="first" target="_blank">
                 <img src="assets/images/lineclick.png" alt="">
             </a>
-            <a href="https://www.youtube.com/channel/UCYaxWe0tJ0N6WX6pMyqyAbA">
+            <a href="https://www.youtube.com/channel/UCYaxWe0tJ0N6WX6pMyqyAbA" target="_blank">
                 <img src="assets/images/youtube.png" alt="">
             </a>
-            <a href="https://th-th.facebook.com/BSABangkok/">
+            <a href="https://th-th.facebook.com/BSABangkok/" target="_blank">
                 <img src="assets/images/facebookk.png" alt="">
             </a>
         </div>
