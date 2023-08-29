@@ -133,5 +133,42 @@ $result = mysqli_query($db, $query);
         });
     });
 </script>
+<script>
+    const saveButtons = document.querySelectorAll('.save-button');
+
+    saveButtons.forEach(button => {
+        const rowId = button.getAttribute('data-row-id');
+        button.addEventListener('click', function() {
+            const row = button.closest('tr');
+            const statusDropdown = row.querySelector(`select[data-row-id="${rowId}"]`);
+            const selectedStatus = statusDropdown.value;
+
+            // ส่งข้อมูลไปยังเซิร์ฟเวอร์เพื่อบันทึกลงในฐานข้อมูล
+            updateStatusInDatabase(rowId, selectedStatus);
+
+            location.reload();
+            // แสดงอลังการเตือนเมื่อบันทึกเรียบร้อย
+            alert('บันทึกสถานะเรียบร้อยแล้ว');
+
+        });
+    });
+    // ฟังก์ชันสำหรับส่งข้อมูลไปยังเซิร์ฟเวอร์เพื่อบันทึกลงในฐานข้อมูล
+    function updateStatusInDatabase(rowId, selectedStatus) {
+        const xhr = new XMLHttpRequest();
+
+        xhr.open('POST', 'update_status_order.php', true);
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+                console.log('Status updated successfully:', xhr.responseText);
+            }
+        };
+
+        // ส่งข้อมูลในรูปแบบของ query string
+        const data = `rowId=${encodeURIComponent(rowId)}&selectedStatus=${encodeURIComponent(selectedStatus)}`;
+        xhr.send(data);
+    }
+</script>
 
 </html>
