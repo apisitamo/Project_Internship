@@ -28,14 +28,14 @@ include('server.php');
     .container {
         display: flex;
         flex-direction: column;
-        height: 100%;
+        height: 250px;
     }
 
     .container-top {
         display: flex;
         flex-direction: row;
         flex: 1;
-        
+
     }
 
     .left-box,
@@ -43,6 +43,7 @@ include('server.php');
         flex: 1;
         padding: 20px;
         box-sizing: border-box;
+        /* height: 100px; */
     }
 
     .left-box {
@@ -91,7 +92,7 @@ include('server.php');
                     <div class="homecontent">
                         <?php if (isset($_SESSION['username'])) : ?>
                             <label for="username">ชื่อผู้ใช้</label>
-                            <input type="text" value="<?php echo $_SESSION['username'] ?>"disabled>
+                            <input type="text" value="<?php echo $_SESSION['username'] ?>" disabled>
                         <?php endif ?>
                     </div>
                     <div class="homecontent">
@@ -147,31 +148,26 @@ include('server.php');
                         <th>ราคา</th>
                         <th>สถานะ</th>
                     </tr>
-
                     <?php
-                    $db = mysqli_connect($servername, $username, $password, $dbname);
-
-                    // ดึงข้อมูลจากฐานข้อมูล
-                    $query = "SELECT * FROM order ORDER BY id DESC";
+                    $username = $_SESSION['username'];
+                    $query = "SELECT * FROM product_order WHERE username='$username'";
                     $result = mysqli_query($db, $query);
 
-                    $order = 1;
-                    while ($row = mysqli_fetch_assoc($result)) {
-                        echo '<tr>';
-                        echo '<td>' . $order . '</td>';
-                        echo '<td>' . $row['type'] . '</td>';
-                        echo '<td>' . $row['item'] . '</td>';
-                        echo '<td>' . $row['quantity'] . '</td>';
-                        echo '<td>' . $row['price'] . '</td>';
-                        echo '<td>' . $row['status'] . '</td>';
-                        echo '</tr>';
-
-                        $order++;
-                    }
+                    $i = 1; // กำหนดค่าเริ่มต้นของ i
+                    while ($row = mysqli_fetch_assoc($result)) :
                     ?>
-
+                        <tr>
+                            <td><?php echo $i++; ?></td>
+                            <td><?php echo $row['type']; ?></td>
+                            <td><?php echo $row['item']; ?></td>
+                            <td><?php echo $row['quantity']; ?></td>
+                            <td><?php echo $row['price']; ?></td>
+                            <td><?php echo $row['status']; ?></td>
+                        </tr>
+                    <?php endwhile; ?>
                 </table>
             </div>
+
         </div>
     </section>
     <?php include 'include/footer.php'; ?>
