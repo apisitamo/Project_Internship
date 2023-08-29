@@ -63,9 +63,6 @@ include('server.php');
         background-color: #c0c0c0;
     }
 
-
-
-
     table {
         border-collapse: collapse;
         width: 100%;
@@ -171,7 +168,6 @@ include('server.php');
                         <button type="submit" <?php if (!isset($_SESSION['edit_address'])); ?>>บันทึก</button>
                     </form>
                 </div>
-
             </div>
             <div class="bottom-box">
                 <table>
@@ -188,7 +184,7 @@ include('server.php');
                     $query = "SELECT * FROM product_order WHERE username='$username'ORDER BY id DESC";
                     $result = mysqli_query($db, $query);
 
-                    $i = 1; // กำหนดค่าเริ่มต้นของ i
+                    $i = 1; 
                     while ($row = mysqli_fetch_assoc($result)) :
                     ?>
                         <tr>
@@ -202,7 +198,6 @@ include('server.php');
                     <?php endwhile; ?>
                 </table>
             </div>
-
         </div>
     </section>
     <?php include 'include/footer.php'; ?>
@@ -251,6 +246,4 @@ include('server.php');
         <?php unset($_SESSION['edit_address']); ?>
     }
 </script>
-
-
 </html>

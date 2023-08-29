@@ -68,7 +68,7 @@ $result = mysqli_query($db, $query);
                         <th>สถานะ</th>
                     </tr>
                     <?php
-                    $i = 1; // กำหนดค่าเริ่มต้นของ i
+                    $i = 1;
                     while ($row = mysqli_fetch_assoc($result)) :
                     ?>
                         <tr data-status="<?php echo $row['status']; ?>">
@@ -86,8 +86,6 @@ $result = mysqli_query($db, $query);
                                 </select>
                                 <button class="edit-button" data-row-id="<?php echo $row['id']; ?>">แก้ไข</button>
                                 <button class="save-button" data-row-id="<?php echo $row['id']; ?>">บันทึก</button>
-
-
                             </td>
                         </tr>
                     <?php endwhile; ?>
@@ -143,16 +141,13 @@ $result = mysqli_query($db, $query);
             const statusDropdown = row.querySelector(`select[data-row-id="${rowId}"]`);
             const selectedStatus = statusDropdown.value;
 
-            // ส่งข้อมูลไปยังเซิร์ฟเวอร์เพื่อบันทึกลงในฐานข้อมูล
             updateStatusInDatabase(rowId, selectedStatus);
-
             location.reload();
-            // แสดงอลังการเตือนเมื่อบันทึกเรียบร้อย
             alert('บันทึกสถานะเรียบร้อยแล้ว');
 
         });
     });
-    // ฟังก์ชันสำหรับส่งข้อมูลไปยังเซิร์ฟเวอร์เพื่อบันทึกลงในฐานข้อมูล
+
     function updateStatusInDatabase(rowId, selectedStatus) {
         const xhr = new XMLHttpRequest();
 
@@ -164,8 +159,6 @@ $result = mysqli_query($db, $query);
                 console.log('Status updated successfully:', xhr.responseText);
             }
         };
-
-        // ส่งข้อมูลในรูปแบบของ query string
         const data = `rowId=${encodeURIComponent(rowId)}&selectedStatus=${encodeURIComponent(selectedStatus)}`;
         xhr.send(data);
     }
