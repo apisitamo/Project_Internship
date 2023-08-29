@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html lang="en">
 <?php
 session_start();
 
@@ -112,17 +114,39 @@ include('server.php');
                     <form action="savefullname.php" method="post">
                         <div class="input-group">
                             <label for="fullname">ชื่อ-นามสกุล</label>
-                            <input type="text" id="fullname" name="fullname">
-                            <button type="button" disabled>แก้ไข</button>
-                            <button type="submit">บันทึก</button>
+                            <?php
+                            $query = "SELECT fullname FROM user WHERE username='$username'";
+                            $result = mysqli_query($db, $query);
+                            $row = mysqli_fetch_assoc($result);
+                            $fullname = $row['fullname'];
+                            ?>
+                            <input type="text" id="fullname" name="fullname" value="<?php echo $fullname; ?>" <?php if (isset($_SESSION['edit_fullname'])) echo '';
+                                                                                                                else echo 'disabled'; ?>>
+                            <?php if (!isset($_SESSION['edit_fullname'])) : ?>
+                                <button type="button" id="editButton" onclick="enableFullname()">แก้ไข</button>
+                            <?php else : ?>
+                                <button type="button" id="cancelButton" onclick="cancelEdit()">ยกเลิก</button>
+                            <?php endif; ?>
+                            <button type="submit" <?php if (!isset($_SESSION['edit_fullname'])); ?>>บันทึก</button>
                         </div>
                     </form>
                     <form action="savephone.php" method="post">
                         <div class="input-group">
                             <label for="phone">เบอร์โทร</label>
-                            <input type="text" id="phone" name="phone">
-                            <button type="button" disabled>แก้ไข</button>
-                            <button type="submit">บันทึก</button>
+                            <?php
+                            $query = "SELECT phone FROM user WHERE username='$username'";
+                            $result = mysqli_query($db, $query);
+                            $row = mysqli_fetch_assoc($result);
+                            $phone = $row['phone'];
+                            ?>
+                            <input type="text" id="phone" name="phone" pattern="[0-9]+" value="<?php echo $phone; ?>" <?php if (isset($_SESSION['edit_phone'])) echo '';
+                                                                                                        else echo 'disabled'; ?>>
+                            <?php if (!isset($_SESSION['edit_phone'])) : ?>
+                                <button type="button" id="editPhoneButton" onclick="enablePhone()">แก้ไข</button>
+                            <?php else : ?>
+                                <button type="button" id="cancelPhoneButton" onclick="cancelPhoneEdit()">ยกเลิก</button>
+                            <?php endif; ?>
+                            <button type="submit" <?php if (!isset($_SESSION['edit_phone'])); ?>>บันทึก</button>
                         </div>
                     </form>
                 </div>
@@ -130,10 +154,21 @@ include('server.php');
                     <form action="saveaddress.php" method="post">
                         <div class="input-group">
                             <label for="address">ที่อยู่</label>
-                            <textarea id="address" name="address" style="width: 300px; height: 100px;"></textarea> <!-- ใช้ textarea แทน input และปรับความสูง -->
+                            <?php
+                            $query = "SELECT address FROM user WHERE username='$username'";
+                            $result = mysqli_query($db, $query);
+                            $row = mysqli_fetch_assoc($result);
+                            $address = $row['address'];
+                            ?>
+                            <textarea id="address" name="address" style="width: 300px; height: 100px;" <?php if (isset($_SESSION['edit_address'])) echo '';
+                                                                                                        else echo 'disabled'; ?>><?php echo $address; ?></textarea>
                         </div>
-                        <button type="button" disabled>แก้ไข</button>
-                        <button type="submit">บันทึก</button>
+                        <?php if (!isset($_SESSION['edit_address'])) : ?>
+                            <button type="button" id="editAddressButton" onclick="enableAddress()">แก้ไข</button>
+                        <?php else : ?>
+                            <button type="button" id="cancelAddressButton" onclick="cancelAddressEdit()">ยกเลิก</button>
+                        <?php endif; ?>
+                        <button type="submit" <?php if (!isset($_SESSION['edit_address'])); ?>>บันทึก</button>
                     </form>
                 </div>
 
@@ -174,6 +209,47 @@ include('server.php');
 </body>
 <script>
     AOS.init();
+</script>
+<script>
+    function enableFullname() {
+        document.getElementById('fullname').removeAttribute('disabled');
+        document.getElementById('editButton').style.display = 'none';
+        <?php $_SESSION['edit_fullname'] = true; ?>
+    }
+
+    function cancelEdit() {
+        document.getElementById('fullname').setAttribute('disabled', 'disabled');
+        document.getElementById('cancelButton').style.display = 'none';
+        document.getElementById('editButton').style.display = 'block';
+        document.querySelector('form[action="savefullname.php"] button[type="submit"]').setAttribute('disabled', 'disabled');
+        <?php unset($_SESSION['edit_fullname']); ?>
+    }
+
+    function enablePhone() {
+        document.getElementById('phone').removeAttribute('disabled');
+        document.getElementById('editPhoneButton').style.display = 'none';
+        <?php $_SESSION['edit_phone'] = true; ?>
+    }
+
+    function cancelPhoneEdit() {
+        document.getElementById('phone').setAttribute('disabled', 'disabled');
+        document.getElementById('editPhoneButton').style.display = 'block';
+        document.querySelector('form[action="savephone.php"] button[type="submit"]').setAttribute('disabled', 'disabled');
+        <?php unset($_SESSION['edit_phone']); ?>
+    }
+
+    function enableAddress() {
+        document.getElementById('address').removeAttribute('disabled');
+        document.getElementById('editAddressButton').style.display = 'none';
+        <?php $_SESSION['edit_address'] = true; ?>
+    }
+
+    function cancelAddressEdit() {
+        document.getElementById('address').setAttribute('disabled', 'disabled');
+        document.getElementById('editAddressButton').style.display = 'block';
+        document.querySelector('form[action="saveaddress.php"] button[type="submit"]').setAttribute('disabled', 'disabled');
+        <?php unset($_SESSION['edit_address']); ?>
+    }
 </script>
 
 
