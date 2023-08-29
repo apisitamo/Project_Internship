@@ -1,18 +1,12 @@
 <?php
-// Start the session
 session_start();
 
-// Check if 'alert' session is set and is true
 if (isset($_SESSION['save_success']) && $_SESSION['save_success']) {
     echo "<script>alert('บันทึกข้อมูลเรียบร้อย');</script>";
-    // Clear the session flag
     $_SESSION['save_success'] = false;
 }
-
-// Check if 'save_error' session is set and show the error message
 if (isset($_SESSION['save_error'])) {
     echo "<script>alert('" . $_SESSION['save_error'] . "');</script>";
-    // Clear the error message
     unset($_SESSION['save_error']);
 }
 ?>
@@ -35,6 +29,7 @@ include('server.php');
         display: flex;
         flex-direction: row;
         flex: 1;
+        
     }
 
     .left-box,
@@ -90,22 +85,19 @@ include('server.php');
                     <div class="homecontent">
                         <?php if (isset($_SESSION['username'])) : ?>
                             <label for="username">ชื่อผู้ใช้</label>
-                            <input type="text" value="<?php echo $_SESSION['username'] ?>" disabled>
+                            <input type="text" value="<?php echo $_SESSION['username'] ?>"disabled>
                         <?php endif ?>
                     </div>
                     <div class="homecontent">
                         <?php if (isset($_SESSION['username'])) : ?>
                             <label for="username">อีเมล์</label>
                             <?php
-                            // เชื่อมต่อฐานข้อมูล
                             $db = mysqli_connect($servername, $username, $password, $dbname);
-                            // ดึงข้อมูล email จากฐานข้อมูล
                             $username = $_SESSION['username'];
                             $query = "SELECT email FROM user WHERE username='$username'";
                             $result = mysqli_query($db, $query);
                             $row = mysqli_fetch_assoc($result);
                             $email = $row['email'];
-                            // แสดงผล email
                             echo '<input type="text" value="' . $email . '" disabled>';
                             ?>
                         <?php endif ?>
@@ -113,8 +105,8 @@ include('server.php');
                     <form action="savefullname.php" method="post">
                         <div class="input-group">
                             <label for="fullname">ชื่อ-นามสกุล</label>
-                            <input type="text" id="fullname" name="fullname" disabled>
-                            <button type="submit">แก้ไข</button>
+                            <input type="text" id="fullname" name="fullname">
+                            <button type="button" disabled>แก้ไข</button>
                             <button type="submit">บันทึก</button>
                         </div>
                     </form>
@@ -122,16 +114,22 @@ include('server.php');
                         <div class="input-group">
                             <label for="phone">เบอร์โทร</label>
                             <input type="text" id="phone" name="phone">
+                            <button type="button" disabled>แก้ไข</button>
                             <button type="submit">บันทึก</button>
                         </div>
                     </form>
                 </div>
                 <div class="right-box">
-                    <div class="input-group">
-                        <label for="username">ที่อยู่</label>
-                        <input type="text">
-                    </div>
+                    <form action="saveaddress.php" method="post">
+                        <div class="input-group">
+                            <label for="address">ที่อยู่</label>
+                            <textarea id="address" name="address" style="width: 300px; height: 100px;"></textarea> <!-- ใช้ textarea แทน input และปรับความสูง -->
+                        </div>
+                        <button type="button" disabled>แก้ไข</button>
+                        <button type="submit">บันทึก</button>
+                    </form>
                 </div>
+
             </div>
             <div class="bottom-box">
                 <table>
@@ -175,5 +173,6 @@ include('server.php');
 <script>
     AOS.init();
 </script>
+
 
 </html>

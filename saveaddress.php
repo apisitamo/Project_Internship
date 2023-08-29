@@ -3,9 +3,9 @@ session_start();
 
 if (isset($_SESSION['username'])) {
     $username = $_SESSION['username'];
-    $fullname = isset($_POST['fullname']) ? $_POST['fullname'] : '';
+    $address = isset($_POST['address']) ? $_POST['address'] : '';
 
-    if (empty($fullname)) {
+    if (empty($address)) {
         $_SESSION['save_error'] = "กรุณากรอกชื่อ-นามสกุล";
         header("Location: user.php");
         exit();
@@ -20,9 +20,9 @@ if (isset($_SESSION['username'])) {
     if (mysqli_connect_error()) {
         die('Connect Error(' . mysqli_connect_errno() . ')' . mysqli_connect_error());
     } else {
-        $UPDATE = "UPDATE user SET fullname = ? WHERE username = ?";
+        $UPDATE = "UPDATE user SET address = ? WHERE username = ?";
         $stmt = $conn->prepare($UPDATE);
-        $stmt->bind_param("ss", $fullname, $username);
+        $stmt->bind_param("ss", $address, $username);
 
         if ($stmt->execute()) {
             $_SESSION['save_success'] = true;
