@@ -532,45 +532,6 @@ if ($langId == 1) {
                                     </div>
                                 </div>
                             </div>
-
-
-                            <!--<div class="header">
-                                <h2>
-                                    <?= $login ?>
-                                </h2>
-                            </div>
-                            <div class="bottom">
-                                <div class="bottom-left">
-                                    <img src="assets/images/logohead.png" alt="logo">
-                                </div>
-                                <div class="bottom-right">
-                                    <form action="login_db_popup.php" method="post">
-                                        <div class="input-group">
-                                            <label for="username">
-                                                <?= $username ?>
-                                            </label>
-                                            <input type="text" name="username">
-                                        </div>
-                                        <div class="input-group">
-                                            <label for="password">
-                                                <?= $password ?>
-                                            </label>
-                                            <input type="password" name="password">
-                                        </div>
-                                        <div class="input-group">
-                                            <button type="submit" name="login_user" class="btn">
-                                                <?= $login ?>
-                                            </button>
-                                        </div>
-                                        <p>
-                                            <?= $notyet ?>
-                                            <a href="register.php">
-                                                <?= $signup ?>
-                                            </a>
-                                        </p>
-                                    </form>
-                                </div>
-                            </div>-->
                         </div>
                     <?php endif ?>
                 </div>
