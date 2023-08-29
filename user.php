@@ -1,6 +1,12 @@
 <?php
 session_start();
 
+if (!isset($_SESSION['username'])) {
+    $_SESSION['msg'] = "you must login first";
+    header('location:login.php');
+    session_destroy();
+}
+
 if (isset($_SESSION['save_success']) && $_SESSION['save_success']) {
     echo "<script>alert('บันทึกข้อมูลเรียบร้อย');</script>";
     $_SESSION['save_success'] = false;

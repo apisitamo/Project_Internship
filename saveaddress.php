@@ -6,7 +6,7 @@ if (isset($_SESSION['username'])) {
     $address = isset($_POST['address']) ? $_POST['address'] : '';
 
     if (empty($address)) {
-        $_SESSION['save_error'] = "กรุณากรอกชื่อ-นามสกุล";
+        $_SESSION['save_error'] = "กรุณากรอกที่อยู่";
         header("Location: user.php");
         exit();
     }
