@@ -12,7 +12,12 @@ if (!isset($_SESSION['admin'])) {
     header('location:adminlogin.php');
     // session_destroy(); 
 }
+
+$db = mysqli_connect($servername, $username, $password, $dbname);
+$query = "SELECT * FROM product_order ORDER BY id DESC";
+$result = mysqli_query($db, $query);
 ?>
+
 <style>
     .bottom-box {
         flex: 1;
@@ -45,6 +50,12 @@ if (!isset($_SESSION['admin'])) {
             <h2 style="text-align: center;"><?= $product_order ?></h2>
         </div>
         <div class="container">
+            <div class="filter-buttons">
+                <button data-status="All">ทั้งหมด</button>
+                <button data-status="รอตรวจสอบ">รอตรวจสอบ</button>
+                <button data-status="สำเร็จ">สำเร็จ</button>
+                <button data-status="ปฏิเสธ">ปฏิเสธ</button>
+            </div>
             <div class="table_order">
                 <table>
                     <tr>
@@ -57,15 +68,10 @@ if (!isset($_SESSION['admin'])) {
                         <th>สถานะ</th>
                     </tr>
                     <?php
-                    $db = mysqli_connect($servername, $username, $password, $dbname);
-
-                    $query = "SELECT * FROM product_order ORDER BY id DESC";
-                    $result = mysqli_query($db, $query);
-
                     $i = 1; // กำหนดค่าเริ่มต้นของ i
                     while ($row = mysqli_fetch_assoc($result)) :
                     ?>
-                        <tr>
+                        <tr data-status="<?php echo $row['status']; ?>">
                             <td><?php echo $i++; ?></td>
                             <td><?php echo $row['username']; ?></td>
                             <td><?php echo $row['type']; ?></td>
@@ -74,13 +80,32 @@ if (!isset($_SESSION['admin'])) {
                             <td><?php echo $row['price']; ?></td>
                             <td><?php echo $row['status']; ?></td>
                         </tr>
-                        
                     <?php endwhile; ?>
                 </table>
             </div>
         </div>
     </section>
-
 </body>
+
+<script>
+    const filterButtons = document.querySelectorAll('.filter-buttons button');
+    const tableRows = document.querySelectorAll('.table_order table tr');
+
+    filterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const status = this.getAttribute('data-status');
+
+            tableRows.forEach(row => {
+                const rowStatus = row.getAttribute('data-status');
+
+                if (status === 'All' || rowStatus === status) {
+                    row.style.display = 'table-row';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        });
+    });
+</script>
 
 </html>
