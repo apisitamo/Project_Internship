@@ -185,7 +185,7 @@ include('server.php');
                     </tr>
                     <?php
                     $username = $_SESSION['username'];
-                    $query = "SELECT * FROM product_order WHERE username='$username'";
+                    $query = "SELECT * FROM product_order WHERE username='$username'ORDER BY id DESC";
                     $result = mysqli_query($db, $query);
 
                     $i = 1; // กำหนดค่าเริ่มต้นของ i
