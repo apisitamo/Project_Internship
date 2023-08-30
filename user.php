@@ -261,6 +261,7 @@ if (isset($_SESSION['save_error'])) {
                         <th>จำนวน</th>
                         <th>ราคา</th>
                         <th>สถานะ</th>
+                        <th>หมายเหตุ</th>
                     </tr>
                     <?php
                     $username = $_SESSION['username'];
@@ -298,6 +299,9 @@ if (isset($_SESSION['save_error'])) {
     ?>;
 ">
                                 <?php echo $row['status']; ?>
+                            </td>
+                            <td>
+                                <?php echo $row['note']; ?>
                             </td>
                         </tr>
                     <?php endwhile; ?>

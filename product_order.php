@@ -66,6 +66,7 @@ $result = mysqli_query($db, $query);
                         <th>จำนวน</th>
                         <th>ราคา</th>
                         <th>สถานะ</th>
+                        <th>หมายเหตุ</th>
                     </tr>
                     <?php
                     $i = 1;
@@ -86,6 +87,11 @@ $result = mysqli_query($db, $query);
                                 </select>
                                 <button class="edit-button" data-row-id="<?php echo $row['id']; ?>">แก้ไข</button>
                                 <button class="save-button" data-row-id="<?php echo $row['id']; ?>">บันทึก</button>
+                            </td>
+                            <td>
+                                <input type="text" class="note-input" data-row-id="<?php echo $row['id']; ?>" value="<?php echo $row['note']; ?>" disabled>
+                                <button class="edit-note-button" data-row-id="<?php echo $row['id']; ?>">แก้ไข</button>
+                                <button class="save-note-button" data-row-id="<?php echo $row['id']; ?>">บันทึก</button>
                             </td>
                         </tr>
                     <?php endwhile; ?>
@@ -114,15 +120,13 @@ $result = mysqli_query($db, $query);
             });
         });
     });
-</script>
 
-<script>
     const editButtons = document.querySelectorAll('.edit-button');
 
     editButtons.forEach(button => {
         const rowId = button.getAttribute('data-row-id');
         button.addEventListener('click', function() {
-            const row = button.closest('tr'); // หาแถวที่ปุ่มอยู่
+            const row = button.closest('tr');
             const statusDropdown = row.querySelector(`select[data-row-id="${rowId}"]`);
             statusDropdown.removeAttribute('disabled');
             button.style.display = 'none';
@@ -130,37 +134,97 @@ $result = mysqli_query($db, $query);
             saveButton.style.display = 'block';
         });
     });
-</script>
-<script>
+
     const saveButtons = document.querySelectorAll('.save-button');
 
     saveButtons.forEach(button => {
         const rowId = button.getAttribute('data-row-id');
-        button.addEventListener('click', function() {
+        button.addEventListener('click', async function() {
             const row = button.closest('tr');
             const statusDropdown = row.querySelector(`select[data-row-id="${rowId}"]`);
             const selectedStatus = statusDropdown.value;
 
-            updateStatusInDatabase(rowId, selectedStatus);
+            await updateStatusInDatabase(rowId, selectedStatus);
             location.reload();
             alert('บันทึกสถานะเรียบร้อยแล้ว');
-
         });
     });
 
-    function updateStatusInDatabase(rowId, selectedStatus) {
-        const xhr = new XMLHttpRequest();
+    async function updateStatusInDatabase(rowId, selectedStatus) {
+        const response = await fetch('update_status_order.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: `rowId=${encodeURIComponent(rowId)}&selectedStatus=${encodeURIComponent(selectedStatus)}`,
+        });
 
-        xhr.open('POST', 'update_status_order.php', true);
-        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        const result = await response.text();
+        console.log('Status updated successfully:', result);
+    }
 
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
-                console.log('Status updated successfully:', xhr.responseText);
+    const editNoteButtons = document.querySelectorAll('.table_order table tr .edit-note-button');
+
+    editNoteButtons.forEach(button => {
+        const rowId = button.getAttribute('data-row-id');
+        button.addEventListener('click', function() {
+            const row = button.closest('tr');
+            const noteInput = row.querySelector(`input.note-input[data-row-id="${rowId}"]`);
+            noteInput.removeAttribute('disabled');
+            button.style.display = 'none';
+            const saveNoteButton = row.querySelector(`button.save-note-button[data-row-id="${rowId}"]`);
+            saveNoteButton.style.display = 'block';
+        });
+    });
+
+    const noteInputs = document.querySelectorAll('.note-input');
+
+    noteInputs.forEach(input => {
+        const rowId = input.getAttribute('data-row-id');
+
+        input.addEventListener('input', function() {
+            const noteValue = input.value.trim();
+            const saveNoteButton = input.parentElement.querySelector(`button.save-note-button[data-row-id="${rowId}"]`);
+
+            if (noteValue === "") {
+                saveNoteButton.disabled = true;
+            } else {
+                saveNoteButton.disabled = false;
             }
-        };
-        const data = `rowId=${encodeURIComponent(rowId)}&selectedStatus=${encodeURIComponent(selectedStatus)}`;
-        xhr.send(data);
+        });
+    });
+
+    const saveNoteButtons = document.querySelectorAll('.save-note-button');
+
+    saveNoteButtons.forEach(button => {
+        const rowId = button.getAttribute('data-row-id');
+        button.addEventListener('click', async function() {
+            const row = button.closest('tr');
+            const noteInput = row.querySelector(`input.note-input[data-row-id="${rowId}"]`);
+            const noteValue = noteInput.value.trim();
+
+            if (noteValue === "") {
+                alert('กรุณากรอกข้อมูล');
+                return;
+            }
+
+            await updateNoteInDatabase(rowId, noteValue);
+            alert('บันทึกข้อมูลเรียบร้อยแล้ว');
+            location.reload();
+        });
+    });
+
+    async function updateNoteInDatabase(rowId, noteValue) {
+        const response = await fetch('update_note_order.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: `rowId=${encodeURIComponent(rowId)}&noteValue=${encodeURIComponent(noteValue)}`,
+        });
+
+        const result = await response.text();
+        console.log('Note updated successfully:', result);
     }
 </script>
 
