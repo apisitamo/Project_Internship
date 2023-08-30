@@ -42,11 +42,11 @@ if (isset($_SESSION['save_error'])) {
 
     .user1 .homecontent {
         margin-bottom: 15px;
-        padding-left: 68px;
+        padding-left: 20px;
     }
 
     .user1 .homecontent:nth-child(1) input {
-        padding-right: 25px;
+        padding-right: 50px;
         margin-right: 25px;
         margin-left: 25px;
         background: #e0e0e0;
@@ -54,7 +54,7 @@ if (isset($_SESSION['save_error'])) {
     }
 
     .user1 .homecontent:nth-child(2) input {
-        padding-right: 25px;
+        padding-right: 50px;
         margin-right: 17px;
         margin-left: 28px;
         background: #e0e0e0;
@@ -69,25 +69,28 @@ if (isset($_SESSION['save_error'])) {
     .user1 .left-box,
     .user1 .right-box {
         flex: 1;
-        padding: 20px;
+        padding: 25px;
         box-sizing: border-box;
+        padding-bottom: 20px;
     }
 
     .user1 .left-box {
         background-color: #f2f2f2;
         text-align: center;
+        padding-right: 30px;
     }
 
     .user1 .left-box form {
-        padding-left: 160px;
+        padding-left: 115px;
     }
 
     .user1 .left-box .save-phone {
-        padding-left: 169px;
+        padding-left: 127px;
     }
 
     .user1 .right-box {
         background-color: #f2f2f2;
+        padding-left: 30px;
     }
 
     .user1 .bottom-box {
@@ -154,14 +157,14 @@ if (isset($_SESSION['save_error'])) {
 
 
     .user1 .input-group #fullname {
-        padding-right: 25px;
+        padding-right: 50px;
         border-radius: 10px;
         background: white;
         padding-left: 5px;
     }
 
     .user1 .input-group #phone {
-        padding-right: 27px;
+        padding-right: 50px;
         border-radius: 10px;
         margin-left: 12px;
         background: white;
@@ -169,7 +172,7 @@ if (isset($_SESSION['save_error'])) {
     }
 
     .user1 .input-group #address {
-        width: 100%;
+        width: 93%;
         height: 120px;
         padding: 5px;
         border-radius: 10px;
@@ -178,8 +181,8 @@ if (isset($_SESSION['save_error'])) {
 
     .user1 .button-address {
         text-align: center;
+        padding-right: 40px;
     }
-
 </style>
 
 <body>
@@ -231,7 +234,7 @@ if (isset($_SESSION['save_error'])) {
                                 ; ?>>บันทึก</button>
                         </div>
                     </form>
-                    <form action="save_phone.php" class="save-phone"  method="post">
+                    <form action="save_phone.php" class="save-phone" method="post">
                         <div class="input-group">
                             <label for="phone">เบอร์โทร :</label>
                             <?php
