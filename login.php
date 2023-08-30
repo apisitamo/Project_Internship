@@ -18,7 +18,6 @@ if ($langId == 1) {
     $signup = "SIGN UP";
 }
 
-
 ?>
 
 <style>
@@ -59,23 +58,16 @@ if ($langId == 1) {
 
     .btn {
         background-color: #6ACC6D;
-        /* เปลี่ยนสีพื้นหลังปุ่ม */
         color: white;
-        /* เปลี่ยนสีตัวอักษร */
         padding: 10px 10px;
-        /* ปรับขนาดการเรียงกล่อง */
         border: none;
-        /* ไม่แสดงเส้นขอบ */
         cursor: pointer;
-        /* เปลี่ยนเคอร์เซอร์เป็นรูปแบบชี้ไป */
     }
 
     .btn:hover {
         background-color: #36863A;
-        /* สีพื้นหลังเมื่อชี้เมาส์ไป */
     }
 </style>
-
 
 <body>
     <div>
@@ -102,10 +94,10 @@ if ($langId == 1) {
         </div>
     </div>
 
-
-
     <?php include 'include/footer.php'; ?>
+
 </body>
+
 <script>
     AOS.init();
 </script>

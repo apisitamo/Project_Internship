@@ -193,13 +193,13 @@ if (isset($_SESSION['save_error'])) {
             <div class="container-top">
                 <div class="left-box">
                     <div class="homecontent">
-                        <?php if (isset($_SESSION['username'])): ?>
+                        <?php if (isset($_SESSION['username'])) : ?>
                             <label for="username">ชื่อผู้ใช้ :</label>
                             <input type="text" value="<?php echo $_SESSION['username'] ?>" disabled>
                         <?php endif ?>
                     </div>
                     <div class="homecontent">
-                        <?php if (isset($_SESSION['username'])): ?>
+                        <?php if (isset($_SESSION['username'])) : ?>
                             <label for="username">อีเมล์ :</label>
                             <?php
                             $db = mysqli_connect($servername, $username, $password, $dbname);
@@ -222,16 +222,15 @@ if (isset($_SESSION['save_error'])) {
                             $fullname = $row['fullname'];
                             ?>
                             <input type="text" id="fullname" name="fullname" value="<?php echo $fullname; ?>" <?php if (isset($_SESSION['edit_fullname']))
-                                   echo '';
-                               else
-                                   echo 'disabled'; ?>>
-                            <?php if (!isset($_SESSION['edit_fullname'])): ?>
+                                                                                                                    echo '';
+                                                                                                                else
+                                                                                                                    echo 'disabled'; ?>>
+                            <?php if (!isset($_SESSION['edit_fullname'])) : ?>
                                 <button type="button" id="editButton" onclick="enableFullname()">แก้ไข</button>
-                            <?php else: ?>
+                            <?php else : ?>
                                 <button type="button" id="cancelButton" onclick="cancelEdit()">ยกเลิก</button>
                             <?php endif; ?>
-                            <button type="submit" id="submitButton" <?php if (!isset($_SESSION['edit_fullname']))
-                                ; ?>>บันทึก</button>
+                            <button type="submit" id="submitButton" <?php if (!isset($_SESSION['edit_fullname'])); ?>>บันทึก</button>
                         </div>
                     </form>
                     <form action="save_phone.php" class="save-phone" method="post">
@@ -243,18 +242,16 @@ if (isset($_SESSION['save_error'])) {
                             $row = mysqli_fetch_assoc($result);
                             $phone = $row['phone'];
                             ?>
-                            <input type="text" id="phone" name="phone" pattern="[0-9]+" value="<?php echo $phone; ?>"
-                                <?php if (isset($_SESSION['edit_phone']))
-                                    echo '';
-                                else
-                                    echo 'disabled'; ?>>
-                            <?php if (!isset($_SESSION['edit_phone'])): ?>
+                            <input type="text" id="phone" name="phone" pattern="[0-9]+" value="<?php echo $phone; ?>" <?php if (isset($_SESSION['edit_phone']))
+                                                                                                                            echo '';
+                                                                                                                        else
+                                                                                                                            echo 'disabled'; ?>>
+                            <?php if (!isset($_SESSION['edit_phone'])) : ?>
                                 <button type="button" id="editPhoneButton" onclick="enablePhone()">แก้ไข</button>
-                            <?php else: ?>
+                            <?php else : ?>
                                 <button type="button" id="cancelPhoneButton" onclick="cancelPhoneEdit()">ยกเลิก</button>
                             <?php endif; ?>
-                            <button type="submit" id="submitButton" <?php if (!isset($_SESSION['edit_phone']))
-                                ; ?>>บันทึก</button>
+                            <button type="submit" id="submitButton" <?php if (!isset($_SESSION['edit_phone'])); ?>>บันทึก</button>
                         </div>
                     </form>
                 </div>
@@ -269,18 +266,17 @@ if (isset($_SESSION['save_error'])) {
                             $address = $row['address'];
                             ?>
                             <textarea id="address" name="address" <?php if (isset($_SESSION['edit_address']))
-                                echo '';
-                            else
-                                echo 'disabled'; ?>><?php echo $address; ?></textarea>
+                                                                        echo '';
+                                                                    else
+                                                                        echo 'disabled'; ?>><?php echo $address; ?></textarea>
                         </div>
                         <div class="button-address">
-                            <?php if (!isset($_SESSION['edit_address'])): ?>
+                            <?php if (!isset($_SESSION['edit_address'])) : ?>
                                 <button type="button" id="editAddressButton" onclick="enableAddress()">แก้ไข</button>
-                            <?php else: ?>
+                            <?php else : ?>
                                 <button type="button" id="cancelAddressButton" onclick="cancelAddressEdit()">ยกเลิก</button>
                             <?php endif; ?>
-                            <button type="submit" id="submitButton" <?php if (!isset($_SESSION['edit_address']))
-                                ; ?>>บันทึก</button>
+                            <button type="submit" id="submitButton" <?php if (!isset($_SESSION['edit_address'])); ?>>บันทึก</button>
                         </div>
                     </form>
                 </div>
@@ -302,8 +298,8 @@ if (isset($_SESSION['save_error'])) {
                     $result = mysqli_query($db, $query);
 
                     $i = 1;
-                    while ($row = mysqli_fetch_assoc($result)):
-                        ?>
+                    while ($row = mysqli_fetch_assoc($result)) :
+                    ?>
                         <tr>
                             <td>
                                 <?php echo $i++; ?>
@@ -322,13 +318,13 @@ if (isset($_SESSION['save_error'])) {
                             </td>
                             <td style="background-color:
     <?php
-    if ($row['status'] == 'ปฏิเสธ') {
-        echo 'red';
-    } elseif ($row['status'] == 'สำเร็จ') {
-        echo 'green';
-    } else {
-        echo 'yellow';
-    }
+                        if ($row['status'] == 'ปฏิเสธ') {
+                            echo 'red';
+                        } elseif ($row['status'] == 'สำเร็จ') {
+                            echo 'green';
+                        } else {
+                            echo 'yellow';
+                        }
     ?>;
 ">
                                 <?php echo $row['status']; ?>
@@ -342,11 +338,15 @@ if (isset($_SESSION['save_error'])) {
             </div>
         </div>
     </section>
+
     <?php include 'include/footer.php'; ?>
+
 </body>
+
 <script>
     AOS.init();
 </script>
+
 <script>
     function enableFullname() {
         document.getElementById('fullname').removeAttribute('disabled');

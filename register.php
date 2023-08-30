@@ -81,14 +81,12 @@ if ($langId == 1) {
 
 </style>
 
-
 <body>
     <div>
         <div class="header">
             <h2><?= $register ?></h2>
         </div>
         <div class="header-mid">
-
             <form action="register_db.php" method="post">
                 <div class="input-group">
                     <label for="username"><?= $username ?></label>
@@ -109,16 +107,15 @@ if ($langId == 1) {
                 <div class="input-group">
                     <button type="submit" name="reg_user" class="btn"><?= $submit ?></button>
                 </div>
-
                 <p><?= $alredy ?><a href="login.php"><?= $signin ?></a></p>
-
             </form>
         </div>
     </div>
 
-
     <?php include 'include/footer.php'; ?>
+
 </body>
+
 <script>
     AOS.init();
 </script>

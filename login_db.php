@@ -17,7 +17,6 @@ if (isset($_POST['login_user'])) {
     }
 
     if (count($errors) == 0) {
-        // Both fields are filled, proceed with authentication
         $query = "SELECT * FROM user WHERE username = '$username'";
         $result = mysqli_query($conn, $query);
 

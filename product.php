@@ -5,7 +5,6 @@ include 'include/head.php';
 include 'include/langid.php';
 // include('server.php');
 
-
 if ($langId == 1) {
     $title = "ผลิตภัณฑ์สปา";
     $detailtitle = "“ออเร็นทิสต์” (Orientist) : ผลิตภัณฑ์สปาจากธรรมชาติซึ่งเป็นการนำสมุนไพรไทยมาผ่านกระบวนการวิจัย ด้วยโรงงานมาตรฐาน GMP และได้รับการรับรองจาก อย. รวมถึงได้รับการสนับสนุนด้านทุนวิจัยจาก สำนักงานคณะกรรมการวิจัยแห่งชาติ และ สำนักงานนวัตกรรมแห่งชาติ";
@@ -51,8 +50,6 @@ if ($langId == 1) {
         border-radius: 10px;
     }
 
-
-
     .click-overlay {
         display: none;
         position: fixed;
@@ -66,8 +63,6 @@ if ($langId == 1) {
         z-index: 900;
     }
 
-
-
     .close-popup {
         position: absolute;
         top: 5px;
@@ -79,9 +74,7 @@ if ($langId == 1) {
     .open-popup {
         border: none;
         padding: 0;
-        /* ถ้าคุณต้องการลบการเพิ่มระยะห่างภายในปุ่ม */
         background-color: transparent;
-        /* ถ้าคุณต้องการให้พื้นหลังเป็นโปร่งแสง */
     }
 
     /*.header {
@@ -165,32 +158,17 @@ if ($langId == 1) {
         color: #0a58ca !important;
     }
 
-    .error {
-        color: red;
-        text-align: center;
-    }
-
-    /*...............*/
-
-
     .course-product .btn {
         background-color: #945834;
-        /* เปลี่ยนสีพื้นหลังปุ่ม */
         color: white;
-        /* เปลี่ยนสีตัวอักษร */
         padding: 10px 10px;
-        /* ปรับขนาดการเรียงกล่อง */
         border: none;
-        /* ไม่แสดงเส้นขอบ */
         cursor: pointer;
-        /* เปลี่ยนเคอร์เซอร์เป็นรูปแบบชี้ไป */
         border-radius: 10px;
-        /* เปลี่ยนมุมกรอบ */
     }
 
     .course-product .btn:hover {
         background-color: #4E240A;
-        /* สีพื้นหลังเมื่อชี้เมาส์ไป */
     }
 
     .course-product .bottom-left,
@@ -358,7 +336,6 @@ if ($langId == 1) {
                     </li>
                 </ul>
                 <div class="row">
-
                     <div class="col-lg-4 mb-4" data-aos="flip-right" data-aos-duration="2000">
                         <button class="open-popup">
                             <div class="card">
@@ -469,7 +446,6 @@ if ($langId == 1) {
         </div>
     </section>
 
-
     <section class="course-product">
         <div class="click-overlay" id="click-overlay1"></div>
 
@@ -528,10 +504,8 @@ if ($langId == 1) {
             </div>
         </div>
 
-
-
-
         <!-- เป็นส่วนของ popup ตอนเด้งขึ้นมา ขั้่น 2-->
+
         <div class="popup" id="popup2">
             <div class="popup-content">
                 <span class="close-popup" id="close-popup2">&times;</span>
@@ -543,8 +517,8 @@ if ($langId == 1) {
             </div>
         </div>
 
-
         <!-- เป็นส่วนของ popup ตอนเด้งขึ้นมา ขั้่น 3-->
+
         <div class="popup" id="popup3">
             <div class="popup-content">
                 <span class="close-popup" id="close-popup3">&times;</span>
@@ -558,7 +532,6 @@ if ($langId == 1) {
             </div>
         </div>
     </section>
-
 
     <?php include 'include/footer.php'; ?>
 
@@ -592,7 +565,6 @@ if ($langId == 1) {
     });
 
 
-
     closefirstpopup.addEventListener('click', () => {
         console.log("X first popup ");
         popup1.style.display = 'none';
@@ -611,7 +583,6 @@ if ($langId == 1) {
             clickOverlay1.style.display = 'block';
         });
     });
-
 
 
     closesecondpopup.addEventListener('click', () => {
@@ -634,7 +605,6 @@ if ($langId == 1) {
     });
 
 
-
     closethirdpopup.addEventListener('click', () => {
         console.log("X third popup ");
         popup3.style.display = 'none';
@@ -647,10 +617,6 @@ if ($langId == 1) {
     });
 
 
-
-
-
-
     clickOverlay1.addEventListener('click', () => {
         console.log("Clicked on overlay");
         popup1.style.display = 'none'; // ปิด popup1 ที่มี id="popup1"
@@ -659,22 +625,6 @@ if ($langId == 1) {
         clickOverlay1.style.display = 'none';
     });
 </script>
-
-<!-- <script>
-    var splide = new Splide('.splide', {
-        type: 'loop',
-        perPage: 2,
-        perMove: 1,
-        breakpoints: {
-            640: {
-                perPage: 1,
-            },
-        }
-    });
-
-
-    splide.mount();
-</script> -->
 
 <script>
     AOS.init();

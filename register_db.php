@@ -1,7 +1,7 @@
 <?php
 session_start();
 include('server.php');
-//                                                ไม่เก็บ password เป็น md5
+
 $errors = array();
 
 if (isset($_POST['reg_user'])) {
