@@ -35,7 +35,6 @@ include('server.php');
     .user1 .container {
         display: flex;
         flex-direction: column;
-        height: 250px;
     }
 
     .user1 .container-top {
@@ -62,7 +61,6 @@ include('server.php');
         flex: 1;
         padding: 20px;
         box-sizing: border-box;
-        /* height: 100px; */
     }
 
     .left-box {
