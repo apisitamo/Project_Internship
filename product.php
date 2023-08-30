@@ -492,16 +492,6 @@ if ($langId == 1) {
                             </button>
                         </div>
                     <?php else : ?>
-                        <?php if (isset($_SESSION['error'])) : ?>
-                            <div class="error">
-                                <h3>
-                                    <?php
-                                    echo $_SESSION['error'];
-                                    unset($_SESSION['error']);
-                                    ?>
-                                </h3>
-                            </div>
-                        <?php endif ?>
                         <div class="box">
                             <div class="container">
                                 <div class="row">

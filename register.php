@@ -90,19 +90,6 @@ if ($langId == 1) {
         <div class="header-mid">
 
             <form action="register_db.php" method="post">
-                <?php include('errors.php'); ?>
-
-                <?php if (isset($_SESSION['error'])) : ?>
-                    <div class="error">
-                        <h3>
-                            <?php
-                            echo $_SESSION['error'];
-                            unset($_SESSION['error']);
-                            ?>
-                        </h3>
-                    </div>
-                <?php endif ?>
-
                 <div class="input-group">
                     <label for="username"><?= $username ?></label>
                     <input type="text" name="username">
