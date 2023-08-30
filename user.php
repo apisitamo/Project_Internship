@@ -148,6 +148,7 @@ include('server.php');
         width: 300px;
         height: 100px;
         padding: 5px;
+        border-radius: 10px;
     }
 
     .user1 .button-address {
