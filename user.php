@@ -56,6 +56,11 @@ include('server.php');
         padding-right: 48px;
     }
 
+    .user1 input {
+        border-radius: 10px;
+        padding: 4px;
+    }
+
     .left-box,
     .right-box {
         flex: 1;
@@ -70,8 +75,6 @@ include('server.php');
     .right-box {
         background-color: #e0e0e0;
     }
-
-    .right-box button {}
 
     .bottom-box {
         flex: 1;
@@ -102,17 +105,43 @@ include('server.php');
         margin-bottom: 10px;
     }
 
+    .user1 button {
+        padding: 4px;
+        padding-left: 10px;
+        padding-right: 10px;
+        border: none;
+        background: burlywood;
+    }
+
+    .user1 .input-group #editButton {
+        border-radius: 10px;
+    }
+
+    .user1 .input-group #editPhoneButton {
+        border-radius: 10px;
+    }
+
+    .user1 .button-address #editAddressButton {
+        border-radius: 10px;
+    }
+
+    .user1 #submitButton {
+        border-radius: 10px;
+    }
+
     .user1 #addressuser {
         margin-bottom: 20px;
     }
 
 
-    .user1 .input-group:nth-child(1) input {
+    .user1 .input-group #fullname {
         padding-right: 3px;
+        border-radius: 10px;
     }
 
     .user1 .input-group #phone {
         padding-right: 27px;
+        border-radius: 10px;
     }
 
     .user1 .input-group #address {
@@ -122,7 +151,7 @@ include('server.php');
     }
 
     .user1 .button-address {
-       text-align: center;
+        text-align: center;
     }
 
     .footer {
@@ -175,7 +204,7 @@ include('server.php');
                             <?php else: ?>
                                 <button type="button" id="cancelButton" onclick="cancelEdit()">ยกเลิก</button>
                             <?php endif; ?>
-                            <button type="submit" <?php if (!isset($_SESSION['edit_fullname']))
+                            <button type="submit" id="submitButton" <?php if (!isset($_SESSION['edit_fullname']))
                                 ; ?>>บันทึก</button>
                         </div>
                     </form>
@@ -198,7 +227,7 @@ include('server.php');
                             <?php else: ?>
                                 <button type="button" id="cancelPhoneButton" onclick="cancelPhoneEdit()">ยกเลิก</button>
                             <?php endif; ?>
-                            <button type="submit" <?php if (!isset($_SESSION['edit_phone']))
+                            <button type="submit" id="submitButton" <?php if (!isset($_SESSION['edit_phone']))
                                 ; ?>>บันทึก</button>
                         </div>
                     </form>
@@ -224,7 +253,7 @@ include('server.php');
                             <?php else: ?>
                                 <button type="button" id="cancelAddressButton" onclick="cancelAddressEdit()">ยกเลิก</button>
                             <?php endif; ?>
-                            <button type="submit" <?php if (!isset($_SESSION['edit_address']))
+                            <button type="submit" id="submitButton" <?php if (!isset($_SESSION['edit_address']))
                                 ; ?>>บันทึก</button>
                         </div>
                     </form>
