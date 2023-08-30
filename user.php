@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <?php
-session_start();
+include 'include/head.php';
+include('server.php');
+// session_start();
 
 if (!isset($_SESSION['username'])) {
     $_SESSION['msg'] = "you must login first";
@@ -17,14 +21,6 @@ if (isset($_SESSION['save_error'])) {
     echo "<script>alert('" . $_SESSION['save_error'] . "');</script>";
     unset($_SESSION['save_error']);
 }
-?>
-<!DOCTYPE html>
-<html lang="en">
-<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<?php
-include 'include/head.php';
-include('server.php');
 ?>
 <style>
     .user1 {
@@ -168,13 +164,13 @@ include('server.php');
             <div class="container-top">
                 <div class="left-box">
                     <div class="homecontent">
-                        <?php if (isset($_SESSION['username'])): ?>
+                        <?php if (isset($_SESSION['username'])) : ?>
                             <label for="username">ชื่อผู้ใช้ :</label>
                             <input type="text" value="<?php echo $_SESSION['username'] ?>" disabled>
                         <?php endif ?>
                     </div>
                     <div class="homecontent">
-                        <?php if (isset($_SESSION['username'])): ?>
+                        <?php if (isset($_SESSION['username'])) : ?>
                             <label for="username">อีเมล์ :</label>
                             <?php
                             $db = mysqli_connect($servername, $username, $password, $dbname);
@@ -197,16 +193,15 @@ include('server.php');
                             $fullname = $row['fullname'];
                             ?>
                             <input type="text" id="fullname" name="fullname" value="<?php echo $fullname; ?>" <?php if (isset($_SESSION['edit_fullname']))
-                                   echo '';
-                               else
-                                   echo 'disabled'; ?>>
-                            <?php if (!isset($_SESSION['edit_fullname'])): ?>
+                                                                                                                    echo '';
+                                                                                                                else
+                                                                                                                    echo 'disabled'; ?>>
+                            <?php if (!isset($_SESSION['edit_fullname'])) : ?>
                                 <button type="button" id="editButton" onclick="enableFullname()">แก้ไข</button>
-                            <?php else: ?>
+                            <?php else : ?>
                                 <button type="button" id="cancelButton" onclick="cancelEdit()">ยกเลิก</button>
                             <?php endif; ?>
-                            <button type="submit" id="submitButton" <?php if (!isset($_SESSION['edit_fullname']))
-                                ; ?>>บันทึก</button>
+                            <button type="submit" id="submitButton" <?php if (!isset($_SESSION['edit_fullname'])); ?>>บันทึก</button>
                         </div>
                     </form>
                     <form action="save_phone.php" method="post">
@@ -218,18 +213,16 @@ include('server.php');
                             $row = mysqli_fetch_assoc($result);
                             $phone = $row['phone'];
                             ?>
-                            <input type="text" id="phone" name="phone" pattern="[0-9]+" value="<?php echo $phone; ?>"
-                                <?php if (isset($_SESSION['edit_phone']))
-                                    echo '';
-                                else
-                                    echo 'disabled'; ?>>
-                            <?php if (!isset($_SESSION['edit_phone'])): ?>
+                            <input type="text" id="phone" name="phone" pattern="[0-9]+" value="<?php echo $phone; ?>" <?php if (isset($_SESSION['edit_phone']))
+                                                                                                                            echo '';
+                                                                                                                        else
+                                                                                                                            echo 'disabled'; ?>>
+                            <?php if (!isset($_SESSION['edit_phone'])) : ?>
                                 <button type="button" id="editPhoneButton" onclick="enablePhone()">แก้ไข</button>
-                            <?php else: ?>
+                            <?php else : ?>
                                 <button type="button" id="cancelPhoneButton" onclick="cancelPhoneEdit()">ยกเลิก</button>
                             <?php endif; ?>
-                            <button type="submit" id="submitButton" <?php if (!isset($_SESSION['edit_phone']))
-                                ; ?>>บันทึก</button>
+                            <button type="submit" id="submitButton" <?php if (!isset($_SESSION['edit_phone'])); ?>>บันทึก</button>
                         </div>
                     </form>
                 </div>
@@ -244,18 +237,17 @@ include('server.php');
                             $address = $row['address'];
                             ?>
                             <textarea id="address" name="address" <?php if (isset($_SESSION['edit_address']))
-                                echo '';
-                            else
-                                echo 'disabled'; ?>><?php echo $address; ?></textarea>
+                                                                        echo '';
+                                                                    else
+                                                                        echo 'disabled'; ?>><?php echo $address; ?></textarea>
                         </div>
                         <div class="button-address">
-                            <?php if (!isset($_SESSION['edit_address'])): ?>
+                            <?php if (!isset($_SESSION['edit_address'])) : ?>
                                 <button type="button" id="editAddressButton" onclick="enableAddress()">แก้ไข</button>
-                            <?php else: ?>
+                            <?php else : ?>
                                 <button type="button" id="cancelAddressButton" onclick="cancelAddressEdit()">ยกเลิก</button>
                             <?php endif; ?>
-                            <button type="submit" id="submitButton" <?php if (!isset($_SESSION['edit_address']))
-                                ; ?>>บันทึก</button>
+                            <button type="submit" id="submitButton" <?php if (!isset($_SESSION['edit_address'])); ?>>บันทึก</button>
                         </div>
                     </form>
                 </div>
@@ -276,8 +268,8 @@ include('server.php');
                     $result = mysqli_query($db, $query);
 
                     $i = 1;
-                    while ($row = mysqli_fetch_assoc($result)):
-                        ?>
+                    while ($row = mysqli_fetch_assoc($result)) :
+                    ?>
                         <tr>
                             <td>
                                 <?php echo $i++; ?>
@@ -294,7 +286,17 @@ include('server.php');
                             <td>
                                 <?php echo $row['price']; ?>
                             </td>
-                            <td>
+                            <td style="background-color:
+    <?php
+                        if ($row['status'] == 'ปฏิเสธ') {
+                            echo 'red';
+                        } elseif ($row['status'] == 'สำเร็จ') {
+                            echo 'green';
+                        } else {
+                            echo 'yellow';
+                        }
+    ?>;
+">
                                 <?php echo $row['status']; ?>
                             </td>
                         </tr>
