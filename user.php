@@ -41,15 +41,24 @@ if (isset($_SESSION['save_error'])) {
     }
 
     .user1 .homecontent {
-        margin-bottom: 10px;
+        margin-bottom: 15px;
+        padding-left: 68px;
     }
 
     .user1 .homecontent:nth-child(1) input {
-        padding-right: 39px;
+        padding-right: 25px;
+        margin-right: 25px;
+        margin-left: 25px;
+        background: #e0e0e0;
+        padding-left: 5px;
     }
 
     .user1 .homecontent:nth-child(2) input {
-        padding-right: 48px;
+        padding-right: 25px;
+        margin-right: 17px;
+        margin-left: 28px;
+        background: #e0e0e0;
+        padding-left: 5px;
     }
 
     .user1 input {
@@ -57,48 +66,62 @@ if (isset($_SESSION['save_error'])) {
         padding: 4px;
     }
 
-    .left-box,
-    .right-box {
+    .user1 .left-box,
+    .user1 .right-box {
         flex: 1;
         padding: 20px;
         box-sizing: border-box;
     }
 
-    .left-box {
+    .user1 .left-box {
+        background-color: #f2f2f2;
+        text-align: center;
+    }
+
+    .user1 .left-box form {
+        padding-left: 160px;
+    }
+
+    .user1 .left-box .save-phone {
+        padding-left: 169px;
+    }
+
+    .user1 .right-box {
         background-color: #f2f2f2;
     }
 
-    .right-box {
-        background-color: #e0e0e0;
-    }
-
-    .bottom-box {
+    .user1 .bottom-box {
         flex: 1;
         padding: 20px;
         box-sizing: border-box;
-        background-color: #c0c0c0;
+        background-color: #f2f2f2;
     }
 
-    table {
+    .user1 table {
         border-collapse: collapse;
         width: 100%;
         border: 1px solid #ccc;
     }
 
-    th,
-    td {
-        border: 1px solid #ccc;
+    .user1 th,
+    .user1 td {
+        border: 3px solid #000;
         padding: 8px;
         text-align: center;
+        border-top: 2px solid #000;
     }
 
-    th {
-        background-color: #f2f2f2;
+    .user1 th {
+        background-color: #ffc387;
+    }
+
+    .user1 td {
+        background: #fffec4;
     }
 
     .user1 .input-group {
         column-gap: 5px;
-        margin-bottom: 10px;
+        margin-bottom: 15px;
     }
 
     .user1 button {
@@ -131,29 +154,32 @@ if (isset($_SESSION['save_error'])) {
 
 
     .user1 .input-group #fullname {
-        padding-right: 3px;
+        padding-right: 25px;
         border-radius: 10px;
+        background: white;
+        padding-left: 5px;
     }
 
     .user1 .input-group #phone {
         padding-right: 27px;
         border-radius: 10px;
+        margin-left: 12px;
+        background: white;
+        padding-left: 5px;
     }
 
     .user1 .input-group #address {
-        width: 300px;
-        height: 100px;
+        width: 100%;
+        height: 120px;
         padding: 5px;
         border-radius: 10px;
+        background: white;
     }
 
     .user1 .button-address {
         text-align: center;
     }
 
-    .footer {
-        vertical-align: bottom;
-    }
 </style>
 
 <body>
@@ -164,13 +190,13 @@ if (isset($_SESSION['save_error'])) {
             <div class="container-top">
                 <div class="left-box">
                     <div class="homecontent">
-                        <?php if (isset($_SESSION['username'])) : ?>
+                        <?php if (isset($_SESSION['username'])): ?>
                             <label for="username">ชื่อผู้ใช้ :</label>
                             <input type="text" value="<?php echo $_SESSION['username'] ?>" disabled>
                         <?php endif ?>
                     </div>
                     <div class="homecontent">
-                        <?php if (isset($_SESSION['username'])) : ?>
+                        <?php if (isset($_SESSION['username'])): ?>
                             <label for="username">อีเมล์ :</label>
                             <?php
                             $db = mysqli_connect($servername, $username, $password, $dbname);
@@ -193,18 +219,19 @@ if (isset($_SESSION['save_error'])) {
                             $fullname = $row['fullname'];
                             ?>
                             <input type="text" id="fullname" name="fullname" value="<?php echo $fullname; ?>" <?php if (isset($_SESSION['edit_fullname']))
-                                                                                                                    echo '';
-                                                                                                                else
-                                                                                                                    echo 'disabled'; ?>>
-                            <?php if (!isset($_SESSION['edit_fullname'])) : ?>
+                                   echo '';
+                               else
+                                   echo 'disabled'; ?>>
+                            <?php if (!isset($_SESSION['edit_fullname'])): ?>
                                 <button type="button" id="editButton" onclick="enableFullname()">แก้ไข</button>
-                            <?php else : ?>
+                            <?php else: ?>
                                 <button type="button" id="cancelButton" onclick="cancelEdit()">ยกเลิก</button>
                             <?php endif; ?>
-                            <button type="submit" id="submitButton" <?php if (!isset($_SESSION['edit_fullname'])); ?>>บันทึก</button>
+                            <button type="submit" id="submitButton" <?php if (!isset($_SESSION['edit_fullname']))
+                                ; ?>>บันทึก</button>
                         </div>
                     </form>
-                    <form action="save_phone.php" method="post">
+                    <form action="save_phone.php" class="save-phone"  method="post">
                         <div class="input-group">
                             <label for="phone">เบอร์โทร :</label>
                             <?php
@@ -213,16 +240,18 @@ if (isset($_SESSION['save_error'])) {
                             $row = mysqli_fetch_assoc($result);
                             $phone = $row['phone'];
                             ?>
-                            <input type="text" id="phone" name="phone" pattern="[0-9]+" value="<?php echo $phone; ?>" <?php if (isset($_SESSION['edit_phone']))
-                                                                                                                            echo '';
-                                                                                                                        else
-                                                                                                                            echo 'disabled'; ?>>
-                            <?php if (!isset($_SESSION['edit_phone'])) : ?>
+                            <input type="text" id="phone" name="phone" pattern="[0-9]+" value="<?php echo $phone; ?>"
+                                <?php if (isset($_SESSION['edit_phone']))
+                                    echo '';
+                                else
+                                    echo 'disabled'; ?>>
+                            <?php if (!isset($_SESSION['edit_phone'])): ?>
                                 <button type="button" id="editPhoneButton" onclick="enablePhone()">แก้ไข</button>
-                            <?php else : ?>
+                            <?php else: ?>
                                 <button type="button" id="cancelPhoneButton" onclick="cancelPhoneEdit()">ยกเลิก</button>
                             <?php endif; ?>
-                            <button type="submit" id="submitButton" <?php if (!isset($_SESSION['edit_phone'])); ?>>บันทึก</button>
+                            <button type="submit" id="submitButton" <?php if (!isset($_SESSION['edit_phone']))
+                                ; ?>>บันทึก</button>
                         </div>
                     </form>
                 </div>
@@ -237,17 +266,18 @@ if (isset($_SESSION['save_error'])) {
                             $address = $row['address'];
                             ?>
                             <textarea id="address" name="address" <?php if (isset($_SESSION['edit_address']))
-                                                                        echo '';
-                                                                    else
-                                                                        echo 'disabled'; ?>><?php echo $address; ?></textarea>
+                                echo '';
+                            else
+                                echo 'disabled'; ?>><?php echo $address; ?></textarea>
                         </div>
                         <div class="button-address">
-                            <?php if (!isset($_SESSION['edit_address'])) : ?>
+                            <?php if (!isset($_SESSION['edit_address'])): ?>
                                 <button type="button" id="editAddressButton" onclick="enableAddress()">แก้ไข</button>
-                            <?php else : ?>
+                            <?php else: ?>
                                 <button type="button" id="cancelAddressButton" onclick="cancelAddressEdit()">ยกเลิก</button>
                             <?php endif; ?>
-                            <button type="submit" id="submitButton" <?php if (!isset($_SESSION['edit_address'])); ?>>บันทึก</button>
+                            <button type="submit" id="submitButton" <?php if (!isset($_SESSION['edit_address']))
+                                ; ?>>บันทึก</button>
                         </div>
                     </form>
                 </div>
@@ -269,8 +299,8 @@ if (isset($_SESSION['save_error'])) {
                     $result = mysqli_query($db, $query);
 
                     $i = 1;
-                    while ($row = mysqli_fetch_assoc($result)) :
-                    ?>
+                    while ($row = mysqli_fetch_assoc($result)):
+                        ?>
                         <tr>
                             <td>
                                 <?php echo $i++; ?>
@@ -289,13 +319,13 @@ if (isset($_SESSION['save_error'])) {
                             </td>
                             <td style="background-color:
     <?php
-                        if ($row['status'] == 'ปฏิเสธ') {
-                            echo 'red';
-                        } elseif ($row['status'] == 'สำเร็จ') {
-                            echo 'green';
-                        } else {
-                            echo 'yellow';
-                        }
+    if ($row['status'] == 'ปฏิเสธ') {
+        echo 'red';
+    } elseif ($row['status'] == 'สำเร็จ') {
+        echo 'green';
+    } else {
+        echo 'yellow';
+    }
     ?>;
 ">
                                 <?php echo $row['status']; ?>
