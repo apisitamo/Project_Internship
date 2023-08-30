@@ -27,17 +27,34 @@ include 'include/head.php';
 include('server.php');
 ?>
 <style>
-    .container {
+    .user1 {
+        margin-top: 30px;
+        margin-bottom: 70px;
+    }
+
+    .user1 .container {
         display: flex;
         flex-direction: column;
         height: 250px;
     }
 
-    .container-top {
+    .user1 .container-top {
         display: flex;
         flex-direction: row;
         flex: 1;
 
+    }
+
+    .user1 .homecontent {
+        margin-bottom: 10px;
+    }
+
+    .user1 .homecontent:nth-child(1) input {
+        padding-right: 39px;
+    }
+
+    .user1 .homecontent:nth-child(2) input {
+        padding-right: 48px;
     }
 
     .left-box,
@@ -55,6 +72,8 @@ include('server.php');
     .right-box {
         background-color: #e0e0e0;
     }
+
+    .right-box button {}
 
     .bottom-box {
         flex: 1;
@@ -79,24 +98,56 @@ include('server.php');
     th {
         background-color: #f2f2f2;
     }
+
+    .user1 .input-group {
+        column-gap: 5px;
+        margin-bottom: 10px;
+    }
+
+    .user1 #addressuser {
+        margin-bottom: 20px;
+    }
+
+
+    .user1 .input-group:nth-child(1) input {
+        padding-right: 3px;
+    }
+
+    .user1 .input-group #phone {
+        padding-right: 27px;
+    }
+
+    .user1 .input-group #address {
+        width: 300px;
+        height: 100px;
+        padding: 5px;
+    }
+
+    .user1 .button-address {
+       text-align: center;
+    }
+
+    .footer {
+        vertical-align: bottom;
+    }
 </style>
 
 <body>
-    <section>
+    <section class="user1">
         <div class="homeheader">
         </div>
         <div class="container">
             <div class="container-top">
                 <div class="left-box">
                     <div class="homecontent">
-                        <?php if (isset($_SESSION['username'])) : ?>
-                            <label for="username">ชื่อผู้ใช้</label>
+                        <?php if (isset($_SESSION['username'])): ?>
+                            <label for="username">ชื่อผู้ใช้ :</label>
                             <input type="text" value="<?php echo $_SESSION['username'] ?>" disabled>
                         <?php endif ?>
                     </div>
                     <div class="homecontent">
-                        <?php if (isset($_SESSION['username'])) : ?>
-                            <label for="username">อีเมล์</label>
+                        <?php if (isset($_SESSION['username'])): ?>
+                            <label for="username">อีเมล์ :</label>
                             <?php
                             $db = mysqli_connect($servername, $username, $password, $dbname);
                             $username = $_SESSION['username'];
@@ -110,62 +161,74 @@ include('server.php');
                     </div>
                     <form action="save_fullname.php" method="post">
                         <div class="input-group">
-                            <label for="fullname">ชื่อ-นามสกุล</label>
+                            <label for="fullname">ชื่อ-นามสกุล :</label>
                             <?php
                             $query = "SELECT fullname FROM user WHERE username='$username'";
                             $result = mysqli_query($db, $query);
                             $row = mysqli_fetch_assoc($result);
                             $fullname = $row['fullname'];
                             ?>
-                            <input type="text" id="fullname" name="fullname" value="<?php echo $fullname; ?>" <?php if (isset($_SESSION['edit_fullname'])) echo '';
-                                                                                                                else echo 'disabled'; ?>>
-                            <?php if (!isset($_SESSION['edit_fullname'])) : ?>
+                            <input type="text" id="fullname" name="fullname" value="<?php echo $fullname; ?>" <?php if (isset($_SESSION['edit_fullname']))
+                                   echo '';
+                               else
+                                   echo 'disabled'; ?>>
+                            <?php if (!isset($_SESSION['edit_fullname'])): ?>
                                 <button type="button" id="editButton" onclick="enableFullname()">แก้ไข</button>
-                            <?php else : ?>
+                            <?php else: ?>
                                 <button type="button" id="cancelButton" onclick="cancelEdit()">ยกเลิก</button>
                             <?php endif; ?>
-                            <button type="submit" <?php if (!isset($_SESSION['edit_fullname'])); ?>>บันทึก</button>
+                            <button type="submit" <?php if (!isset($_SESSION['edit_fullname']))
+                                ; ?>>บันทึก</button>
                         </div>
                     </form>
                     <form action="save_phone.php" method="post">
                         <div class="input-group">
-                            <label for="phone">เบอร์โทร</label>
+                            <label for="phone">เบอร์โทร :</label>
                             <?php
                             $query = "SELECT phone FROM user WHERE username='$username'";
                             $result = mysqli_query($db, $query);
                             $row = mysqli_fetch_assoc($result);
                             $phone = $row['phone'];
                             ?>
-                            <input type="text" id="phone" name="phone" pattern="[0-9]+" value="<?php echo $phone; ?>" <?php if (isset($_SESSION['edit_phone'])) echo '';
-                                                                                                        else echo 'disabled'; ?>>
-                            <?php if (!isset($_SESSION['edit_phone'])) : ?>
+                            <input type="text" id="phone" name="phone" pattern="[0-9]+" value="<?php echo $phone; ?>"
+                                <?php if (isset($_SESSION['edit_phone']))
+                                    echo '';
+                                else
+                                    echo 'disabled'; ?>>
+                            <?php if (!isset($_SESSION['edit_phone'])): ?>
                                 <button type="button" id="editPhoneButton" onclick="enablePhone()">แก้ไข</button>
-                            <?php else : ?>
+                            <?php else: ?>
                                 <button type="button" id="cancelPhoneButton" onclick="cancelPhoneEdit()">ยกเลิก</button>
                             <?php endif; ?>
-                            <button type="submit" <?php if (!isset($_SESSION['edit_phone'])); ?>>บันทึก</button>
+                            <button type="submit" <?php if (!isset($_SESSION['edit_phone']))
+                                ; ?>>บันทึก</button>
                         </div>
                     </form>
                 </div>
                 <div class="right-box">
                     <form action="save_address.php" method="post">
-                        <div class="input-group">
-                            <label for="address">ที่อยู่</label>
+                        <div class="input-group" id="addressuser">
+                            <label for="address">ที่อยู่ :</label>
                             <?php
                             $query = "SELECT address FROM user WHERE username='$username'";
                             $result = mysqli_query($db, $query);
                             $row = mysqli_fetch_assoc($result);
                             $address = $row['address'];
                             ?>
-                            <textarea id="address" name="address" style="width: 300px; height: 100px;" <?php if (isset($_SESSION['edit_address'])) echo '';
-                                                                                                        else echo 'disabled'; ?>><?php echo $address; ?></textarea>
+                            <textarea id="address" name="address" <?php if (isset($_SESSION['edit_address']))
+                                echo '';
+                            else
+                                echo 'disabled'; ?>><?php echo $address; ?></textarea>
                         </div>
-                        <?php if (!isset($_SESSION['edit_address'])) : ?>
-                            <button type="button" id="editAddressButton" onclick="enableAddress()">แก้ไข</button>
-                        <?php else : ?>
-                            <button type="button" id="cancelAddressButton" onclick="cancelAddressEdit()">ยกเลิก</button>
-                        <?php endif; ?>
-                        <button type="submit" <?php if (!isset($_SESSION['edit_address'])); ?>>บันทึก</button>
+                        <div class="button-address">
+                            <?php if (!isset($_SESSION['edit_address'])): ?>
+                                <button type="button" id="editAddressButton" onclick="enableAddress()">แก้ไข</button>
+                            <?php else: ?>
+                                <button type="button" id="cancelAddressButton" onclick="cancelAddressEdit()">ยกเลิก</button>
+                            <?php endif; ?>
+                            <button type="submit" <?php if (!isset($_SESSION['edit_address']))
+                                ; ?>>บันทึก</button>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -184,16 +247,28 @@ include('server.php');
                     $query = "SELECT * FROM product_order WHERE username='$username'ORDER BY id DESC";
                     $result = mysqli_query($db, $query);
 
-                    $i = 1; 
-                    while ($row = mysqli_fetch_assoc($result)) :
-                    ?>
+                    $i = 1;
+                    while ($row = mysqli_fetch_assoc($result)):
+                        ?>
                         <tr>
-                            <td><?php echo $i++; ?></td>
-                            <td><?php echo $row['type']; ?></td>
-                            <td><?php echo $row['item']; ?></td>
-                            <td><?php echo $row['quantity']; ?></td>
-                            <td><?php echo $row['price']; ?></td>
-                            <td><?php echo $row['status']; ?></td>
+                            <td>
+                                <?php echo $i++; ?>
+                            </td>
+                            <td>
+                                <?php echo $row['type']; ?>
+                            </td>
+                            <td>
+                                <?php echo $row['item']; ?>
+                            </td>
+                            <td>
+                                <?php echo $row['quantity']; ?>
+                            </td>
+                            <td>
+                                <?php echo $row['price']; ?>
+                            </td>
+                            <td>
+                                <?php echo $row['status']; ?>
+                            </td>
                         </tr>
                     <?php endwhile; ?>
                 </table>
@@ -246,4 +321,5 @@ include('server.php');
         <?php unset($_SESSION['edit_address']); ?>
     }
 </script>
+
 </html>
