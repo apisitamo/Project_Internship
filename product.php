@@ -481,7 +481,7 @@ if ($langId == 1) {
                                         <div class="content">
                                             <form action="login_db_popup.php" method="post" class="pop1">
                                                 <div class="input-group">
-                                                    <label for="username"><?= $email ?></label>
+                                                    <label for="username"><?= $username ?></label>
                                                     <input type="text" name="username">
                                                 </div>
                                                 <div class="input-group">
@@ -491,8 +491,9 @@ if ($langId == 1) {
                                                 <div class="input-group">
                                                     <button type="submit" name="login_user" class="btn"><?= $signin ?></button>
                                                 </div>
-                                                <p><?= $notyet ?> <a href="register.php"><?= $register ?></a>
-                                                </p>
+                                                <div>
+                                                    <a href="register.php"><?= $register ?></a>
+                                                </div>
                                             </form>
                                         </div>
                                     </div>

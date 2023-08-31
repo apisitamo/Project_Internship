@@ -8,13 +8,13 @@ if ($langId == 1) {
     $login = "เข้าสู่ระบบ";
     $username = "ชื่อผู้ใช้";
     $password = "รหัสผ่าน";
-    $notyet = "มีบัญชีแล้วหรือยัง ? ";
+    // $notyet = "มีบัญชีแล้วหรือยัง ? ";
     $signup = "ลงทะเบียน";
 } else {
     $login = "LOGIN";
     $username = "USERNAME";
     $password = "PASSWORD";
-    $notyet = "NOTYET MEMBER ?";
+    // $notyet = "NOTYET MEMBER ?";
     $signup = "SIGN UP";
 }
 
@@ -78,18 +78,18 @@ if ($langId == 1) {
             <form action="login_db.php" method="post">
                 <div class="input-group">
                     <label for="username"><?= $username ?></label>
-                    <input type="text" name="username">
+                    <input type="text" name="username" placeholder="<?= $username ?>">
                 </div>
                 <div class="input-group">
                     <label for="password"><?= $password ?></label>
-                    <input type="password" name="password">
+                    <input type="password" name="password" placeholder="<?= $password ?>">
                 </div>
                 <div class="input-group">
                     <button type="submit" name="login_user" class="btn"><?= $login ?></button>
                 </div>
-                <p><?= $notyet ?>
-                    <a href="register.php" ><?= $signup ?></a>
-                </p>
+                <div>
+                    <a href="register.php"><?= $signup ?></a>
+                </div>
             </form>
         </div>
     </div>

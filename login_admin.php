@@ -83,15 +83,15 @@ if ($langId == 1) {
             <form action="login_admin_db.php" method="post">
                 <div class="input-group">
                     <label for="username"><?= $username ?></label>
-                    <input type="text" name="username">
+                    <input type="text" name="username" placeholder="<?= $username ?>">
                 </div>
                 <div class="input-group">
                     <label for="password"><?= $password ?></label>
-                    <input type="password" name="password">
+                    <input type="password" name="password" placeholder="<?= $password ?>">
                 </div>
                 <div class="input-group">
                     <label for="employee_code"><?= $employee_code ?></label>
-                    <input type="password" name="employee_code">
+                    <input type="password" name="employee_code" placeholder="<?= $employee_code ?>">
                 </div>
                 <div class="input-group">
                     <button type="submit" name="login_admin" class="btn"><?= $login ?></button>

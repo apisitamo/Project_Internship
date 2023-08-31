@@ -11,7 +11,7 @@ if ($langId == 1) {
     $password = "รหัสผ่าน";
     $confirm = "ยืนยันรหัสผ่าน";
     $submit = "ส่ง";
-    $alredy = "มีบัญชีแล้วแล้ว ? ";
+    // $alredy = "มีบัญชีแล้วแล้ว ? ";
     $signin = "เข้าสู่ระบบ";
 } else {
     $register = "REGISTER";
@@ -20,7 +20,7 @@ if ($langId == 1) {
     $password = "PASSWORD";
     $confirm = "CONFIRM PASSWORD";
     $submit = "SUBMIT";
-    $alredy = "ALREADY MEMBER ?";
+    // $alredy = "ALREADY MEMBER ?";
     $signin = "SIGN IN";
 }
 ?>
@@ -62,23 +62,16 @@ if ($langId == 1) {
     }
 
     .btn {
-        background-color: #6ACC6D;
-        /* เปลี่ยนสีพื้นหลังปุ่ม */
+        background-color: #0066FF;
         color: white;
-        /* เปลี่ยนสีตัวอักษร */
         padding: 10px 30px;
-        /* ปรับขนาดการเรียงกล่อง */
         border: none;
-        /* ไม่แสดงเส้นขอบ */
         cursor: pointer;
-        /* เปลี่ยนเคอร์เซอร์เป็นรูปแบบชี้ไป */
     }
 
     .btn:hover {
-        background-color: #36863A;
-        /* สีพื้นหลังเมื่อชี้เมาส์ไป */
+        background-color: #1900FF;
     }
-
 </style>
 
 <body>
@@ -90,24 +83,26 @@ if ($langId == 1) {
             <form action="register_db.php" method="post">
                 <div class="input-group">
                     <label for="username"><?= $username ?></label>
-                    <input type="text" name="username">
+                    <input type="text" name="username" placeholder="<?= $username ?>">
                 </div>
                 <div class="input-group">
                     <label for="email"><?= $email ?></label>
-                    <input type="email" name="email">
+                    <input type="email" name="email" placeholder="<?= $email ?>">
                 </div>
                 <div class="input-group">
                     <label for="password_1"><?= $password ?></label>
-                    <input type="password" name="password_1">
+                    <input type="password" name="password_1" placeholder="<?= $password ?>">
                 </div>
                 <div class="input-group">
                     <label for="password_2"><?= $confirm ?></label>
-                    <input type="password" name="password_2">
+                    <input type="password" name="password_2" placeholder="<?= $confirm ?>">
                 </div>
                 <div class="input-group">
                     <button type="submit" name="reg_user" class="btn"><?= $submit ?></button>
                 </div>
-                <p><?= $alredy ?><a href="login.php"><?= $signin ?></a></p>
+                <div>
+                    <a href="login.php"><?= $signin ?></a>
+                </div>
             </form>
         </div>
     </div>
