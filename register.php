@@ -82,19 +82,19 @@ if ($langId == 1) {
         <div class="header-mid">
             <form action="register_db.php" method="post">
                 <div class="input-group">
-                    <label for="username"><?= $username ?></label>
+                    <!-- <label for="username"><?= $username ?></label> -->
                     <input type="text" name="username" placeholder="<?= $username ?>">
                 </div>
                 <div class="input-group">
-                    <label for="email"><?= $email ?></label>
+                    <!-- <label for="email"><?= $email ?></label> -->
                     <input type="email" name="email" placeholder="<?= $email ?>">
                 </div>
                 <div class="input-group">
-                    <label for="password_1"><?= $password ?></label>
+                    <!-- <label for="password_1"><?= $password ?></label> -->
                     <input type="password" name="password_1" placeholder="<?= $password ?>">
                 </div>
                 <div class="input-group">
-                    <label for="password_2"><?= $confirm ?></label>
+                    <!-- <label for="password_2"><?= $confirm ?></label> -->
                     <input type="password" name="password_2" placeholder="<?= $confirm ?>">
                 </div>
                 <div class="input-group">

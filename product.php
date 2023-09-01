@@ -28,15 +28,18 @@ if ($langId == 1) {
     $price1 = "";
     $price2 = "";
 }
+
+
+
 ?>
 
 <style>
     .popup {
         display: none;
         z-index: 1000;
-        /* width: 900px;
+        width: 900px;
         height: 600px;
-        background-color: #fff;*/
+        /* background-color: #fff; */
         padding: 20px;
         border-radius: 5px;
         /* max-width: 80%;*/
@@ -456,16 +459,20 @@ if ($langId == 1) {
                 <span class="close-popup" id="close-popup1">&times;</span>
                 <div class="homecontent">
                     <?php if (isset($_SESSION['username'])) : ?>
-                        <div>
-                            <p style="text-align: center;">
-                                <?= $confirmorder ?>
-                            </p>
-                            <button class="button-success" id="button-success1">
-                                <?= $confirm ?>
-                            </button>
-                            <button class="button-close" id="button-close1">
-                                <?= $cancle ?>
-                            </button>
+                        <div class="box">
+                            <div class="container">
+                                <div class="row">
+                                    <p style="text-align: center;">
+                                        <?= $confirmorder ?>
+                                    </p>
+                                    <button class="button-success" id="button-success1">
+                                        <?= $confirm ?>
+                                    </button>
+                                    <button class="button-close" id="button-close1">
+                                        <?= $cancle ?>
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     <?php else : ?>
                         <div class="box">
@@ -504,6 +511,19 @@ if ($langId == 1) {
                 </div>
             </div>
         </div>
+
+        <!-- เป็นส่วนของ popup ตอนเด้งขึ้นมา ที่อยู่-->
+
+        <!-- <div class="popup" id="popupaddress">
+            <div class="popup-content">
+                <span class="close-popup" id="close-popupaddress">&times;</span>
+                <div>
+                    <p style="text-align: center;">กรุณากรอกข้อมูลของท่านก่อนการสั่งซื้อ</p>
+                    <button class="button-success" id="button-successaddress">ไปยังหน้ากรอกข้อมูล</button>
+                    <button class="button-close" id="button-closeaddress">ปิด</button>
+                </div>
+            </div>
+        </div> -->
 
         <!-- เป็นส่วนของ popup ตอนเด้งขึ้นมา ขั้่น 2-->
 
