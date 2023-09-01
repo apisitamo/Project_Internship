@@ -12,22 +12,26 @@ if (empty($_SESSION['lang']) || $_SESSION['lang'] == 1) {
     $profile = 'profile.png';
     $langId = 1;
     $login = 'เข้าสู่ระบบ';
-    $admin='แอดมินเท่านั้น';
+    $admin = 'แอดมินเท่านั้น';
     $logout = 'ออกจากระบบ';
-    $product_order='คำสั่งซื้อผลิตภัณฑ์';
-    $course_order='คำสั่งซื้อหลักสูตร';
-
+    $add_product = 'เพิ่มสินค้า';
+    $add_course = 'เพิ่มคอส';
+    $add_gallery = 'เพิ่มแกลลอรี่';
+    $product_order = 'คำสั่งซื้อผลิตภัณฑ์';
+    $course_order = 'คำสั่งซื้อหลักสูตร';
 } else {
     $_SESSION['lang'] = 2;
     $flag = 'enflag.png';
     $profile = 'profile.png';
     $langId = 2;
     $login = 'Login';
-    $admin='For Admin';
+    $admin = 'For Admin';
     $logout = 'Logout';
-    $product_order='Product Order';
-    $course_order='Course Order';
-
+    $add_product = 'ADD PRODUCT';
+    $add_course = 'ADD COURSE';
+    $add_gallery = 'ADD GALLERY';
+    $product_order = 'Product Order';
+    $course_order = 'Course Order';
 }
 
 // if (!isset($_SESSION['username'])) {
@@ -51,7 +55,7 @@ if (empty($_SESSION['lang']) || $_SESSION['lang'] == 1) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gallery</title>
+    <title>Admin</title>
 
     <link rel="stylesheet" href="assets/style.css">
 
@@ -81,6 +85,15 @@ if (empty($_SESSION['lang']) || $_SESSION['lang'] == 1) {
         <div class="navbar-collapse collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
                 <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="add_product.php"><?= $add_product ?></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="add_course.php"><?= $add_course ?></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="add_gallery.php"><?= $add_gallery ?></a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="product_order.php"><?= $product_order ?></a>
                 </li>
                 <li class="nav-item">
@@ -97,7 +110,7 @@ if (empty($_SESSION['lang']) || $_SESSION['lang'] == 1) {
                                 <a class="nav-link" href="index.php?logout='1'"><?= $logout ?></a>
                             </li>
                         <?php } else { ?>
-                           
+
                         <?php } ?>
                     </ul>
                 </li>
