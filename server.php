@@ -17,5 +17,3 @@ if (!$conn) {
 //         // echo "Email: " . $email . "<br>";
 //     }
 // } else {
-
-// }
