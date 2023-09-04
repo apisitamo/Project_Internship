@@ -180,46 +180,6 @@ if ($langId == 1) {
         padding: 0px;
         box-sizing: border-box;
     }
-    .popup .popup-content .container {
-        width: 550px;
-        display: inherit;
-        position: relative;
-    }
-    .homecontent {
-        margin-top:150px
-    }
-    .popup .container p {
-        font-size: 45px;
-        color: #A97C53;
-    }
-    .popup button {
-        border-radius: 25px;
-        font-size: 18px;
-        border: none;
-        text-align: center;
-        margin-top: 10px;
-        padding: 15px 50px;
-        display: inline-block;
-    }
-    .button-success {
-        background-color: green;
-        margin-left: 70px;
-    }
-    .button-close {
-        background-color: red;
-        margin-left: 70px;
-    }
-    .button-success-2 {
-        background-color: green;
-    }
-    .button-close-2 {
-        background-color: red;
-        margin-left: 110px;
-    }
-    .popup .container img {
-        margin-left: 100px;
-    }
-
 </style>
 
 <body>
@@ -312,154 +272,6 @@ if ($langId == 1) {
         </div>
     </section>
 
-    <section class="product">
-        <div class="container">
-            <div class="wrap">
-                <ul class="nav nav-page" data-aos="fade-right" data-aos-duration="2000">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="product.php">Body Mask</a>
-                    </li>
-                </ul>
-                <?php
-                $servername = "localhost";
-                $username = "root";
-                $password = "";
-                $dbname = "bsa";
-
-                $conn = new mysqli($servername, $username, $password, $dbname);
-                $sql = "SELECT * FROM `add_product` WHERE `type`= 'Body Mask'";
-                $result = $conn->query($sql);
-
-                if ($result->num_rows > 0) {
-                    while ($row = $result->fetch_assoc()) {
-                ?>
-                        <div class="row">
-                            <div class="col-lg-4 mb-4" data-aos="flip-right" data-aos-duration="2000">
-                                <button class="open-popup">
-                                    <div class="card">
-                                        <img src="<?php echo $row['img']; ?>" alt="" class="w-100">
-                                        <div class="card-body">
-                                            <h5 class="card-title"><?php echo $row['name_th']; ?></h5>
-                                            <h5 class="card-title"><?php echo $row['name_eng']; ?></h5>
-                                            <p class="card-text"><i class="fa-sharp fa-solid fa-circle-check"></i>
-                                                <?php echo $row['detail_th']; ?>
-                                            </p>
-                                            <p class="card-text"><i class="fa-sharp fa-solid fa-circle-check"></i>
-                                                <?php echo $row['detail_eng']; ?>
-                                            </p>
-                                            <!-- <p class="mt-3 mb-0">Aroma Scents : Ylang Ylang Oil & Lavender Oil</p> -->
-                                        </div>
-                                        <div class="card-footer">
-                                            <div class="wrap">
-                                                <div class="title">
-                                                    <p>Wholesale Price :</p>
-                                                    <p class="ship">
-                                                        <?= $price1 ?>
-                                                    </p>
-                                                </div>
-                                                <div class="price">
-                                                    <p class="price-product"><?php echo $row['price']; ?></p>
-                                                    <div class="rate">
-                                                        <p>THB/kg</p>
-                                                        <p>
-                                                            <?= $price2 ?>
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </button>
-                            </div>
-                        </div>
-                <?php
-                    }
-                } else {
-                    echo "ไม่พบสินค้าในระบบ";
-                }
-
-                $conn->close();
-                ?>
-
-            </div>
-        </div>
-        </div>
-    </section>
-
-    <section class="product">
-        <div class="container">
-            <div class="wrap">
-                <ul class="nav nav-page" data-aos="fade-right" data-aos-duration="2000">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="product.php">Body Massage Oil</a>
-                    </li>
-                </ul>
-                <?php
-                $servername = "localhost";
-                $username = "root";
-                $password = "";
-                $dbname = "bsa";
-
-                $conn = new mysqli($servername, $username, $password, $dbname);
-                $sql = "SELECT * FROM `add_product` WHERE `type`= 'Body Massage Oil'";
-                $result = $conn->query($sql);
-
-                if ($result->num_rows > 0) {
-                    while ($row = $result->fetch_assoc()) {
-                ?>
-                        <div class="row">
-                            <div class="col-lg-4 mb-4" data-aos="flip-right" data-aos-duration="2000">
-                                <button class="open-popup">
-                                    <div class="card">
-                                        <img src="<?php echo $row['img']; ?>" alt="" class="w-100">
-                                        <div class="card-body">
-                                            <h5 class="card-title"><?php echo $row['name_th']; ?></h5>
-                                            <h5 class="card-title"><?php echo $row['name_eng']; ?></h5>
-                                            <p class="card-text"><i class="fa-sharp fa-solid fa-circle-check"></i>
-                                                <?php echo $row['detail_th']; ?>
-                                            </p>
-                                            <p class="card-text"><i class="fa-sharp fa-solid fa-circle-check"></i>
-                                                <?php echo $row['detail_eng']; ?>
-                                            </p>
-                                            <!-- <p class="mt-3 mb-0">Aroma Scents : Ylang Ylang Oil & Lavender Oil</p> -->
-                                        </div>
-                                        <div class="card-footer">
-                                            <div class="wrap">
-                                                <div class="title">
-                                                    <p>Wholesale Price :</p>
-                                                    <p class="ship">
-                                                        <?= $price1 ?>
-                                                    </p>
-                                                </div>
-                                                <div class="price">
-                                                    <p class="price-product"><?php echo $row['price']; ?></p>
-                                                    <div class="rate">
-                                                        <p>THB/kg</p>
-                                                        <p>
-                                                            <?= $price2 ?>
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </button>
-                            </div>
-                        </div>
-                <?php
-                    }
-                } else {
-                    echo "ไม่พบสินค้าในระบบ";
-                }
-
-                $conn->close();
-                ?>
-
-            </div>
-        </div>
-        </div>
-    </section>
-
     <section class="course-product">
         <div class="click-overlay" id="click-overlay1"></div>
 
@@ -476,13 +288,13 @@ if ($langId == 1) {
                                     <p style="text-align: center;">
                                         <?= $confirmorder ?>
                                     </p>
-                                </div>
-                                <button class="button-success" id="button-success1">
+                                    <button class="button-success" id="button-success1">
                                         <?= $confirm ?>
                                     </button>
-                                <button class="button-close" id="button-close1">
+                                    <button class="button-close" id="button-close1">
                                         <?= $cancle ?>
-                                </button>
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     <?php else : ?>
@@ -541,12 +353,10 @@ if ($langId == 1) {
         <div class="popup" id="popup2">
             <div class="popup-content">
                 <span class="close-popup" id="close-popup2">&times;</span>
-                <div class="container">
-                    <p style="text-align: center;">คุณต้องการซื้อ....</p>
-                    <img src="assets/images/QR.svg" alt="" class="w-65">
-                    <p style="text-align: center;font-size: 30px;">ราคา บาท</p>
-                    <button class="button-success-2" id="button-success2">ยืนยันการโอน</button>
-                    <button class="button-close-2" id="button-close2">ยกเลิกการโอน</button>
+                <div>
+                    <p style="text-align: center;">second popup</p>
+                    <button class="button-success" id="button-success2">ยืนยัน</button>
+                    <button class="button-close" id="button-close2">ปิด</button>
                 </div>
             </div>
         </div>
@@ -556,10 +366,8 @@ if ($langId == 1) {
         <div class="popup" id="popup3">
             <div class="popup-content">
                 <span class="close-popup" id="close-popup3">&times;</span>
-                <div class="container">
-                    <p style="text-align: center;">ขอบคุณการซื้อ ผลิตภัณฑ์</p>
-                    <img src="assets/images/image 9.svg" alt="" class="w-70">
-                    <p style="text-align: center;font-size: 30px;">รอตรวจสอบการโอนเงินภายใน  24 ชม.</p>
+                <div>
+                    <p style="text-align: center;">third popup</p>
                     <button class="button-success" id="button-success3">
                         <a href="user.php"><?= $purchase_history ?></a>
                     </button>

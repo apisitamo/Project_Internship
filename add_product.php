@@ -21,25 +21,19 @@ if (!isset($_SESSION['admin'])) {
 
     }
 
-    .product-card {
-
+    .card {
         display: flex;
         border: 1px solid #e0e0e0;
         margin-bottom: 20px;
+        width: 30% !important;
+        align-items: center;
+        text-align: center;
+        margin: 10px;
     }
 
-    .product-card img {
-        max-width: 2000px;
-        object-fit: cover;
-    }
-
-    .product-info {
-        padding: 15px;
-    }
-
-    .content {
-        width: 200px;
-        height: 200px;
+    .w-100 {
+        width: 30% !important;
+        align-items: center;
     }
 </style>
 
@@ -54,8 +48,12 @@ if (!isset($_SESSION['admin'])) {
                     <input type="file" class="form-control" name="img" required>
                 </div>
                 <div class="mb-3">
-                    <label for="name" class="form-label">ชื่อสินค้า</label>
-                    <input type="text" class="form-control" name="name" required>
+                    <label for="name" class="form-label">ชื่อสินค้าไทย</label>
+                    <input type="text" class="form-control" name="name_th" required>
+                </div>
+                <div class="mb-3">
+                    <label for="name" class="form-label">ชื่อสินค้าอังกฤษ</label>
+                    <input type="text" class="form-control" name="name_eng" required>
                 </div>
                 <div class="mb-3">
                     <label for="type" class="form-label">ประเภท</label>
@@ -72,10 +70,6 @@ if (!isset($_SESSION['admin'])) {
                 <div class="mb-3">
                     <label for="detail" class="form-label">รายละเอียดอังกฤษ</label>
                     <textarea class="form-control" name="detail_eng" required></textarea>
-                </div>
-                <div class="mb-3">
-                    <label for="quantity" class="form-label">จำนวน</label>
-                    <input type="number" class="form-control" name="quantity" required>
                 </div>
                 <div class="mb-3">
                     <label for="price" class="form-label">ราคา</label>
@@ -111,25 +105,27 @@ if (!isset($_SESSION['admin'])) {
                     }
                 }
 
-                $sql = "SELECT * FROM add_product";
+                $sql = "SELECT * FROM add_product ORDER BY id DESC";
                 $result = $conn->query($sql);
 
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
-                        echo '<div class="content">';
-                        echo '<div class="product-card">';
-                        echo '<img src="' . $row['img'] . '" class="card-img-top" alt="Product Image">';
-                        echo '<div class="product-info">';
-                        echo '<h5 class="card-title">' . $row['name'] . '</h5>';
-                        echo '<p class="card-text">ประเภท: ' . $row['type'] . '</p>';
-                        echo '<p class="card-text">' . $row['detail_th'] . '</p>';
-                        echo '<p class="card-text">' . $row['detail_eng'] . '</p>';
-                        echo '<p class="card-text">จำนวน: ' . $row['quantity'] . '</p>';
-                        echo '<p class="card-text">ราคา: ' . $row['price'] . '</p>';
-                        echo '</div>';
-                        echo '<a href="add_product.php?delete_id=' . $row['id'] . '" class="btn btn-danger">&times;</a>';
-                        echo '</div>';
-                        echo '</div>';
+                ?>
+                        <div class="card">
+                            <a href="add_product.php?delete_id=<?php echo $row['id']; ?>" class="btn btn-danger">&times;</a>
+                            <img src="<?php echo $row['img']; ?>" class="w-100" alt="Product Image">
+                            <div class="product-body">
+                                <h5 class="card-title"><?php echo $row['name_th']; ?></h5>
+                                <h5 class="card-title"><?php echo $row['name_eng']; ?></h5>
+                                <p class="card-text">ประเภท: <?php echo $row['type']; ?></p>
+                                <p class="card-text"><?php echo $row['detail_th']; ?></p>
+                                <p class="card-text"><?php echo $row['detail_eng']; ?></p>
+                                <div class="product-fotter">
+                                    <p class="card-text">ราคา: <?php echo $row['price']; ?></p>
+                                </div>
+                            </div>
+                        </div>
+                <?php
                     }
                 } else {
                     echo "ไม่พบสินค้าในระบบ";

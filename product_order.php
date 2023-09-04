@@ -87,11 +87,13 @@ $result = mysqli_query($db, $query);
                                 </select>
                                 <button class="edit-button" data-row-id="<?php echo $row['id']; ?>">แก้ไข</button>
                                 <button class="save-button" data-row-id="<?php echo $row['id']; ?>">บันทึก</button>
+                                <button class="cancle-button" data-row-id="<?php echo $row['id']; ?>">ยกเลิก</button>
                             </td>
                             <td>
                                 <input type="text" class="note-input" data-row-id="<?php echo $row['id']; ?>" value="<?php echo $row['note']; ?>" disabled>
                                 <button class="edit-note-button" data-row-id="<?php echo $row['id']; ?>">แก้ไข</button>
                                 <button class="save-note-button" data-row-id="<?php echo $row['id']; ?>">บันทึก</button>
+                                <button class="cancle-button" data-row-id="<?php echo $row['id']; ?>">ยกเลิก</button>
                             </td>
                             <td>
                                 <!-- เพิ่มไอคอนถังขยะและปุ่มลบ -->
