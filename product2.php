@@ -275,7 +275,7 @@ if ($langId == 1) {
                     $dbname = "bsa";
 
                     $conn = new mysqli($servername, $username, $password, $dbname);
-                    $sql = "SELECT * FROM `add_product` WHERE `type`= 'Body Scrub'";
+                    $sql = "SELECT * FROM `add_product` WHERE `type`= 'Body Scrub'ORDER BY id DESC";
                     $result = $conn->query($sql);
 
                     if ($result->num_rows > 0) {
