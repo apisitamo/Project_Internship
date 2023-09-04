@@ -317,7 +317,6 @@ if ($langId == 1) {
                         $sql = "SELECT * FROM `add_product` WHERE `type`= 'Body Scrub'";
                         $result = $conn->query($sql);
 
-<<<<<<< HEAD
                     if ($result->num_rows > 0) {
                         while ($row = $result->fetch_assoc()) {
                     ?>
@@ -353,48 +352,7 @@ if ($langId == 1) {
                                                         <p>THB/kg</p>
                                                         <p>
                                                             <?= $price2 ?>
-=======
-                        if ($result->num_rows > 0) {
-                            while ($row = $result->fetch_assoc()) {
-                                ?>
-                                <div class="col-lg-12 mb-4" data-aos="flip-right" data-aos-duration="2000">
-                                    <button class="open-popup">
-                                        <div class="card">
-                                            <img src="<?php echo $row['img']; ?>" alt="" class="w-100">
-                                            <div class="card-body">
-                                                <h5 class="card-title">
-                                                    <?php echo $row['name_th']; ?>
-                                                </h5>
-                                                <h5 class="card-title">
-                                                    <?php echo $row['name_eng']; ?>
-                                                </h5>
-                                                <p class="card-text"><i class="fa-sharp fa-solid fa-circle-check"></i>
-                                                    <?php echo $row['detail_th']; ?>
-                                                </p>
-                                                <p class="card-text"><i class="fa-sharp fa-solid fa-circle-check"></i>
-                                                    <?php echo $row['detail_eng']; ?>
-                                                </p>
-                                                <!-- <p class="mt-3 mb-0">Aroma Scents : Ylang Ylang Oil & Lavender Oil</p> -->
-                                            </div>
-                                            <div class="card-footer">
-                                                <div class="wrap">
-                                                    <div class="title">
-                                                        <p>Wholesale Price :</p>
-                                                        <p class="ship">
-                                                            <?= $price1 ?>
->>>>>>> cc532cb73924955818687bcb6cc66ffd94944a9a
                                                         </p>
-                                                    </div>
-                                                    <div class="price">
-                                                        <p class="price-product">
-                                                            <?php echo $row['price']; ?>
-                                                        </p>
-                                                        <div class="rate">
-                                                            <p>THB/kg</p>
-                                                            <p>
-                                                                <?= $price2 ?>
-                                                            </p>
-                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -435,7 +393,6 @@ if ($langId == 1) {
                         $sql = "SELECT * FROM `add_product` WHERE `type`= 'Body Mask'";
                         $result = $conn->query($sql);
 
-<<<<<<< HEAD
                     if ($result->num_rows > 0) {
                         while ($row = $result->fetch_assoc()) {
                     ?>
@@ -471,49 +428,9 @@ if ($langId == 1) {
                                                         <p>THB/kg</p>
                                                         <p>
                                                             <?= $price2 ?>
-=======
-                        if ($result->num_rows > 0) {
-                            while ($row = $result->fetch_assoc()) {
-                                ?>
-                                <div class="col-lg-12 mb-4" data-aos="flip-right" data-aos-duration="2000">
-                                    <button class="open-popup">
-                                        <div class="card">
-                                            <img src="<?php echo $row['img']; ?>" alt="" class="w-100">
-                                            <div class="card-body">
-                                                <h5 class="card-title">
-                                                    <?php echo $row['name_th']; ?>
-                                                </h5>
-                                                <h5 class="card-title">
-                                                    <?php echo $row['name_eng']; ?>
-                                                </h5>
-                                                <p class="card-text"><i class="fa-sharp fa-solid fa-circle-check"></i>
-                                                    <?php echo $row['detail_th']; ?>
-                                                </p>
-                                                <p class="card-text"><i class="fa-sharp fa-solid fa-circle-check"></i>
-                                                    <?php echo $row['detail_eng']; ?>
-                                                </p>
-                                                <!-- <p class="mt-3 mb-0">Aroma Scents : Ylang Ylang Oil & Lavender Oil</p> -->
-                                            </div>
-                                            <div class="card-footer">
-                                                <div class="wrap">
-                                                    <div class="title">
-                                                        <p>Wholesale Price :</p>
-                                                        <p class="ship">
-                                                            <?= $price1 ?>
->>>>>>> cc532cb73924955818687bcb6cc66ffd94944a9a
                                                         </p>
                                                     </div>
-                                                    <div class="price">
-                                                        <p class="price-product">
-                                                            <?php echo $row['price']; ?>
-                                                        </p>
-                                                        <div class="rate">
-                                                            <p>THB/kg</p>
-                                                            <p>
-                                                                <?= $price2 ?>
-                                                            </p>
-                                                        </div>
-                                                    </div>
+                                                
                                                 </div>
                                             </div>
                                         </div>
@@ -554,7 +471,6 @@ if ($langId == 1) {
                         $sql = "SELECT * FROM `add_product` WHERE `type`= 'Body Massage Oil'";
                         $result = $conn->query($sql);
 
-<<<<<<< HEAD
                     if ($result->num_rows > 0) {
                         while ($row = $result->fetch_assoc()) {
                     ?>
@@ -590,49 +506,9 @@ if ($langId == 1) {
                                                         <p>THB/kg</p>
                                                         <p>
                                                             <?= $price2 ?>
-=======
-                        if ($result->num_rows > 0) {
-                            while ($row = $result->fetch_assoc()) {
-                                ?>
-                                <div class="col-lg-12 mb-4" data-aos="flip-right" data-aos-duration="2000">
-                                    <button class="open-popup">
-                                        <div class="card">
-                                            <img src="<?php echo $row['img']; ?>" alt="" class="w-100">
-                                            <div class="card-body">
-                                                <h5 class="card-title">
-                                                    <?php echo $row['name_th']; ?>
-                                                </h5>
-                                                <h5 class="card-title">
-                                                    <?php echo $row['name_eng']; ?>
-                                                </h5>
-                                                <p class="card-text"><i class="fa-sharp fa-solid fa-circle-check"></i>
-                                                    <?php echo $row['detail_th']; ?>
-                                                </p>
-                                                <p class="card-text"><i class="fa-sharp fa-solid fa-circle-check"></i>
-                                                    <?php echo $row['detail_eng']; ?>
-                                                </p>
-                                                <!-- <p class="mt-3 mb-0">Aroma Scents : Ylang Ylang Oil & Lavender Oil</p> -->
-                                            </div>
-                                            <div class="card-footer">
-                                                <div class="wrap">
-                                                    <div class="title">
-                                                        <p>Wholesale Price :</p>
-                                                        <p class="ship">
-                                                            <?= $price1 ?>
->>>>>>> cc532cb73924955818687bcb6cc66ffd94944a9a
                                                         </p>
                                                     </div>
-                                                    <div class="price">
-                                                        <p class="price-product">
-                                                            <?php echo $row['price']; ?>
-                                                        </p>
-                                                        <div class="rate">
-                                                            <p>THB/kg</p>
-                                                            <p>
-                                                                <?= $price2 ?>
-                                                            </p>
-                                                        </div>
-                                                    </div>
+                                                    
                                                 </div>
                                             </div>
                                         </div>
