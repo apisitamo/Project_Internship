@@ -1,10 +1,11 @@
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+<link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
 
 <script>
-    window.console = window.console || function(t) {};
+    window.console = window.console || function (t) { };
 </script>
 <?php
 include 'include/head.php';
@@ -319,14 +320,18 @@ if ($langId == 1) {
 
                         if ($result->num_rows > 0) {
                             while ($row = $result->fetch_assoc()) {
-                        ?>
-                                <div class="col-lg-4 mb-4" data-aos="flip-right" data-aos-duration="2000">
+                                ?>
+                                <div class="col-lg-12 mb-4" data-aos="flip-right" data-aos-duration="2000">
                                     <button class="open-popup">
                                         <div class="card">
                                             <img src="<?php echo $row['img']; ?>" alt="" class="w-100">
                                             <div class="card-body">
-                                                <h5 class="card-title"><?php echo $row['name_th']; ?></h5>
-                                                <h5 class="card-title"><?php echo $row['name_eng']; ?></h5>
+                                                <h5 class="card-title">
+                                                    <?php echo $row['name_th']; ?>
+                                                </h5>
+                                                <h5 class="card-title">
+                                                    <?php echo $row['name_eng']; ?>
+                                                </h5>
                                                 <?php if ($langId == 1) { ?>
                                                     <p class="card-text"><i class="fa-sharp fa-solid fa-circle-check"></i>
                                                         <?php echo $row['detail_th']; ?>
@@ -347,7 +352,9 @@ if ($langId == 1) {
                                                         </p>
                                                     </div>
                                                     <div class="price">
-                                                        <p class="price-product"><?php echo $row['price']; ?></p>
+                                                        <p class="price-product">
+                                                            <?php echo $row['price']; ?>
+                                                        </p>
                                                         <div class="rate">
                                                             <p>THB/kg</p>
                                                             <p>
@@ -359,7 +366,7 @@ if ($langId == 1) {
                                             </div>
                                     </button>
                                 </div>
-                        <?php
+                                <?php
                             }
                         } else {
                             echo "ไม่พบสินค้าในระบบ";
@@ -395,14 +402,18 @@ if ($langId == 1) {
 
                         if ($result->num_rows > 0) {
                             while ($row = $result->fetch_assoc()) {
-                        ?>
-                                <div class="col-lg-4 mb-4" data-aos="flip-right" data-aos-duration="2000">
+                                ?>
+                                <div class="col-lg-12 mb-4" data-aos="flip-right" data-aos-duration="2000">
                                     <button class="open-popup">
                                         <div class="card">
                                             <img src="<?php echo $row['img']; ?>" alt="" class="w-100">
                                             <div class="card-body">
-                                                <h5 class="card-title"><?php echo $row['name_th']; ?></h5>
-                                                <h5 class="card-title"><?php echo $row['name_eng']; ?></h5>
+                                                <h5 class="card-title">
+                                                    <?php echo $row['name_th']; ?>
+                                                </h5>
+                                                <h5 class="card-title">
+                                                    <?php echo $row['name_eng']; ?>
+                                                </h5>
                                                 <?php if ($langId == 1) { ?>
                                                     <p class="card-text"><i class="fa-sharp fa-solid fa-circle-check"></i>
                                                         <?php echo $row['detail_th']; ?>
@@ -423,7 +434,9 @@ if ($langId == 1) {
                                                         </p>
                                                     </div>
                                                     <div class="price">
-                                                        <p class="price-product"><?php echo $row['price']; ?></p>
+                                                        <p class="price-product">
+                                                            <?php echo $row['price']; ?>
+                                                        </p>
                                                         <div class="rate">
                                                             <p>THB/kg</p>
                                                             <p>
@@ -436,7 +449,7 @@ if ($langId == 1) {
                                             </div>
                                     </button>
                                 </div>
-                        <?php
+                                <?php
                             }
                         } else {
                             echo "ไม่พบสินค้าในระบบ";
@@ -473,14 +486,18 @@ if ($langId == 1) {
 
                         if ($result->num_rows > 0) {
                             while ($row = $result->fetch_assoc()) {
-                        ?>
-                                <div class="col-lg-4 mb-4" data-aos="flip-right" data-aos-duration="2000">
+                                ?>
+                                <div class="col-lg-12 mb-4" data-aos="flip-right" data-aos-duration="2000">
                                     <button class="open-popup">
                                         <div class="card">
                                             <img src="<?php echo $row['img']; ?>" alt="" class="w-100">
                                             <div class="card-body">
-                                                <h5 class="card-title"><?php echo $row['name_th']; ?></h5>
-                                                <h5 class="card-title"><?php echo $row['name_eng']; ?></h5>
+                                                <h5 class="card-title">
+                                                    <?php echo $row['name_th']; ?>
+                                                </h5>
+                                                <h5 class="card-title">
+                                                    <?php echo $row['name_eng']; ?>
+                                                </h5>
                                                 <?php if ($langId == 1) { ?>
                                                     <p class="card-text"><i class="fa-sharp fa-solid fa-circle-check"></i>
                                                         <?php echo $row['detail_th']; ?>
@@ -501,7 +518,9 @@ if ($langId == 1) {
                                                         </p>
                                                     </div>
                                                     <div class="price">
-                                                        <p class="price-product"><?php echo $row['price']; ?></p>
+                                                        <p class="price-product">
+                                                            <?php echo $row['price']; ?>
+                                                        </p>
                                                         <div class="rate">
                                                             <p>THB/kg</p>
                                                             <p>
@@ -514,7 +533,7 @@ if ($langId == 1) {
                                             </div>
                                     </button>
                                 </div>
-                        <?php
+                                <?php
                             }
                         } else {
                             echo "ไม่พบสินค้าในระบบ";
@@ -538,7 +557,7 @@ if ($langId == 1) {
             <div class="popup-content">
                 <span class="close-popup" id="close-popup1">&times;</span>
                 <div class="homecontent">
-                    <?php if (isset($_SESSION['username'])) : ?>
+                    <?php if (isset($_SESSION['username'])): ?>
                         <div class="box">
                             <div class="container">
                                 <div class="row">
@@ -554,7 +573,7 @@ if ($langId == 1) {
                                 </button>
                             </div>
                         </div>
-                    <?php else : ?>
+                    <?php else: ?>
                         <div class="box">
                             <div class="container">
                                 <div class="row">
@@ -753,17 +772,20 @@ if ($langId == 1) {
     $('#owl-sl').owlCarousel({
         loop: true,
         margin: 10,
-        nav: true,
-        center: true,
+        responsiveClass: true,
         responsive: {
             0: {
-                items: 1
+                items: 1,
+                nav: true
             },
             600: {
-                items: 3
+                items: 3,
+                nav: false
             },
             1000: {
-                items: 3
+                items: 3,
+                nav: true,
+                loop: false
             }
         }
     })
@@ -772,17 +794,20 @@ if ($langId == 1) {
     $('#owl-sl2').owlCarousel({
         loop: true,
         margin: 10,
-        nav: true,
-        center: true,
+        responsiveClass: true,
         responsive: {
             0: {
-                items: 1
+                items: 1,
+                nav: true
             },
             600: {
-                items: 3
+                items: 3,
+                nav: false
             },
             1000: {
-                items: 3
+                items: 3,
+                nav: true,
+                loop: false
             }
         }
     })
@@ -791,17 +816,20 @@ if ($langId == 1) {
     $('#owl-sl3').owlCarousel({
         loop: true,
         margin: 10,
-        nav: true,
-        center: true,
+        responsiveClass: true,
         responsive: {
             0: {
-                items: 1
+                items: 1,
+                nav: true
             },
             600: {
-                items: 3
+                items: 3,
+                nav: false
             },
             1000: {
-                items: 3
+                items: 3,
+                nav: true,
+                loop: false
             }
         }
     })
