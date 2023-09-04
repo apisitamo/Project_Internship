@@ -85,7 +85,7 @@ if (empty($_SESSION['lang']) || $_SESSION['lang'] == 1) {
         <div class="navbar-collapse collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="add_course.php"><?=$add_course  ?></a>
+                    <a class="nav-link" aria-current="page" href="add_course.php"><?= $add_course  ?></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="add_product.php"><?= $add_product ?></a>
@@ -94,10 +94,10 @@ if (empty($_SESSION['lang']) || $_SESSION['lang'] == 1) {
                     <a class="nav-link" aria-current="page" href="add_gallery.php"><?= $add_gallery ?></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="product_order.php"><?= $product_order ?></a>
+                    <a class="nav-link" href="course_order.php"><?= $course_order ?></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="course_order.php"><?= $course_order ?></a>
+                    <a class="nav-link" aria-current="page" href="product_order.php"><?= $product_order ?></a>
                 </li>
 
                 <li class="nav-item dropdown">

@@ -288,12 +288,15 @@ if ($langId == 1) {
                                         <div class="card-body">
                                             <h5 class="card-title"><?php echo $row['name_th']; ?></h5>
                                             <h5 class="card-title"><?php echo $row['name_eng']; ?></h5>
+                                            <?php if ($langId == 1) {?>
                                             <p class="card-text"><i class="fa-sharp fa-solid fa-circle-check"></i>
                                                 <?php echo $row['detail_th']; ?>
                                             </p>
+                                            <?php }else{ ?>
                                             <p class="card-text"><i class="fa-sharp fa-solid fa-circle-check"></i>
                                                 <?php echo $row['detail_eng']; ?>
                                             </p>
+                                            <?php } ?>
                                             <!-- <p class="mt-3 mb-0">Aroma Scents : Ylang Ylang Oil & Lavender Oil</p> -->
                                         </div>
                                         <div class="card-footer">
