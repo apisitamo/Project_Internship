@@ -15,24 +15,62 @@ if (!isset($_SESSION['admin'])) {
 
 ?>
 <style>
-    .containertop,
-    .containerbuttom {
+    .addpro1 .containertop,
+    .addpro2 .containerbuttom {
         padding: 30px;
 
     }
 
-    .card {
+    .addpro2 .row {
+        column-gap: 30px;
+    }
+
+    .addpro2 .card {
         display: flex;
         border: 1px solid #e0e0e0;
         margin-bottom: 20px;
         width: 30% !important;
         align-items: center;
         text-align: center;
-        margin: 10px;
+        padding: 10px;
+    }
+
+    .addpro2 .product-body {
+        width: 100%;
+    }
+
+    .addpro2 .product-body .card-title {
+        margin-bottom: 15px;
+        color: #99762C;
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    .addpro2 .product-body .card-title:nth-child(1) {
+        margin-bottom: 10px;
+        margin-top: 10px;
+    }
+
+    .addpro2 .product-body .card-text {
+        margin-bottom: 35px;
+    } 
+
+    .addpro2 .fa-sharp {
+        margin-right: 6px;
+        color: #71BD1F;
+    }
+
+    .addpro2 .product-fotter {
+        padding: 0.5rem 1rem;
+    }
+
+    .addpro2 .product-fotter .card-text {
+        background-color: rgba(0, 0, 0, .03);
+        padding: 15px;
     }
 
     .w-100 {
-        width: 30% !important;
+        width: 50% !important;
         align-items: center;
     }
 
@@ -77,7 +115,7 @@ if (!isset($_SESSION['admin'])) {
 
 <body>
     <div class="click-overlay" id="click-overlay1"></div>
-    <section>
+    <section class="addpro1">
         <div class="containertop mt-5">
             <h2>เพิ่มสินค้า</h2>
             <form action="add_product_process.php" method="POST" enctype="multipart/form-data">
@@ -129,7 +167,7 @@ if (!isset($_SESSION['admin'])) {
         </div>
     </div> -->
 
-    <section>
+    <section class="addpro2">
         <div class="containerbuttom mt-5">
             <h2>สินค้าทั้งหมด</h2>
             <div class="row">
@@ -160,22 +198,34 @@ if (!isset($_SESSION['admin'])) {
 
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
-                ?>
+                        ?>
                         <div class="card">
                             <a href="add_product.php?delete_id=<?php echo $row['id']; ?>" class="btn btn-danger">&times;</a>
                             <img src="<?php echo $row['img']; ?>" class="w-100" alt="Product Image">
                             <div class="product-body">
-                                <h5 class="card-title"><?php echo $row['name_th']; ?></h5>
-                                <h5 class="card-title"><?php echo $row['name_eng']; ?></h5>
-                                <p class="card-text">ประเภท: <?php echo $row['type']; ?></p>
-                                <p class="card-text"><?php echo $row['detail_th']; ?></p>
-                                <p class="card-text"><?php echo $row['detail_eng']; ?></p>
+                                <h5 class="card-title">
+                                    <?php echo $row['name_th']; ?>
+                                </h5>
+                                <h5 class="card-title">
+                                    <?php echo $row['name_eng']; ?>
+                                </h5>
+                                <p class="card-text">ประเภท:
+                                    <?php echo $row['type']; ?>
+                                </p>
+                                <p class="card-text"><i class="fa-sharp fa-solid fa-circle-check"></i>
+                                    <?php echo $row['detail_th']; ?>
+                                </p>
+                                <p class="card-text"><i class="fa-sharp fa-solid fa-circle-check"></i>
+                                    <?php echo $row['detail_eng']; ?>
+                                </p>
                                 <div class="product-fotter">
-                                    <p class="card-text">ราคา: <?php echo $row['price']; ?></p>
+                                    <p class="card-text">ราคา:
+                                        <?php echo $row['price']; ?>
+                                    </p>
                                 </div>
                             </div>
                         </div>
-                <?php
+                        <?php
                     }
                 } else {
                     echo "ไม่พบสินค้าในระบบ";

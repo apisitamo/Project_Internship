@@ -615,12 +615,6 @@ a {
     text-align: center;
 }
 
-.product .card-title {
-    color: #99762C;
-    font-size: 18px;
-    font-weight: bold;
-}
-
 .product .card-footer .wrap {
     display: flex;
     justify-content: space-between;
