@@ -14,8 +14,8 @@ if (empty($_SESSION['lang']) || $_SESSION['lang'] == 1) {
     $login = 'เข้าสู่ระบบ';
     $admin = 'แอดมินเท่านั้น';
     $logout = 'ออกจากระบบ';
-    $add_product = 'เพิ่มสินค้า';
-    $add_course = 'เพิ่มคอส';
+    $add_product = 'เพิ่มผลิตภัณฑ์';
+    $add_course = 'เพิ่มหลักสูตร';
     $add_gallery = 'เพิ่มแกลลอรี่';
     $product_order = 'คำสั่งซื้อผลิตภัณฑ์';
     $course_order = 'คำสั่งซื้อหลักสูตร';
@@ -85,10 +85,10 @@ if (empty($_SESSION['lang']) || $_SESSION['lang'] == 1) {
         <div class="navbar-collapse collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="add_product.php"><?= $add_product ?></a>
+                    <a class="nav-link" aria-current="page" href="add_course.php"><?=$add_course  ?></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="add_course.php"><?= $add_course ?></a>
+                    <a class="nav-link" aria-current="page" href="add_product.php"><?= $add_product ?></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="add_gallery.php"><?= $add_gallery ?></a>

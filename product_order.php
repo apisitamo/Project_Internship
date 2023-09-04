@@ -93,6 +93,10 @@ $result = mysqli_query($db, $query);
                                 <button class="edit-note-button" data-row-id="<?php echo $row['id']; ?>">แก้ไข</button>
                                 <button class="save-note-button" data-row-id="<?php echo $row['id']; ?>">บันทึก</button>
                             </td>
+                            <td>
+                                <!-- เพิ่มไอคอนถังขยะและปุ่มลบ -->
+                                <button class="delete-button" data-row-id="<?php echo $row['id']; ?>">ลบ</button>
+                            </td>
                         </tr>
                     <?php endwhile; ?>
                 </table>
@@ -151,7 +155,7 @@ $result = mysqli_query($db, $query);
     });
 
     async function updateStatusInDatabase(rowId, selectedStatus) {
-        const response = await fetch('update_status_order.php', {
+        const response = await fetch('product_order_update_status.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
@@ -215,7 +219,7 @@ $result = mysqli_query($db, $query);
     });
 
     async function updateNoteInDatabase(rowId, noteValue) {
-        const response = await fetch('update_note_order.php', {
+        const response = await fetch('product_order_update_note.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
@@ -226,6 +230,41 @@ $result = mysqli_query($db, $query);
         const result = await response.text();
         console.log('Note updated successfully:', result);
     }
+</script>
+<script>
+    const deleteButtons = document.querySelectorAll('.delete-button');
+
+    deleteButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const rowId = button.getAttribute('data-row-id');
+
+            if (confirm('คุณต้องการลบข้อมูลนี้หรือไม่?')) {
+                deleteRow(rowId);
+            }
+        });
+    });
+
+    async function deleteRow(rowId) {
+        try {
+            const response = await fetch('product_order_delete.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: `rowId=${encodeURIComponent(rowId)}`,
+            });
+
+            if (response.ok) {
+                alert('ลบข้อมูลเรียบร้อยแล้ว');
+                location.reload(); // รีเฟรชหน้าหลังจากลบข้อมูล
+            } else {
+                alert('เกิดข้อผิดพลาดในการลบข้อมูล');
+            }
+        } catch (error) {
+            console.error('เกิดข้อผิดพลาดในการลบข้อมูล:', error);
+        }
+    }
+    
 </script>
 
 </html>

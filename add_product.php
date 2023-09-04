@@ -15,14 +15,14 @@ if (!isset($_SESSION['admin'])) {
 
 ?>
 <style>
-    .containertop ,
-    .containerbuttom{
+    .containertop,
+    .containerbuttom {
         padding: 30px;
 
     }
 
     .product-card {
-        
+
         display: flex;
         border: 1px solid #e0e0e0;
         margin-bottom: 20px;
@@ -56,6 +56,14 @@ if (!isset($_SESSION['admin'])) {
                 <div class="mb-3">
                     <label for="name" class="form-label">ชื่อสินค้า</label>
                     <input type="text" class="form-control" name="name" required>
+                </div>
+                <div class="mb-3">
+                    <label for="type" class="form-label">ประเภท</label>
+                    <select class="form-control-option" name="type">
+                        <option value="Body Scrub">Body Scrub</option>
+                        <option value="Body Mask">Body Mask</option>
+                        <option value="Body Massage Oil">Body Massage Oil</option>
+                    </select>
                 </div>
                 <div class="mb-3">
                     <label for="detail" class="form-label">รายละเอียดไทย</label>
@@ -113,6 +121,7 @@ if (!isset($_SESSION['admin'])) {
                         echo '<img src="' . $row['img'] . '" class="card-img-top" alt="Product Image">';
                         echo '<div class="product-info">';
                         echo '<h5 class="card-title">' . $row['name'] . '</h5>';
+                        echo '<p class="card-text">ประเภท: ' . $row['type'] . '</p>';
                         echo '<p class="card-text">' . $row['detail_th'] . '</p>';
                         echo '<p class="card-text">' . $row['detail_eng'] . '</p>';
                         echo '<p class="card-text">จำนวน: ' . $row['quantity'] . '</p>';
