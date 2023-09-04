@@ -18,92 +18,36 @@ if ($langId == 1) {
     <section class="gallery">
         <div class="container">
             <div class="row">
-                <div onclick="swap('./assets/images/gallery-1.png')" type="button" class="col-lg-3 col-md-4 mb-4 position-relative" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    <div class="w-100 h-100 card-img position-relative">
-                        <img class="search-hover" src="assets/images/hover-search.svg" alt="">
-                        <img class="w-100 rounded-3" src="./assets/images/gallery-1.png" alt="">
-                    </div>
-                </div>
+                <?php
+                $servername = "localhost";
+                $username = "root";
+                $password = "";
+                $dbname = "bsa";
 
-                <div onclick="swap('./assets/images/gallery-2.png')" class="col-lg-3 col-md-4 mb-4 position-relative" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    <div class="w-100 h-100 card-img position-relative">
-                        <img class="search-hover" src="assets/images/hover-search.svg" alt="">
-                        <img class="w-100 rounded-3" src="./assets/images/gallery-2.png" alt="">
-                    </div>
-                </div>
+                $conn = new mysqli($servername, $username, $password, $dbname);
+                $sql = "SELECT * FROM `add_gallery`ORDER BY id DESC";
+                $result = $conn->query($sql);
 
-                <div onclick="swap('./assets/images/gallery-3.png')" class="col-lg-3 col-md-4 mb-4 position-relative" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    <div class="w-100 h-100 card-img position-relative">
-                        <img class="search-hover" src="assets/images/hover-search.svg" alt="">
-                        <img class="w-100 rounded-3" src="./assets/images/gallery-3.png" alt="">
-                    </div>
-                </div>
-
-                <div onclick="swap('./assets/images/gallery-4.png')" class="col-lg-3 col-md-4 mb-4 position-relative" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    <div class="w-100 h-100 card-img position-relative">
-                        <img class="search-hover" src="assets/images/hover-search.svg" alt="">
-                        <img class="w-100 rounded-3" src="./assets/images/gallery-4.png" alt="">
-                    </div>
-                </div>
-
-                <div onclick="swap('./assets/images/gallery5.png')" class="col-lg-3 col-md-4 mb-4 position-relative" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    <div class="w-100 h-100 card-img position-relative">
-                        <img class="search-hover" src="assets/images/hover-search.svg" alt="">
-                        <img class="w-100 rounded-3" src="./assets/images/gallery5.png" alt="">
-                    </div>
-                </div>
-
-                <div onclick="swap('./assets/images/gallery6.png')" class="col-lg-3 col-md-4 mb-4 position-relative" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    <div class="w-100 h-100 card-img position-relative">
-                        <img class="search-hover" src="assets/images/hover-search.svg" alt="">
-                        <img class="w-100 rounded-3" src="./assets/images/gallery6.png" alt="">
-                    </div>
-                </div>
-
-                <div onclick="swap('./assets/images/gallery7.png')" class="col-lg-3 col-md-4 mb-4 position-relative" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    <div class="w-100 h-100 card-img position-relative">
-                        <img class="search-hover" src="assets/images/hover-search.svg" alt="">
-                        <img class="w-100 rounded-3" src="./assets/images/gallery7.png" alt="">
-                    </div>
-                </div>
-
-                <div onclick="swap('./assets/images/gallery8.png')" class="col-lg-3 col-md-4 mb-4 position-relative" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    <div class="w-100 h-100 card-img position-relative">
-                        <img class="search-hover" src="assets/images/hover-search.svg" alt="">
-                        <img class="w-100 rounded-3" src="./assets/images/gallery8.png" alt="">
-                    </div>
-                </div>
-
-                <div onclick="swap('./assets/images/gallery9.png')" class="col-lg-3 col-md-4 mb-4 position-relative" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    <div class="w-100 h-100 card-img position-relative">
-                        <img class="search-hover" src="assets/images/hover-search.svg" alt="">
-                        <img class="w-100 rounded-3" src="./assets/images/gallery9.png" alt="">
-                    </div>
-                </div>
-
-                <div onclick="swap('./assets/images/gallery10.png')" class="col-lg-3 col-md-4 mb-4 position-relative" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    <div class="w-100 h-100 card-img position-relative">
-                        <img class="search-hover" src="assets/images/hover-search.svg" alt="">
-                        <img class="w-100 rounded-3" src="./assets/images/gallery10.png" alt="">
-                    </div>
-                </div>
-
-                <div onclick="swap('./assets/images/gallery11.png')" class="col-lg-3 col-md-4 mb-4 position-relative" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    <div class="w-100 h-100 card-img position-relative">
-                        <img class="search-hover" src="assets/images/hover-search.svg" alt="">
-                        <img class="w-100 rounded-3" src="./assets/images/gallery11.png" alt="">
-                    </div>
-                </div>
-
-                <div onclick="swap('./assets/images/gallery12.png')" class="col-lg-3 col-md-4 mb-4 position-relative" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    <div class="w-100 h-100 card-img position-relative">
-                        <img class="search-hover" src="assets/images/hover-search.svg" alt="">
-                        <img class="w-100 rounded-3" src="./assets/images/gallery12.png" alt="">
-                    </div>
-                </div>
+                if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                ?>
+                        <div onclick="swap(<?php echo $row['img']; ?>)" class="col-lg-3 col-md-4 mb-4 position-relative" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            <div class="w-100 h-100 card-img position-relative">
+                                <img class="search-hover" src="assets/images/hover-search.svg" alt="">
+                                <img class="w-100 rounded-3" src="<?php echo $row['img']; ?>" alt="">
+                            </div>
+                        </div>
+                <?php
+                    }
+                } else {
+                    echo "ไม่พบสินค้าในระบบ";
+                }
+                $conn->close();
+                ?>
             </div>
         </div>
     </section>
+
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-xl">
             <div class="modal-content rounded-5">
@@ -111,12 +55,15 @@ if ($langId == 1) {
             </div>
         </div>
     </div>
+
     <script>
-        function swap(path){
+        function swap(path) {
             document.getElementById("modal-img").src = path
         }
     </script>
+
     <?php include 'include/footer.php'; ?>
+
 </body>
 
 </html>
