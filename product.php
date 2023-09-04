@@ -273,20 +273,20 @@ if ($langId == 1) {
                         <a class="nav-link active" aria-current="page" href="product.php">Body Scrub</a>
                     </li>
                 </ul>
-                <?php
-                $servername = "localhost";
-                $username = "root";
-                $password = "";
-                $dbname = "bsa";
+                <div class="row">
+                    <?php
+                    $servername = "localhost";
+                    $username = "root";
+                    $password = "";
+                    $dbname = "bsa";
 
-                $conn = new mysqli($servername, $username, $password, $dbname);
-                $sql = "SELECT * FROM `add_product` WHERE `type`= 'Body Scrub'";
-                $result = $conn->query($sql);
+                    $conn = new mysqli($servername, $username, $password, $dbname);
+                    $sql = "SELECT * FROM `add_product` WHERE `type`= 'Body Scrub'";
+                    $result = $conn->query($sql);
 
-                if ($result->num_rows > 0) {
-                    while ($row = $result->fetch_assoc()) {
-                ?>
-                        <div class="row">
+                    if ($result->num_rows > 0) {
+                        while ($row = $result->fetch_assoc()) {
+                    ?>
                             <div class="col-lg-4 mb-4" data-aos="flip-right" data-aos-duration="2000">
                                 <button class="open-popup">
                                     <div class="card">
@@ -324,16 +324,14 @@ if ($langId == 1) {
                                     </div>
                                 </button>
                             </div>
-                        </div>
-                <?php
+                    <?php
+                        }
+                    } else {
+                        echo "ไม่พบสินค้าในระบบ";
                     }
-                } else {
-                    echo "ไม่พบสินค้าในระบบ";
-                }
-
-                $conn->close();
-                ?>
-
+                    $conn->close();
+                    ?>
+                </div>
             </div>
         </div>
         </div>
@@ -347,20 +345,20 @@ if ($langId == 1) {
                         <a class="nav-link active" aria-current="page" href="product.php">Body Mask</a>
                     </li>
                 </ul>
-                <?php
-                $servername = "localhost";
-                $username = "root";
-                $password = "";
-                $dbname = "bsa";
+                <div class="row">
+                    <?php
+                    $servername = "localhost";
+                    $username = "root";
+                    $password = "";
+                    $dbname = "bsa";
 
-                $conn = new mysqli($servername, $username, $password, $dbname);
-                $sql = "SELECT * FROM `add_product` WHERE `type`= 'Body Mask'";
-                $result = $conn->query($sql);
+                    $conn = new mysqli($servername, $username, $password, $dbname);
+                    $sql = "SELECT * FROM `add_product` WHERE `type`= 'Body Mask'";
+                    $result = $conn->query($sql);
 
-                if ($result->num_rows > 0) {
-                    while ($row = $result->fetch_assoc()) {
-                ?>
-                        <div class="row">
+                    if ($result->num_rows > 0) {
+                        while ($row = $result->fetch_assoc()) {
+                    ?>
                             <div class="col-lg-4 mb-4" data-aos="flip-right" data-aos-duration="2000">
                                 <button class="open-popup">
                                     <div class="card">
@@ -398,16 +396,15 @@ if ($langId == 1) {
                                     </div>
                                 </button>
                             </div>
-                        </div>
-                <?php
+                    <?php
+                        }
+                    } else {
+                        echo "ไม่พบสินค้าในระบบ";
                     }
-                } else {
-                    echo "ไม่พบสินค้าในระบบ";
-                }
 
-                $conn->close();
-                ?>
-
+                    $conn->close();
+                    ?>
+                </div>
             </div>
         </div>
         </div>
@@ -421,20 +418,20 @@ if ($langId == 1) {
                         <a class="nav-link active" aria-current="page" href="product.php">Body Massage Oil</a>
                     </li>
                 </ul>
-                <?php
-                $servername = "localhost";
-                $username = "root";
-                $password = "";
-                $dbname = "bsa";
+                <div class="row">
+                    <?php
+                    $servername = "localhost";
+                    $username = "root";
+                    $password = "";
+                    $dbname = "bsa";
 
-                $conn = new mysqli($servername, $username, $password, $dbname);
-                $sql = "SELECT * FROM `add_product` WHERE `type`= 'Body Massage Oil'";
-                $result = $conn->query($sql);
+                    $conn = new mysqli($servername, $username, $password, $dbname);
+                    $sql = "SELECT * FROM `add_product` WHERE `type`= 'Body Massage Oil'";
+                    $result = $conn->query($sql);
 
-                if ($result->num_rows > 0) {
-                    while ($row = $result->fetch_assoc()) {
-                ?>
-                        <div class="row">
+                    if ($result->num_rows > 0) {
+                        while ($row = $result->fetch_assoc()) {
+                    ?>
                             <div class="col-lg-4 mb-4" data-aos="flip-right" data-aos-duration="2000">
                                 <button class="open-popup">
                                     <div class="card">
@@ -472,16 +469,15 @@ if ($langId == 1) {
                                     </div>
                                 </button>
                             </div>
-                        </div>
-                <?php
+                    <?php
+                        }
+                    } else {
+                        echo "ไม่พบสินค้าในระบบ";
                     }
-                } else {
-                    echo "ไม่พบสินค้าในระบบ";
-                }
 
-                $conn->close();
-                ?>
-
+                    $conn->close();
+                    ?>
+                </div>
             </div>
         </div>
         </div>
