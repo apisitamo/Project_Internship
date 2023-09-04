@@ -25,13 +25,13 @@ if ($langId == 1) {
                 $dbname = "bsa";
 
                 $conn = new mysqli($servername, $username, $password, $dbname);
-                $sql = "SELECT * FROM `add_gallery`ORDER BY id DESC";
+                $sql = "SELECT * FROM `add_gallery` ORDER BY id DESC";
                 $result = $conn->query($sql);
 
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
                 ?>
-                        <div onclick="swap(<?php echo $row['img']; ?>)" class="col-lg-3 col-md-4 mb-4 position-relative" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <div onclick="swap('<?php echo $row['img']; ?>')" class="col-lg-3 col-md-4 mb-4 position-relative" data-bs-toggle="modal" data-bs-target="#exampleModal">
                             <div class="w-100 h-100 card-img position-relative">
                                 <img class="search-hover" src="assets/images/hover-search.svg" alt="">
                                 <img class="w-100 rounded-3" src="<?php echo $row['img']; ?>" alt="">
@@ -42,6 +42,7 @@ if ($langId == 1) {
                 } else {
                     echo "ไม่พบสินค้าในระบบ";
                 }
+
                 $conn->close();
                 ?>
             </div>
