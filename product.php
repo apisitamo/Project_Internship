@@ -1,5 +1,12 @@
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+<link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+
+<script>
+    window.console = window.console || function (t) { };
+</script>
 <?php
 include 'include/head.php';
 include 'include/langid.php';
@@ -224,6 +231,23 @@ if ($langId == 1) {
     .popup .container img {
         margin-left: 100px;
     }
+
+    .product .card {
+        width: 410px;
+    }
+
+    .product .owl-nav {
+        display: none;
+    }
+    .product #owl-sl2 .owl-dots {
+        display: block;
+        margin-top: 0px;
+    }
+    .product #owl-sl3 .owl-dots {
+        display: block;
+        margin-top: 0px;
+    }
+    
 </style>
 
 <body>
@@ -248,16 +272,24 @@ if ($langId == 1) {
 
                 <ul class="nav nav-page" data-aos="fade-right" data-aos-duration="2000">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="product.php"><?= $nav1 ?></a>
+                        <a class="nav-link active" aria-current="page" href="product.php">
+                            <?= $nav1 ?>
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="product2.php"><?= $nav2 ?></a>
+                        <a class="nav-link" href="product2.php">
+                            <?= $nav2 ?>
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="product3.php"><?= $nav3 ?></a>
+                        <a class="nav-link" href="product3.php">
+                            <?= $nav3 ?>
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="product4.php"> <?= $nav4 ?></a>
+                        <a class="nav-link" href="product4.php">
+                            <?= $nav4 ?>
+                        </a>
                     </li>
                 </ul>
             </div>
@@ -274,16 +306,18 @@ if ($langId == 1) {
                     </li>
                 </ul>
                 <div class="row">
-                    <?php
-                    $servername = "localhost";
-                    $username = "root";
-                    $password = "";
-                    $dbname = "bsa";
+                    <div class="owl-carousel owl-theme" id="owl-sl">
+                        <?php
+                        $servername = "localhost";
+                        $username = "root";
+                        $password = "";
+                        $dbname = "bsa";
 
-                    $conn = new mysqli($servername, $username, $password, $dbname);
-                    $sql = "SELECT * FROM `add_product` WHERE `type`= 'Body Scrub'";
-                    $result = $conn->query($sql);
+                        $conn = new mysqli($servername, $username, $password, $dbname);
+                        $sql = "SELECT * FROM `add_product` WHERE `type`= 'Body Scrub'";
+                        $result = $conn->query($sql);
 
+<<<<<<< HEAD
                     if ($result->num_rows > 0) {
                         while ($row = $result->fetch_assoc()) {
                     ?>
@@ -319,21 +353,62 @@ if ($langId == 1) {
                                                         <p>THB/kg</p>
                                                         <p>
                                                             <?= $price2 ?>
+=======
+                        if ($result->num_rows > 0) {
+                            while ($row = $result->fetch_assoc()) {
+                                ?>
+                                <div class="col-lg-12 mb-4" data-aos="flip-right" data-aos-duration="2000">
+                                    <button class="open-popup">
+                                        <div class="card">
+                                            <img src="<?php echo $row['img']; ?>" alt="" class="w-100">
+                                            <div class="card-body">
+                                                <h5 class="card-title">
+                                                    <?php echo $row['name_th']; ?>
+                                                </h5>
+                                                <h5 class="card-title">
+                                                    <?php echo $row['name_eng']; ?>
+                                                </h5>
+                                                <p class="card-text"><i class="fa-sharp fa-solid fa-circle-check"></i>
+                                                    <?php echo $row['detail_th']; ?>
+                                                </p>
+                                                <p class="card-text"><i class="fa-sharp fa-solid fa-circle-check"></i>
+                                                    <?php echo $row['detail_eng']; ?>
+                                                </p>
+                                                <!-- <p class="mt-3 mb-0">Aroma Scents : Ylang Ylang Oil & Lavender Oil</p> -->
+                                            </div>
+                                            <div class="card-footer">
+                                                <div class="wrap">
+                                                    <div class="title">
+                                                        <p>Wholesale Price :</p>
+                                                        <p class="ship">
+                                                            <?= $price1 ?>
+>>>>>>> cc532cb73924955818687bcb6cc66ffd94944a9a
                                                         </p>
+                                                    </div>
+                                                    <div class="price">
+                                                        <p class="price-product">
+                                                            <?php echo $row['price']; ?>
+                                                        </p>
+                                                        <div class="rate">
+                                                            <p>THB/kg</p>
+                                                            <p>
+                                                                <?= $price2 ?>
+                                                            </p>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </button>
-                            </div>
-                    <?php
+                                    </button>
+                                </div>
+                                <?php
+                            }
+                        } else {
+                            echo "ไม่พบสินค้าในระบบ";
                         }
-                    } else {
-                        echo "ไม่พบสินค้าในระบบ";
-                    }
-                    $conn->close();
-                    ?>
+                        $conn->close();
+                        ?>
+                    </div>
                 </div>
             </div>
         </div>
@@ -349,16 +424,18 @@ if ($langId == 1) {
                     </li>
                 </ul>
                 <div class="row">
-                    <?php
-                    $servername = "localhost";
-                    $username = "root";
-                    $password = "";
-                    $dbname = "bsa";
+                    <div class="owl-carousel owl-theme" id="owl-sl2">
+                        <?php
+                        $servername = "localhost";
+                        $username = "root";
+                        $password = "";
+                        $dbname = "bsa";
 
-                    $conn = new mysqli($servername, $username, $password, $dbname);
-                    $sql = "SELECT * FROM `add_product` WHERE `type`= 'Body Mask'";
-                    $result = $conn->query($sql);
+                        $conn = new mysqli($servername, $username, $password, $dbname);
+                        $sql = "SELECT * FROM `add_product` WHERE `type`= 'Body Mask'";
+                        $result = $conn->query($sql);
 
+<<<<<<< HEAD
                     if ($result->num_rows > 0) {
                         while ($row = $result->fetch_assoc()) {
                     ?>
@@ -394,22 +471,63 @@ if ($langId == 1) {
                                                         <p>THB/kg</p>
                                                         <p>
                                                             <?= $price2 ?>
+=======
+                        if ($result->num_rows > 0) {
+                            while ($row = $result->fetch_assoc()) {
+                                ?>
+                                <div class="col-lg-12 mb-4" data-aos="flip-right" data-aos-duration="2000">
+                                    <button class="open-popup">
+                                        <div class="card">
+                                            <img src="<?php echo $row['img']; ?>" alt="" class="w-100">
+                                            <div class="card-body">
+                                                <h5 class="card-title">
+                                                    <?php echo $row['name_th']; ?>
+                                                </h5>
+                                                <h5 class="card-title">
+                                                    <?php echo $row['name_eng']; ?>
+                                                </h5>
+                                                <p class="card-text"><i class="fa-sharp fa-solid fa-circle-check"></i>
+                                                    <?php echo $row['detail_th']; ?>
+                                                </p>
+                                                <p class="card-text"><i class="fa-sharp fa-solid fa-circle-check"></i>
+                                                    <?php echo $row['detail_eng']; ?>
+                                                </p>
+                                                <!-- <p class="mt-3 mb-0">Aroma Scents : Ylang Ylang Oil & Lavender Oil</p> -->
+                                            </div>
+                                            <div class="card-footer">
+                                                <div class="wrap">
+                                                    <div class="title">
+                                                        <p>Wholesale Price :</p>
+                                                        <p class="ship">
+                                                            <?= $price1 ?>
+>>>>>>> cc532cb73924955818687bcb6cc66ffd94944a9a
                                                         </p>
+                                                    </div>
+                                                    <div class="price">
+                                                        <p class="price-product">
+                                                            <?php echo $row['price']; ?>
+                                                        </p>
+                                                        <div class="rate">
+                                                            <p>THB/kg</p>
+                                                            <p>
+                                                                <?= $price2 ?>
+                                                            </p>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </button>
-                            </div>
-                    <?php
+                                    </button>
+                                </div>
+                                <?php
+                            }
+                        } else {
+                            echo "ไม่พบสินค้าในระบบ";
                         }
-                    } else {
-                        echo "ไม่พบสินค้าในระบบ";
-                    }
 
-                    $conn->close();
-                    ?>
+                        $conn->close();
+                        ?>
+                    </div>
                 </div>
             </div>
         </div>
@@ -425,16 +543,18 @@ if ($langId == 1) {
                     </li>
                 </ul>
                 <div class="row">
-                    <?php
-                    $servername = "localhost";
-                    $username = "root";
-                    $password = "";
-                    $dbname = "bsa";
+                    <div class="owl-carousel owl-theme" id="owl-sl3">
+                        <?php
+                        $servername = "localhost";
+                        $username = "root";
+                        $password = "";
+                        $dbname = "bsa";
 
-                    $conn = new mysqli($servername, $username, $password, $dbname);
-                    $sql = "SELECT * FROM `add_product` WHERE `type`= 'Body Massage Oil'";
-                    $result = $conn->query($sql);
+                        $conn = new mysqli($servername, $username, $password, $dbname);
+                        $sql = "SELECT * FROM `add_product` WHERE `type`= 'Body Massage Oil'";
+                        $result = $conn->query($sql);
 
+<<<<<<< HEAD
                     if ($result->num_rows > 0) {
                         while ($row = $result->fetch_assoc()) {
                     ?>
@@ -470,22 +590,63 @@ if ($langId == 1) {
                                                         <p>THB/kg</p>
                                                         <p>
                                                             <?= $price2 ?>
+=======
+                        if ($result->num_rows > 0) {
+                            while ($row = $result->fetch_assoc()) {
+                                ?>
+                                <div class="col-lg-12 mb-4" data-aos="flip-right" data-aos-duration="2000">
+                                    <button class="open-popup">
+                                        <div class="card">
+                                            <img src="<?php echo $row['img']; ?>" alt="" class="w-100">
+                                            <div class="card-body">
+                                                <h5 class="card-title">
+                                                    <?php echo $row['name_th']; ?>
+                                                </h5>
+                                                <h5 class="card-title">
+                                                    <?php echo $row['name_eng']; ?>
+                                                </h5>
+                                                <p class="card-text"><i class="fa-sharp fa-solid fa-circle-check"></i>
+                                                    <?php echo $row['detail_th']; ?>
+                                                </p>
+                                                <p class="card-text"><i class="fa-sharp fa-solid fa-circle-check"></i>
+                                                    <?php echo $row['detail_eng']; ?>
+                                                </p>
+                                                <!-- <p class="mt-3 mb-0">Aroma Scents : Ylang Ylang Oil & Lavender Oil</p> -->
+                                            </div>
+                                            <div class="card-footer">
+                                                <div class="wrap">
+                                                    <div class="title">
+                                                        <p>Wholesale Price :</p>
+                                                        <p class="ship">
+                                                            <?= $price1 ?>
+>>>>>>> cc532cb73924955818687bcb6cc66ffd94944a9a
                                                         </p>
+                                                    </div>
+                                                    <div class="price">
+                                                        <p class="price-product">
+                                                            <?php echo $row['price']; ?>
+                                                        </p>
+                                                        <div class="rate">
+                                                            <p>THB/kg</p>
+                                                            <p>
+                                                                <?= $price2 ?>
+                                                            </p>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </button>
-                            </div>
-                    <?php
+                                    </button>
+                                </div>
+                                <?php
+                            }
+                        } else {
+                            echo "ไม่พบสินค้าในระบบ";
                         }
-                    } else {
-                        echo "ไม่พบสินค้าในระบบ";
-                    }
 
-                    $conn->close();
-                    ?>
+                        $conn->close();
+                        ?>
+                    </div>
                 </div>
             </div>
         </div>
@@ -501,7 +662,7 @@ if ($langId == 1) {
             <div class="popup-content">
                 <span class="close-popup" id="close-popup1">&times;</span>
                 <div class="homecontent">
-                    <?php if (isset($_SESSION['username'])) : ?>
+                    <?php if (isset($_SESSION['username'])): ?>
                         <div class="box">
                             <div class="container">
                                 <div class="row">
@@ -517,12 +678,14 @@ if ($langId == 1) {
                                 </button>
                             </div>
                         </div>
-                    <?php else : ?>
+                    <?php else: ?>
                         <div class="box">
                             <div class="container">
                                 <div class="row">
                                     <div class="titlebox">
-                                        <h1><?= $pleasesignin ?></h1>
+                                        <h1>
+                                            <?= $pleasesignin ?>
+                                        </h1>
                                     </div>
                                     <div class="col-lg-6 aos-init aos-animate" data-aos="zoom-in" data-aos-duration="2000">
                                         <img src="assets/images/BSA.png" alt="" class="BSAlogo">
@@ -531,18 +694,26 @@ if ($langId == 1) {
                                         <div class="content">
                                             <form action="login_db_popup.php" method="post" class="pop1">
                                                 <div class="input-group">
-                                                    <label for="username"><?= $username ?></label>
+                                                    <label for="username">
+                                                        <?= $username ?>
+                                                    </label>
                                                     <input type="text" name="username">
                                                 </div>
                                                 <div class="input-group">
-                                                    <label for="password"><?= $password ?></label>
+                                                    <label for="password">
+                                                        <?= $password ?>
+                                                    </label>
                                                     <input type="password" name="password">
                                                 </div>
                                                 <div class="input-group">
-                                                    <button type="submit" name="login_user" class="btn"><?= $signin ?></button>
+                                                    <button type="submit" name="login_user" class="btn">
+                                                        <?= $signin ?>
+                                                    </button>
                                                 </div>
                                                 <div>
-                                                    <a href="register.php"><?= $register ?></a>
+                                                    <a href="register.php">
+                                                        <?= $register ?>
+                                                    </a>
                                                 </div>
                                             </form>
                                         </div>
@@ -593,7 +764,9 @@ if ($langId == 1) {
                     <img src="assets/images/image 9.svg" alt="" class="w-70">
                     <p style="text-align: center;font-size: 30px;">รอตรวจสอบการโอนเงินภายใน 24 ชม.</p>
                     <button class="button-success" id="button-success3">
-                        <a href="user.php"><?= $purchase_history ?></a>
+                        <a href="user.php">
+                            <?= $purchase_history ?>
+                        </a>
                     </button>
                     <button class="button-close" id="button-close3">ปิด</button>
                 </div>
@@ -696,6 +869,72 @@ if ($langId == 1) {
 
 <script>
     AOS.init();
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+<script>
+    $('#owl-sl').owlCarousel({
+        loop: true,
+        margin: 10,
+        nav: true,
+        center: true,
+        responsive: {
+            0: {
+                items: 1
+            },
+            600: {
+                items: 3
+            },
+            1000: {
+                items: 3
+            }
+        }
+    })
+
+
+</script>
+<script>
+    $('#owl-sl2').owlCarousel({
+        loop: true,
+        margin: 10,
+        nav: true,
+        center: true,
+        responsive: {
+            0: {
+                items: 1
+            },
+            600: {
+                items: 3
+            },
+            1000: {
+                items: 3
+            }
+        }
+    })
+
+
+</script>
+<script>
+    $('#owl-sl3').owlCarousel({
+        loop: true,
+        margin: 10,
+        nav: true,
+        center: true,
+        responsive: {
+            0: {
+                items: 1
+            },
+            600: {
+                items: 3
+            },
+            1000: {
+                items: 3
+            }
+        }
+    })
+
+
 </script>
 
 </html>
