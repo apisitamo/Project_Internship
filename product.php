@@ -239,6 +239,15 @@ if ($langId == 1) {
     .product .owl-nav {
         display: none;
     }
+    .product #owl-sl2 .owl-dots {
+        display: block;
+        margin-top: 0px;
+    }
+    .product #owl-sl3 .owl-dots {
+        display: block;
+        margin-top: 0px;
+    }
+    
 </style>
 
 <body>
@@ -377,7 +386,7 @@ if ($langId == 1) {
                     </li>
                 </ul>
                 <div class="row">
-                    <div class="owl-carousel owl-theme" id="owl-sl">
+                    <div class="owl-carousel owl-theme" id="owl-sl2">
                         <?php
                         $servername = "localhost";
                         $username = "root";
@@ -458,7 +467,7 @@ if ($langId == 1) {
                     </li>
                 </ul>
                 <div class="row">
-                    <div class="owl-carousel owl-theme" id="owl-sl">
+                    <div class="owl-carousel owl-theme" id="owl-sl3">
                         <?php
                         $servername = "localhost";
                         $username = "root";
@@ -752,6 +761,48 @@ if ($langId == 1) {
 
 <script>
     $('#owl-sl').owlCarousel({
+        loop: true,
+        margin: 10,
+        nav: true,
+        center: true,
+        responsive: {
+            0: {
+                items: 1
+            },
+            600: {
+                items: 3
+            },
+            1000: {
+                items: 3
+            }
+        }
+    })
+
+
+</script>
+<script>
+    $('#owl-sl2').owlCarousel({
+        loop: true,
+        margin: 10,
+        nav: true,
+        center: true,
+        responsive: {
+            0: {
+                items: 1
+            },
+            600: {
+                items: 3
+            },
+            1000: {
+                items: 3
+            }
+        }
+    })
+
+
+</script>
+<script>
+    $('#owl-sl3').owlCarousel({
         loop: true,
         margin: 10,
         nav: true,
