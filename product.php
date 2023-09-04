@@ -180,6 +180,46 @@ if ($langId == 1) {
         padding: 0px;
         box-sizing: border-box;
     }
+    .popup .popup-content .container {
+        width: 550px;
+        display: inherit;
+        position: relative;
+    }
+    .homecontent {
+        margin-top:150px
+    }
+    .popup .container p {
+        font-size: 45px;
+        color: #A97C53;
+    }
+    .popup button {
+        border-radius: 25px;
+        font-size: 18px;
+        border: none;
+        text-align: center;
+        margin-top: 10px;
+        padding: 15px 50px;
+        display: inline-block;
+    }
+    .button-success {
+        background-color: green;
+        margin-left: 70px;
+    }
+    .button-close {
+        background-color: red;
+        margin-left: 70px;
+    }
+    .button-success-2 {
+        background-color: green;
+    }
+    .button-close-2 {
+        background-color: red;
+        margin-left: 110px;
+    }
+    .popup .container img {
+        margin-left: 100px;
+    }
+
 </style>
 
 <body>
@@ -465,13 +505,13 @@ if ($langId == 1) {
                                     <p style="text-align: center;">
                                         <?= $confirmorder ?>
                                     </p>
-                                    <button class="button-success" id="button-success1">
+                                </div>
+                                <button class="button-success" id="button-success1">
                                         <?= $confirm ?>
                                     </button>
-                                    <button class="button-close" id="button-close1">
+                                <button class="button-close" id="button-close1">
                                         <?= $cancle ?>
-                                    </button>
-                                </div>
+                                </button>
                             </div>
                         </div>
                     <?php else : ?>
@@ -530,10 +570,12 @@ if ($langId == 1) {
         <div class="popup" id="popup2">
             <div class="popup-content">
                 <span class="close-popup" id="close-popup2">&times;</span>
-                <div>
-                    <p style="text-align: center;">second popup</p>
-                    <button class="button-success" id="button-success2">ยืนยัน</button>
-                    <button class="button-close" id="button-close2">ปิด</button>
+                <div class="container">
+                    <p style="text-align: center;">คุณต้องการซื้อ....</p>
+                    <img src="assets/images/QR.svg" alt="" class="w-65">
+                    <p style="text-align: center;font-size: 30px;">ราคา บาท</p>
+                    <button class="button-success-2" id="button-success2">ยืนยันการโอน</button>
+                    <button class="button-close-2" id="button-close2">ยกเลิกการโอน</button>
                 </div>
             </div>
         </div>
@@ -543,8 +585,10 @@ if ($langId == 1) {
         <div class="popup" id="popup3">
             <div class="popup-content">
                 <span class="close-popup" id="close-popup3">&times;</span>
-                <div>
-                    <p style="text-align: center;">third popup</p>
+                <div class="container">
+                    <p style="text-align: center;">ขอบคุณการซื้อ ผลิตภัณฑ์</p>
+                    <img src="assets/images/image 9.svg" alt="" class="w-70">
+                    <p style="text-align: center;font-size: 30px;">รอตรวจสอบการโอนเงินภายใน  24 ชม.</p>
                     <button class="button-success" id="button-success3">
                         <a href="user.php"><?= $purchase_history ?></a>
                     </button>
