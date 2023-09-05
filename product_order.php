@@ -19,35 +19,65 @@ $result = mysqli_query($db, $query);
 ?>
 
 <style>
-    .bottom-box {
+    .pro-order .bottom-box {
         flex: 1;
         padding: 20px;
         box-sizing: border-box;
         background-color: #c0c0c0;
     }
 
-    table {
+    .pro-order table {
         border-collapse: collapse;
         width: 100%;
         border: 1px solid #ccc;
     }
 
-    th,
-    td {
+    .pro-order th,
+    .pro-order td {
         border: 1px solid #ccc;
         padding: 8px;
         text-align: center;
     }
 
-    th {
+    .pro-order th {
         background-color: #f2f2f2;
     }
+
+    .pro-order button {
+        padding: 6px;
+        border-radius: 10px;
+        border: none;
+    }
+
+    .pro-order .filter-buttons {
+        margin-bottom: 10px;
+    }
+
+    .pro-order .filter-buttons button:nth-child(1) {
+       background-color: aqua;
+    }
+    .pro-order .filter-buttons button:nth-child(2) {
+       background-color: yellow;
+    }
+    .pro-order .filter-buttons button:nth-child(3) {
+       background-color: #00e700;
+    }
+    .pro-order .filter-buttons button:nth-child(4) {
+       background-color: #ff1e1e;
+    }
+
+    .pro-order .table_order button {
+        background-color: orange;
+    }
+    
 </style>
 
 <body>
-    <section>
+    <section class="pro-order">
         <div class="homeheader">
-            <h2 style="text-align: center;"><?= $product_order ?></h2>
+            <h2 style="text-align: center;">
+                <?= $product_order ?>
+            </h2>
         </div>
         <div class="container">
             <div class="filter-buttons">
@@ -70,27 +100,46 @@ $result = mysqli_query($db, $query);
                     </tr>
                     <?php
                     $i = 1;
-                    while ($row = mysqli_fetch_assoc($result)) :
-                    ?>
+                    while ($row = mysqli_fetch_assoc($result)):
+                        ?>
                         <tr data-status="<?php echo $row['status']; ?>">
-                            <td><?php echo $i++; ?></td>
-                            <td><?php echo $row['username']; ?></td>
-                            <td><?php echo $row['type']; ?></td>
-                            <td><?php echo $row['item']; ?></td>
-                            <td><?php echo $row['quantity']; ?></td>
-                            <td><?php echo $row['price']; ?></td>
+                            <td>
+                                <?php echo $i++; ?>
+                            </td>
+                            <td>
+                                <?php echo $row['username']; ?>
+                            </td>
+                            <td>
+                                <?php echo $row['type']; ?>
+                            </td>
+                            <td>
+                                <?php echo $row['item']; ?>
+                            </td>
+                            <td>
+                                <?php echo $row['quantity']; ?>
+                            </td>
+                            <td>
+                                <?php echo $row['price']; ?>
+                            </td>
                             <td>
                                 <select class="status-dropdown" data-row-id="<?php echo $row['id']; ?>" disabled>
-                                    <option value="รอตรวจสอบ" <?php if ($row['status'] === 'รอตรวจสอบ') echo 'selected'; ?>>รอตรวจสอบ</option>
-                                    <option value="สำเร็จ" <?php if ($row['status'] === 'สำเร็จ') echo 'selected'; ?>>สำเร็จ</option>
-                                    <option value="ปฏิเสธ" <?php if ($row['status'] === 'ปฏิเสธ') echo 'selected'; ?>>ปฏิเสธ</option>
+                                    <option value="รอตรวจสอบ" <?php if ($row['status'] === 'รอตรวจสอบ')
+                                        echo 'selected'; ?>>
+                                        รอตรวจสอบ</option>
+                                    <option value="สำเร็จ" <?php if ($row['status'] === 'สำเร็จ')
+                                        echo 'selected'; ?>>สำเร็จ
+                                    </option>
+                                    <option value="ปฏิเสธ" <?php if ($row['status'] === 'ปฏิเสธ')
+                                        echo 'selected'; ?>>ปฏิเสธ
+                                    </option>
                                 </select>
                                 <button class="edit-button" data-row-id="<?php echo $row['id']; ?>">แก้ไข</button>
                                 <button class="save-button" data-row-id="<?php echo $row['id']; ?>">บันทึก</button>
                                 <button class="cancle-button" data-row-id="<?php echo $row['id']; ?>">ยกเลิก</button>
                             </td>
                             <td>
-                                <input type="text" class="note-input" data-row-id="<?php echo $row['id']; ?>" value="<?php echo $row['note']; ?>" disabled>
+                                <input type="text" class="note-input" data-row-id="<?php echo $row['id']; ?>"
+                                    value="<?php echo $row['note']; ?>" disabled>
                                 <button class="edit-note-button" data-row-id="<?php echo $row['id']; ?>">แก้ไข</button>
                                 <button class="save-note-button" data-row-id="<?php echo $row['id']; ?>">บันทึก</button>
                                 <button class="cancle-button" data-row-id="<?php echo $row['id']; ?>">ยกเลิก</button>
@@ -112,7 +161,7 @@ $result = mysqli_query($db, $query);
     const tableRows = document.querySelectorAll('.table_order table tr');
 
     filterButtons.forEach(button => {
-        button.addEventListener('click', function() {
+        button.addEventListener('click', function () {
             const status = this.getAttribute('data-status');
 
             tableRows.forEach(row => {
@@ -131,7 +180,7 @@ $result = mysqli_query($db, $query);
 
     editButtons.forEach(button => {
         const rowId = button.getAttribute('data-row-id');
-        button.addEventListener('click', function() {
+        button.addEventListener('click', function () {
             const row = button.closest('tr');
             const statusDropdown = row.querySelector(`select[data-row-id="${rowId}"]`);
             statusDropdown.removeAttribute('disabled');
@@ -145,7 +194,7 @@ $result = mysqli_query($db, $query);
 
     saveButtons.forEach(button => {
         const rowId = button.getAttribute('data-row-id');
-        button.addEventListener('click', async function() {
+        button.addEventListener('click', async function () {
             const row = button.closest('tr');
             const statusDropdown = row.querySelector(`select[data-row-id="${rowId}"]`);
             const selectedStatus = statusDropdown.value;
@@ -173,7 +222,7 @@ $result = mysqli_query($db, $query);
 
     editNoteButtons.forEach(button => {
         const rowId = button.getAttribute('data-row-id');
-        button.addEventListener('click', function() {
+        button.addEventListener('click', function () {
             const row = button.closest('tr');
             const noteInput = row.querySelector(`input.note-input[data-row-id="${rowId}"]`);
             noteInput.removeAttribute('disabled');
@@ -188,7 +237,7 @@ $result = mysqli_query($db, $query);
     noteInputs.forEach(input => {
         const rowId = input.getAttribute('data-row-id');
 
-        input.addEventListener('input', function() {
+        input.addEventListener('input', function () {
             const noteValue = input.value.trim();
             const saveNoteButton = input.parentElement.querySelector(`button.save-note-button[data-row-id="${rowId}"]`);
 
@@ -204,7 +253,7 @@ $result = mysqli_query($db, $query);
 
     saveNoteButtons.forEach(button => {
         const rowId = button.getAttribute('data-row-id');
-        button.addEventListener('click', async function() {
+        button.addEventListener('click', async function () {
             const row = button.closest('tr');
             const noteInput = row.querySelector(`input.note-input[data-row-id="${rowId}"]`);
             const noteValue = noteInput.value.trim();
@@ -237,7 +286,7 @@ $result = mysqli_query($db, $query);
     const deleteButtons = document.querySelectorAll('.delete-button');
 
     deleteButtons.forEach(button => {
-        button.addEventListener('click', function() {
+        button.addEventListener('click', function () {
             const rowId = button.getAttribute('data-row-id');
 
             if (confirm('คุณต้องการลบข้อมูลนี้หรือไม่?')) {
@@ -266,7 +315,7 @@ $result = mysqli_query($db, $query);
             console.error('เกิดข้อผิดพลาดในการลบข้อมูล:', error);
         }
     }
-    
+
 </script>
 
 </html>
