@@ -1,8 +1,8 @@
 <?php
 if($langId == 1){
     $login = "เข้าสู่ระบบ";
-    $username = "ชื่อผู้ใช้";
-    $password = "รหัสผ่าน";
+    $usernames = "ชื่อผู้ใช้";
+    $passwords = "รหัสผ่าน";
     $notyet = "มีบัญชีแล้วหรือยัง ? ";
     $signup = "ลงทะเบียน";
     $confirmorder="ยืนยันการสั่งซื้อ";
@@ -20,8 +20,8 @@ if($langId == 1){
 
 }else{
     $login = "LOGIN";
-    $username = "USERNAME";
-    $password = "PASSWORD";
+    $usernames = "USERNAME";
+    $passwords = "PASSWORD";
     $notyet = "NOTYET MEMBER ?";
     $signup = "SIGN UP";
     $confirmorder="CONFIRM ORDER";

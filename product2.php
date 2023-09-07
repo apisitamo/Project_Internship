@@ -2,7 +2,7 @@
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <?php
 include 'include/head.php';
-// include 'include/langid.php';
+include 'include/langid.php';
 include('server.php');
 
 if ($langId == 1) {
@@ -324,7 +324,7 @@ if ($langId == 1) {
                     }
                     $conn->close();
                     ?>
-                    
+
                 </div>
             </div>
         </div>
@@ -370,11 +370,11 @@ if ($langId == 1) {
                                         <div class="content">
                                             <form action="login_db_popup.php" method="post" class="pop1">
                                                 <div class="input-group">
-                                                    <label for="username"><?= $username ?></label>
+                                                    <label for="username"><?= $usernames ?></label>
                                                     <input type="text" name="username">
                                                 </div>
                                                 <div class="input-group">
-                                                    <label for="password"><?= $password ?></label>
+                                                    <label for="password"><?= $passwords ?></label>
                                                     <input type="password" name="password">
                                                 </div>
                                                 <div class="input-group">

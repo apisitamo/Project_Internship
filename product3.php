@@ -369,11 +369,11 @@ if ($langId == 1) {
                                         <div class="content">
                                             <form action="login_db_popup.php" method="post" class="pop1">
                                                 <div class="input-group">
-                                                    <label for="username"><?= $username ?></label>
+                                                    <label for="username"><?= $usernames ?></label>
                                                     <input type="text" name="username">
                                                 </div>
                                                 <div class="input-group">
-                                                    <label for="password"><?= $password ?></label>
+                                                    <label for="password"><?= $passwords ?></label>
                                                     <input type="password" name="password">
                                                 </div>
                                                 <div class="input-group">

@@ -9,7 +9,7 @@
 </script>
 <?php
 include 'include/head.php';
-// include 'include/langid.php';
+include 'include/langid.php';
 include('server.php');
 
 if ($langId == 1) {
@@ -528,7 +528,7 @@ if ($langId == 1) {
                         }
                         $conn->close();
                         ?>
-                        
+
                     </div>
                 </div>
             </div>
@@ -578,13 +578,13 @@ if ($langId == 1) {
                                             <form action="login_db_popup.php" method="post" class="pop1">
                                                 <div class="input-group">
                                                     <label for="username">
-                                                        <?= $username ?>
+                                                        <?= $usernames ?>
                                                     </label>
                                                     <input type="text" name="username">
                                                 </div>
                                                 <div class="input-group">
                                                     <label for="password">
-                                                        <?= $password ?>
+                                                        <?= $passwords ?>
                                                     </label>
                                                     <input type="password" name="password">
                                                 </div>
