@@ -36,7 +36,7 @@ if ($langId == 1) {
 
 <body>
 
-    <section class="banner-page"data-aos="flip-down" data-aos-duration="2000">
+    <section class="banner-page" data-aos="flip-down" data-aos-duration="2000">
         <div class="wrap">
             <img src="assets/images/banner-page.png" alt="">
             <p><?= $course ?></p>
@@ -47,7 +47,7 @@ if ($langId == 1) {
         <div class="container">
             <div class="course">
 
-                <ul class="nav nav-page"data-aos="fade-right" data-aos-duration="2000">
+                <ul class="nav nav-page" data-aos="fade-right" data-aos-duration="2000">
                     <li class="nav-item">
                         <a class="nav-link " aria-current="page" href="allcourse.php"><?= $nav1 ?></a>
                     </li>
@@ -65,70 +65,55 @@ if ($langId == 1) {
 
                 <div class="course-content">
                     <div class="row">
-                        <div class="col-lg-4 col-md-6 col-sm-12 mb-4"data-aos="flip-right" data-aos-duration="2000">
-                            <a href="coursedetail.php?id=1">
-                                <div class="card">
-                                    <img src="assets/images/healthspa1.png" class="card-img-top">
-                                    <div class="card-body">
-                                        <span class="title"><?= $course1 ?></span>
-                                        <div class="price">
-                                            <span><i class="fa-regular fa-money-bill"></i><?= $price1 ?></span>
-                                            <span><i class="fa-regular fa-clock"></i><?= $Duration5 ?></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
+                        <?php
+                        $servername = "localhost";
+                        $username = "root";
+                        $password = "";
+                        $dbname = "bsa";
 
-                        <div class="col-lg-4 col-md-6 col-sm-12 mb-4"data-aos="flip-right" data-aos-duration="2000">
-                            <a href="coursedetail.php?id=10">
-                                <div class="card">
-                                    <img src="assets/images/allcourse10.png" class="card-img-top">
-                                    <div class="card-body">
-                                        <span class="title"><?= $course2 ?></span>
-                                        <div class="price">
-                                            <span><i class="fa-regular fa-money-bill"></i><?= $price1 ?></span>
-                                            <span><i class="fa-regular fa-clock"></i><?= $Duration5 ?></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
+                        $conn = new mysqli($servername, $username, $password, $dbname);
+                        $sql = "SELECT * FROM `add_course` WHERE `type`= 'Health Spa Course' ORDER BY id DESC";
+                        $result = $conn->query($sql);
 
-                        <div class="col-lg-4 col-md-6 col-sm-12 mb-4"data-aos="flip-right" data-aos-duration="2000">
-                            <a href="coursedetail.php?id=3">
-                                <div class="card">
-                                    <img src="assets/images/healthspa3.png" class="card-img-top">
-                                    <div class="card-body">
-                                        <span class="title"><?= $course3 ?></span>
-                                        <div class="price">
-                                            <span><i class="fa-regular fa-money-bill"></i><?= $price1 ?></span>
-                                            <span><i class="fa-regular fa-clock"></i><?= $Duration5 ?></span>
+                        if ($result->num_rows > 0) {
+                            while ($row = $result->fetch_assoc()) {
+                        ?>
+                                <div class="col-lg-4 col-md-6 col-sm-12 mb-4" data-aos="flip-right" data-aos-duration="2000">
+                                    <a href="coursedetail.php?product_id=<?php echo $row['id']; ?>">
+                                        <div class="card">
+                                            <img src="<?php echo $row['img']; ?>" class="card-img-top">
+                                            <div class="card-body">
+                                                <?php if ($langId == 1) { ?>
+                                                    <span class="title">
+                                                        <?php echo $row['name_th']; ?>
+                                                    </span>
+                                                <?php } else { ?>
+                                                    <span class="title">
+                                                        <?php echo $row['name_eng']; ?>
+                                                    </span>
+                                                <?php } ?>
+                                                <div class="price">
+                                                    <span><i class="fa-regular fa-money-bill"></i> <?= $prices ?> <?php echo $row['price']; ?> <?= $baht ?> </span>
+                                                    <span><i class="fa-regular fa-clock"></i> <?= $duration ?> <?php echo $row['day']; ?> <?= $days ?> </span>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
+                                    </a>
                                 </div>
-                            </a>
-                        </div>
-
-                        <div class="col-lg-4 col-md-6 col-sm-12 mb-4"data-aos="flip-right" data-aos-duration="2000">
-                            <a href="coursedetail.php?id=2">
-                                <div class="card">
-                                    <img src="assets/images/allcourse2.png" class="card-img-top">
-                                    <div class="card-body">
-                                        <span class="title"><?= $course4 ?></span>
-                                        <div class="price">
-                                            <span><i class="fa-regular fa-money-bill"></i><?= $price1 ?></span>
-                                            <span><i class="fa-regular fa-clock"></i><?= $Duration5 ?></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-
+                        <?php
+                            }
+                        } else {
+                            echo "ไม่พบสินค้าในระบบ";
+                        }
+                        $conn->close();
+                        ?>
                     </div>
                 </div>
 
             </div>
+        </div>
+
+        </div>
         </div>
     </section>
     <?php include 'include/footer.php'; ?>
@@ -151,6 +136,7 @@ if ($langId == 1) {
     splide.mount();
 </script>
 <script>
-  AOS.init();
+    AOS.init();
 </script>
+
 </html>

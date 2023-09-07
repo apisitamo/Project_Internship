@@ -71,52 +71,48 @@ if ($langId == 1) {
 
                 <div class="course-content">
                     <div class="row">
-                        <div class="col-lg-4 col-md-6 col-sm-12 mb-4"data-aos="flip-right" data-aos-duration="2000">
-                            <a href="coursedetail.php?id=7">
-                                <div class="card">
-                                    <img src="assets/images/allcourse7.png" class="card-img-top">
-                                    <div class="card-body">
-                                        <span class="title"><?= $course8 ?></span>
-                                        <div class="price">
-                                            <span><i class="fa-regular fa-money-bill"></i><?= $price1 ?></span>
-                                            <span><i class="fa-regular fa-clock"></i><?= $Duration3 ?></span>
+                        <?php
+                        $servername = "localhost";
+                        $username = "root";
+                        $password = "";
+                        $dbname = "bsa";
+
+                        $conn = new mysqli($servername, $username, $password, $dbname);
+                        $sql = "SELECT * FROM `add_course` WHERE `type`= 'Advanced Spa' ORDER BY id DESC";
+                        $result = $conn->query($sql);
+
+                        if ($result->num_rows > 0) {
+                            while ($row = $result->fetch_assoc()) {
+                        ?>
+                                <div class="col-lg-4 col-md-6 col-sm-12 mb-4" data-aos="flip-right" data-aos-duration="2000">
+                                    <a href="coursedetail.php?product_id=<?php echo $row['id']; ?>">
+                                        <div class="card">
+                                            <img src="<?php echo $row['img']; ?>" class="card-img-top">
+                                            <div class="card-body">
+                                                <?php if ($langId == 1) { ?>
+                                                    <span class="title">
+                                                        <?php echo $row['name_th']; ?>
+                                                    </span>
+                                                <?php } else { ?>
+                                                    <span class="title">
+                                                        <?php echo $row['name_eng']; ?>
+                                                    </span>
+                                                <?php } ?>
+                                                <div class="price">
+                                                    <span><i class="fa-regular fa-money-bill"></i> <?= $prices ?> <?php echo $row['price']; ?> <?= $baht ?> </span>
+                                                    <span><i class="fa-regular fa-clock"></i> <?= $duration ?> <?php echo $row['day']; ?> <?= $days ?> </span>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
+                                    </a>
                                 </div>
-                            </a>
-                        </div>
-
-                        <div class="col-lg-4 col-md-6 col-sm-12 mb-4"data-aos="flip-right" data-aos-duration="2000">
-                            <a href="coursedetail.php?id=8">
-                                <div class="card">
-                                    <img src="assets/images/allcourse8.png" class="card-img-top">
-                                    <div class="card-body">
-                                        <span class="title"><?= $course9 ?></span>
-                                        <div class="price">
-                                            <span><i class="fa-regular fa-money-bill"></i><?= $price1 ?></span>
-                                            <span><i class="fa-regular fa-clock"></i><?= $Duration3 ?></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-
-                        <div class="col-lg-4 col-md-6 col-sm-12 mb-4"data-aos="flip-right" data-aos-duration="2000">
-                            <a href="coursedetail.php?id=9">
-                                <div class="card">
-                                    <img src="assets/images/allcourse15.png" class="card-img-top">
-                                    <div class="card-body">
-                                        <span class="title"><?= $course10 ?></span>
-                                        <div class="price">
-                                            <span><i class="fa-regular fa-money-bill"></i><?= $price1 ?></span>
-                                            <span><i class="fa-regular fa-clock"></i><?= $Duration3 ?></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-
-
+                        <?php
+                            }
+                        } else {
+                            echo "ไม่พบสินค้าในระบบ";
+                        }
+                        $conn->close();
+                        ?>
                     </div>
                 </div>
 
