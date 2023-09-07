@@ -9,8 +9,8 @@
 </script>
 <?php
 include 'include/head.php';
-include 'include/langid.php';
-// include('server.php');
+// include 'include/langid.php';
+include('server.php');
 
 if ($langId == 1) {
     $title = "ผลิตภัณฑ์สปา";
@@ -308,12 +308,8 @@ if ($langId == 1) {
                 </ul>
                 <div class="row">
                     <div class="owl-carousel owl-theme" id="owl-sl">
-                        <?php
-                        $servername = "localhost";
-                        $username = "root";
-                        $password = "";
-                        $dbname = "bsa";
 
+                        <?php
                         $conn = new mysqli($servername, $username, $password, $dbname);
                         $sql = "SELECT * FROM `add_product` WHERE `type`= 'Body Scrub'ORDER BY id DESC";
                         $result = $conn->query($sql);
@@ -390,12 +386,8 @@ if ($langId == 1) {
                 </ul>
                 <div class="row">
                     <div class="owl-carousel owl-theme" id="owl-sl2">
-                        <?php
-                        $servername = "localhost";
-                        $username = "root";
-                        $password = "";
-                        $dbname = "bsa";
 
+                        <?php
                         $conn = new mysqli($servername, $username, $password, $dbname);
                         $sql = "SELECT * FROM `add_product` WHERE `type`= 'Body Mask'ORDER BY id DESC";
                         $result = $conn->query($sql);
@@ -454,9 +446,9 @@ if ($langId == 1) {
                         } else {
                             echo "ไม่พบสินค้าในระบบ";
                         }
-
                         $conn->close();
                         ?>
+
                     </div>
                 </div>
             </div>
@@ -474,12 +466,8 @@ if ($langId == 1) {
                 </ul>
                 <div class="row">
                     <div class="owl-carousel owl-theme" id="owl-sl3">
-                        <?php
-                        $servername = "localhost";
-                        $username = "root";
-                        $password = "";
-                        $dbname = "bsa";
 
+                        <?php
                         $conn = new mysqli($servername, $username, $password, $dbname);
                         $sql = "SELECT * FROM `add_product` WHERE `type`= 'Body Massage Oil' ORDER BY id DESC";
                         $result = $conn->query($sql);
@@ -538,9 +526,9 @@ if ($langId == 1) {
                         } else {
                             echo "ไม่พบสินค้าในระบบ";
                         }
-
                         $conn->close();
                         ?>
+                        
                     </div>
                 </div>
             </div>

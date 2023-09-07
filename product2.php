@@ -2,8 +2,8 @@
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <?php
 include 'include/head.php';
-include 'include/langid.php';
-// include('server.php');
+// include 'include/langid.php';
+include('server.php');
 
 if ($langId == 1) {
     $title = "ผลิตภัณฑ์สปา";
@@ -268,12 +268,8 @@ if ($langId == 1) {
         <div class="container">
             <div class="wrap">
                 <div class="row">
+                    
                     <?php
-                    $servername = "localhost";
-                    $username = "root";
-                    $password = "";
-                    $dbname = "bsa";
-
                     $conn = new mysqli($servername, $username, $password, $dbname);
                     $sql = "SELECT * FROM `add_product` WHERE `type`= 'Body Scrub'ORDER BY id DESC";
                     $result = $conn->query($sql);
@@ -326,9 +322,9 @@ if ($langId == 1) {
                     } else {
                         echo "ไม่พบสินค้าในระบบ";
                     }
-
                     $conn->close();
                     ?>
+                    
                 </div>
             </div>
         </div>
