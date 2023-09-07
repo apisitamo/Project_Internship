@@ -4,40 +4,29 @@
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
 <?php include 'include/head.php';
+include('server.php');
+
 
 if ($langId == 1) {
     $course = "หลักสูตร";
     $nav1 = "ทั้งหมด";
     $nav2 = "สปาเพื่อสุขภาพ";
     $nav3 = "สปาเพื่อความงาม";
-    $nav4 = "สปาเพื่อความงาม";
-    $course8 = "หลักสูตรนวดหินร้อนบำบัด";
-    $course9 = "หลักสูตรนวดศีรษะอินเดีย";
-    $course10 = "หลักสูตรครอบแก้ว";
-    $price1 = "ราคา 4,500 บาท";
-    $price2 = "ราคา 2,500 บาท";
-    $Duration2 = "ระยะเวลา 2 วัน";
-    $Duration3 = "ระยะเวลา 3 วัน";
-    $Duration4 = "ระยะเวลา 4 วัน";
-    $Duration5 = "ระยะเวลา 5 วัน";
+    $nav4 = "สปาขั้นสูง";
+    $days = 'วัน';
+    $prices = 'ราคา';
+    $baht = 'บาท';
+    $duration = 'ระยะเวลา :';
 } else {
     $course = "COURSE";
     $nav1 = "All";
     $nav2 = "Health Spa Course";
     $nav3 = "Beauty Spa Course";
     $nav4 = "Advanced Spa";
-    $course1 = "Thai massage course";
-    $course2 = "Aromatherapy massage course";
-    $course3 = "Swedish massage course";
-    $course4 = "Foot massage course";
-    $course5 = "Facial massage course";
-    $course6 = "Body Spa course";
-    $course7 = "Sliming & Cellulite massage course";
-    $course8 = "Hot stone massage course";
-    $course9 = "Indian head massage Course";
-    $course10 = "Cupping Therapy Course";
-    $price1 = "Price 4,500 Baht";
-    $Duration3 = "Duration 3 days";
+    $days = 'Days';
+    $prices = 'Price';
+    $baht = 'Baht';
+    $duration = 'Duration :';
 }
 ?>
 
@@ -71,12 +60,8 @@ if ($langId == 1) {
 
                 <div class="course-content">
                     <div class="row">
-                        <?php
-                        $servername = "localhost";
-                        $username = "root";
-                        $password = "";
-                        $dbname = "bsa";
 
+                        <?php
                         $conn = new mysqli($servername, $username, $password, $dbname);
                         $sql = "SELECT * FROM `add_course` WHERE `type`= 'Advanced Spa' ORDER BY id DESC";
                         $result = $conn->query($sql);
@@ -109,7 +94,7 @@ if ($langId == 1) {
                         <?php
                             }
                         } else {
-                            echo "ไม่พบสินค้าในระบบ";
+                            echo "ไม่พบหลักสูตรในระบบ";
                         }
                         $conn->close();
                         ?>

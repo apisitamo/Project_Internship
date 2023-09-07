@@ -4,34 +4,29 @@
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
 <?php include 'include/head.php';
+include('server.php');
+
 
 if ($langId == 1) {
     $course = "หลักสูตร";
     $nav1 = "ทั้งหมด";
     $nav2 = "สปาเพื่อสุขภาพ";
     $nav3 = "สปาเพื่อความงาม";
-    $nav4 = "สปาเพื่อความงาม";
-    $course5 = "หลักสูตรนวดหน้า";
-    $course6 = "หลักสูตรสปาผิวกาย";
-    $course7 = "หลักสูตรนวดสลายไขมัน";
-    $price1 = "ราคา 4,500 บาท";
-    $price2 = "ราคา 2,500 บาท";
-    $Duration2 = "ระยะเวลา 2 วัน";
-    $Duration4 = "ระยะเวลา 4 วัน";
+    $nav4 = "สปาขั้นสูง";
+    $days = 'วัน';
+    $prices = 'ราคา';
+    $baht = 'บาท';
+    $duration = 'ระยะเวลา :';
 } else {
     $course = "COURSE";
     $nav1 = "All";
     $nav2 = "Health Spa Course";
     $nav3 = "Beauty Spa Course";
     $nav4 = "Advanced Spa";
-    $course5 = "Facial massage course";
-    $course6 = "Body Spa course";
-    $course7 = "Sliming & Cellulite massage course";
-    $course10 = "Cupping Therapy Course";
-    $price1 = "Price 4,500 Baht";
-    $price2 = "Price 2,500 Baht";
-    $Duration2 = "Duration 2 days";
-    $Duration4 = "Duration 4 days";
+    $days = 'Days';
+    $prices = 'Price';
+    $baht = 'Baht';
+    $duration = 'Duration :';
 }
 ?>
 
@@ -65,12 +60,8 @@ if ($langId == 1) {
 
                 <div class="course-content">
                     <div class="row">
-                        <?php
-                        $servername = "localhost";
-                        $username = "root";
-                        $password = "";
-                        $dbname = "bsa";
 
+                        <?php
                         $conn = new mysqli($servername, $username, $password, $dbname);
                         $sql = "SELECT * FROM `add_course` WHERE `type`= 'Beauty Spa Course' ORDER BY id DESC";
                         $result = $conn->query($sql);
@@ -103,7 +94,7 @@ if ($langId == 1) {
                         <?php
                             }
                         } else {
-                            echo "ไม่พบสินค้าในระบบ";
+                            echo "ไม่พบหลักสูตรในระบบ";
                         }
                         $conn->close();
                         ?>

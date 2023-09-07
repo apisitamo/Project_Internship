@@ -4,7 +4,7 @@
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
 <?php include 'include/head.php';
-
+include('server.php');
 
 
 if ($langId == 1) {
@@ -60,12 +60,8 @@ if ($langId == 1) {
 
                 <div class="course-content">
                     <div class="row">
-                        <?php
-                        $servername = "localhost";
-                        $username = "root";
-                        $password = "";
-                        $dbname = "bsa";
 
+                        <?php
                         $conn = new mysqli($servername, $username, $password, $dbname);
                         $sql = "SELECT * FROM `add_course` ORDER BY id DESC";
                         $result = $conn->query($sql);
@@ -98,10 +94,11 @@ if ($langId == 1) {
                         <?php
                             }
                         } else {
-                            echo "ไม่พบสินค้าในระบบ";
+                            echo "ไม่พบหลักสูตรในระบบ";
                         }
                         $conn->close();
                         ?>
+                        
                     </div>
                 </div>
 

@@ -303,7 +303,7 @@ if ($langId == 1) {
             <div class="wrap">
                 <ul class="nav nav-page" data-aos="fade-right" data-aos-duration="2000">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="product.php">Body Scrub</a>
+                        <a class="nav-link active" aria-current="page" href="product2.php">Body Scrub</a>
                     </li>
                 </ul>
                 <div class="row">
@@ -381,7 +381,7 @@ if ($langId == 1) {
             <div class="wrap">
                 <ul class="nav nav-page" data-aos="fade-right" data-aos-duration="2000">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="product.php">Body Mask</a>
+                        <a class="nav-link active" aria-current="page" href="product3.php">Body Mask</a>
                     </li>
                 </ul>
                 <div class="row">
@@ -461,7 +461,7 @@ if ($langId == 1) {
             <div class="wrap">
                 <ul class="nav nav-page" data-aos="fade-right" data-aos-duration="2000">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="product.php">Body Massage Oil</a>
+                        <a class="nav-link active" aria-current="page" href="product4.php">Body Massage Oil</a>
                     </li>
                 </ul>
                 <div class="row">

@@ -6,9 +6,6 @@
 include 'include/headadmin.php';
 include('server.php');
 
-$sql = "SELECT * FROM add_product ORDER BY id DESC";
-$result = $conn->query($sql);
-
 if (isset($_GET['delete_id'])) {
     $deleteId = $_GET['delete_id'];
     $deleteQuery = "DELETE FROM add_product WHERE id = '$deleteId'";
@@ -182,11 +179,16 @@ if (!isset($_SESSION['admin'])) {
     </div> -->
 
     <section class="addpro2">
+
         <div class="containerbuttom mt-5">
             <h2>สินค้าทั้งหมด</h2>
             <div class="row">
 
                 <?php
+                $conn = new mysqli($servername, $username, $password, $dbname);
+                $sql = "SELECT * FROM add_product ORDER BY id DESC";
+                $result = $conn->query($sql);
+
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
                 ?>
