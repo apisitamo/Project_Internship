@@ -4,8 +4,7 @@
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <?php
 include 'include/headadmin.php';
-include 'include/langid.php';
-// include('server.php');
+include('server.php');
 
 if (!isset($_SESSION['admin'])) {
     $_SESSION['msg'] = "you must login first";
@@ -180,16 +179,6 @@ if (!isset($_SESSION['admin'])) {
             <h2>หลักสูตรทั้งหมด</h2>
             <div class="row">
                 <?php
-                $servername = "localhost";
-                $username = "root";
-                $password = "";
-                $dbname = "bsa";
-
-                $conn = new mysqli($servername, $username, $password, $dbname);
-
-                if ($conn->connect_error) {
-                    die("Connection failed: " . $conn->connect_error);
-                }
 
                 if (isset($_GET['delete_id'])) {
                     $deleteId = $_GET['delete_id'];

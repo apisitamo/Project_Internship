@@ -45,11 +45,11 @@ if (empty($_SESSION['lang']) || $_SESSION['lang'] == 1) {
 //     session_destroy();
 // }
 
-if (isset($_GET['logout'])) {
-    session_destroy();
-    unset($_SESSION['username']);
-    header('location:index.php');
-}
+// if (isset($_GET['logout'])) {
+//     session_destroy();
+//     unset($_SESSION['username']);
+//     header('location:index.php');
+// }
 
 ?>
 

@@ -4,16 +4,30 @@
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <?php
 include 'include/headadmin.php';
-include 'include/langid.php';
-// include('server.php');
+include('server.php');
 
+$sql = "SELECT * FROM add_product ORDER BY id DESC";
+$result = $conn->query($sql);
+
+if (isset($_GET['delete_id'])) {
+    $deleteId = $_GET['delete_id'];
+    $deleteQuery = "DELETE FROM add_product WHERE id = '$deleteId'";
+    if ($conn->query($deleteQuery) === TRUE) {
+        echo "<script>alert('ลบสินค้าเรียบร้อยแล้ว'); window.location.href = 'add_product.php';</script>";
+    } else {
+        echo "<script>alert('เกิดข้อผิดพลาด: " . $conn->error . "'); window.location.href = 'add_product.php';</script>";
+    }
+}
+?>
+
+<?php
 if (!isset($_SESSION['admin'])) {
     $_SESSION['msg'] = "you must login first";
     header('location:login_admin.php');
     // session_destroy(); 
 }
-
 ?>
+
 <style>
     .addpro1 .containertop,
     .addpro2 .containerbuttom {
@@ -171,31 +185,8 @@ if (!isset($_SESSION['admin'])) {
         <div class="containerbuttom mt-5">
             <h2>สินค้าทั้งหมด</h2>
             <div class="row">
+
                 <?php
-                $servername = "localhost";
-                $username = "root";
-                $password = "";
-                $dbname = "bsa";
-
-                $conn = new mysqli($servername, $username, $password, $dbname);
-
-                if ($conn->connect_error) {
-                    die("Connection failed: " . $conn->connect_error);
-                }
-
-                if (isset($_GET['delete_id'])) {
-                    $deleteId = $_GET['delete_id'];
-                    $deleteQuery = "DELETE FROM add_product WHERE id = '$deleteId'";
-                    if ($conn->query($deleteQuery) === TRUE) {
-                        echo "<script>alert('ลบสินค้าเรียบร้อยแล้ว'); window.location.href = 'add_product.php';</script>";
-                    } else {
-                        echo "<script>alert('เกิดข้อผิดพลาด: " . $conn->error . "'); window.location.href = 'add_product.php';</script>";
-                    }
-                }
-
-                $sql = "SELECT * FROM add_product ORDER BY id DESC";
-                $result = $conn->query($sql);
-
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
                 ?>
@@ -230,9 +221,9 @@ if (!isset($_SESSION['admin'])) {
                 } else {
                     echo "ไม่พบสินค้าในระบบ";
                 }
-
                 $conn->close();
                 ?>
+
             </div>
         </div>
     </section>

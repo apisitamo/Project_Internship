@@ -4,16 +4,30 @@
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <?php
 include 'include/headadmin.php';
-include 'include/langid.php';
 include('server.php');
 
+$sql = "SELECT * FROM add_gallery ORDER BY id DESC";
+$result = $conn->query($sql);
+
+if (isset($_GET['delete_id'])) {
+    $deleteId = $_GET['delete_id'];
+    $deleteQuery = "DELETE FROM add_gallery WHERE id = '$deleteId'";
+    if ($conn->query($deleteQuery) === TRUE) {
+        echo "<script>alert('ลบสินค้าเรียบร้อยแล้ว'); window.location.href = 'add_gallery.php';</script>";
+    } else {
+        echo "<script>alert('เกิดข้อผิดพลาด: " . $conn->error . "'); window.location.href = 'add_gallery.php';</script>";
+    }
+}
+?>
+
+<?php
 if (!isset($_SESSION['admin'])) {
     $_SESSION['msg'] = "you must login first";
     header('location:login_admin.php');
     // session_destroy(); 
 }
-
 ?>
+
 <style>
     .containertop,
     .containerbuttom {
@@ -52,31 +66,8 @@ if (!isset($_SESSION['admin'])) {
         <div class="containerbuttom mt-5">
             <h2>รูปภาพทั้งหมด</h2>
             <div class="row">
+
                 <?php
-                $servername = "localhost";
-                $username = "root";
-                $password = "";
-                $dbname = "bsa";
-
-                $conn = new mysqli($servername, $username, $password, $dbname);
-
-                if ($conn->connect_error) {
-                    die("Connection failed: " . $conn->connect_error);
-                }
-
-                if (isset($_GET['delete_id'])) {
-                    $deleteId = $_GET['delete_id'];
-                    $deleteQuery = "DELETE FROM add_gallery WHERE id = '$deleteId'";
-                    if ($conn->query($deleteQuery) === TRUE) {
-                        echo "<script>alert('ลบสินค้าเรียบร้อยแล้ว'); window.location.href = 'add_gallery.php';</script>";
-                    } else {
-                        echo "<script>alert('เกิดข้อผิดพลาด: " . $conn->error . "'); window.location.href = 'add_gallery.php';</script>";
-                    }
-                }
-
-                $sql = "SELECT * FROM add_gallery ORDER BY id DESC";
-                $result = $conn->query($sql);
-
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
                 ?>
@@ -92,6 +83,7 @@ if (!isset($_SESSION['admin'])) {
 
                 $conn->close();
                 ?>
+                
             </div>
         </div>
     </section>
