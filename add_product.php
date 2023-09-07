@@ -53,7 +53,7 @@ if (!isset($_SESSION['admin'])) {
 
     .addpro2 .product-body .card-text {
         margin-bottom: 35px;
-    } 
+    }
 
     .addpro2 .fa-sharp {
         margin-right: 6px;
@@ -124,20 +124,20 @@ if (!isset($_SESSION['admin'])) {
                     <input type="file" class="form-control" name="img" required>
                 </div>
                 <div class="mb-3">
-                    <label for="name" class="form-label">ชื่อสินค้าไทย</label>
-                    <input type="text" class="form-control" name="name_th" required>
-                </div>
-                <div class="mb-3">
-                    <label for="name" class="form-label">ชื่อสินค้าอังกฤษ</label>
-                    <input type="text" class="form-control" name="name_eng" required>
-                </div>
-                <div class="mb-3">
                     <label for="type" class="form-label">ประเภท</label>
                     <select class="form-control-option" name="type">
                         <option value="Body Scrub">Body Scrub</option>
                         <option value="Body Mask">Body Mask</option>
                         <option value="Body Massage Oil">Body Massage Oil</option>
                     </select>
+                </div>
+                <div class="mb-3">
+                    <label for="name" class="form-label">ชื่อสินค้าไทย</label>
+                    <input type="text" class="form-control" name="name_th" required>
+                </div>
+                <div class="mb-3">
+                    <label for="name" class="form-label">ชื่อสินค้าอังกฤษ</label>
+                    <input type="text" class="form-control" name="name_eng" required>
                 </div>
                 <div class="mb-3">
                     <label for="detail" class="form-label">รายละเอียดไทย</label>
@@ -148,7 +148,7 @@ if (!isset($_SESSION['admin'])) {
                     <textarea class="form-control" name="detail_eng" required></textarea>
                 </div>
                 <div class="mb-3">
-                    <label for="price" class="form-label">ราคา</label>
+                    <label for="price" class="form-label">ราคา/กิโลกรัม</label>
                     <input type="number" class="form-control" name="price" required>
                 </div>
                 <button type="submit" class="open-popup btn btn-primary">เพิ่มสินค้า</button>
@@ -198,20 +198,20 @@ if (!isset($_SESSION['admin'])) {
 
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
-                        ?>
+                ?>
                         <div class="card">
                             <a href="add_product.php?delete_id=<?php echo $row['id']; ?>" class="btn btn-danger">&times;</a>
                             <img src="<?php echo $row['img']; ?>" class="w-100" alt="Product Image">
                             <div class="product-body">
+                                <p class="card-text">ประเภท:
+                                    <?php echo $row['type']; ?>
+                                </p>
                                 <h5 class="card-title">
                                     <?php echo $row['name_th']; ?>
                                 </h5>
                                 <h5 class="card-title">
                                     <?php echo $row['name_eng']; ?>
                                 </h5>
-                                <p class="card-text">ประเภท:
-                                    <?php echo $row['type']; ?>
-                                </p>
                                 <p class="card-text"><i class="fa-sharp fa-solid fa-circle-check"></i>
                                     <?php echo $row['detail_th']; ?>
                                 </p>
@@ -219,13 +219,13 @@ if (!isset($_SESSION['admin'])) {
                                     <?php echo $row['detail_eng']; ?>
                                 </p>
                                 <div class="product-fotter">
-                                    <p class="card-text">ราคา:
+                                    <p class="card-text">ราคา
                                         <?php echo $row['price']; ?>
                                     </p>
                                 </div>
                             </div>
                         </div>
-                        <?php
+                <?php
                     }
                 } else {
                     echo "ไม่พบสินค้าในระบบ";
