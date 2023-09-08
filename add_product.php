@@ -98,6 +98,11 @@ if (!isset($_SESSION['admin'])) {
         align-items: center;
     }
 
+    .addpro1 .containertop .mb-3:nth-child(2) {
+        text-align: center;
+        margin-bottom: 0px !important;
+    }
+
     /* .popup {
         display: none;
         z-index: 1000;
