@@ -268,7 +268,7 @@ if ($langId == 1) {
         <div class="container">
             <div class="wrap">
                 <div class="row">
-                    
+
                     <?php
                     $conn = new mysqli($servername, $username, $password, $dbname);
                     $sql = "SELECT * FROM `add_product` WHERE `type`= 'Body Scrub'ORDER BY id DESC";
@@ -282,36 +282,46 @@ if ($langId == 1) {
                                     <div class="card">
                                         <img src="<?php echo $row['img']; ?>" alt="" class="w-100">
                                         <div class="card-body">
-                                            <h5 class="card-title"><?php echo $row['name_th']; ?></h5>
-                                            <h5 class="card-title"><?php echo $row['name_eng']; ?></h5>
-                                            <?php if ($langId == 1) {?>
-                                            <p class="card-text"><i class="fa-sharp fa-solid fa-circle-check"></i>
-                                                <?php echo $row['detail_th']; ?>
-                                            </p>
-                                            <?php }else{ ?>
-                                            <p class="card-text"><i class="fa-sharp fa-solid fa-circle-check"></i>
-                                                <?php echo $row['detail_eng']; ?>
-                                            </p>
+                                            <?php if ($langId == 1) { ?>
+                                                <h5 class="card-title"><?php echo $row['name_th']; ?></h5>
+                                                <p class="card-text"><i class="fa-sharp fa-solid fa-circle-check"></i>
+                                                    <?php echo $row['detail_th']; ?>
+                                                </p>
+                                            <?php } else { ?>
+                                                <h5 class="card-title"><?php echo $row['name_eng']; ?></h5>
+                                                <p class="card-text"><i class="fa-sharp fa-solid fa-circle-check"></i>
+                                                    <?php echo $row['detail_eng']; ?>
+                                                </p>
                                             <?php } ?>
                                             <!-- <p class="mt-3 mb-0">Aroma Scents : Ylang Ylang Oil & Lavender Oil</p> -->
                                         </div>
                                         <div class="card-footer">
                                             <div class="wrap">
-                                                <div class="title">
-                                                    <p>Wholesale Price :</p>
-                                                    <p class="ship">
-                                                        <?= $price1 ?>
-                                                    </p>
-                                                </div>
-                                                <div class="price">
-                                                    <p class="price-product"><?php echo $row['price']; ?></p>
-                                                    <div class="rate">
-                                                        <p>THB/kg</p>
-                                                        <p>
-                                                            <?= $price2 ?>
+                                                <?php if ($langId == 1) { ?>
+                                                    <div class="title">
+                                                        <p class="ship">
+                                                            <?= $price1 ?>
                                                         </p>
                                                     </div>
-                                                </div>
+                                                    <div class="price">
+                                                        <p class="price-product"><?php echo $row['price']; ?></p>
+                                                        <div class="rate">
+                                                            <p>
+                                                                <?= $price2 ?>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                <?php } else { ?>
+                                                    <div class="title">
+                                                        <p>Wholesale Price :</p>
+                                                    </div>
+                                                    <div class="price">
+                                                        <p class="price-product"><?php echo $row['price']; ?></p>
+                                                        <div class="rate">
+                                                            <p>THB/kg</p>
+                                                        </div>
+                                                    </div>
+                                                <?php } ?>
                                             </div>
                                         </div>
                                     </div>

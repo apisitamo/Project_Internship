@@ -1,11 +1,10 @@
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
-<link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
 
 <script>
-    window.console = window.console || function (t) { };
+    window.console = window.console || function(t) {};
 </script>
 <?php
 include 'include/head.php';
@@ -316,23 +315,22 @@ if ($langId == 1) {
 
                         if ($result->num_rows > 0) {
                             while ($row = $result->fetch_assoc()) {
-                                ?>
+                        ?>
                                 <div class="col-lg-12 mb-4" data-aos="flip-right" data-aos-duration="2000">
                                     <button class="open-popup">
                                         <div class="card">
                                             <img src="<?php echo $row['img']; ?>" alt="" class="w-100">
                                             <div class="card-body">
-                                                <h5 class="card-title">
-                                                    <?php echo $row['name_th']; ?>
-                                                </h5>
-                                                <h5 class="card-title">
-                                                    <?php echo $row['name_eng']; ?>
-                                                </h5>
                                                 <?php if ($langId == 1) { ?>
+                                                    <h5 class="card-title">
+                                                        <?php echo $row['name_th']; ?>
+                                                    </h5>
                                                     <p class="card-text"><i class="fa-sharp fa-solid fa-circle-check"></i>
                                                         <?php echo $row['detail_th']; ?>
                                                     </p>
-                                                <?php } else { ?>
+                                                <?php } else { ?><h5 class="card-title">
+                                                        <?php echo $row['name_eng']; ?>
+                                                    </h5>
                                                     <p class="card-text"><i class="fa-sharp fa-solid fa-circle-check"></i>
                                                         <?php echo $row['detail_eng']; ?>
                                                     </p>
@@ -341,28 +339,40 @@ if ($langId == 1) {
                                             </div>
                                             <div class="card-footer">
                                                 <div class="wrap">
-                                                    <div class="title">
-                                                        <p>Wholesale Price :</p>
-                                                        <p class="ship">
-                                                            <?= $price1 ?>
-                                                        </p>
-                                                    </div>
-                                                    <div class="price">
-                                                        <p class="price-product">
-                                                            <?php echo $row['price']; ?>
-                                                        </p>
-                                                        <div class="rate">
-                                                            <p>THB/kg</p>
-                                                            <p>
-                                                                <?= $price2 ?>
+                                                    <?php if ($langId == 1) { ?>
+                                                        <div class="title">
+                                                            <p class="ship">
+                                                                <?= $price1 ?>
                                                             </p>
                                                         </div>
-                                                    </div>
+                                                        <div class="price">
+                                                            <p class="price-product">
+                                                                <?php echo $row['price']; ?>
+                                                            </p>
+                                                            <div class="rate">
+                                                                <p>
+                                                                    <?= $price2 ?>
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    <?php } else { ?>
+                                                        <div class="title">
+                                                            <p>Wholesale Price :</p>
+                                                        </div>
+                                                        <div class="price">
+                                                            <p class="price-product">
+                                                                <?php echo $row['price']; ?>
+                                                            </p>
+                                                            <div class="rate">
+                                                                <p>THB/kg</p>
+                                                            </div>
+                                                        </div>
+                                                    <?php } ?>
                                                 </div>
                                             </div>
                                     </button>
                                 </div>
-                                <?php
+                        <?php
                             }
                         } else {
                             echo "ไม่พบสินค้าในระบบ";
@@ -394,23 +404,23 @@ if ($langId == 1) {
 
                         if ($result->num_rows > 0) {
                             while ($row = $result->fetch_assoc()) {
-                                ?>
+                        ?>
                                 <div class="col-lg-12 mb-4" data-aos="flip-right" data-aos-duration="2000">
                                     <button class="open-popup">
                                         <div class="card">
                                             <img src="<?php echo $row['img']; ?>" alt="" class="w-100">
                                             <div class="card-body">
-                                                <h5 class="card-title">
-                                                    <?php echo $row['name_th']; ?>
-                                                </h5>
-                                                <h5 class="card-title">
-                                                    <?php echo $row['name_eng']; ?>
-                                                </h5>
                                                 <?php if ($langId == 1) { ?>
+                                                    <h5 class="card-title">
+                                                        <?php echo $row['name_th']; ?>
+                                                    </h5>
                                                     <p class="card-text"><i class="fa-sharp fa-solid fa-circle-check"></i>
                                                         <?php echo $row['detail_th']; ?>
                                                     </p>
                                                 <?php } else { ?>
+                                                    <h5 class="card-title">
+                                                        <?php echo $row['name_eng']; ?>
+                                                    </h5>
                                                     <p class="card-text"><i class="fa-sharp fa-solid fa-circle-check"></i>
                                                         <?php echo $row['detail_eng']; ?>
                                                     </p>
@@ -419,29 +429,40 @@ if ($langId == 1) {
                                             </div>
                                             <div class="card-footer">
                                                 <div class="wrap">
-                                                    <div class="title">
-                                                        <p>Wholesale Price :</p>
-                                                        <p class="ship">
-                                                            <?= $price1 ?>
-                                                        </p>
-                                                    </div>
-                                                    <div class="price">
-                                                        <p class="price-product">
-                                                            <?php echo $row['price']; ?>
-                                                        </p>
-                                                        <div class="rate">
-                                                            <p>THB/kg</p>
-                                                            <p>
-                                                                <?= $price2 ?>
+                                                    <?php if ($langId == 1) { ?>
+                                                        <div class="title">
+                                                            <p class="ship">
+                                                                <?= $price1 ?>
                                                             </p>
                                                         </div>
-
-                                                    </div>
+                                                        <div class="price">
+                                                            <p class="price-product">
+                                                                <?php echo $row['price']; ?>
+                                                            </p>
+                                                            <div class="rate">
+                                                                <p>
+                                                                    <?= $price2 ?>
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    <?php } else { ?>
+                                                        <div class="title">
+                                                            <p>Wholesale Price :</p>
+                                                        </div>
+                                                        <div class="price">
+                                                            <p class="price-product">
+                                                                <?php echo $row['price']; ?>
+                                                            </p>
+                                                            <div class="rate">
+                                                                <p>THB/kg</p>
+                                                            </div>
+                                                        </div>
+                                                    <?php } ?>
                                                 </div>
                                             </div>
                                     </button>
                                 </div>
-                                <?php
+                        <?php
                             }
                         } else {
                             echo "ไม่พบสินค้าในระบบ";
@@ -474,23 +495,23 @@ if ($langId == 1) {
 
                         if ($result->num_rows > 0) {
                             while ($row = $result->fetch_assoc()) {
-                                ?>
+                        ?>
                                 <div class="col-lg-12 mb-4" data-aos="flip-right" data-aos-duration="2000">
                                     <button class="open-popup">
                                         <div class="card">
                                             <img src="<?php echo $row['img']; ?>" alt="" class="w-100">
                                             <div class="card-body">
-                                                <h5 class="card-title">
-                                                    <?php echo $row['name_th']; ?>
-                                                </h5>
-                                                <h5 class="card-title">
-                                                    <?php echo $row['name_eng']; ?>
-                                                </h5>
                                                 <?php if ($langId == 1) { ?>
+                                                    <h5 class="card-title">
+                                                        <?php echo $row['name_th']; ?>
+                                                    </h5>
                                                     <p class="card-text"><i class="fa-sharp fa-solid fa-circle-check"></i>
                                                         <?php echo $row['detail_th']; ?>
                                                     </p>
                                                 <?php } else { ?>
+                                                    <h5 class="card-title">
+                                                        <?php echo $row['name_eng']; ?>
+                                                    </h5>
                                                     <p class="card-text"><i class="fa-sharp fa-solid fa-circle-check"></i>
                                                         <?php echo $row['detail_eng']; ?>
                                                     </p>
@@ -499,29 +520,40 @@ if ($langId == 1) {
                                             </div>
                                             <div class="card-footer">
                                                 <div class="wrap">
-                                                    <div class="title">
-                                                        <p>Wholesale Price :</p>
-                                                        <p class="ship">
-                                                            <?= $price1 ?>
-                                                        </p>
-                                                    </div>
-                                                    <div class="price">
-                                                        <p class="price-product">
-                                                            <?php echo $row['price']; ?>
-                                                        </p>
-                                                        <div class="rate">
-                                                            <p>THB/kg</p>
-                                                            <p>
-                                                                <?= $price2 ?>
+                                                    <?php if ($langId == 1) { ?>
+                                                        <div class="title">
+                                                            <p class="ship">
+                                                                <?= $price1 ?>
                                                             </p>
                                                         </div>
-
-                                                    </div>
+                                                        <div class="price">
+                                                            <p class="price-product">
+                                                                <?php echo $row['price']; ?>
+                                                            </p>
+                                                            <div class="rate">
+                                                                <p>
+                                                                    <?= $price2 ?>
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    <?php } else { ?>
+                                                        <div class="title">
+                                                            <p>Wholesale Price :</p>
+                                                        </div>
+                                                        <div class="price">
+                                                            <p class="price-product">
+                                                                <?php echo $row['price']; ?>
+                                                            </p>
+                                                            <div class="rate">
+                                                                <p>THB/kg</p>
+                                                            </div>
+                                                        </div>
+                                                    <?php } ?>
                                                 </div>
                                             </div>
                                     </button>
                                 </div>
-                                <?php
+                        <?php
                             }
                         } else {
                             echo "ไม่พบสินค้าในระบบ";
@@ -545,7 +577,7 @@ if ($langId == 1) {
             <div class="popup-content">
                 <span class="close-popup" id="close-popup1">&times;</span>
                 <div class="homecontent">
-                    <?php if (isset($_SESSION['username'])): ?>
+                    <?php if (isset($_SESSION['username'])) : ?>
                         <div class="box">
                             <div class="container">
                                 <div class="row">
@@ -561,7 +593,7 @@ if ($langId == 1) {
                                 </button>
                             </div>
                         </div>
-                    <?php else: ?>
+                    <?php else : ?>
                         <div class="box">
                             <div class="container">
                                 <div class="row">
