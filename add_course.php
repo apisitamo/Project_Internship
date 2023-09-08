@@ -21,6 +21,14 @@ if (!isset($_SESSION['admin'])) {
 
     }
 
+    .addcourse1 {
+        padding: 0px 180px;
+    }
+
+    .addcourse1 .containertop h2 {
+        text-align: center;
+    }
+
     .addcourse2 .row {
         column-gap: 30px;
     }
@@ -67,6 +75,11 @@ if (!isset($_SESSION['admin'])) {
     .addcourse2 .course-fotter .card-text {
         background-color: rgba(0, 0, 0, .03);
         padding: 15px;
+    }
+
+    .addcourse2 .btn-danger {
+        margin-right: -400px;
+        margin-top: -5px;
     }
 
     .w-100 {
@@ -200,7 +213,7 @@ if (!isset($_SESSION['admin'])) {
                             <a href="add_course.php?delete_id=<?php echo $row['id']; ?>" class="btn btn-danger">&times;</a>
                             <img src="<?php echo $row['img']; ?>" class="w-100" alt="course image">
                             <div class="course-body">
-                            <p class="card-text">ประเภท:
+                                <p class="card-text">ประเภท:
                                     <?php echo $row['type']; ?>
                                 </p>
                                 <h5 class="card-title">
