@@ -32,6 +32,14 @@ if (!isset($_SESSION['admin'])) {
 
     }
 
+    .addpro1 {
+        padding: 0px 180px;
+    }
+
+    .addpro1 .containertop h2 {
+        text-align: center;
+    }
+
     .addpro2 .row {
         column-gap: 30px;
     }
@@ -78,6 +86,11 @@ if (!isset($_SESSION['admin'])) {
     .addpro2 .product-fotter .card-text {
         background-color: rgba(0, 0, 0, .03);
         padding: 15px;
+    }
+
+    .addpro2 .card .btn-danger {
+        margin-right: -400px;
+        margin-top: -5px;
     }
 
     .w-100 {
@@ -191,7 +204,7 @@ if (!isset($_SESSION['admin'])) {
 
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
-                ?>
+                        ?>
                         <div class="card">
                             <a href="add_product.php?delete_id=<?php echo $row['id']; ?>" class="btn btn-danger">&times;</a>
                             <img src="<?php echo $row['img']; ?>" class="w-100" alt="Product Image">
@@ -218,7 +231,7 @@ if (!isset($_SESSION['admin'])) {
                                 </div>
                             </div>
                         </div>
-                <?php
+                        <?php
                     }
                 } else {
                     echo "ไม่พบสินค้าในระบบ";
