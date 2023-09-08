@@ -171,7 +171,7 @@ if (!isset($_SESSION['admin'])) {
                     <label for="hour" class="form-label">จำนวนชั่วโมงใบประกาศ</label>
                     <input type="number" class="form-control" name="hour" required>
                 </div>
-                <button type="submit" class="open-popup btn btn-primary">เพิ่มสินค้า</button>
+                <button type="submit" class="open-popup btn btn-primary">เพิ่มหลักสูตร</button>
             </form>
         </div>
     </section>

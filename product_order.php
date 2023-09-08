@@ -77,7 +77,6 @@ $result = mysqli_query($db, $query);
     .pro-order .table_order .status-dropdown {
         border: none;
         background: yellow;
-        border-radius: 15%;
         padding: 0px 5px;
     }
     .pro-order .table_order tr td:nth-child(9){
