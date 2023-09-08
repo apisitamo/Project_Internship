@@ -642,6 +642,7 @@ a {
 .product .card-footer .price-product {
     color: #950606;
     font-size: 28px;
+    margin-right: 100px;
 }
 
 .banner-product {
