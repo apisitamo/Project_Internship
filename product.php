@@ -104,6 +104,7 @@ if ($langId == 1) {
     /*css ส่วนเข้าสู่ระบบ */
     .course-product .titlebox {
         color: #945834;
+        margin-top: -75px;
     }
 
     .course-product .content {
@@ -137,7 +138,6 @@ if ($langId == 1) {
     }
 
     .course-product .BSAlogo {
-        width: 70%;
     }
 
     .course-product .col-lg-6 {
@@ -184,7 +184,7 @@ if ($langId == 1) {
     }
 
     .popup .popup-content .container {
-        width: 550px;
+        width: auto;
         display: inherit;
         position: relative;
     }
@@ -228,7 +228,6 @@ if ($langId == 1) {
     }
 
     .popup .container img {
-        margin-left: 100px;
     }
 
     .product .card {
