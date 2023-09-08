@@ -248,6 +248,10 @@ if ($langId == 1) {
         display: block;
         margin-top: 0px;
     }
+
+    .product .card-footer .title{
+        padding-top: 10px;
+    }
 </style>
 
 <body>
