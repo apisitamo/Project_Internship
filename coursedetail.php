@@ -30,20 +30,22 @@
     ?>
 
     <?php
-    if (isset($_GET['product_id'])) {
-        $product_id = $_GET['product_id'];
-        $sql = "SELECT * FROM `add_course` WHERE id = $product_id";
+    if (isset($_GET['course_id'])) {
+        $course_id = $_GET['course_id'];
+        $sql = "SELECT * FROM `add_course` WHERE id = $course_id";
         $result = $conn->query($sql);
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
                 $name_th = $row['name_th'];
                 $name_eng = $row['name_eng'];
                 $img = $row['img'];
+                $type = $row['type'];
                 $detail_th = $row['detail_th'];
                 $detail_eng = $row['detail_eng'];
                 $day = $row['day'];
                 $hour = $row['hour'];
                 $price = $row['price'];
+
             }
         } else {
             echo "ไม่พบข้อมูลหลักสูตร";
@@ -129,7 +131,7 @@
                                 </div>
                             </div>
                         </div>
-                        <button class="open-popup">
+                        <button class="open-popup" href="coursedetail.php?course_id=<?php echo $row['id']; ?>&type=<?php echo $row['type']; ?>">
                             <p class="price" data-aos="fade-up" data-aos-duration="2000"><?= $prices ?> <?php echo $price ?> <?= $baht ?></p>
                         </button>
 
@@ -165,6 +167,35 @@
 
     <script>
         AOS.init();
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $(".open-popup").click(function() {
+                var type = "<?php echo $type ?>";
+                var name = "<?php echo $name_th ?>";
+                var day = "<?php echo $day ?>";
+                var quantity = 1;
+                var price = "<?php echo $price ?>";
+
+                $.ajax({
+                    type: "POST",
+                    url: "course_order_insert.php",
+                    data: {
+                        type: type,
+                        name: name,
+                        day: day,
+                        quantity: quantity,
+                        price: price
+                    },
+                    success: function(response) {
+                        alert(response);
+                    }
+                });
+            });
+        });
     </script>
 
 </body>

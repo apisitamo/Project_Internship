@@ -155,7 +155,7 @@ $result = mysqli_query($db, $query);
                                     </select>
                                     <button class="edit-button" data-row-id="<?php echo $row['id']; ?>">แก้ไข</button>
                                     <button class="save-button" data-row-id="<?php echo $row['id']; ?>">บันทึก</button>
-                                    <button class="cancle-button" data-row-id="<?php echo $row['id']; ?>">ยกเลิก</button>
+                                    <button class="cancle-button" id="canclestatus" data-row-id="<?php echo $row['id']; ?>">ยกเลิก</button>
                                 </td>
                                 <td>
                                     <input type="text" class="note-input" data-row-id="<?php echo $row['id']; ?>"
@@ -203,6 +203,13 @@ $result = mysqli_query($db, $query);
     });
 
     const editButtons = document.querySelectorAll('.edit-button');
+    const cancle = document.querySelectorAll('.cancle-button');
+    cancle.forEach(button => {
+        const rowId = button.getAttribute('data-row-id');
+        button.addEventListener('click', function () {
+            location.reload();
+        });
+    });
     
 
     editButtons.forEach(button => {
@@ -333,8 +340,8 @@ $result = mysqli_query($db, $query);
             });
 
             if (response.ok) {
-                alert('ลบข้อมูลเรียบร้อยแล้ว');
                 location.reload(); // รีเฟรชหน้าหลังจากลบข้อมูล
+                alert('ลบข้อมูลเรียบร้อยแล้ว');
             } else {
                 alert('เกิดข้อผิดพลาดในการลบข้อมูล');
             }
