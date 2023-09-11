@@ -91,6 +91,9 @@ $result = mysqli_query($db, $query);
     .pro-order .table_order tr td:nth-child(9) {
         border: none;
     }
+    .save-button,.save-note-button{
+        display: none;
+    }
 </style>
 
 <body>
@@ -205,6 +208,7 @@ $result = mysqli_query($db, $query);
     });
 
     const editButtons = document.querySelectorAll('.edit-button');
+    
 
     editButtons.forEach(button => {
         const rowId = button.getAttribute('data-row-id');
