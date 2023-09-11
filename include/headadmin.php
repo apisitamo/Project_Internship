@@ -38,6 +38,7 @@ if (empty($_SESSION['lang']) || $_SESSION['lang'] == 1) {
 //     echo "<script>alert('please login by admin id'); window.location.href = 'login_admin.php';</script>";
 //     session_destroy();
 // }
+// บังคับ ล็อคอินด้วยแอดมินก่อน ถึงเข้า หน้าของแอดมินได้
 
 if (isset($_GET['logout'])) {
     session_destroy();

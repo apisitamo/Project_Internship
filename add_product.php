@@ -18,14 +18,6 @@ if (isset($_GET['delete_id'])) {
 
 ?>
 
-<?php
-if (!isset($_SESSION['admin'])) {
-    $_SESSION['msg'] = "you must login first";
-    header('location:login_admin.php');
-    // session_destroy(); 
-}
-?>
-
 <style>
     .addpro1 .containertop,
     .addpro2 .containerbuttom {

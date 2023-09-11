@@ -6,11 +6,6 @@
 include 'include/headadmin.php';
 include('server.php');
 
-if (!isset($_SESSION['admin'])) {
-    $_SESSION['msg'] = "you must login first";
-    header('location:login_admin.php');
-    // session_destroy(); 
-}
 ?>
 <style>
     .bottom-box {

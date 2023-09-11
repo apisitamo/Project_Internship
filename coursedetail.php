@@ -4,8 +4,10 @@
 <head>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <?php include 'include/head.php'; ?>
     <?php
+    include 'include/head.php';
+    include('server.php');
+
     if ($langId == 1) {
         $detail = 'รายละเอียด :';
         $duration = 'ระยะเวลา :';
@@ -27,31 +29,13 @@
     }
     ?>
 
-    <style>
-
-    </style>
-</head>
-
-<body>
     <?php
-    // ตรวจสอบว่ามีค่ารหัสสินค้าที่ถูกส่งมาหรือไม่
     if (isset($_GET['product_id'])) {
-        // ดึงค่ารหัสสินค้าจากพารามิเตอร์
         $product_id = $_GET['product_id'];
-
-        // ทำการสอบถามข้อมูลสินค้าจากฐานข้อมูลโดยใช้ $product_id
-        $servername = "localhost";
-        $username = "root";
-        $password = "";
-        $dbname = "bsa";
-
-        $conn = new mysqli($servername, $username, $password, $dbname);
-        $sql = "SELECT * FROM `add_course` WHERE id = $product_id"; // แทน $product_id ด้วยรหัสสินค้าที่ต้องการดูรายละเอียด
+        $sql = "SELECT * FROM `add_course` WHERE id = $product_id";
         $result = $conn->query($sql);
-
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
-                // ดึงข้อมูลสินค้าแต่ละรายการและแสดงผลในหน้า coursedetail.php
                 $name_th = $row['name_th'];
                 $name_eng = $row['name_eng'];
                 $img = $row['img'];
@@ -62,14 +46,19 @@
                 $price = $row['price'];
             }
         } else {
-            echo "ไม่พบข้อมูลสินค้า";
+            echo "ไม่พบข้อมูลหลักสูตร";
         }
 
         $conn->close();
     } else {
-        echo "ไม่พบรหัสสินค้าที่ระบุ";
+        echo "ไม่พบรหัสหลักสูตรที่ระบุ";
     }
     ?>
+
+
+</head>
+
+<body>
 
     <section class="banner-page" data-aos="flip-down" data-aos-duration="2000">
         <div class="wrap">
@@ -140,7 +129,7 @@
                                 </div>
                             </div>
                         </div>
-                        <button class="open-popup-button">
+                        <button class="open-popup">
                             <p class="price" data-aos="fade-up" data-aos-duration="2000"><?= $prices ?> <?php echo $price ?> <?= $baht ?></p>
                         </button>
 
@@ -177,6 +166,7 @@
     <script>
         AOS.init();
     </script>
+
 </body>
 
 </html>

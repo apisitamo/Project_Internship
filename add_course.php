@@ -16,11 +16,6 @@ if (isset($_GET['delete_id'])) {
     }
 }
 
-if (!isset($_SESSION['admin'])) {
-    $_SESSION['msg'] = "you must login first";
-    header('location:login_admin.php');
-    // session_destroy(); 
-}
 ?>
 
 <style>
