@@ -79,7 +79,16 @@ $result = mysqli_query($db, $query);
         background: yellow;
         padding: 0px 5px;
     }
-    .pro-order .table_order tr td:nth-child(9){
+
+    .pro-order .table_order .status-dropdown option:nth-child(2) {
+        background: #00e700;
+    }
+
+    .pro-order .table_order .status-dropdown option:nth-child(3) {
+        background: red;
+    }
+
+    .pro-order .table_order tr td:nth-child(9) {
         border: none;
     }
 </style>
@@ -205,7 +214,7 @@ $result = mysqli_query($db, $query);
             statusDropdown.removeAttribute('disabled');
             button.style.display = 'none';
             const saveButton = row.querySelector(`button.save-button[data-row-id="${rowId}"]`);
-            saveButton.style.display = 'block';
+            saveButton.style.display = 'inline-flex';
         });
     });
 
