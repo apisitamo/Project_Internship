@@ -132,7 +132,7 @@ if (isset($_GET['logout'])) {
     }
 
     .user1 .input-group {
-        column-gap: 5px;
+        column-gap: 4px;
         margin-bottom: 15px;
     }
 
@@ -215,14 +215,6 @@ if (isset($_GET['logout'])) {
         border-radius: 10px;
         display: none;
     }
-
-
-
-
-
-
-
-
 
     .user1 #addressuser {
         margin-bottom: 20px;
@@ -420,8 +412,8 @@ if (isset($_GET['logout'])) {
     function enableAddress() {
         document.getElementById('address').removeAttribute('disabled');
         document.getElementById('editaddress').style.display = 'none';
-        document.getElementById('submitaddress').style.display = 'block';
-        document.getElementById('cancleaddress').style.display = 'block';
+        document.getElementById('submitaddress').style.display = 'inline';
+        document.getElementById('cancleaddress').style.display = 'inline';
         <?php $_SESSION['edit_address'] = true; ?>
     }
 
