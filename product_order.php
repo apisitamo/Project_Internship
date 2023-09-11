@@ -213,7 +213,7 @@ $result = mysqli_query($db, $query);
             statusDropdown.removeAttribute('disabled');
             button.style.display = 'none';
             const saveButton = row.querySelector(`button.save-button[data-row-id="${rowId}"]`);
-            saveButton.style.display = 'inline-flex';
+            saveButton.style.display = 'inline';
         });
     });
 
@@ -255,7 +255,7 @@ $result = mysqli_query($db, $query);
             noteInput.removeAttribute('disabled');
             button.style.display = 'none';
             const saveNoteButton = row.querySelector(`button.save-note-button[data-row-id="${rowId}"]`);
-            saveNoteButton.style.display = 'block';
+            saveNoteButton.style.display = 'inline';
         });
     });
 
