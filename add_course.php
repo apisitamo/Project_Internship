@@ -133,6 +133,39 @@ if (!isset($_SESSION['admin'])) {
         cursor: pointer;
         font-size: 50px;
     }
+
+    .deleteitem {
+        padding: 3px 10px;
+        margin-top: 5px;
+        border: none;
+        background: red;
+        margin-right: -85%;
+    }
+    .popup-add button {
+        padding: 6px;
+        border-radius: 10px;
+        border: none;
+    }
+
+    .popup-add #popup2 {
+        width: 30%;
+        height: 20%;
+    }
+
+    .popup-add #popup2 #confirm-delete-button {
+        margin-right: 5px;
+        background: #00e500;
+    }
+
+    .popup-add #popup2 #button-close2 {
+        margin-left: 5px;
+        background: red;
+        padding: 6px 25px;
+    }
+
+    .popup-add #popup2 .popup-content .container {
+        margin-top: 20px;
+    }
 </style>
 
 <body>
@@ -196,7 +229,7 @@ if (!isset($_SESSION['admin'])) {
 
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
-                ?>
+                        ?>
                         <div class="card">
                             <button class="deleteitem" data-course-id="<?php echo $row['id']; ?>">&times;</button>
                             <img src="<?php echo $row['img']; ?>" class="w-100" alt="course image">
@@ -233,7 +266,7 @@ if (!isset($_SESSION['admin'])) {
                                 </div>
                             </div>
                         </div>
-                <?php
+                        <?php
                     }
                 } else {
                     echo "ไม่พบหลักสูตรในระบบ";
@@ -245,7 +278,7 @@ if (!isset($_SESSION['admin'])) {
         </div>
     </section>
 
-    <section>
+    <section class="popup-add">
 
         <div class="popup" id="popup1">
             <div class="popup-content">
@@ -263,7 +296,8 @@ if (!isset($_SESSION['admin'])) {
                 <span class="close-popup" id="close-popup2">&times;</span>
                 <div class="container">
                     <p style="text-align: center;">คุณต้องการที่จะลบสินค้า</p>
-                    <button class="button-close-2" id="confirm-delete-button" href='add_course.php?delete_id=<?php echo $row['id']; ?>'>ยืนยันการลบ</ิ>
+                    <button class="button-close-2" id="confirm-delete-button"
+                        href='add_course.php?delete_id=<?php echo $row['id']; ?>'>ยืนยันการลบ</ิ>
                         <button class="button-close-2" id="button-close2">ยกเลิก</button>
                 </div>
             </div>
