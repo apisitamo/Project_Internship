@@ -86,7 +86,7 @@ if (isset($_GET['logout'])) {
     .user1 .left-box {
         background-color: #f2f2f2;
         text-align: center;
-        padding-right: 20px;
+        padding-right: 30px;
     }
 
     .user1 .left-box form {
@@ -179,10 +179,12 @@ if (isset($_GET['logout'])) {
         border-radius: 10px;
 
     }
+
     .user1 #canclefullname {
         border-radius: 10px;
         display: none;
     }
+
     .user1 #submitfullname {
         border-radius: 10px;
         display: none;
@@ -193,10 +195,12 @@ if (isset($_GET['logout'])) {
     .user1 .input-group #editphone {
         border-radius: 10px;
     }
+
     .user1 #submitphone {
         border-radius: 10px;
         display: none;
     }
+
     .user1 #canclephone {
         border-radius: 10px;
         display: none;
@@ -207,10 +211,12 @@ if (isset($_GET['logout'])) {
     .user1 .button-address #editaddress {
         border-radius: 10px;
     }
+
     .user1 #submitaddress {
         border-radius: 10px;
         display: none;
     }
+
     .user1 #cancleaddress {
         border-radius: 10px;
         display: none;
@@ -326,48 +332,93 @@ if (isset($_GET['logout'])) {
                     </tr>
                     <?php
                     $username = $_SESSION['username'];
-                    $query = "SELECT * FROM product_order WHERE username='$username'ORDER BY id DESC";
-                    $result = mysqli_query($db, $query);
+
+                    // Query สำหรับดึงข้อมูลจากตาราง "product_order"
+                    $query_product_order = "SELECT * FROM product_order WHERE username='$username' ORDER BY id DESC";
+                    $result_product_order = mysqli_query($db, $query_product_order);
 
                     $i = 1;
-                    while ($row = mysqli_fetch_assoc($result)) :
+                    while ($row_product_order = mysqli_fetch_assoc($result_product_order)) :
                     ?>
                         <tr>
                             <td>
                                 <?php echo $i++; ?>
                             </td>
                             <td>
-                                <?php echo $row['type']; ?>
+                                <?php echo $row_product_order['type']; ?>
                             </td>
                             <td>
-                                <?php echo $row['item']; ?>
+                                <?php echo $row_product_order['name']; ?>
                             </td>
                             <td>
-                                <?php echo $row['quantity']; ?>
+                                <?php echo $row_product_order['quantity']; ?>
                             </td>
                             <td>
-                                <?php echo $row['price']; ?>
+                                <?php echo $row_product_order['price']; ?>
                             </td>
                             <td style="background-color:
-    <?php
-                        if ($row['status'] == 'ปฏิเสธ') {
+                    <?php
+                        if ($row_product_order['status'] == 'ปฏิเสธ') {
                             echo 'red';
-                        } elseif ($row['status'] == 'สำเร็จ') {
+                        } elseif ($row_product_order['status'] == 'สำเร็จ') {
                             echo 'green';
                         } else {
                             echo 'yellow';
                         }
-    ?>;
-">
-                                <?php echo $row['status']; ?>
+                    ?>;
+                ">
+                                <?php echo $row_product_order['status']; ?>
                             </td>
                             <td>
-                                <?php echo $row['note']; ?>
+                                <?php echo $row_product_order['note']; ?>
+                            </td>
+                        </tr>
+                    <?php endwhile; ?>
+
+                    <?php
+                    // Query สำหรับดึงข้อมูลจากตาราง "course_order"
+                    $query_course_order = "SELECT * FROM course_order WHERE username='$username' ORDER BY id DESC";
+                    $result_course_order = mysqli_query($db, $query_course_order);
+
+                    while ($row_course_order = mysqli_fetch_assoc($result_course_order)) :
+                    ?>
+                        <tr>
+                            <td>
+                                <?php echo $i++; ?>
+                            </td>
+                            <td>
+                                <?php echo $row_course_order['type']; ?>
+                            </td>
+                            <td>
+                                <?php echo $row_course_order['name']; ?>
+                            </td>
+                            <td>
+                                <?php echo $row_course_order['quantity']; ?>
+                            </td>
+                            <td>
+                                <?php echo $row_course_order['price']; ?>
+                            </td>
+                            <td style="background-color:
+                    <?php
+                        if ($row_course_order['status'] == 'ปฏิเสธ') {
+                            echo 'red';
+                        } elseif ($row_course_order['status'] == 'สำเร็จ') {
+                            echo 'green';
+                        } else {
+                            echo 'yellow';
+                        }
+                    ?>;
+                ">
+                                <?php echo $row_course_order['status']; ?>
+                            </td>
+                            <td>
+                                <?php echo $row_course_order['note']; ?>
                             </td>
                         </tr>
                     <?php endwhile; ?>
                 </table>
             </div>
+
         </div>
     </section>
 

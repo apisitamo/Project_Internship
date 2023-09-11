@@ -133,7 +133,7 @@ $result = mysqli_query($db, $query);
                                     <?php echo $row['type']; ?>
                                 </td>
                                 <td>
-                                    <?php echo $row['item']; ?>
+                                    <?php echo $row['name']; ?>
                                 </td>
                                 <td>
                                     <?php echo $row['quantity']; ?>
