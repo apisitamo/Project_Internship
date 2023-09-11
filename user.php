@@ -86,7 +86,7 @@ if (isset($_GET['logout'])) {
     .user1 .left-box {
         background-color: #f2f2f2;
         text-align: center;
-        padding-right: 30px;
+        padding-right: 20px;
     }
 
     .user1 .left-box form {
