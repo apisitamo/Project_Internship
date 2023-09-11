@@ -144,27 +144,6 @@ if (isset($_GET['logout'])) {
         background: burlywood;
     }
 
-    .user1 .input-group #editButton {
-        border-radius: 10px;
-    }
-
-    .user1 .input-group #editPhoneButton {
-        border-radius: 10px;
-    }
-
-    .user1 .button-address #editAddressButton {
-        border-radius: 10px;
-    }
-
-    .user1 #submitButton {
-        border-radius: 10px;
-    }
-
-    .user1 #addressuser {
-        margin-bottom: 20px;
-    }
-
-
     .user1 .input-group #fullname {
         padding-right: 50px;
         border-radius: 10px;
@@ -186,6 +165,67 @@ if (isset($_GET['logout'])) {
         padding: 5px;
         border-radius: 10px;
         background: white;
+    }
+
+
+
+
+
+
+
+
+
+    .user1 .input-group #editfullname {
+        border-radius: 10px;
+
+    }
+    .user1 #canclefullname {
+        border-radius: 10px;
+        display: none;
+    }
+    .user1 #submitfullname {
+        border-radius: 10px;
+        display: none;
+    }
+
+
+
+    .user1 .input-group #editphone {
+        border-radius: 10px;
+    }
+    .user1 #submitphone {
+        border-radius: 10px;
+        display: none;
+    }
+    .user1 #canclephone {
+        border-radius: 10px;
+        display: none;
+    }
+
+
+
+    .user1 .button-address #editaddress {
+        border-radius: 10px;
+    }
+    .user1 #submitaddress {
+        border-radius: 10px;
+        display: none;
+    }
+    .user1 #cancleaddress {
+        border-radius: 10px;
+        display: none;
+    }
+
+
+
+
+
+
+
+
+
+    .user1 #addressuser {
+        margin-bottom: 20px;
     }
 
     .user1 .button-address {
@@ -234,12 +274,9 @@ if (isset($_GET['logout'])) {
                                                                                                                     echo '';
                                                                                                                 else
                                                                                                                     echo 'disabled'; ?>>
-                            <?php if (!isset($_SESSION['edit_fullname'])) : ?>
-                                <button type="button" id="editButton" onclick="enableFullname()">แก้ไข</button>
-                            <?php else : ?>
-                                <button type="button" id="cancelButton" onclick="cancelEdit()">ยกเลิก</button>
-                            <?php endif; ?>
-                            <button type="submit" id="submitButton" <?php if (!isset($_SESSION['edit_fullname'])); ?>>บันทึก</button>
+                            <button type="button" id="editfullname" onclick="enableFullname()">แก้ไข</button>
+                            <button type="button" id="canclefullname" onclick="cancleFullname()">ยกเลิก</button>
+                            <button type="submit" id="submitfullname" <?php if (!isset($_SESSION['edit_fullname'])); ?>>บันทึก</button>
                         </div>
                     </form>
                     <form action="save_phone.php" class="save-phone" method="post">
@@ -255,12 +292,9 @@ if (isset($_GET['logout'])) {
                                                                                                                             echo '';
                                                                                                                         else
                                                                                                                             echo 'disabled'; ?>>
-                            <?php if (!isset($_SESSION['edit_phone'])) : ?>
-                                <button type="button" id="editPhoneButton" onclick="enablePhone()">แก้ไข</button>
-                            <?php else : ?>
-                                <button type="button" id="cancelPhoneButton" onclick="cancelPhoneEdit()">ยกเลิก</button>
-                            <?php endif; ?>
-                            <button type="submit" id="submitButton" <?php if (!isset($_SESSION['edit_phone'])); ?>>บันทึก</button>
+                            <button type="button" id="editphone" onclick="enablePhone()">แก้ไข</button>
+                            <button type="button" id="canclephone" onclick="canclePhone()">ยกเลิก</button>
+                            <button type="submit" id="submitphone" <?php if (!isset($_SESSION['edit_phone'])); ?>>บันทึก</button>
                         </div>
                     </form>
                 </div>
@@ -280,12 +314,9 @@ if (isset($_GET['logout'])) {
                                                                         echo 'disabled'; ?>><?php echo $address; ?></textarea>
                         </div>
                         <div class="button-address">
-                            <?php if (!isset($_SESSION['edit_address'])) : ?>
-                                <button type="button" id="editAddressButton" onclick="enableAddress()">แก้ไข</button>
-                            <?php else : ?>
-                                <button type="button" id="cancelAddressButton" onclick="cancelAddressEdit()">ยกเลิก</button>
-                            <?php endif; ?>
-                            <button type="submit" id="submitButton" <?php if (!isset($_SESSION['edit_address'])); ?>>บันทึก</button>
+                            <button type="button" id="editaddress" onclick="enableAddress()">แก้ไข</button>
+                            <button type="button" id="cancleaddress" onclick="cancleAddress()">ยกเลิก</button>
+                            <button type="submit" id="submitaddress" <?php if (!isset($_SESSION['edit_address'])); ?>>บันทึก</button>
                         </div>
                     </form>
                 </div>
@@ -359,41 +390,44 @@ if (isset($_GET['logout'])) {
 <script>
     function enableFullname() {
         document.getElementById('fullname').removeAttribute('disabled');
-        document.getElementById('editButton').style.display = 'none';
+        document.getElementById('editfullname').style.display = 'none';
+        document.getElementById('submitfullname').style.display = 'block';
+        document.getElementById('canclefullname').style.display = 'block';
+        console.log("enableFullname");
         <?php $_SESSION['edit_fullname'] = true; ?>
     }
 
-    function cancelEdit() {
-        document.getElementById('fullname').setAttribute('disabled', 'disabled');
-        document.getElementById('cancelButton').style.display = 'none';
-        document.getElementById('editButton').style.display = 'block';
-        document.querySelector('form[action="save_fullname.php"] button[type="submit"]').setAttribute('disabled', 'disabled');
+    function cancleFullname() {
+        console.log("canclefullname");
+        window.location.reload();
         <?php unset($_SESSION['edit_fullname']); ?>
     }
 
     function enablePhone() {
         document.getElementById('phone').removeAttribute('disabled');
-        document.getElementById('editPhoneButton').style.display = 'none';
+        document.getElementById('editphone').style.display = 'none';
+        document.getElementById('submitphone').style.display = 'block';
+        document.getElementById('canclephone').style.display = 'block';
         <?php $_SESSION['edit_phone'] = true; ?>
     }
 
-    function cancelPhoneEdit() {
-        document.getElementById('phone').setAttribute('disabled', 'disabled');
-        document.getElementById('editPhoneButton').style.display = 'block';
-        document.querySelector('form[action="save_phone.php"] button[type="submit"]').setAttribute('disabled', 'disabled');
+    function canclePhone() {
+        console.log("canclephone");
+        window.location.reload();
         <?php unset($_SESSION['edit_phone']); ?>
     }
 
     function enableAddress() {
         document.getElementById('address').removeAttribute('disabled');
-        document.getElementById('editAddressButton').style.display = 'none';
+        document.getElementById('editaddress').style.display = 'none';
+        document.getElementById('submitaddress').style.display = 'block';
+        document.getElementById('cancleaddress').style.display = 'block';
         <?php $_SESSION['edit_address'] = true; ?>
     }
 
-    function cancelAddressEdit() {
-        document.getElementById('address').setAttribute('disabled', 'disabled');
-        document.getElementById('editAddressButton').style.display = 'block';
-        document.querySelector('form[action="save_address.php"] button[type="submit"]').setAttribute('disabled', 'disabled');
+    function cancleAddress() {
+        console.log("cancleaddress");
+        window.location.reload();
         <?php unset($_SESSION['edit_address']); ?>
     }
 </script>

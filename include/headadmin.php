@@ -35,8 +35,7 @@ if (empty($_SESSION['lang']) || $_SESSION['lang'] == 1) {
 }
 
 // if (!isset($_SESSION['admin'])) {
-//     $_SESSION['msg'] = "you must login first";
-//     header('location:login.php');
+//     echo "<script>alert('please login by admin id'); window.location.href = 'login_admin.php';</script>";
 //     session_destroy();
 // }
 
