@@ -82,8 +82,8 @@ if ($langId == 1) {
         <div class="header-mid">
             <form action="login_admin_db.php" method="post">
                 <div class="input-group">
-                    <!-- <label for="username"><?= $username ?></label> -->
-                    <input type="text" name="username" placeholder="<?= $username ?>">
+                    <!-- <label for="admin"><?= $admin ?></label> -->
+                    <input type="text" name="admin" placeholder="<?= $admin ?>">
                 </div>
                 <div class="input-group">
                     <!-- <label for="password"><?= $password ?></label> -->

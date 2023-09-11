@@ -34,17 +34,17 @@ if (empty($_SESSION['lang']) || $_SESSION['lang'] == 1) {
     $course_order = 'Course Order';
 }
 
-// if (!isset($_SESSION['username'])) {
+// if (!isset($_SESSION['admin'])) {
 //     $_SESSION['msg'] = "you must login first";
 //     header('location:login.php');
 //     session_destroy();
 // }
 
-// if (isset($_GET['logout'])) {
-//     session_destroy();
-//     unset($_SESSION['username']);
-//     header('location:index.php');
-// }
+if (isset($_GET['logout'])) {
+    session_destroy();
+    unset($_SESSION['admin']);
+    header('location:index.php');
+}
 
 ?>
 
@@ -105,7 +105,7 @@ if (empty($_SESSION['lang']) || $_SESSION['lang'] == 1) {
                         <img src="assets/images/<?= $profile ?>" alt="" class='profile-icon'>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
-                        <?php if (isset($_SESSION['username'])) { ?>
+                        <?php if (isset($_SESSION['admin'])) { ?>
                             <li class="nav-item">
                                 <a class="nav-link" href="index.php?logout='1'"><?= $logout ?></a>
                             </li>

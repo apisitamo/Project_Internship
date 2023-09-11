@@ -5,12 +5,12 @@ include('server.php');
 $errors = array();
 
 if (isset($_POST['login_admin'])) {
-    $username = mysqli_real_escape_string($conn, $_POST['username']);
+    $admin = mysqli_real_escape_string($conn, $_POST['admin']);
     $password = mysqli_real_escape_string($conn, $_POST['password']);
     $employee_code = mysqli_real_escape_string($conn, $_POST['employee_code']);
 
-    if (empty($username)) {
-        array_push($errors, "Username is required");
+    if (empty($admin)) {
+        array_push($errors, "admin is required");
     }
     if (empty($password)) {
         array_push($errors, "Password is required");
@@ -21,11 +21,11 @@ if (isset($_POST['login_admin'])) {
 
     if (count($errors) == 0) {
         $password = ($password);
-        $query = "SELECT * FROM admin WHERE admin = '$username' AND password = '$password' AND employee_code = '$employee_code' ";
+        $query = "SELECT * FROM admin WHERE admin = '$admin' AND password = '$password' AND employee_code = '$employee_code' ";
         $result = mysqli_query($conn, $query);
 
         if (mysqli_num_rows($result) == 1) {
-            $_SESSION['username'] = $username;
+            $_SESSION['admin'] = $admin;
             $_SESSION['success'] = "You are now logged in";
             header("location: product_order.php");
             exit();

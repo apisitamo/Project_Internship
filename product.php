@@ -31,7 +31,13 @@ if ($langId == 1) {
     $price2 = "บาท/กก.";
 }
 
-
+$username = $_SESSION['username'];
+echo $username;
+require_once('./server.php');
+// var_dump($conn);
+$sql = "SELECT * FROM user WHERE username = '$username'";
+// echo $sql;
+$result2 = $conn->query($sql);
 
 ?>
 
@@ -137,8 +143,7 @@ if ($langId == 1) {
         border-color: #AFAFAF;
     }
 
-    .course-product .BSAlogo {
-    }
+    .course-product .BSAlogo {}
 
     .course-product .col-lg-6 {
         text-align: center;
@@ -227,8 +232,7 @@ if ($langId == 1) {
         margin-left: 110px;
     }
 
-    .popup .container img {
-    }
+    .popup .container img {}
 
     .product .card {
         width: 410px;
@@ -248,7 +252,7 @@ if ($langId == 1) {
         margin-top: 0px;
     }
 
-    .product .card-footer .title{
+    .product .card-footer .title {
         padding-top: 10px;
     }
 </style>
@@ -662,12 +666,40 @@ if ($langId == 1) {
         <div class="popup" id="popup2">
             <div class="popup-content">
                 <span class="close-popup" id="close-popup2">&times;</span>
-                <div class="container">
-                    <p style="text-align: center;">คุณต้องการซื้อ....</p>
-                    <img src="assets/images/QR.svg" alt="" class="w-65">
-                    <p style="text-align: center;font-size: 30px;">ราคา บาท</p>
-                    <button class="button-success-2" id="button-success2">ยืนยันการโอน</button>
-                    <button class="button-close-2" id="button-close2">ยกเลิกการโอน</button>
+                <div class="homecontent">
+                    <?php
+                    // session_start();
+
+                    if ($result->num_rows > 0) {
+                        $row = $result->fetch_assoc();
+                        print_r($row);
+                        $address = $row['address'];
+                        $phone = $row['phone'];
+                        $fullname = $row['fullname'];
+
+                        if (!empty($address) && !empty($phone) && !empty($fullname)) {
+                    ?>
+                            <div class="container">
+                                <p style="text-align: center;">คุณต้องการซื้อ....</p>
+                                <img src="assets/images/QR.svg" alt="" class="w-65">
+                                <p style="text-align: center;font-size: 30px;">ราคา บาท</p>
+                                <button class="button-success-2" id="button-success2">ยืนยันการโอน</button>
+                                <button class="button-close-2" id="button-close2">ยกเลิกการโอน</button>
+                            </div>
+                        <?php } else { ?>
+                            <div class="container">
+                                <p style="text-align: center;">กรุณากรอกข้อมูลของท่านก่อนการสั่งซื้อ</p>
+                                <button class="button-success" id="button-successaddress">ไปยังหน้ากรอกข้อมูล</button>
+                                <button class="button-close" id="button-closeaddress">ปิด</button>
+                            </div>
+                    <?php
+                        }
+                    } else {
+                        // ไม่พบข้อมูลในฐานข้อมูล
+                        // จัดการเช็คในกรณีอื่น ๆ ตามความต้องการ
+                    }
+                    $conn->close();
+                    ?>
                 </div>
             </div>
         </div>

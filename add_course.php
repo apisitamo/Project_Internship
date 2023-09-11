@@ -6,12 +6,21 @@
 include 'include/headadmin.php';
 include('server.php');
 
+if (isset($_GET['delete_id'])) {
+    $deleteId = $_GET['delete_id'];
+    $deleteQuery = "DELETE FROM add_course WHERE id = '$deleteId'";
+    if ($conn->query($deleteQuery) === TRUE) {
+        echo "<script>alert('ลบหลักสูตรเรียบร้อยแล้ว'); window.location.href = 'add_course.php';</script>";
+    } else {
+        echo "<script>alert('เกิดข้อผิดพลาด: " . $conn->error . "'); window.location.href = 'add_course.php';</script>";
+    }
+}
+
 if (!isset($_SESSION['admin'])) {
     $_SESSION['msg'] = "you must login first";
     header('location:login_admin.php');
     // session_destroy(); 
 }
-
 ?>
 
 <style>
@@ -87,7 +96,7 @@ if (!isset($_SESSION['admin'])) {
         align-items: center;
     }
 
-    /* .popup {
+    .popup {
         display: none;
         z-index: 1000;
         width: 900px;
@@ -116,13 +125,14 @@ if (!isset($_SESSION['admin'])) {
         align-items: center;
         z-index: 900;
     }
+
     .close-popup {
         position: absolute;
         top: 5px;
         right: 15px;
         cursor: pointer;
         font-size: 50px;
-    } */
+    }
 </style>
 
 <body>
@@ -176,41 +186,19 @@ if (!isset($_SESSION['admin'])) {
         </div>
     </section>
 
-    <!-- <div class="popup" id="popup1">
-        <div class="popup-content">
-            <span class="close-popup" id="close-popup1">&times;</span>
-            <div class="container">
-                <p style="text-align: center;">คุณต้องการที่จะเพิ่มสินค้า</p>
-                <button class="button-success-1" id="button-success1">ยืนยัน</button>
-                <button class="button-close-1" id="button-close1">ยกเลิก</button>
-            </div>
-        </div>
-    </div> -->
-
     <section class="addcourse2">
         <div class="containerbuttom mt-5">
             <h2>หลักสูตรทั้งหมด</h2>
             <div class="row">
                 <?php
-
-                if (isset($_GET['delete_id'])) {
-                    $deleteId = $_GET['delete_id'];
-                    $deleteQuery = "DELETE FROM add_course WHERE id = '$deleteId'";
-                    if ($conn->query($deleteQuery) === TRUE) {
-                        echo "<script>alert('ลบหลักสูตรเรียบร้อยแล้ว'); window.location.href = 'add_course.php';</script>";
-                    } else {
-                        echo "<script>alert('เกิดข้อผิดพลาด: " . $conn->error . "'); window.location.href = 'add_course.php';</script>";
-                    }
-                }
-
                 $sql = "SELECT * FROM add_course ORDER BY id DESC";
                 $result = $conn->query($sql);
 
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
-                        ?>
+                ?>
                         <div class="card">
-                            <a href="add_course.php?delete_id=<?php echo $row['id']; ?>" class="btn btn-danger">&times;</a>
+                            <button class="deleteitem" data-course-id="<?php echo $row['id']; ?>">&times;</button>
                             <img src="<?php echo $row['img']; ?>" class="w-100" alt="course image">
                             <div class="course-body">
                                 <p class="card-text">ประเภท:
@@ -245,7 +233,7 @@ if (!isset($_SESSION['admin'])) {
                                 </div>
                             </div>
                         </div>
-                        <?php
+                <?php
                     }
                 } else {
                     echo "ไม่พบหลักสูตรในระบบ";
@@ -256,9 +244,37 @@ if (!isset($_SESSION['admin'])) {
             </div>
         </div>
     </section>
+
+    <section>
+
+        <div class="popup" id="popup1">
+            <div class="popup-content">
+                <span class="close-popup" id="close-popup1">&times;</span>
+                <div class="container">
+                    <p style="text-align: center;">คุณต้องการที่จะเพิ่มสินค้า</p>
+                    <button class="button-success-1" id="button-success1">ยืนยัน</button>
+                    <button class="button-close-1" id="button-close1">ยกเลิก</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="popup" id="popup2">
+            <div class="popup-content">
+                <span class="close-popup" id="close-popup2">&times;</span>
+                <div class="container">
+                    <p style="text-align: center;">คุณต้องการที่จะลบสินค้า</p>
+                    <button class="button-close-2" id="confirm-delete-button" href='add_course.php?delete_id=<?php echo $row['id']; ?>'>ยืนยันการลบ</ิ>
+                        <button class="button-close-2" id="button-close2">ยกเลิก</button>
+                </div>
+            </div>
+        </div>
+
+    </section>
 </body>
-<!-- <script>
-    const openpopup = document.querySelectorAll('.open-popup');
+
+<script>
+    const Additem = document.querySelectorAll('.additem');
+    const Deleteitem = document.querySelectorAll('.deleteitem');
     const clickOverlay1 = document.querySelector('#click-overlay1');
 
     const popup1 = document.querySelector('#popup1');
@@ -266,17 +282,33 @@ if (!isset($_SESSION['admin'])) {
     const buttonclosefirst = document.querySelector('#button-close1');
     const buttonsuccessfirst = document.querySelectorAll('#button-success1');
 
-    openpopup.forEach(button => {
+    const popup2 = document.querySelector('#popup2');
+    const closesecondpopup = document.querySelector('#close-popup2');
+    const buttonclosesecond = document.querySelector('#button-close2');
+    const confirmDeleteButton = document.querySelector('#confirm-delete-button');
+
+    Additem.forEach(button => {
         button.addEventListener('click', () => {
-            console.log("Open first popup");
+            console.log("Open additem popup");
             popup1.style.display = 'flex';
             clickOverlay1.style.display = 'block';
+        });
+    });
+
+    Deleteitem.forEach(button => {
+        button.addEventListener('click', () => {
+            console.log("Open deleteitem popup");
+            popup2.style.display = 'flex';
+            clickOverlay1.style.display = 'block';
+            const deleteId = button.getAttribute('data-course-id');
+            confirmDeleteButton.setAttribute('data-delete-id', deleteId);
         });
     });
 
     clickOverlay1.addEventListener('click', () => {
         console.log("Clicked on overlay");
         popup1.style.display = 'none'; // ปิด popup1 ที่มี id="popup1"
+        popup2.style.display = 'none';
         clickOverlay1.style.display = 'none';
     });
 
@@ -293,10 +325,28 @@ if (!isset($_SESSION['admin'])) {
     buttonsuccessfirst.forEach(button => {
         button.addEventListener('click', () => {
             console.log("success BTN to Open second popup");
-            popup1.style.display = 'none'; // ปิด popup แรก
+            popup1.style.display = 'none';
             clickOverlay1.style.display = 'none';
         });
     });
-</script> -->
+
+    closesecondpopup.addEventListener('click', () => {
+        console.log("X second popup ");
+        popup2.style.display = 'none';
+        clickOverlay1.style.display = 'none';
+    });
+    buttonclosesecond.addEventListener('click', () => {
+        console.log("close BTN second POPUP");
+        popup2.style.display = 'none';
+        clickOverlay1.style.display = 'none';
+    });
+    confirmDeleteButton.addEventListener('click', () => {
+        const deleteId = confirmDeleteButton.getAttribute('data-delete-id');
+        if (deleteId) {
+            const deleteLink = `add_course.php?delete_id=${deleteId}`;
+            window.location.href = deleteLink;
+        }
+    });
+</script>
 
 </html>
