@@ -141,7 +141,6 @@ if (isset($_GET['logout'])) {
         padding-left: 10px;
         padding-right: 10px;
         border: none;
-        background: burlywood;
     }
 
     .user1 .input-group #fullname {
@@ -175,51 +174,59 @@ if (isset($_GET['logout'])) {
 
 
 
-    .user1 .input-group #editfullname {
+    #editfullname {
         border-radius: 10px;
-
+        background: burlywood;
     }
 
-    .user1 #canclefullname {
+    #canclefullname {
         border-radius: 10px;
         display: none;
+        background: red;
     }
 
-    .user1 #submitfullname {
+    #submitfullname {
         border-radius: 10px;
         display: none;
+        background: green;
     }
 
 
 
     .user1 .input-group #editphone {
         border-radius: 10px;
+        background: burlywood;
     }
 
     .user1 #submitphone {
         border-radius: 10px;
         display: none;
+        background: green;
     }
 
     .user1 #canclephone {
         border-radius: 10px;
         display: none;
+        background: red;
     }
 
 
 
     .user1 .button-address #editaddress {
         border-radius: 10px;
+        background: burlywood;
     }
 
     .user1 #submitaddress {
         border-radius: 10px;
         display: none;
+        background: green;
     }
 
     .user1 #cancleaddress {
         border-radius: 10px;
         display: none;
+        background: red;
     }
 
     .user1 #addressuser {
@@ -273,8 +280,8 @@ if (isset($_GET['logout'])) {
                                                                                                                 else
                                                                                                                     echo 'disabled'; ?>>
                             <button type="button" id="editfullname" onclick="enableFullname()">แก้ไข</button>
-                            <button type="button" id="canclefullname" onclick="cancleFullname()">ยกเลิก</button>
                             <button type="submit" id="submitfullname" <?php if (!isset($_SESSION['edit_fullname'])); ?>>บันทึก</button>
+                            <button type="button" id="canclefullname" onclick="cancleFullname()">ยกเลิก</button>
                         </div>
                     </form>
                     <form action="save_phone.php" class="save-phone" method="post">
@@ -291,8 +298,8 @@ if (isset($_GET['logout'])) {
                                                                                                                         else
                                                                                                                             echo 'disabled'; ?>>
                             <button type="button" id="editphone" onclick="enablePhone()">แก้ไข</button>
-                            <button type="button" id="canclephone" onclick="canclePhone()">ยกเลิก</button>
                             <button type="submit" id="submitphone" <?php if (!isset($_SESSION['edit_phone'])); ?>>บันทึก</button>
+                            <button type="button" id="canclephone" onclick="canclePhone()">ยกเลิก</button>
                         </div>
                     </form>
                 </div>
@@ -313,8 +320,8 @@ if (isset($_GET['logout'])) {
                         </div>
                         <div class="button-address">
                             <button type="button" id="editaddress" onclick="enableAddress()">แก้ไข</button>
-                            <button type="button" id="cancleaddress" onclick="cancleAddress()">ยกเลิก</button>
                             <button type="submit" id="submitaddress" <?php if (!isset($_SESSION['edit_address'])); ?>>บันทึก</button>
+                            <button type="button" id="cancleaddress" onclick="cancleAddress()">ยกเลิก</button>
                         </div>
                     </form>
                 </div>

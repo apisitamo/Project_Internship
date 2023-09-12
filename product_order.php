@@ -240,16 +240,16 @@ if (isset($_GET['delete_id'])) {
                                     </select>
                                     <button class="edit-button" data-row-id="<?php echo $row['id']; ?>">แก้ไข</button>
                                     <button class="save-button" data-row-id="<?php echo $row['id']; ?>">บันทึก</button>
-                                    <button class="cancle-button" id="canclestatus" data-row-id="<?php echo $row['id']; ?>">ยกเลิก</button>
+                                    <button class="cancle-button" id="canclestatus" data-row-id="<?php echo $row['id']; ?>" style="display: none;">ยกเลิก</button>
                                 </td>
                                 <td>
                                     <input type="text" class="note-input" data-row-id="<?php echo $row['id']; ?>" value="<?php echo $row['note']; ?>" disabled>
                                     <button class="edit-note-button" data-row-id="<?php echo $row['id']; ?>">แก้ไข</button>
                                     <button class="save-note-button" data-row-id="<?php echo $row['id']; ?>">บันทึก</button>
-                                    <button class="cancle-button" data-row-id="<?php echo $row['id']; ?>">ยกเลิก</button>
+                                    <button class="cancle-note-button" data-row-id="<?php echo $row['id']; ?>"style="display: none;">ยกเลิก</button>
                                 </td>
                                 <td>
-                                    <button class="deleteitem" data-product-id="<?php echo $row['id']; ?>">ลบ</button>
+                                    <button class="deleteitem" data-row-id="<?php echo $row['id']; ?>">ลบ</button>
                                 </td>
                             </tr>
                     <?php
@@ -281,26 +281,8 @@ if (isset($_GET['delete_id'])) {
 
 </body>
 
-<script>
-    const filterButtons = document.querySelectorAll('.filter-buttons button');
-    const tableRows = document.querySelectorAll('.table_order table tr');
-
-    filterButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const status = this.getAttribute('data-status');
-
-            tableRows.forEach(row => {
-                const rowStatus = row.getAttribute('data-status');
-
-                if (status === 'All' || rowStatus === status) {
-                    row.style.display = 'table-row';
-                } else {
-                    row.style.display = 'none';
-                }
-            });
-        });
-    });
-
+<script>// สถานะ
+    
     const editButtons = document.querySelectorAll('.edit-button');
     const cancle = document.querySelectorAll('.cancle-button');
     cancle.forEach(button => {
@@ -316,8 +298,10 @@ if (isset($_GET['delete_id'])) {
         button.addEventListener('click', function() {
             const row = button.closest('tr');
             const statusDropdown = row.querySelector(`select[data-row-id="${rowId}"]`);
+            const cancelButton = row.querySelector(`button.cancle-button[data-row-id="${rowId}"]`);
             statusDropdown.removeAttribute('disabled');
             button.style.display = 'none';
+            cancelButton.style.display = 'inline';
             const saveButton = row.querySelector(`button.save-button[data-row-id="${rowId}"]`);
             saveButton.style.display = 'inline';
         });
@@ -350,16 +334,28 @@ if (isset($_GET['delete_id'])) {
         const result = await response.text();
         console.log('Status updated successfully:', result);
     }
+</script>
 
+<script>// หมายเหตุ
+    
     const editNoteButtons = document.querySelectorAll('.table_order table tr .edit-note-button');
+    const canclenote = document.querySelectorAll('.cancle-note-button');
+    canclenote.forEach(button => {
+        const rowId = button.getAttribute('data-row-id');
+        button.addEventListener('click', function() {
+            location.reload();
+        });
+    });
 
     editNoteButtons.forEach(button => {
         const rowId = button.getAttribute('data-row-id');
         button.addEventListener('click', function() {
             const row = button.closest('tr');
             const noteInput = row.querySelector(`input.note-input[data-row-id="${rowId}"]`);
+            const cancelButton = row.querySelector(`button.cancle-note-button[data-row-id="${rowId}"]`);
             noteInput.removeAttribute('disabled');
             button.style.display = 'none';
+            cancelButton.style.display = 'inline';
             const saveNoteButton = row.querySelector(`button.save-note-button[data-row-id="${rowId}"]`);
             saveNoteButton.style.display = 'inline';
         });
@@ -417,7 +413,8 @@ if (isset($_GET['delete_id'])) {
     }
 </script>
 
-<script>
+<script>// ลบคำสั่งซื้อ
+    
     const Deleteitem = document.querySelectorAll('.deleteitem');
     const clickOverlay1 = document.querySelector('#click-overlay1');
 
@@ -431,7 +428,7 @@ if (isset($_GET['delete_id'])) {
             console.log("Open deleteitem popup");
             popup2.style.display = 'flex';
             clickOverlay1.style.display = 'block';
-            const deleteId = button.getAttribute('data-product-id');
+            const deleteId = button.getAttribute('data-row-id');
             confirmDeleteButton.setAttribute('data-delete-id', deleteId);
         });
     });
@@ -459,6 +456,28 @@ if (isset($_GET['delete_id'])) {
             const deleteLink = `product_order.php?delete_id=${deleteId}`;
             window.location.href = deleteLink;
         }
+    });
+</script>
+
+<script>// ตัวกรอง
+    
+    const filterButtons = document.querySelectorAll('.filter-buttons button');
+    const tableRows = document.querySelectorAll('.table_order table tr');
+
+    filterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const status = this.getAttribute('data-status');
+
+            tableRows.forEach(row => {
+                const rowStatus = row.getAttribute('data-status');
+
+                if (status === 'All' || rowStatus === status) {
+                    row.style.display = 'table-row';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        });
     });
 </script>
 
