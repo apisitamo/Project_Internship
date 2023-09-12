@@ -169,14 +169,19 @@ if (isset($_GET['delete_id'])) {
     .popup-add #popup2 .popup-content .container {
         margin-top: 20px;
     }
-    
-    .edit-button,.edit-note-button{
+
+    .edit-button,
+    .edit-note-button {
         background-color: burlywood
     }
-    .save-button,.save-note-button{
+
+    .save-button,
+    .save-note-button {
         background-color: #C82727;
     }
-    .cancle-button,.cancle-note-button{
+
+    .cancle-button,
+    .cancle-note-button {
         background-color: #34DC32;
     }
 </style>
@@ -198,75 +203,75 @@ if (isset($_GET['delete_id'])) {
             </div>
             <div class="table_order">
                 <table>
-                    <tr>
-                        <th>ลำดับ</th>
-                        <th>ผู้ใช้งาน</th>
-                        <th>ชนิด</th>
-                        <th>รายการ</th>
-                        <th>จำนวน</th>
-                        <th>ราคา</th>
-                        <th>สถานะ</th>
-                        <th>หมายเหตุ</th>
-                    </tr>
-                    <?php
-                    $i = 1;
-                    if ($result->num_rows > 0) {
-                        while ($row = $result->fetch_assoc()) {
-                    ?>
-                            <tr data-status="<?php echo $row['status']; ?>">
-                                <td>
-                                    <?php echo $i++; ?>
-                                </td>
-                                <td>
-                                    <?php echo $row['username']; ?>
-                                </td>
-                                <td>
-                                    <?php echo $row['type']; ?>
-                                </td>
-                                <td>
-                                    <?php echo $row['name']; ?>
-                                </td>
-                                <td>
-                                    <?php echo $row['quantity']; ?>
-                                </td>
-                                <td>
-                                    <?php echo $row['price']; ?>
-                                </td>
-                                <td>
-                                    <select class="status-dropdown" data-row-id="<?php echo $row['id']; ?>" disabled>
-                                        <option value="รอตรวจสอบ" <?php if ($row['status'] === 'รอตรวจสอบ')
-                                                                        echo 'selected'; ?>>
-                                            รอตรวจสอบ</option>
-                                        <option value="สำเร็จ" <?php if ($row['status'] === 'สำเร็จ')
-                                                                    echo 'selected'; ?>>สำเร็จ
-                                        </option>
-                                        <option value="ปฏิเสธ" <?php if ($row['status'] === 'ปฏิเสธ')
-                                                                    echo 'selected'; ?>>ปฏิเสธ
-                                        </option>
-                                    </select>
-                                    <button class="edit-button" data-row-id="<?php echo $row['id']; ?>">แก้ไข</button>
-                                    <button class="save-button" data-row-id="<?php echo $row['id']; ?>">บันทึก</button>
-                                    <button class="cancle-button" id="canclestatus" data-row-id="<?php echo $row['id']; ?>" style="display: none;">ยกเลิก</button>
-                                </td>
-                                <td>
-                                    <input type="text" class="note-input" data-row-id="<?php echo $row['id']; ?>" value="<?php echo $row['note']; ?>" disabled>
-                                    <button class="edit-note-button" data-row-id="<?php echo $row['id']; ?>">แก้ไข</button>
-                                    <button class="save-note-button" data-row-id="<?php echo $row['id']; ?>">บันทึก</button>
-                                    <button class="cancle-note-button" data-row-id="<?php echo $row['id']; ?>" style="display: none;">ยกเลิก</button>
-                                </td>
-                                <td>
-                                    <button class="deleteitem" data-row-id="<?php echo $row['id']; ?>">ลบ</button>
-                                </td>
-                            </tr>
-                    <?php
+                    <thead>
+                        <tr>
+                            <th>ลำดับ</th>
+                            <th>ผู้ใช้งาน</th>
+                            <th>ชนิด</th>
+                            <th>รายการ</th>
+                            <th>จำนวน</th>
+                            <th>ราคา</th>
+                            <th>สถานะ</th>
+                            <th>หมายเหตุ</th>
+                            <th>ดำเนินการ</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        $i = 1;
+                        if ($result->num_rows > 0) {
+                            while ($row = $result->fetch_assoc()) {
+                        ?>
+                                <tr data-status="<?php echo $row['status']; ?>">
+                                    <td>
+                                        <?php echo $i++; ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $row['username']; ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $row['type']; ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $row['name']; ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $row['quantity']; ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $row['price']; ?>
+                                    </td>
+                                    <td>
+                                        <select class="status-dropdown" data-row-id="<?php echo $row['id']; ?>" disabled>
+                                            <option value="รอตรวจสอบ" <?php if ($row['status'] === 'รอตรวจสอบ') echo 'selected'; ?>>รอตรวจสอบ</option>
+                                            <option value="สำเร็จ" <?php if ($row['status'] === 'สำเร็จ') echo 'selected'; ?>>สำเร็จ</option>
+                                            <option value="ปฏิเสธ" <?php if ($row['status'] === 'ปฏิเสธ') echo 'selected'; ?>>ปฏิเสธ</option>
+                                        </select>
+                                        <button class="edit-button" data-row-id="<?php echo $row['id']; ?>">แก้ไข</button>
+                                        <button class="save-button" data-row-id="<?php echo $row['id']; ?>">บันทึก</button>
+                                        <button class="cancle-button" id="canclestatus" data-row-id="<?php echo $row['id']; ?>" style="display: none;">ยกเลิก</button>
+                                    </td>
+                                    <td>
+                                        <input type="text" class="note-input" data-row-id="<?php echo $row['id']; ?>" value="<?php echo $row['note']; ?>" disabled>
+                                        <button class="edit-note-button" data-row-id="<?php echo $row['id']; ?>">แก้ไข</button>
+                                        <button class="save-note-button" data-row-id="<?php echo $row['id']; ?>">บันทึก</button>
+                                        <button class="cancle-note-button" data-row-id="<?php echo $row['id']; ?>" style="display: none;">ยกเลิก</button>
+                                    </td>
+                                    <td>
+                                        <button class="deleteitem" data-row-id="<?php echo $row['id']; ?>">ลบ</button>
+                                    </td>
+                                </tr>
+                        <?php
+                            }
+                        } else {
+                            echo "ไม่พบสินค้าในระบบ";
                         }
-                    } else {
-                        echo "ไม่พบสินค้าในระบบ";
-                    }
-                    $conn->close();
-                    ?>
+                        $conn->close();
+                        ?>
+                    </tbody>
                 </table>
             </div>
+
         </div>
     </section>
 
@@ -470,19 +475,22 @@ if (isset($_GET['delete_id'])) {
 
 <script>
     // ตัวกรอง
-
     const filterButtons = document.querySelectorAll('.filter-buttons button');
-    const tableRows = document.querySelectorAll('.table_order table tr');
+    const tableRows = document.querySelectorAll('.table_order table tbody tr');
+    let i = 1; // เพิ่มตัวแปร i เพื่อเริ่มนับเลข 1
 
     filterButtons.forEach(button => {
         button.addEventListener('click', function() {
             const status = this.getAttribute('data-status');
+            i = 1; // เมื่อคลิกตัวกรองใหม่ให้รีเซ็ต i เป็น 1
 
             tableRows.forEach(row => {
                 const rowStatus = row.getAttribute('data-status');
 
                 if (status === 'All' || rowStatus === status) {
                     row.style.display = 'table-row';
+                    const tdNumber = row.querySelector('td:first-child');
+                    tdNumber.textContent = i++; // ตั้งค่าเลขลำดับให้กับคอลัมน์ลำดับ
                 } else {
                     row.style.display = 'none';
                 }
