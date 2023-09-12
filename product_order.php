@@ -196,10 +196,10 @@ if (isset($_GET['delete_id'])) {
         </div>
         <div class="container">
             <div class="filter-buttons">
-                <button data-status="All">ทั้งหมด</button>
-                <button data-status="รอตรวจสอบ">รอตรวจสอบ</button>
-                <button data-status="สำเร็จ">สำเร็จ</button>
-                <button data-status="ปฏิเสธ">ปฏิเสธ</button>
+                <button data-status="All">ทั้งหมด (<span id="total-orders">0</span>)</button>
+                <button data-status="รอตรวจสอบ">รอตรวจสอบ (<span id="pending-orders">0</span>)</button>
+                <button data-status="สำเร็จ">สำเร็จ (<span id="completed-orders">0</span>)</button>
+                <button data-status="ปฏิเสธ">ปฏิเสธ (<span id="rejected-orders">0</span>)</button>
             </div>
             <div class="table_order">
                 <table>
@@ -474,15 +474,30 @@ if (isset($_GET['delete_id'])) {
 </script>
 
 <script>
-    // ตัวกรอง
+    // ฟังก์ชันเพิ่ม
+    function updateOrderCounts() {
+        const totalOrders = document.querySelectorAll('.table_order table tbody tr').length;
+        const pendingOrders = document.querySelectorAll('.table_order table tbody tr[data-status="รอตรวจสอบ"]').length;
+        const completedOrders = document.querySelectorAll('.table_order table tbody tr[data-status="สำเร็จ"]').length;
+        const rejectedOrders = document.querySelectorAll('.table_order table tbody tr[data-status="ปฏิเสธ"]').length;
+
+        document.getElementById('total-orders').textContent = totalOrders;
+        document.getElementById('pending-orders').textContent = pendingOrders;
+        document.getElementById('completed-orders').textContent = completedOrders;
+        document.getElementById('rejected-orders').textContent = rejectedOrders;
+    }
+
+    // โฟกัสไปที่ฟังก์ชัน updateOrderCounts
+    updateOrderCounts();
+
     const filterButtons = document.querySelectorAll('.filter-buttons button');
     const tableRows = document.querySelectorAll('.table_order table tbody tr');
-    let i = 1; // เพิ่มตัวแปร i เพื่อเริ่มนับเลข 1
 
+    // ตรวจสอบการคลิกที่ตัวกรองและแสดงรายการตามสถานะที่เลือก
     filterButtons.forEach(button => {
         button.addEventListener('click', function() {
             const status = this.getAttribute('data-status');
-            i = 1; // เมื่อคลิกตัวกรองใหม่ให้รีเซ็ต i เป็น 1
+            let i = 1; // ตัวแปร i สำหรับเลขลำดับ
 
             tableRows.forEach(row => {
                 const rowStatus = row.getAttribute('data-status');
