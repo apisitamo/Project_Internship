@@ -33,6 +33,11 @@ if (isset($_GET['delete_id'])) {
         text-align: center;
     }
 
+    .addcourse1 .containertop form .mb-3:nth-child(2) {
+        text-align: center;
+        margin-bottom: 0px !important;
+    }
+
     .addcourse2 .row {
         column-gap: 30px;
     }
@@ -136,6 +141,7 @@ if (isset($_GET['delete_id'])) {
         background: red;
         margin-right: -85%;
     }
+
     .popup-add button {
         padding: 6px;
         border-radius: 10px;
