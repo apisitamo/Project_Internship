@@ -182,7 +182,7 @@
 
                 $.ajax({
                     type: "POST",
-                    url: "course_order_insert.php",
+                    url: "coursedetail_insert.php",
                     data: {
                         type: type,
                         name: name,
