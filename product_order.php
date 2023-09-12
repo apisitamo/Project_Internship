@@ -10,13 +10,25 @@ include('server.php');
 
 <?php
 $db = mysqli_connect($servername, $username, $password, $dbname);
+
+// กำหนดจำนวนรายการต่อหน้า
+$itemsPerPage = 10;
+
+// หากมีค่า page ที่รับมาจาก query string ให้ใช้ค่านั้น มิฉะนั้นใช้หน้าที่ 1 โดย default
+$page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+
+// คำนวณ offset สำหรับดึงข้อมูลตามหน้า
+$offset = ($page - 1) * $itemsPerPage;
+
 $query = "SELECT * FROM product_order
           ORDER BY CASE
             WHEN status = 'รอตรวจสอบ' THEN 0
             WHEN status = 'สำเร็จ' THEN 1
             WHEN status = 'ปฏิเสธ' THEN 2
             ELSE 3
-          END, id DESC";
+          END, id DESC
+          LIMIT $offset, $itemsPerPage";
+
 $result = mysqli_query($db, $query);
 
 if (isset($_GET['delete_id'])) {
@@ -192,6 +204,32 @@ if (isset($_GET['delete_id'])) {
     }
 </style>
 
+<style>
+    .pagination {
+        display: flex;
+        list-style: none;
+        padding: 0;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    .pagination a,
+    .pagination .current-page {
+        margin: 0 5px;
+        padding: 5px 10px;
+        text-decoration: none;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        background-color: #f2f2f2;
+        color: #333;
+    }
+
+    .pagination .current-page {
+        background-color: #007bff;
+        color: #fff;
+    }
+</style>
+
 <body>
     <section class="pro-order">
         <div class="click-overlay" id="click-overlay1"></div>
@@ -279,6 +317,26 @@ if (isset($_GET['delete_id'])) {
             </div>
 
         </div>
+        <div class="pagination">
+        <?php
+        // หาจำนวนรายการทั้งหมดในฐานข้อมูล
+        $totalItemsQuery = "SELECT COUNT(*) as total FROM product_order";
+        $totalItemsResult = mysqli_query($db, $totalItemsQuery);
+        $totalItemsRow = mysqli_fetch_assoc($totalItemsResult);
+        $totalItems = $totalItemsRow['total'];
+
+        // คำนวณจำนวนหน้าทั้งหมด
+        $totalPages = ceil($totalItems / $itemsPerPage);
+
+        for ($i = 1; $i <= $totalPages; $i++) {
+            if ($i === $page) {
+                echo "<span class='current-page'>$i</span>";
+            } else {
+                echo "<a href='product_order.php?page=$i'>$i</a>";
+            }
+        }
+        ?>
+    </div>
     </section>
 
     <section class="popup-add">
