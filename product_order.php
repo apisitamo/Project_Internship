@@ -318,25 +318,25 @@ if (isset($_GET['delete_id'])) {
 
         </div>
         <div class="pagination">
-        <?php
-        // หาจำนวนรายการทั้งหมดในฐานข้อมูล
-        $totalItemsQuery = "SELECT COUNT(*) as total FROM product_order";
-        $totalItemsResult = mysqli_query($db, $totalItemsQuery);
-        $totalItemsRow = mysqli_fetch_assoc($totalItemsResult);
-        $totalItems = $totalItemsRow['total'];
+            <?php
+            // หาจำนวนรายการทั้งหมดในฐานข้อมูล
+            $totalItemsQuery = "SELECT COUNT(*) as total FROM product_order";
+            $totalItemsResult = mysqli_query($db, $totalItemsQuery);
+            $totalItemsRow = mysqli_fetch_assoc($totalItemsResult);
+            $totalItems = $totalItemsRow['total'];
 
-        // คำนวณจำนวนหน้าทั้งหมด
-        $totalPages = ceil($totalItems / $itemsPerPage);
+            // คำนวณจำนวนหน้าทั้งหมด
+            $totalPages = ceil($totalItems / $itemsPerPage);
 
-        for ($i = 1; $i <= $totalPages; $i++) {
-            if ($i === $page) {
-                echo "<span class='current-page'>$i</span>";
-            } else {
-                echo "<a href='product_order.php?page=$i'>$i</a>";
+            for ($i = 1; $i <= $totalPages; $i++) {
+                if ($i === $page) {
+                    echo "<span class='current-page'>$i</span>";
+                } else {
+                    echo "<a href='product_order.php?page=$i'>$i</a>";
+                }
             }
-        }
-        ?>
-    </div>
+            ?>
+        </div>
     </section>
 
     <section class="popup-add">
