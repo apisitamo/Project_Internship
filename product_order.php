@@ -171,7 +171,7 @@ if (isset($_GET['delete_id'])) {
     }
     
     .edit-button,.edit-note-button{
-        background-color: #9C9DE7;
+        background-color: burlywood
     }
     .save-button,.save-note-button{
         background-color: #C82727;
