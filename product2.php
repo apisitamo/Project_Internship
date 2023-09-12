@@ -181,6 +181,7 @@ if ($langId == 1) {
         width: auto;
         display: inherit;
         position: relative;
+        text-align: center;
     }
 
     .homecontent {
@@ -204,7 +205,6 @@ if ($langId == 1) {
 
     .button-success {
         background-color: green;
-        margin-left: 70px;
     }
 
     .button-close {

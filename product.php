@@ -187,6 +187,7 @@ if ($langId == 1) {
         width: auto;
         display: inherit;
         position: relative;
+        text-align: center;
     }
 
     .homecontent {
@@ -202,7 +203,6 @@ if ($langId == 1) {
         border-radius: 25px;
         font-size: 18px;
         border: none;
-        text-align: center;
         margin-top: 10px;
         padding: 15px 50px;
         display: inline-block;
@@ -210,12 +210,11 @@ if ($langId == 1) {
 
     .button-success {
         background-color: green;
-        margin-left: 70px;
     }
 
     .button-close {
         background-color: red;
-        margin-left: 70px;
+        margin-left: 100px;
     }
 
     .button-success-2 {
@@ -225,9 +224,6 @@ if ($langId == 1) {
     .button-close-2 {
         background-color: red;
         margin-left: 110px;
-    }
-
-    .popup .container img {
     }
 
     .product .card {

@@ -43,6 +43,9 @@ if (isset($_GET['delete_id'])) {
 ?>
 
 <style>
+    .pro-order .homeheader{
+        margin-top: 75px;
+    }
     .pro-order .bottom-box {
         flex: 1;
         padding: 20px;
@@ -68,13 +71,14 @@ if (isset($_GET['delete_id'])) {
     }
 
     .pro-order button {
-        padding: 6px;
+        padding: 6px 20px;
         border-radius: 10px;
         border: none;
+        margin-top: 5px;
     }
 
     .pro-order .filter-buttons {
-        margin-bottom: 10px;
+        margin: 0px 15px 15px 0px;
     }
 
     .pro-order .filter-buttons button:nth-child(1) {
@@ -117,11 +121,10 @@ if (isset($_GET['delete_id'])) {
     }
 
     .deleteitem {
-        padding: 3px 10px;
+        padding: 5px 10px;
         margin-top: 5px;
         border: none;
         background: orange;
-        margin-right: -85%;
     }
 
     .popup {
@@ -195,12 +198,12 @@ if (isset($_GET['delete_id'])) {
 
     .save-button,
     .save-note-button {
-        background-color: #C82727;
+        background-color: #34DC32;
     }
 
     .cancle-button,
     .cancle-note-button {
-        background-color: #34DC32;
+        background-color: #ff1e1e;
     }
 </style>
 
@@ -211,6 +214,7 @@ if (isset($_GET['delete_id'])) {
         padding: 0;
         justify-content: center;
         margin-top: 20px;
+        margin-bottom: 40px;
     }
 
     .pagination a,
