@@ -75,10 +75,6 @@ if (isset($_GET['delete_id'])) {
         background-color: #ff1e1e;
     }
 
-    .pro-order .table_order button {
-        background-color: orange;
-    }
-
     .pro-order .table_order .status-dropdown {
         border: none;
         background: yellow;
@@ -106,7 +102,7 @@ if (isset($_GET['delete_id'])) {
         padding: 3px 10px;
         margin-top: 5px;
         border: none;
-        background: red;
+        background: orange;
         margin-right: -85%;
     }
 
@@ -172,6 +168,16 @@ if (isset($_GET['delete_id'])) {
 
     .popup-add #popup2 .popup-content .container {
         margin-top: 20px;
+    }
+    
+    .edit-button,.edit-note-button{
+        background-color: #9C9DE7;
+    }
+    .save-button,.save-note-button{
+        background-color: #C82727;
+    }
+    .cancle-button,.cancle-note-button{
+        background-color: #34DC32;
     }
 </style>
 
@@ -246,7 +252,7 @@ if (isset($_GET['delete_id'])) {
                                     <input type="text" class="note-input" data-row-id="<?php echo $row['id']; ?>" value="<?php echo $row['note']; ?>" disabled>
                                     <button class="edit-note-button" data-row-id="<?php echo $row['id']; ?>">แก้ไข</button>
                                     <button class="save-note-button" data-row-id="<?php echo $row['id']; ?>">บันทึก</button>
-                                    <button class="cancle-note-button" data-row-id="<?php echo $row['id']; ?>"style="display: none;">ยกเลิก</button>
+                                    <button class="cancle-note-button" data-row-id="<?php echo $row['id']; ?>" style="display: none;">ยกเลิก</button>
                                 </td>
                                 <td>
                                     <button class="deleteitem" data-row-id="<?php echo $row['id']; ?>">ลบ</button>
@@ -281,8 +287,9 @@ if (isset($_GET['delete_id'])) {
 
 </body>
 
-<script>// สถานะ
-    
+<script>
+    // สถานะ
+
     const editButtons = document.querySelectorAll('.edit-button');
     const cancle = document.querySelectorAll('.cancle-button');
     cancle.forEach(button => {
@@ -336,8 +343,9 @@ if (isset($_GET['delete_id'])) {
     }
 </script>
 
-<script>// หมายเหตุ
-    
+<script>
+    // หมายเหตุ
+
     const editNoteButtons = document.querySelectorAll('.table_order table tr .edit-note-button');
     const canclenote = document.querySelectorAll('.cancle-note-button');
     canclenote.forEach(button => {
@@ -413,8 +421,9 @@ if (isset($_GET['delete_id'])) {
     }
 </script>
 
-<script>// ลบคำสั่งซื้อ
-    
+<script>
+    // ลบคำสั่งซื้อ
+
     const Deleteitem = document.querySelectorAll('.deleteitem');
     const clickOverlay1 = document.querySelector('#click-overlay1');
 
@@ -459,8 +468,9 @@ if (isset($_GET['delete_id'])) {
     });
 </script>
 
-<script>// ตัวกรอง
-    
+<script>
+    // ตัวกรอง
+
     const filterButtons = document.querySelectorAll('.filter-buttons button');
     const tableRows = document.querySelectorAll('.table_order table tr');
 
