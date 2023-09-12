@@ -10,7 +10,13 @@ include('server.php');
 
 <?php
 $db = mysqli_connect($servername, $username, $password, $dbname);
-$query = "SELECT * FROM product_order ORDER BY id DESC";
+$query = "SELECT * FROM product_order
+          ORDER BY CASE
+            WHEN status = 'รอตรวจสอบ' THEN 0
+            WHEN status = 'สำเร็จ' THEN 1
+            WHEN status = 'ปฏิเสธ' THEN 2
+            ELSE 3
+          END, id DESC";
 $result = mysqli_query($db, $query);
 
 if (isset($_GET['delete_id'])) {
@@ -474,6 +480,7 @@ if (isset($_GET['delete_id'])) {
 </script>
 
 <script>
+    //ตัวกรอง
     // ฟังก์ชันเพิ่ม
     function updateOrderCounts() {
         const totalOrders = document.querySelectorAll('.table_order table tbody tr').length;
