@@ -155,14 +155,14 @@ if (isset($_GET['delete_id'])) {
 
                     if ($result->num_rows > 0) {
                         while ($row = $result->fetch_assoc()) {
-                            ?>
+                    ?>
                             <div class="col-lg-3">
                                 <div class="card">
                                     <button class="deleteitem" data-gallery-id="<?php echo $row['id']; ?>">&times;</button>
                                     <img src="<?php echo $row['img']; ?>" class="w-100" alt="gallery Image">
                                 </div>
                             </div>
-                            <?php
+                    <?php
                         }
                     } else {
                         echo "ไม่พบสินค้าในระบบ";
@@ -182,7 +182,7 @@ if (isset($_GET['delete_id'])) {
             <div class="popup-content">
                 <span class="close-popup" id="close-popup1">&times;</span>
                 <div class="container">
-                    <p style="text-align: center;">คุณต้องการที่จะเพิ่มสินค้า</p>
+                    <p style="text-align: center;">คุณต้องการที่จะเพิ่มรูปภาพ</p>
                     <button class="button-success-1" id="button-success1">ยืนยัน</button>
                     <button class="button-close-1" id="button-close1">ยกเลิก</button>
                 </div>
@@ -193,10 +193,9 @@ if (isset($_GET['delete_id'])) {
             <div class="popup-content">
                 <span class="close-popup" id="close-popup2">&times;</span>
                 <div class="container">
-                    <p style="text-align: center;">คุณต้องการที่จะลบสินค้า</p>
-                    <button class="button-close-2" id="confirm-delete-button"
-                        href='add_gallery.php?delete_id=<?php echo $row['id']; ?>'>ยืนยันการลบ</ิ>
-                        <button class="button-close-2" id="button-close2">ยกเลิก</button>
+                    <p style="text-align: center;">คุณต้องการที่จะลบรูปภาพ</p>
+                    <button class="button-close-2" id="confirm-delete-button" href='add_gallery.php?delete_id=<?php echo $row['id']; ?>'>ยืนยันการลบ</button>
+                    <button class="button-close-2" id="button-close2">ยกเลิก</button>
                 </div>
             </div>
         </div>

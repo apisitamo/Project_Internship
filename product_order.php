@@ -12,6 +12,16 @@ include('server.php');
 $db = mysqli_connect($servername, $username, $password, $dbname);
 $query = "SELECT * FROM product_order ORDER BY id DESC";
 $result = mysqli_query($db, $query);
+
+if (isset($_GET['delete_id'])) {
+    $deleteId = $_GET['delete_id'];
+    $deleteQuery = "DELETE FROM product_order WHERE id = '$deleteId'";
+    if ($conn->query($deleteQuery) === TRUE) {
+        echo "<script>alert('ลบการสั่งซื้อเรียบร้อยแล้ว'); window.location.href = 'product_order.php';</script>";
+    } else {
+        echo "<script>alert('เกิดข้อผิดพลาด: " . $conn->error . "'); window.location.href = 'product_order.php';</script>";
+    }
+}
 ?>
 
 <style>
@@ -86,13 +96,88 @@ $result = mysqli_query($db, $query);
     .pro-order .table_order tr td:nth-child(9) {
         border: none;
     }
-    .save-button,.save-note-button{
+
+    .save-button,
+    .save-note-button {
         display: none;
+    }
+
+    .deleteitem {
+        padding: 3px 10px;
+        margin-top: 5px;
+        border: none;
+        background: red;
+        margin-right: -85%;
+    }
+
+    .popup {
+        display: none;
+        z-index: 1000;
+        width: 900px;
+        height: 600px;
+        padding: 20px;
+        border-radius: 5px;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        justify-content: center;
+        background: #FFFAF5;
+        border-radius: 10px;
+    }
+
+
+    .click-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        justify-content: center;
+        align-items: center;
+        z-index: 900;
+    }
+
+    .close-popup {
+        position: absolute;
+        top: -10px;
+        right: 15px;
+        cursor: pointer;
+        font-size: 50px;
+    }
+
+    .popup-add button {
+        padding: 6px;
+        border-radius: 10px;
+        border: none;
+    }
+
+    .popup-add #popup2 {
+        width: 30%;
+        height: 20%;
+    }
+
+    .popup-add #popup2 #confirm-delete-button {
+        margin-right: 5px;
+        background: #00e500;
+    }
+
+    .popup-add #popup2 #button-close2 {
+        margin-left: 5px;
+        background: red;
+        padding: 6px 25px;
+    }
+
+    .popup-add #popup2 .popup-content .container {
+        margin-top: 20px;
     }
 </style>
 
 <body>
     <section class="pro-order">
+        <div class="click-overlay" id="click-overlay1"></div>
         <div class="homeheader">
             <h2 style="text-align: center;">
                 <?= $product_order ?>
@@ -121,7 +206,7 @@ $result = mysqli_query($db, $query);
                     $i = 1;
                     if ($result->num_rows > 0) {
                         while ($row = $result->fetch_assoc()) {
-                            ?>
+                    ?>
                             <tr data-status="<?php echo $row['status']; ?>">
                                 <td>
                                     <?php echo $i++; ?>
@@ -144,13 +229,13 @@ $result = mysqli_query($db, $query);
                                 <td>
                                     <select class="status-dropdown" data-row-id="<?php echo $row['id']; ?>" disabled>
                                         <option value="รอตรวจสอบ" <?php if ($row['status'] === 'รอตรวจสอบ')
-                                            echo 'selected'; ?>>
+                                                                        echo 'selected'; ?>>
                                             รอตรวจสอบ</option>
                                         <option value="สำเร็จ" <?php if ($row['status'] === 'สำเร็จ')
-                                            echo 'selected'; ?>>สำเร็จ
+                                                                    echo 'selected'; ?>>สำเร็จ
                                         </option>
                                         <option value="ปฏิเสธ" <?php if ($row['status'] === 'ปฏิเสธ')
-                                            echo 'selected'; ?>>ปฏิเสธ
+                                                                    echo 'selected'; ?>>ปฏิเสธ
                                         </option>
                                     </select>
                                     <button class="edit-button" data-row-id="<?php echo $row['id']; ?>">แก้ไข</button>
@@ -158,18 +243,16 @@ $result = mysqli_query($db, $query);
                                     <button class="cancle-button" id="canclestatus" data-row-id="<?php echo $row['id']; ?>">ยกเลิก</button>
                                 </td>
                                 <td>
-                                    <input type="text" class="note-input" data-row-id="<?php echo $row['id']; ?>"
-                                        value="<?php echo $row['note']; ?>" disabled>
+                                    <input type="text" class="note-input" data-row-id="<?php echo $row['id']; ?>" value="<?php echo $row['note']; ?>" disabled>
                                     <button class="edit-note-button" data-row-id="<?php echo $row['id']; ?>">แก้ไข</button>
                                     <button class="save-note-button" data-row-id="<?php echo $row['id']; ?>">บันทึก</button>
                                     <button class="cancle-button" data-row-id="<?php echo $row['id']; ?>">ยกเลิก</button>
                                 </td>
                                 <td>
-                                    <!-- เพิ่มไอคอนถังขยะและปุ่มลบ -->
-                                    <button class="delete-button" data-row-id="<?php echo $row['id']; ?>">ลบ</button>
+                                    <button class="deleteitem" data-product-id="<?php echo $row['id']; ?>">ลบ</button>
                                 </td>
                             </tr>
-                            <?php
+                    <?php
                         }
                     } else {
                         echo "ไม่พบสินค้าในระบบ";
@@ -180,6 +263,22 @@ $result = mysqli_query($db, $query);
             </div>
         </div>
     </section>
+
+    <section class="popup-add">
+
+        <div class="popup" id="popup2">
+            <div class="popup-content">
+                <span class="close-popup" id="close-popup2">&times;</span>
+                <div class="container">
+                    <p style="text-align: center;">คุณต้องการที่จะลบรูปภาพ</p>
+                    <button class="button-close-2" id="confirm-delete-button" href='product_order.php?delete_id=<?php echo $row['id']; ?>'>ยืนยันการลบ</button>
+                    <button class="button-close-2" id="button-close2">ยกเลิก</button>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
 </body>
 
 <script>
@@ -187,7 +286,7 @@ $result = mysqli_query($db, $query);
     const tableRows = document.querySelectorAll('.table_order table tr');
 
     filterButtons.forEach(button => {
-        button.addEventListener('click', function () {
+        button.addEventListener('click', function() {
             const status = this.getAttribute('data-status');
 
             tableRows.forEach(row => {
@@ -206,15 +305,15 @@ $result = mysqli_query($db, $query);
     const cancle = document.querySelectorAll('.cancle-button');
     cancle.forEach(button => {
         const rowId = button.getAttribute('data-row-id');
-        button.addEventListener('click', function () {
+        button.addEventListener('click', function() {
             location.reload();
         });
     });
-    
+
 
     editButtons.forEach(button => {
         const rowId = button.getAttribute('data-row-id');
-        button.addEventListener('click', function () {
+        button.addEventListener('click', function() {
             const row = button.closest('tr');
             const statusDropdown = row.querySelector(`select[data-row-id="${rowId}"]`);
             statusDropdown.removeAttribute('disabled');
@@ -228,7 +327,7 @@ $result = mysqli_query($db, $query);
 
     saveButtons.forEach(button => {
         const rowId = button.getAttribute('data-row-id');
-        button.addEventListener('click', async function () {
+        button.addEventListener('click', async function() {
             const row = button.closest('tr');
             const statusDropdown = row.querySelector(`select[data-row-id="${rowId}"]`);
             const selectedStatus = statusDropdown.value;
@@ -256,7 +355,7 @@ $result = mysqli_query($db, $query);
 
     editNoteButtons.forEach(button => {
         const rowId = button.getAttribute('data-row-id');
-        button.addEventListener('click', function () {
+        button.addEventListener('click', function() {
             const row = button.closest('tr');
             const noteInput = row.querySelector(`input.note-input[data-row-id="${rowId}"]`);
             noteInput.removeAttribute('disabled');
@@ -271,7 +370,7 @@ $result = mysqli_query($db, $query);
     noteInputs.forEach(input => {
         const rowId = input.getAttribute('data-row-id');
 
-        input.addEventListener('input', function () {
+        input.addEventListener('input', function() {
             const noteValue = input.value.trim();
             const saveNoteButton = input.parentElement.querySelector(`button.save-note-button[data-row-id="${rowId}"]`);
 
@@ -287,13 +386,14 @@ $result = mysqli_query($db, $query);
 
     saveNoteButtons.forEach(button => {
         const rowId = button.getAttribute('data-row-id');
-        button.addEventListener('click', async function () {
+        button.addEventListener('click', async function() {
             const row = button.closest('tr');
             const noteInput = row.querySelector(`input.note-input[data-row-id="${rowId}"]`);
             const noteValue = noteInput.value.trim();
 
             if (noteValue === "") {
                 alert('กรุณากรอกข้อมูล');
+                location.reload();
                 return;
             }
 
@@ -316,39 +416,50 @@ $result = mysqli_query($db, $query);
         console.log('Note updated successfully:', result);
     }
 </script>
+
 <script>
-    const deleteButtons = document.querySelectorAll('.delete-button');
+    const Deleteitem = document.querySelectorAll('.deleteitem');
+    const clickOverlay1 = document.querySelector('#click-overlay1');
 
-    deleteButtons.forEach(button => {
-        button.addEventListener('click', function () {
-            const rowId = button.getAttribute('data-row-id');
+    const popup2 = document.querySelector('#popup2');
+    const closesecondpopup = document.querySelector('#close-popup2');
+    const buttonclosesecond = document.querySelector('#button-close2');
+    const confirmDeleteButton = document.querySelector('#confirm-delete-button');
 
-            if (confirm('คุณต้องการลบข้อมูลนี้หรือไม่?')) {
-                deleteRow(rowId);
-            }
+    Deleteitem.forEach(button => {
+        button.addEventListener('click', () => {
+            console.log("Open deleteitem popup");
+            popup2.style.display = 'flex';
+            clickOverlay1.style.display = 'block';
+            const deleteId = button.getAttribute('data-product-id');
+            confirmDeleteButton.setAttribute('data-delete-id', deleteId);
         });
     });
 
-    async function deleteRow(rowId) {
-        try {
-            const response = await fetch('product_order_delete.php', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                },
-                body: `rowId=${encodeURIComponent(rowId)}`,
-            });
+    clickOverlay1.addEventListener('click', () => {
+        console.log("Clicked on overlay");
+        popup2.style.display = 'none';
+        clickOverlay1.style.display = 'none';
+    });
 
-            if (response.ok) {
-                location.reload(); // รีเฟรชหน้าหลังจากลบข้อมูล
-                alert('ลบข้อมูลเรียบร้อยแล้ว');
-            } else {
-                alert('เกิดข้อผิดพลาดในการลบข้อมูล');
-            }
-        } catch (error) {
-            console.error('เกิดข้อผิดพลาดในการลบข้อมูล:', error);
+
+    closesecondpopup.addEventListener('click', () => {
+        console.log("X second popup ");
+        popup2.style.display = 'none';
+        clickOverlay1.style.display = 'none';
+    });
+    buttonclosesecond.addEventListener('click', () => {
+        console.log("close BTN second POPUP");
+        popup2.style.display = 'none';
+        clickOverlay1.style.display = 'none';
+    });
+    confirmDeleteButton.addEventListener('click', () => {
+        const deleteId = confirmDeleteButton.getAttribute('data-delete-id');
+        if (deleteId) {
+            const deleteLink = `product_order.php?delete_id=${deleteId}`;
+            window.location.href = deleteLink;
         }
-    }
+    });
 </script>
 
 </html>
