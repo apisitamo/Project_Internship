@@ -204,8 +204,8 @@ if (isset($_GET['delete_id'])) {
                 <span class="close-popup" id="close-popup1">&times;</span>
                 <div class="container">
                     <p style="text-align: center;"><?= $wantadd ?></p>
-                    <button class="button-success-1" id="button-success1"><?= $conf ?></button>
-                    <button class="button-close-1" id="button-close1"><?= $canc ?></button>
+                    <button class="button-success-1" id="button-success1"><?= $confirm ?></button>
+                    <button class="button-close-1" id="button-close1"><?= $cancle ?></button>
                 </div>
             </div>
         </div>
@@ -216,7 +216,7 @@ if (isset($_GET['delete_id'])) {
                 <div class="container">
                     <p style="text-align: center;"><?= $wantdel ?></p>
                     <button class="button-close-2" id="confirm-delete-button" href='add_gallery.php?delete_id=<?php echo $row['id']; ?>'><?= $condel ?></button>
-                    <button class="button-close-2" id="button-close2"><?= $canc ?></button>
+                    <button class="button-close-2" id="button-close2"><?= $cancle ?></button>
                 </div>
             </div>
         </div>

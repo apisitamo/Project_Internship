@@ -31,11 +31,27 @@ if($langId == 1){
     $allproduct = 'ผลิตภัณฑ์ทั้งหมด';
     $add = 'เพิ่ม';
     $price2 = "บาท/กก.";
-    $conf = "ยืนยัน";
-    $canc = "ยกเลิก";
     $condel = "ยืนยันการลบ";
     $wantadd = "คุณต้องการที่จะเพิ่ม";
     $wantdel = "คุณต้องการที่จะลบ";
+    $all = "ทั้งหมด";
+    $check = "รอตรวจสอบ";
+    $complete = "สำเร็จ";
+    $reject = "ปฏิเสธ";
+    $order = "ลำดับ";
+    $User = "ผู้ใช้งาน";
+    $types2 = "ชนิด";
+    $lists = "รายการ";
+    $quantityy = "จำนวน";
+    $dayss = 'วัน';
+    $pricess = 'ราคา';
+    $timess = "เวลา";
+    $statuss = "สถานะ";
+    $notess = "หมายเหตุ";
+    $deletion = "การลบ";
+    $edit = "แก้ไข";
+    $save = "บันทึก";
+    $del = "ลบ";
     
 
 }else{
@@ -70,11 +86,27 @@ if($langId == 1){
     $allproduct = 'All product';
     $add = 'Add';
     $price2 = "Baht / Kg.";
-    $conf = "Confirm";
-    $canc = "Cancle";
     $condel = "Confirm deletion";
     $wantadd = "Do you want to add";
     $wantdel = "Do you want to delete";
+    $all = "All";
+    $check = "Pending";
+    $complete = "Completed";
+    $reject = "Rejected";
+    $order = "Order";
+    $User = "User";
+    $types2 = "Type";
+    $lists = "List";
+    $quantityy = "Quantity";
+    $dayss = 'Day';
+    $pricess = 'Price';
+    $timess = "Time";
+    $statuss = "Status";
+    $notess = "Note";
+    $deletion = "Deletion";
+    $edit = "Edit";
+    $save = "Saved";
+    $del = "Delete";
 
 }
 ?>

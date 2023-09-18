@@ -4,6 +4,7 @@
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <?php
 include 'include/headadmin.php';
+include 'include/langid.php';
 include('server.php');
 
 ?>
@@ -243,26 +244,26 @@ if (isset($_GET['delete_id'])) {
         </div>
         <div class="container" id="con-table">
             <div class="filter-buttons">
-                <button data-status="All">ทั้งหมด (<span id="total-orders">0</span>)</button>
-                <button data-status="รอตรวจสอบ">รอตรวจสอบ (<span id="pending-orders">0</span>)</button>
-                <button data-status="สำเร็จ">สำเร็จ (<span id="completed-orders">0</span>)</button>
-                <button data-status="ปฏิเสธ">ปฏิเสธ (<span id="rejected-orders">0</span>)</button>
+                <button data-status="All"><?= $all ?> (<span id="total-orders">0</span>)</button>
+                <button data-status="รอตรวจสอบ"><?= $check ?> (<span id="pending-orders">0</span>)</button>
+                <button data-status="สำเร็จ"><?= $complete ?> (<span id="completed-orders">0</span>)</button>
+                <button data-status="ปฏิเสธ"><?= $reject ?> (<span id="rejected-orders">0</span>)</button>
             </div>
             <div class="table_order">
                 <table>
                     <thead>
                         <tr>
-                            <th>ลำดับ</th>
-                            <th>ผู้ใช้งาน</th>
-                            <th>ชนิด</th>
-                            <th>รายการ</th>
-                            <th>จำนวน</th>
-                            <th>วัน</th>
-                            <th>ราคา</th>
-                            <th>เวลา</th>
-                            <th>สถานะ</th>
-                            <th>หมายเหตุ</th>
-                            <th>ดำเนินการ</th>
+                            <th><?= $order ?></th>
+                            <th><?= $User ?></th>
+                            <th><?= $types2 ?></th>
+                            <th><?= $lists ?></th>
+                            <th><?= $quantityy ?></th>
+                            <th><?= $dayss ?></th>
+                            <th><?= $pricess ?></th>
+                            <th><?= $timess ?></th>
+                            <th><?= $statuss ?></th>
+                            <th><?= $notess ?></th>
+                            <th><?= $deletion ?></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -299,29 +300,29 @@ if (isset($_GET['delete_id'])) {
                                     <td>
                                         <select class="status-dropdown" data-row-id="<?php echo $row['id']; ?>" disabled>
                                             <option value="รอตรวจสอบ" <?php if ($row['status'] === 'รอตรวจสอบ')
-                                                echo 'selected'; ?>>รอตรวจสอบ</option>
+                                                echo 'selected'; ?>><?= $check ?></option>
                                             <option value="สำเร็จ" <?php if ($row['status'] === 'สำเร็จ')
                                                 echo 'selected'; ?>>
-                                                สำเร็จ</option>
+                                                <?= $complete ?></option>
                                             <option value="ปฏิเสธ" <?php if ($row['status'] === 'ปฏิเสธ')
                                                 echo 'selected'; ?>>
-                                                ปฏิเสธ</option>
+                                                <?= $reject ?></option>
                                         </select>
-                                        <button class="edit-button" data-row-id="<?php echo $row['id']; ?>">แก้ไข</button>
-                                        <button class="save-button" data-row-id="<?php echo $row['id']; ?>">บันทึก</button>
+                                        <button class="edit-button" data-row-id="<?php echo $row['id']; ?>"><?= $edit ?></button>
+                                        <button class="save-button" data-row-id="<?php echo $row['id']; ?>"><?= $save ?></button>
                                         <button class="cancle-button" id="canclestatus" data-row-id="<?php echo $row['id']; ?>"
-                                            style="display: none;">ยกเลิก</button>
+                                            style="display: none;"><?= $cancle ?></button>
                                     </td>
                                     <td>
                                         <input type="text" class="note-input" data-row-id="<?php echo $row['id']; ?>"
                                             value="<?php echo $row['note']; ?>" disabled>
-                                        <button class="edit-note-button" data-row-id="<?php echo $row['id']; ?>">แก้ไข</button>
-                                        <button class="save-note-button" data-row-id="<?php echo $row['id']; ?>">บันทึก</button>
+                                        <button class="edit-note-button" data-row-id="<?php echo $row['id']; ?>"><?= $edit ?></button>
+                                        <button class="save-note-button" data-row-id="<?php echo $row['id']; ?>"><?= $save ?></button>
                                         <button class="cancle-note-button" data-row-id="<?php echo $row['id']; ?>"
-                                            style="display: none;">ยกเลิก</button>
+                                            style="display: none;"><?= $cancle ?></button>
                                     </td>
                                     <td>
-                                        <button class="deleteitem" data-row-id="<?php echo $row['id']; ?>">ลบ</button>
+                                        <button class="deleteitem" data-row-id="<?php echo $row['id']; ?>"><?= $del ?></button>
                                     </td>
                                 </tr>
                                 <?php
