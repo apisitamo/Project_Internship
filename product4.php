@@ -277,7 +277,7 @@ if ($langId == 1) {
                         while ($row = $result->fetch_assoc()) {
                     ?>
                             <div class="col-lg-4 mb-4" data-aos="flip-right" data-aos-duration="2000">
-                                <button class="open-popup">
+                                <a class="open-popup" href="productdetail.php?product_id=<?php echo $row['id']; ?>">
                                     <div class="card">
                                         <img src="<?php echo $row['img']; ?>" alt="" class="w-100">
                                         <div class="card-body">
@@ -324,7 +324,7 @@ if ($langId == 1) {
                                             </div>
                                         </div>
                                     </div>
-                                </button>
+                                </a>
                             </div>
                     <?php
                         }
@@ -339,207 +339,13 @@ if ($langId == 1) {
         </div>
     </section>
 
-    <section class="course-product">
-        <div class="click-overlay" id="click-overlay1"></div>
 
-        <!-- เป็นส่วนของ popup ตอนเด้งขึ้นมา ขั้่น 1-->
-
-        <div class="popup" id="popup1">
-            <div class="popup-content">
-                <span class="close-popup" id="close-popup1">&times;</span>
-                <div class="homecontent">
-                    <?php if (isset($_SESSION['username'])) : ?>
-                        <div class="box">
-                            <div class="container">
-                                <div class="row">
-                                    <p style="text-align: center;">
-                                        <?= $confirmorder ?>
-                                    </p>
-                                </div>
-                                <button class="button-success" id="button-success1">
-                                    <?= $confirm ?>
-                                </button>
-                                <button class="button-close" id="button-close1">
-                                    <?= $cancle ?>
-                                </button>
-                            </div>
-                        </div>
-                    <?php else : ?>
-                        <div class="box">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="titlebox">
-                                        <h1><?= $pleasesignin ?></h1>
-                                    </div>
-                                    <div class="col-lg-6 aos-init aos-animate" data-aos="zoom-in" data-aos-duration="2000">
-                                        <img src="assets/images/BSA.png" alt="" class="BSAlogo">
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="content">
-                                            <form action="login_db_popup.php" method="post" class="pop1">
-                                                <div class="input-group">
-                                                    <label for="username"><?= $usernames ?></label>
-                                                    <input type="text" name="username">
-                                                </div>
-                                                <div class="input-group">
-                                                    <label for="password"><?= $passwords ?></label>
-                                                    <input type="password" name="password">
-                                                </div>
-                                                <div class="input-group">
-                                                    <button type="submit" name="login_user" class="btn"><?= $signin ?></button>
-                                                </div>
-                                                <div>
-                                                    <a href="register.php"><?= $register ?></a>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    <?php endif ?>
-                </div>
-            </div>
-        </div>
-
-        <!-- เป็นส่วนของ popup ตอนเด้งขึ้นมา ที่อยู่-->
-
-        <!-- <div class="popup" id="popupaddress">
-            <div class="popup-content">
-                <span class="close-popup" id="close-popupaddress">&times;</span>
-                <div>
-                    <p style="text-align: center;">กรุณากรอกข้อมูลของท่านก่อนการสั่งซื้อ</p>
-                    <button class="button-success" id="button-successaddress">ไปยังหน้ากรอกข้อมูล</button>
-                    <button class="button-close" id="button-closeaddress">ปิด</button>
-                </div>
-            </div>
-        </div> -->
-
-        <!-- เป็นส่วนของ popup ตอนเด้งขึ้นมา ขั้่น 2-->
-
-        <div class="popup" id="popup2">
-            <div class="popup-content">
-                <span class="close-popup" id="close-popup2">&times;</span>
-                <div class="container">
-                    <p style="text-align: center;">คุณต้องการซื้อ....</p>
-                    <img src="assets/images/QR.svg" alt="" class="w-65">
-                    <p style="text-align: center;font-size: 30px;">ราคา บาท</p>
-                    <button class="button-success-2" id="button-success2">ยืนยันการโอน</button>
-                    <button class="button-close-2" id="button-close2">ยกเลิกการโอน</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- เป็นส่วนของ popup ตอนเด้งขึ้นมา ขั้่น 3-->
-
-        <div class="popup" id="popup3">
-            <div class="popup-content">
-                <span class="close-popup" id="close-popup3">&times;</span>
-                <div class="container">
-                    <p style="text-align: center;">ขอบคุณการซื้อ ผลิตภัณฑ์</p>
-                    <img src="assets/images/image 9.svg" alt="" class="w-70">
-                    <p style="text-align: center;font-size: 30px;">รอตรวจสอบการโอนเงินภายใน 24 ชม.</p>
-                    <button class="button-success" id="button-success3">
-                        <a href="user.php"><?= $purchase_history ?></a>
-                    </button>
-                    <button class="button-close" id="button-close3">ปิด</button>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <?php include 'include/footer.php'; ?>
 
 </body>
 
-<script>
-    const openpopup = document.querySelectorAll('.open-popup');
 
-    const popup1 = document.querySelector('#popup1');
-    const closefirstpopup = document.querySelector('#close-popup1');
-    const buttonclosefirst = document.querySelector('#button-close1');
-    const buttonsuccessfirst = document.querySelectorAll('#button-success1');
-
-    const popup2 = document.querySelector('#popup2');
-    const closesecondpopup = document.querySelector('#close-popup2');
-    const buttonclosesecond = document.querySelector('#button-close2');
-    const buttonsuccesssecond = document.querySelectorAll('#button-success2');
-
-    const popup3 = document.querySelector('#popup3');
-    const closethirdpopup = document.querySelector('#close-popup3');
-    const buttonclosethird = document.querySelector('#button-close3');
-
-    const clickOverlay1 = document.querySelector('#click-overlay1');
-
-    openpopup.forEach(button => {
-        button.addEventListener('click', () => {
-            console.log("Open first popup");
-            popup1.style.display = 'flex';
-            clickOverlay1.style.display = 'block';
-        });
-    });
-
-
-    closefirstpopup.addEventListener('click', () => {
-        console.log("X first popup ");
-        popup1.style.display = 'none';
-        clickOverlay1.style.display = 'none';
-    });
-    buttonclosefirst.addEventListener('click', () => {
-        console.log("close BTN first POPUP");
-        popup1.style.display = 'none';
-        clickOverlay1.style.display = 'none';
-    });
-    buttonsuccessfirst.forEach(button => {
-        button.addEventListener('click', () => {
-            console.log("success BTN to Open second popup");
-            popup1.style.display = 'none'; // ปิด popup แรก
-            popup2.style.display = 'flex';
-            clickOverlay1.style.display = 'block';
-        });
-    });
-
-
-    closesecondpopup.addEventListener('click', () => {
-        console.log("X second popup");
-        popup2.style.display = 'none';
-        clickOverlay1.style.display = 'none';
-    });
-    buttonclosesecond.addEventListener('click', () => {
-        console.log("close BTN second POPUP");
-        popup2.style.display = 'none';
-        clickOverlay1.style.display = 'none';
-    });
-    buttonsuccesssecond.forEach(button => {
-        button.addEventListener('click', () => {
-            console.log("success BTN to Open second popup");
-            popup2.style.display = 'none'; // ปิด popup สอง
-            popup3.style.display = 'flex';
-            clickOverlay1.style.display = 'block';
-        });
-    });
-
-
-    closethirdpopup.addEventListener('click', () => {
-        console.log("X third popup ");
-        popup3.style.display = 'none';
-        clickOverlay1.style.display = 'none';
-    });
-    buttonclosethird.addEventListener('click', () => {
-        console.log("close BTN third POPUP");
-        popup3.style.display = 'none';
-        clickOverlay1.style.display = 'none';
-    });
-
-
-    clickOverlay1.addEventListener('click', () => {
-        console.log("Clicked on overlay");
-        popup1.style.display = 'none'; // ปิด popup1 ที่มี id="popup1"
-        popup2.style.display = 'none';
-        popup3.style.display = 'none';
-        clickOverlay1.style.display = 'none';
-    });
-</script>
 
 <script>
     AOS.init();

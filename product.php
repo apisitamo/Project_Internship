@@ -316,7 +316,7 @@ if ($langId == 1) {
                             while ($row = $result->fetch_assoc()) {
                         ?>
                                 <div class="col-lg-12 mb-4" data-aos="flip-right" data-aos-duration="2000">
-                                    <button class="open-popup">
+                                    <a class="open-popup" href="productdetail.php?product_id=<?php echo $row['id']; ?>">
                                         <div class="card">
                                             <img src="<?php echo $row['img']; ?>" alt="" class="w-100">
                                             <div class="card-body">
@@ -369,7 +369,7 @@ if ($langId == 1) {
                                                     <?php } ?>
                                                 </div>
                                             </div>
-                                    </button>
+                                    </a>
                                 </div>
                         <?php
                             }
@@ -405,7 +405,7 @@ if ($langId == 1) {
                             while ($row = $result->fetch_assoc()) {
                         ?>
                                 <div class="col-lg-12 mb-4" data-aos="flip-right" data-aos-duration="2000">
-                                    <button class="open-popup">
+                                    <a class="open-popup" href="productdetail.php?product_id=<?php echo $row['id']; ?>">
                                         <div class="card">
                                             <img src="<?php echo $row['img']; ?>" alt="" class="w-100">
                                             <div class="card-body">
@@ -459,7 +459,7 @@ if ($langId == 1) {
                                                     <?php } ?>
                                                 </div>
                                             </div>
-                                    </button>
+                                    </a>
                                 </div>
                         <?php
                             }
@@ -496,7 +496,7 @@ if ($langId == 1) {
                             while ($row = $result->fetch_assoc()) {
                         ?>
                                 <div class="col-lg-12 mb-4" data-aos="flip-right" data-aos-duration="2000">
-                                    <button class="open-popup">
+                                    <a class="open-popup" href="productdetail.php?product_id=<?php echo $row['id']; ?>">
                                         <div class="card">
                                             <img src="<?php echo $row['img']; ?>" alt="" class="w-100">
                                             <div class="card-body">
@@ -550,7 +550,7 @@ if ($langId == 1) {
                                                     <?php } ?>
                                                 </div>
                                             </div>
-                                    </button>
+                                    </a>
                                 </div>
                         <?php
                             }
@@ -692,7 +692,7 @@ if ($langId == 1) {
 
 </body>
 
-<script>
+<!-- <script>
     const openpopup = document.querySelectorAll('.open-popup');
 
     const popup1 = document.querySelector('#popup1');
@@ -779,7 +779,7 @@ if ($langId == 1) {
         popup3.style.display = 'none';
         clickOverlay1.style.display = 'none';
     });
-</script>
+</script> -->
 
 <script>
     AOS.init();
