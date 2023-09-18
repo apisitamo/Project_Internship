@@ -134,13 +134,11 @@ if (isset($_GET['delete_id'])) {
         <section class="add-img">
             <div class="containertop mt-5">
                 <h2>เพิ่มรูปภาพ</h2>
-                <form action="add_gallery_process.php" method="POST" enctype="multipart/form-data">
                     <div class="mb-3">
                         <label for="img" class="form-label">รูปภาพ</label>
                         <input type="file" class="form-control" name="img" required>
                     </div>
                     <button type="submit" class="open-popup btn btn-primary">เพิ่มรูปภาพ</button>
-                </form>
             </div>
         </section>
 
@@ -280,5 +278,39 @@ if (isset($_GET['delete_id'])) {
         }
     });
 </script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+$(document).ready(function() {
+    $(".open-popup").click(function() {
+        var imageInput = $("input[name='img']")[0];
+        var imageFile = imageInput.files[0];
+        
+        if (imageFile) {
+            var formData = new FormData();
+            formData.append("img", imageFile);
+
+            $.ajax({
+                type: "POST",
+                url: "add_gallery_process.php",
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function(response) {
+                    location.reload();
+                    alert("รูปภาพถูกอัปโหลดสำเร็จ");
+                },
+                error: function() {
+                    alert("เกิดข้อผิดพลาดในการอัปโหลดรูปภาพ");
+                }
+            });
+        } else {
+            alert("กรุณาเลือกรูปภาพก่อนกดปุ่ม Submit");
+        }
+    });
+});
+</script>
+
 
 </html>

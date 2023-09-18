@@ -5,9 +5,6 @@ if($langId == 1){
     $passwords = "รหัสผ่าน";
     $notyet = "มีบัญชีแล้วหรือยัง ? ";
     $signup = "ลงทะเบียน";
-    $confirmorder="ยืนยันการสั่งซื้อ";
-    $confirm="ยืนยัน";
-    $cancle="ยกเลิก";
     $logout = 'ออกจากระบบ';
     $user = 'ข้อมูลผู้ใช้งาน';
     $admin='แอดมินเท่านั้น';
@@ -16,6 +13,10 @@ if($langId == 1){
     $signin = "เข้าสู่ระบบ";
     $pleasesignin ='กรุณาเข้าสู่ระบบ';
     $purchase_history = 'ประวัติการซื้อ';
+    $confirmorder="ยืนยันการสั่งซื้อ";
+    $confirm="ยืนยัน";
+    $confirmtran="ยืนยันการโอนเงิน";
+    $cancle="ยกเลิก";
     
 
 }else{
@@ -24,9 +25,6 @@ if($langId == 1){
     $passwords = "PASSWORD";
     $notyet = "NOTYET MEMBER ?";
     $signup = "SIGN UP";
-    $confirmorder="CONFIRM ORDER";
-    $confirm="CONFIRM";
-    $cancle="CANCLE";
     $logout = 'Logout';
     $user = 'User Detail';
     $admin='For Admin';
@@ -35,6 +33,10 @@ if($langId == 1){
     $signin = "SIGN IN";
     $pleasesignin ='PLEASE SIGNIN';
     $purchase_history = 'PURCHASE HISTORY';
+    $confirmorder="CONFIRM ORDER";
+    $confirm="CONFIRM";
+    $confirmtran="CONFIRM MONEY TRANSFER";
+    $cancle="CANCLE";
 
 }
 ?>

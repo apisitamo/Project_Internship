@@ -18,7 +18,7 @@ $sql = "INSERT INTO product_order (username, type, name,  quantity, price, statu
         VALUES ('$username', '$type', '$name',  '$quantity', '$price', '$status')";
 
 if ($conn->query($sql) === TRUE) {
-    echo "เพิ่มรายการสำเร็จ";
+    echo "successfully";
 } else {
     echo "ผิดพลาด: " . $conn->error;
 }

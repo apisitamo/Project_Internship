@@ -302,7 +302,7 @@
                                 </div>
                             </div>
                         </div>
-                        <button class="open-popup" >
+                        <button class="open-popup">
                             <p class="price" data-aos="fade-up" data-aos-duration="2000"><?= $prices ?> <?php echo $price ?> <?= $price2 ?></p>
                         </button>
 
@@ -428,11 +428,15 @@
             <div class="popup-content">
                 <span class="close-popup" id="close-popup2">&times;</span>
                 <div class="container">
-                    <p style="text-align: center;">คุณต้องการซื้อ </p>
+                    <?php if ($langId == 1) { ?>
+                        <p style="text-align: center;"><?php echo $name_th ?></p>
+                    <?php } else { ?>
+                        <p style="text-align: center;"><?php echo $name_eng ?></p>
+                    <?php } ?>
                     <img src="assets/images/QR.svg" alt="" class="w-65">
-                    <p style="text-align: center;font-size: 30px;">ราคา บาท</p>
-                    <button class="button-success-2" id="button-success2" href="productdetail.php?product_id=<?php echo $row['id']; ?>&type=<?php echo $row['type']; ?>">ยืนยันการโอน</button>
-                    <button class="button-close-2" id="button-close2">ยกเลิกการโอน</button>
+                    <p style="text-align: center;font-size: 30px;"><?= $prices ?> <?php echo $price ?> <?= $price2 ?></p>
+                    <button class="button-success-2" id="button-success2" href="productdetail.php?product_id=<?php echo $row['id']; ?>&type=<?php echo $row['type']; ?>"><?= $confirm ?></button>
+                    <button class="button-close-2" id="button-close2"><?= $cancle ?></button>
                 </div>
             </div>
         </div>
