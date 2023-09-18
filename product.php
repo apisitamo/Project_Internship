@@ -228,6 +228,9 @@ if ($langId == 1) {
 
     .product .card {
         width: 410px;
+        box-shadow: 0px 4px 4px rgb(111 51 27 / 25%);
+        border-radius: 5px;
+        cursor: pointer;
     }
 
     .product .owl-nav {

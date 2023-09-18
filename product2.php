@@ -131,8 +131,7 @@ if ($langId == 1) {
         border-color: #AFAFAF;
     }
 
-    .course-product .BSAlogo {
-    }
+    .course-product .BSAlogo {}
 
     .course-product .col-lg-6 {
         text-align: center;
@@ -221,7 +220,13 @@ if ($langId == 1) {
         margin-left: 110px;
     }
 
-    .popup .container img {
+    .popup .container img {}
+
+    .product .card {
+        width: 410px;
+        box-shadow: 0px 4px 4px rgb(111 51 27 / 25%);
+        border-radius: 5px;
+        cursor: pointer;
     }
 </style>
 
@@ -247,16 +252,24 @@ if ($langId == 1) {
 
                 <ul class="nav nav-page" data-aos="fade-right" data-aos-duration="2000">
                     <li class="nav-item">
-                        <a class="nav-link " aria-current="page" href="product.php"><?= $nav1 ?></a>
+                        <a class="nav-link " aria-current="page" href="product.php">
+                            <?= $nav1 ?>
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="product2.php"><?= $nav2 ?></a>
+                        <a class="nav-link active" href="product2.php">
+                            <?= $nav2 ?>
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="product3.php"><?= $nav3 ?></a>
+                        <a class="nav-link" href="product3.php">
+                            <?= $nav3 ?>
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="product4.php"> <?= $nav4 ?></a>
+                        <a class="nav-link" href="product4.php">
+                            <?= $nav4 ?>
+                        </a>
                     </li>
                 </ul>
             </div>
@@ -275,16 +288,20 @@ if ($langId == 1) {
 
                     if ($result->num_rows > 0) {
                         while ($row = $result->fetch_assoc()) {
-                    ?>
+                            ?>
                             <div class="col-lg-4 mb-4" data-aos="flip-right" data-aos-duration="2000">
                                 <a class="open-popup" href="productdetail.php?product_id=<?php echo $row['id']; ?>">
                                     <div class="card">
                                         <img src="<?php echo $row['img']; ?>" alt="" class="w-100">
                                         <div class="card-body">
                                             <?php if ($langId == 1) { ?>
-                                                <h5 class="card-title"><?php echo $row['name_th']; ?></h5>
+                                                <h5 class="card-title">
+                                                    <?php echo $row['name_th']; ?>
+                                                </h5>
                                             <?php } else { ?>
-                                                <h5 class="card-title"><?php echo $row['name_eng']; ?></h5>
+                                                <h5 class="card-title">
+                                                    <?php echo $row['name_eng']; ?>
+                                                </h5>
                                             <?php } ?>
                                             <!-- <p class="mt-3 mb-0">Aroma Scents : Ylang Ylang Oil & Lavender Oil</p> -->
                                         </div>
@@ -297,7 +314,9 @@ if ($langId == 1) {
                                                         </p>
                                                     </div>
                                                     <div class="price">
-                                                        <p class="price-product"><?php echo $row['price']; ?></p>
+                                                        <p class="price-product">
+                                                            <?php echo $row['price']; ?>
+                                                        </p>
                                                         <div class="rate">
                                                             <p>
                                                                 <?= $price2 ?>
@@ -309,7 +328,9 @@ if ($langId == 1) {
                                                         <p>Wholesale Price :</p>
                                                     </div>
                                                     <div class="price">
-                                                        <p class="price-product"><?php echo $row['price']; ?></p>
+                                                        <p class="price-product">
+                                                            <?php echo $row['price']; ?>
+                                                        </p>
                                                         <div class="rate">
                                                             <p>THB/kg</p>
                                                         </div>
@@ -320,7 +341,7 @@ if ($langId == 1) {
                                     </div>
                                 </a>
                             </div>
-                    <?php
+                            <?php
                         }
                     } else {
                         echo "ไม่พบสินค้าในระบบ";
