@@ -5,7 +5,7 @@
 
 <?php include 'include/head.php';
 
-if($langId == 1){
+if ($langId == 1) {
     $course = "หลักสูตรที่เปิดสอน";
     $detail1 = "สปาเพื่อสุขภาพ";
     $detail2 = "สปาเพื่อความงาม";
@@ -13,8 +13,7 @@ if($langId == 1){
     $allcourse = "หลักสูตรทั้งหมด";
     $click = "สนใจเรียนคอร์สออนไลน์คลิ๊ก!";
     $reviwe = "ความคิดเห็นจากผู้เรียน";
-
-}else{
+} else {
     $course = "COURSE";
     $detail1 = "Health Spa Course";
     $detail2 = "Beauty Spa Course";
@@ -22,9 +21,15 @@ if($langId == 1){
     $allcourse = "All courses";
     $click = "สนใจเรียนคอร์สออนไลน์คลิ๊ก!";
     $reviwe = "REVIEW";
-
 }
 ?>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
 
 <body>
     <section class="link-click" data-aos="zoom-out-right" data-aos-duration="2000">
