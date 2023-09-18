@@ -138,7 +138,7 @@ if (isset($_GET['delete_id'])) {
                         <label for="img" class="form-label">รูปภาพ</label>
                         <input type="file" class="form-control" name="img" required>
                     </div>
-                    <button type="submit" class="open-popup btn btn-primary">เพิ่มรูปภาพ</button>
+                    <button type="submit" class="additem btn btn-primary">เพิ่มรูปภาพ</button>
             </div>
         </section>
 
@@ -283,7 +283,7 @@ if (isset($_GET['delete_id'])) {
 
 <script>
 $(document).ready(function() {
-    $(".open-popup").click(function() {
+    $(".button-success-1").click(function() {
         var imageInput = $("input[name='img']")[0];
         var imageFile = imageInput.files[0];
         
