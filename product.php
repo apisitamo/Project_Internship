@@ -363,6 +363,7 @@ if ($langId == 1) {
                                                     <?php } ?>
                                                 </div>
                                             </div>
+                                        </div>
                                     </a>
                                 </div>
                         <?php
@@ -447,6 +448,7 @@ if ($langId == 1) {
                                                     <?php } ?>
                                                 </div>
                                             </div>
+                                        </div>
                                     </a>
                                 </div>
                         <?php
@@ -532,6 +534,7 @@ if ($langId == 1) {
                                                     <?php } ?>
                                                 </div>
                                             </div>
+                                        </div>
                                     </a>
                                 </div>
                         <?php
