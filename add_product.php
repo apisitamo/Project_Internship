@@ -141,6 +141,7 @@ if (isset($_GET['delete_id'])) {
         background: red;
         margin-right: -85%;
     }
+
     .popup-add button {
         padding: 6px;
         border-radius: 10px;
@@ -174,41 +175,41 @@ if (isset($_GET['delete_id'])) {
     <section class="addpro1">
         <div class="containertop mt-5">
             <h2>เพิ่มสินค้า</h2>
-            <form action="add_product_process.php" method="POST" enctype="multipart/form-data">
-                <div class="mb-3">
-                    <label for="img" class="form-label">รูปภาพ</label>
-                    <input type="file" class="form-control" name="img" required>
-                </div>
-                <div class="mb-3">
-                    <label for="type" class="form-label">ประเภท</label>
-                    <select class="form-control-option" name="type">
-                        <option value="Body Scrub">Body Scrub</option>
-                        <option value="Body Mask">Body Mask</option>
-                        <option value="Body Massage Oil">Body Massage Oil</option>
-                    </select>
-                </div>
-                <div class="mb-3">
-                    <label for="name" class="form-label">ชื่อสินค้าไทย</label>
-                    <input type="text" class="form-control" name="name_th" required>
-                </div>
-                <div class="mb-3">
-                    <label for="name" class="form-label">ชื่อสินค้าอังกฤษ</label>
-                    <input type="text" class="form-control" name="name_eng" required>
-                </div>
-                <div class="mb-3">
-                    <label for="detail" class="form-label">รายละเอียดไทย</label>
-                    <textarea class="form-control" name="detail_th" required></textarea>
-                </div>
-                <div class="mb-3">
-                    <label for="detail" class="form-label">รายละเอียดอังกฤษ</label>
-                    <textarea class="form-control" name="detail_eng" required></textarea>
-                </div>
-                <div class="mb-3">
-                    <label for="price" class="form-label">ราคา/กิโลกรัม</label>
-                    <input type="number" class="form-control" name="price" required>
-                </div>
-                <button type="submit" class="additem btn btn-primary">เพิ่มสินค้า</button>
-            </form>
+
+            <div class="mb-3">
+                <label for="img" class="form-label">รูปภาพ</label>
+                <input type="file" class="form-control" name="img" required>
+            </div>
+            <div class="mb-3">
+                <label for="type" class="form-label">ประเภท</label>
+                <select class="form-control-option" name="type">
+                    <option value="Body Scrub">Body Scrub</option>
+                    <option value="Body Mask">Body Mask</option>
+                    <option value="Body Massage Oil">Body Massage Oil</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="name" class="form-label">ชื่อสินค้าไทย</label>
+                <input type="text" class="form-control" name="name_th" required>
+            </div>
+            <div class="mb-3">
+                <label for="name" class="form-label">ชื่อสินค้าอังกฤษ</label>
+                <input type="text" class="form-control" name="name_eng" required>
+            </div>
+            <div class="mb-3">
+                <label for="detail" class="form-label">รายละเอียดไทย</label>
+                <textarea class="form-control" name="detail_th" required></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="detail" class="form-label">รายละเอียดอังกฤษ</label>
+                <textarea class="form-control" name="detail_eng" required></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="price" class="form-label">ราคา/กิโลกรัม</label>
+                <input type="number" class="form-control" name="price" required>
+            </div>
+            <button type="submit" class="additem btn btn-primary">เพิ่มสินค้า</button>
+
         </div>
     </section>
 
@@ -225,7 +226,7 @@ if (isset($_GET['delete_id'])) {
 
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
-                        ?>
+                ?>
                         <div class="card">
                             <button class="deleteitem" data-product-id="<?php echo $row['id']; ?>">&times;</button>
                             <img src="<?php echo $row['img']; ?>" class="w-100" alt="Product Image">
@@ -252,7 +253,7 @@ if (isset($_GET['delete_id'])) {
                                 </div>
                             </div>
                         </div>
-                        <?php
+                <?php
                     }
                 } else {
                     echo "ไม่พบสินค้าในระบบ";
@@ -282,8 +283,7 @@ if (isset($_GET['delete_id'])) {
                 <span class="close-popup" id="close-popup2">&times;</span>
                 <div class="container">
                     <p style="text-align: center;">คุณต้องการที่จะลบสินค้า</p>
-                    <button class="button-close-2" id="confirm-delete-button"
-                        href='add_product.php?delete_id=<?php echo $row['id']; ?>'>ยืนยันการลบ</button>
+                    <button class="button-close-2" id="confirm-delete-button" href='add_product.php?delete_id=<?php echo $row['id']; ?>'>ยืนยันการลบ</button>
                     <button class="button-close-2" id="button-close2">ยกเลิก</button>
                 </div>
             </div>
@@ -367,6 +367,51 @@ if (isset($_GET['delete_id'])) {
             const deleteLink = `add_product.php?delete_id=${deleteId}`;
             window.location.href = deleteLink;
         }
+    });
+</script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        $(".button-success-1").click(function() {
+            var imageInput = $("input[name='img']")[0];
+            var imageFile = imageInput.files[0];
+            var type = $("select[name='type']").val();
+            var name_th = $("input[name='name_th']").val();
+            var name_eng = $("input[name='name_eng']").val();
+            var detail_th = $("textarea[name='detail_th']").val();
+            var detail_eng = $("textarea[name='detail_eng']").val();
+            var price = $("input[name='price']").val();
+
+            if (imageFile && type && name_th && name_eng && detail_th && detail_eng && price) {
+                var formData = new FormData();
+                formData.append("img", imageFile);
+                formData.append("type", type);
+                formData.append("name_th", name_th);
+                formData.append("name_eng", name_eng);
+                formData.append("detail_th", detail_th);
+                formData.append("detail_eng", detail_eng);
+                formData.append("price", price);
+
+                $.ajax({
+                    type: "POST",
+                    url: "add_product_process.php",
+                    data: formData,
+                    contentType: false,
+                    processData: false,
+                    success: function(response) {
+                        location.reload();
+                        alert("เพิ่มสินค้าสำเร็จ");
+                    },
+                    error: function() {
+                        alert("เกิดข้อผิดพลาดในการเพิ่มสินค้า");
+                    }
+                });
+            } else {
+                alert("กรุณากรอกข้อมูลให้ครบทุกช่องก่อนเพิ่มสินค้า");
+            }
+        });
     });
 </script>
 

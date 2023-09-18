@@ -174,7 +174,6 @@ if (isset($_GET['delete_id'])) {
     <section class="addcourse1">
         <div class="containertop mt-5">
             <h2>เพิ่มหลักสูตร</h2>
-            <form action="add_course_process.php" method="POST" enctype="multipart/form-data">
                 <div class="mb-3">
                     <label for="img" class="form-label">รูปภาพ</label>
                     <input type="file" class="form-control" name="img" required>
@@ -215,8 +214,7 @@ if (isset($_GET['delete_id'])) {
                     <label for="hour" class="form-label">จำนวนชั่วโมงใบประกาศ</label>
                     <input type="number" class="form-control" name="hour" required>
                 </div>
-                <button type="submit" class="open-popup btn btn-primary">เพิ่มหลักสูตร</button>
-            </form>
+                <button type="submit" class="additem btn btn-primary">เพิ่มหลักสูตร</button>
         </div>
     </section>
 
@@ -381,6 +379,55 @@ if (isset($_GET['delete_id'])) {
             const deleteLink = `add_course.php?delete_id=${deleteId}`;
             window.location.href = deleteLink;
         }
+    });
+</script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        $(".button-success-1").click(function() {
+            var imageInput = $("input[name='img']")[0];
+            var imageFile = imageInput.files[0];
+            var type = $("select[name='type']").val();
+            var name_th = $("input[name='name_th']").val();
+            var name_eng = $("input[name='name_eng']").val();
+            var detail_th = $("textarea[name='detail_th']").val();
+            var detail_eng = $("textarea[name='detail_eng']").val();
+            var day = $("input[name='day']").val();
+            var price = $("input[name='price']").val();
+            var hour = $("input[name='hour']").val();
+            
+            if (imageFile && type && name_th && name_eng && detail_th && detail_eng && day && price && hour) {
+                var formData = new FormData();
+                formData.append("img", imageFile);
+                formData.append("type", type);
+                formData.append("name_th", name_th);
+                formData.append("name_eng", name_eng);
+                formData.append("detail_th", detail_th);
+                formData.append("detail_eng", detail_eng);
+                formData.append("day", day);
+                formData.append("price", price);
+                formData.append("hour", hour);
+
+                $.ajax({
+                    type: "POST",
+                    url: "add_course_process.php",
+                    data: formData,
+                    contentType: false,
+                    processData: false,
+                    success: function(response) {
+                        location.reload();
+                        alert("เพิ่มหลักสูตรสำเร็จ");
+                    },
+                    error: function() {
+                        alert("เกิดข้อผิดพลาดในการเพิ่มหลักสูตร");
+                    }
+                });
+            } else {
+                alert("กรุณากรอกข้อมูลให้ครบทุกช่องก่อนเพิ่มหลักสูตร");
+            }
+        });
     });
 </script>
 
