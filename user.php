@@ -334,6 +334,7 @@ if (isset($_GET['logout'])) {
                         <th>รายการ</th>
                         <th>จำนวน</th>
                         <th>ราคา</th>
+                        <th>เวลา</th>
                         <th>สถานะ</th>
                         <th>หมายเหตุ</th>
                     </tr>
@@ -362,6 +363,9 @@ if (isset($_GET['logout'])) {
                             </td>
                             <td>
                                 <?php echo $row_product_order['price']; ?>
+                            </td>
+                            <td>
+                                <?php echo $row_product_order['order_time']; ?>
                             </td>
                             <td style="background-color:
                     <?php
@@ -404,6 +408,9 @@ if (isset($_GET['logout'])) {
                             </td>
                             <td>
                                 <?php echo $row_course_order['price']; ?>
+                            </td>
+                            <td>
+                                <?php echo $row_course_order['order_time']; ?>
                             </td>
                             <td style="background-color:
                     <?php
