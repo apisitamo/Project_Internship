@@ -4,6 +4,7 @@
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <?php
 include 'include/headadmin.php';
+include 'include/langid.php';
 include('server.php');
 
 if (isset($_GET['delete_id'])) {
@@ -290,12 +291,12 @@ if (isset($_GET['delete_id'])) {
                                 <h5 class="card-title">
                                     <?php echo $row['name_th']; ?>
                                 </h5>
-                                <h5 class="card-title">
-                                    <?php echo $row['name_eng']; ?>
-                                </h5>
                                 <p class="card-text"><i class="fa-sharp fa-solid fa-circle-check"></i>
                                     <?php echo $row['detail_th']; ?>
                                 </p>
+                                <h5 class="card-title">
+                                    <?php echo $row['name_eng']; ?>
+                                </h5>
                                 <p class="card-text"><i class="fa-sharp fa-solid fa-circle-check"></i>
                                     <?php echo $row['detail_eng']; ?>
                                 </p>

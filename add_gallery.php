@@ -4,6 +4,7 @@
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <?php
 include 'include/headadmin.php';
+include 'include/langid.php';
 include('server.php');
 
 

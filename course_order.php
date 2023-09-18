@@ -11,13 +11,10 @@ include('server.php');
 <?php
 $db = mysqli_connect($servername, $username, $password, $dbname);
 
-// กำหนดจำนวนรายการต่อหน้า
 $itemsPerPage = 10;
 
-// หากมีค่า page ที่รับมาจาก query string ให้ใช้ค่านั้น มิฉะนั้นใช้หน้าที่ 1 โดย default
 $page = isset($_GET['page']) ? (int) $_GET['page'] : 1;
 
-// คำนวณ offset สำหรับดึงข้อมูลตามหน้า
 $offset = ($page - 1) * $itemsPerPage;
 
 $query = "SELECT * FROM course_order

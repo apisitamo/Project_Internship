@@ -17,6 +17,25 @@ if($langId == 1){
     $confirm="ยืนยัน";
     $confirmtran="ยืนยันการโอนเงิน";
     $cancle="ยกเลิก";
+    $picture = 'รูปภาพ';
+    $types = 'ประเภท';
+    $THname = 'ชื่อสินค้าภาษาไทย';
+    $ENGname = 'ชื่อสินค้าภาษาอังกฤษ';
+    $THdetail = 'รายละเอียดภาษาไทย';
+    $ENGdetail = 'รายละเอียดภาษาอังกฤษ';
+    $training = 'ระยะเวลาการฝึกอบรม';
+    $prices = 'ราคา';
+    $hours = 'จำนวนชั่วโมงใบประกาศ';
+    $allcourse = 'หลักสูตรทั้งหมด';
+    $allgallery = 'แกลลอรี่ทั้งหมด';
+    $allproduct = 'ผลิตภัณฑ์ทั้งหมด';
+    $add = 'เพิ่ม';
+    $price2 = "บาท/กก.";
+    $conf = "ยืนยัน";
+    $canc = "ยกเลิก";
+    $condel = "ยืนยันการลบ";
+    $wantadd = "คุณต้องการที่จะเพิ่ม";
+    $wantdel = "คุณต้องการที่จะลบ";
     
 
 }else{
@@ -37,6 +56,25 @@ if($langId == 1){
     $confirm="CONFIRM";
     $confirmtran="CONFIRM MONEY TRANSFER";
     $cancle="CANCLE";
+    $picture = 'Picture';
+    $types = 'Types';
+    $THname = 'Thai product name';
+    $ENGname = 'English product name';
+    $THdetail = 'Thai details';
+    $ENGdetail = 'Englist details';
+    $training = 'Training period';
+    $prices = 'Price';
+    $hours = 'Number of certificate hours';
+    $allcourse = 'All course';
+    $allgallery = 'All gallery';
+    $allproduct = 'All product';
+    $add = 'Add';
+    $price2 = "Baht / Kg.";
+    $conf = "Confirm";
+    $canc = "Cancle";
+    $condel = "Confirm deletion";
+    $wantadd = "Do you want to add";
+    $wantdel = "Do you want to delete";
 
 }
 ?>
