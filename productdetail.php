@@ -293,7 +293,7 @@
                                 </div>
                             </div>
                             <div class="item">
-                                <div class="title" style="width:110%;" data-aos="zoom-in" data-aos-duration="2000">
+                                <div class="title" data-aos="zoom-in" data-aos-duration="2000">
                                     <img src="assets/images/icon-chat.png">
                                     <span><?= $types ?></span>
                                 </div>
