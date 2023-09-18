@@ -29,12 +29,15 @@ if (isset($_GET['delete_id'])) {
         padding: 0px 180px;
     }
 
-    .addcourse1 .containertop h2 {
+    .addcourse1 .containertop {
         text-align: center;
     }
 
+    .addcourse1 .containertop .mb-3:not(:nth-child(3)) {
+        text-align: left;
+    }
+
     .addcourse1 .containertop .mb-3:nth-child(3) {
-        text-align: center;
         margin-bottom: 0px !important;
     }
 
@@ -194,13 +197,19 @@ if (isset($_GET['delete_id'])) {
     <div class="click-overlay" id="click-overlay1"></div>
     <section class="addcourse1">
         <div class="containertop mt-5">
-            <h2><?= $add_course ?></h2>
+            <h2>
+                <?= $add_course ?>
+            </h2>
             <div class="mb-3">
-                <label for="img" class="form-label"><?= $picture ?></label>
+                <label for="img" class="form-label">
+                    <?= $picture ?>
+                </label>
                 <input type="file" class="form-control" name="img" required>
             </div>
             <div class="mb-3">
-                <label for="type" class="form-label"><?= $types ?></label>
+                <label for="type" class="form-label">
+                    <?= $types ?>
+                </label>
                 <select class="form-control-option" name="type">
                     <option value="Health Spa Course">Health Spa Course</option>
                     <option value="Beauty Spa Course">Beauty Spa Course</option>
@@ -208,40 +217,58 @@ if (isset($_GET['delete_id'])) {
                 </select>
             </div>
             <div class="mb-3">
-                <label for="name" class="form-label"><?= $THname ?></label>
+                <label for="name" class="form-label">
+                    <?= $THname ?>
+                </label>
                 <input type="text" class="form-control" name="name_th" required>
             </div>
             <div class="mb-3">
-                <label for="name" class="form-label"><?= $ENGname ?></label>
+                <label for="name" class="form-label">
+                    <?= $ENGname ?>
+                </label>
                 <input type="text" class="form-control" name="name_eng" required>
             </div>
             <div class="mb-3">
-                <label for="detail" class="form-label"><?= $THdetail ?></label>
+                <label for="detail" class="form-label">
+                    <?= $THdetail ?>
+                </label>
                 <textarea class="form-control" name="detail_th" required></textarea>
             </div>
             <div class="mb-3">
-                <label for="detail" class="form-label"><?= $ENGdetail ?></label>
+                <label for="detail" class="form-label">
+                    <?= $ENGdetail ?>
+                </label>
                 <textarea class="form-control" name="detail_eng" required></textarea>
             </div>
             <div class="mb-3">
-                <label for="day" class="form-label"><?= $training ?></label>
+                <label for="day" class="form-label">
+                    <?= $training ?>
+                </label>
                 <input type="number" class="form-control" name="day" required>
             </div>
             <div class="mb-3">
-                <label for="price" class="form-label"><?= $prices ?></label>
+                <label for="price" class="form-label">
+                    <?= $prices ?>
+                </label>
                 <input type="number" class="form-control" name="price" required>
             </div>
             <div class="mb-3">
-                <label for="hour" class="form-label"><?= $hours ?></label>
+                <label for="hour" class="form-label">
+                    <?= $hours ?>
+                </label>
                 <input type="number" class="form-control" name="hour" required>
             </div>
-            <button type="submit" class="additem btn btn-primary"><?= $add ?></button>
+            <button type="submit" class="additem btn btn-primary">
+                <?= $add ?>
+            </button>
         </div>
     </section>
 
     <section class="addcourse2">
         <div class="containerbuttom mt-5">
-            <h2><?= $allcourse ?></h2>
+            <h2>
+                <?= $allcourse ?>
+            </h2>
             <div class="row">
                 <?php
                 $sql = "SELECT * FROM add_course ORDER BY id DESC";
@@ -249,12 +276,13 @@ if (isset($_GET['delete_id'])) {
 
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
-                ?>
+                        ?>
                         <div class="card">
                             <button class="deleteitem" data-course-id="<?php echo $row['id']; ?>">&times;</button>
                             <img src="<?php echo $row['img']; ?>" class="w-100" alt="course image">
                             <div class="course-body">
-                                <p class="card-text"><?= $types ?> :
+                                <p class="card-text">
+                                    <?= $types ?> :
                                     <?php echo $row['type']; ?>
                                 </p>
                                 <h5 class="card-title">
@@ -270,23 +298,26 @@ if (isset($_GET['delete_id'])) {
                                     <?php echo $row['detail_eng']; ?>
                                 </p>
                                 <div class="course-fotter">
-                                    <p class="card-text"><?= $training ?> :
+                                    <p class="card-text">
+                                        <?= $training ?> :
                                         <?php echo $row['day']; ?>
                                     </p>
                                 </div>
                                 <div class="course-fotter">
-                                    <p class="card-text"><?= $prices ?> :
+                                    <p class="card-text">
+                                        <?= $prices ?> :
                                         <?php echo $row['price']; ?>
                                     </p>
                                 </div>
                                 <div class="course-fotter">
-                                    <p class="card-text"><?= $hours ?> :
+                                    <p class="card-text">
+                                        <?= $hours ?> :
                                         <?php echo $row['hour']; ?>
                                     </p>
                                 </div>
                             </div>
                         </div>
-                <?php
+                        <?php
                     }
                 } else {
                     echo "ไม่พบหลักสูตรในระบบ";
@@ -316,7 +347,8 @@ if (isset($_GET['delete_id'])) {
                 <span class="close-popup" id="close-popup2">&times;</span>
                 <div class="container">
                     <p style="text-align: center;">คุณต้องการที่จะลบสินค้า</p>
-                    <button class="button-close-2" id="confirm-delete-button" href='add_course.php?delete_id=<?php echo $row['id']; ?>'>ยืนยันการลบ</ิ>
+                    <button class="button-close-2" id="confirm-delete-button"
+                        href='add_course.php?delete_id=<?php echo $row['id']; ?>'>ยืนยันการลบ</ิ>
                         <button class="button-close-2" id="button-close2">ยกเลิก</button>
                 </div>
             </div>
@@ -405,8 +437,8 @@ if (isset($_GET['delete_id'])) {
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script>
-    $(document).ready(function() {
-        $(".button-success-1").click(function() {
+    $(document).ready(function () {
+        $(".button-success-1").click(function () {
             var imageInput = $("input[name='img']")[0];
             var imageFile = imageInput.files[0];
             var type = $("select[name='type']").val();
@@ -436,11 +468,11 @@ if (isset($_GET['delete_id'])) {
                     data: formData,
                     contentType: false,
                     processData: false,
-                    success: function(response) {
+                    success: function (response) {
                         location.reload();
                         alert("เพิ่มหลักสูตรสำเร็จ");
                     },
-                    error: function() {
+                    error: function () {
                         alert("เกิดข้อผิดพลาดในการเพิ่มหลักสูตร");
                     }
                 });
