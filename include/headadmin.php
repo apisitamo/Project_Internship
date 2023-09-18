@@ -27,9 +27,9 @@ if (empty($_SESSION['lang']) || $_SESSION['lang'] == 1) {
     $login = 'Login';
     $admin = 'For Admin';
     $logout = 'Logout';
-    $add_product = 'ADD PRODUCT';
-    $add_course = 'ADD COURSE';
-    $add_gallery = 'ADD GALLERY';
+    $add_product = 'Add Product';
+    $add_course = 'Add Course';
+    $add_gallery = 'Add Gallery';
     $product_order = 'Product Order';
     $course_order = 'Course Order';
 }
