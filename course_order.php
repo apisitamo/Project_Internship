@@ -33,9 +33,9 @@ if (isset($_GET['delete_id'])) {
     $deleteId = $_GET['delete_id'];
     $deleteQuery = "DELETE FROM course_order WHERE id = '$deleteId'";
     if ($conn->query($deleteQuery) === TRUE) {
-        echo "<script>alert('ลบการสั่งซื้อเรียบร้อยแล้ว'); window.location.href = 'course_order.php';</script>";
+        echo "<script>alert('Successfully deleted'); window.location.href = 'course_order.php';</script>";
     } else {
-        echo "<script>alert('เกิดข้อผิดพลาด: " . $conn->error . "'); window.location.href = 'course_order.php';</script>";
+        echo "<script>alert('Error: " . $conn->error . "'); window.location.href = 'course_order.php';</script>";
     }
 }
 ?>
@@ -365,10 +365,10 @@ if (isset($_GET['delete_id'])) {
             <div class="popup-content">
                 <span class="close-popup" id="close-popup2">&times;</span>
                 <div class="container">
-                    <p style="text-align: center;">คุณต้องการที่จะลบรูปภาพ</p>
+                    <p style="text-align: center;"><?= $wantdel ?></p>
                     <button class="button-close-2" id="confirm-delete-button"
-                        href='course_order.php?delete_id=<?php echo $row['id']; ?>'>ยืนยันการลบ</button>
-                    <button class="button-close-2" id="button-close2">ยกเลิก</button>
+                        href='course_order.php?delete_id=<?php echo $row['id']; ?>'><?= $condel ?></button>
+                    <button class="button-close-2" id="button-close2"><?= $cancle ?></button>
                 </div>
             </div>
         </div>
