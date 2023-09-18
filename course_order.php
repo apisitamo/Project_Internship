@@ -116,10 +116,6 @@ if (isset($_GET['delete_id'])) {
         background: red;
     }
 
-    .course-order .table_order tr td:nth-child(9) {
-        border: none;
-    }
-
     .save-button,
     .save-note-button {
         display: none;
