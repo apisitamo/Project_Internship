@@ -153,18 +153,18 @@ if (isset($_GET['delete_id'])) {
         <div class="click-overlay" id="click-overlay1"></div>
         <section class="add-img">
             <div class="containertop mt-5">
-                <h2>เพิ่มรูปภาพ</h2>
+                <h2><?= $add_gallery ?></h2>
                     <div class="mb-3">
-                        <label for="img" class="form-label">รูปภาพ</label>
+                        <label for="img" class="form-label"><?= $picture ?></label>
                         <input type="file" class="form-control" name="img" required>
                     </div>
-                    <button type="submit" class="additem btn btn-primary">เพิ่มรูปภาพ</button>
+                    <button type="submit" class="additem btn btn-primary"><?= $add ?></button>
             </div>
         </section>
 
         <section class="show-gallery">
             <div class="containerbuttom mt-5">
-                <h2>รูปภาพทั้งหมด</h2>
+                <h2><?= $allgallery ?></h2>
                 <div class="row">
 
                     <?php

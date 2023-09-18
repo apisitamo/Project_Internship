@@ -167,6 +167,7 @@ if (isset($_GET['delete_id'])) {
     .popup-add #popup2 .popup-content .container {
         margin-top: 20px;
     }
+
     .popup-add #popup1 {
         width: 30%;
         height: 20%;
@@ -193,54 +194,54 @@ if (isset($_GET['delete_id'])) {
     <div class="click-overlay" id="click-overlay1"></div>
     <section class="addcourse1">
         <div class="containertop mt-5">
-            <h2>เพิ่มหลักสูตร</h2>
-                <div class="mb-3">
-                    <label for="img" class="form-label">รูปภาพ</label>
-                    <input type="file" class="form-control" name="img" required>
-                </div>
-                <div class="mb-3">
-                    <label for="type" class="form-label">ประเภท</label>
-                    <select class="form-control-option" name="type">
-                        <option value="Health Spa Course">Health Spa Course</option>
-                        <option value="Beauty Spa Course">Beauty Spa Course</option>
-                        <option value="Advanced Spa">Advanced Spa</option>
-                    </select>
-                </div>
-                <div class="mb-3">
-                    <label for="name" class="form-label">ชื่อสินค้าไทย</label>
-                    <input type="text" class="form-control" name="name_th" required>
-                </div>
-                <div class="mb-3">
-                    <label for="name" class="form-label">ชื่อสินค้าอังกฤษ</label>
-                    <input type="text" class="form-control" name="name_eng" required>
-                </div>
-                <div class="mb-3">
-                    <label for="detail" class="form-label">รายละเอียดไทย</label>
-                    <textarea class="form-control" name="detail_th" required></textarea>
-                </div>
-                <div class="mb-3">
-                    <label for="detail" class="form-label">รายละเอียดอังกฤษ</label>
-                    <textarea class="form-control" name="detail_eng" required></textarea>
-                </div>
-                <div class="mb-3">
-                    <label for="day" class="form-label">ระยะเวลาการอบรม</label>
-                    <input type="number" class="form-control" name="day" required>
-                </div>
-                <div class="mb-3">
-                    <label for="price" class="form-label">ราคา</label>
-                    <input type="number" class="form-control" name="price" required>
-                </div>
-                <div class="mb-3">
-                    <label for="hour" class="form-label">จำนวนชั่วโมงใบประกาศ</label>
-                    <input type="number" class="form-control" name="hour" required>
-                </div>
-                <button type="submit" class="additem btn btn-primary">เพิ่มหลักสูตร</button>
+            <h2><?= $add_course ?></h2>
+            <div class="mb-3">
+                <label for="img" class="form-label"><?= $picture ?></label>
+                <input type="file" class="form-control" name="img" required>
+            </div>
+            <div class="mb-3">
+                <label for="type" class="form-label"><?= $types ?></label>
+                <select class="form-control-option" name="type">
+                    <option value="Health Spa Course">Health Spa Course</option>
+                    <option value="Beauty Spa Course">Beauty Spa Course</option>
+                    <option value="Advanced Spa">Advanced Spa</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="name" class="form-label"><?= $THname ?></label>
+                <input type="text" class="form-control" name="name_th" required>
+            </div>
+            <div class="mb-3">
+                <label for="name" class="form-label"><?= $ENGname ?></label>
+                <input type="text" class="form-control" name="name_eng" required>
+            </div>
+            <div class="mb-3">
+                <label for="detail" class="form-label"><?= $THdetail ?></label>
+                <textarea class="form-control" name="detail_th" required></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="detail" class="form-label"><?= $ENGdetail ?></label>
+                <textarea class="form-control" name="detail_eng" required></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="day" class="form-label"><?= $training ?></label>
+                <input type="number" class="form-control" name="day" required>
+            </div>
+            <div class="mb-3">
+                <label for="price" class="form-label"><?= $prices ?></label>
+                <input type="number" class="form-control" name="price" required>
+            </div>
+            <div class="mb-3">
+                <label for="hour" class="form-label"><?= $hours ?></label>
+                <input type="number" class="form-control" name="hour" required>
+            </div>
+            <button type="submit" class="additem btn btn-primary"><?= $add ?></button>
         </div>
     </section>
 
     <section class="addcourse2">
         <div class="containerbuttom mt-5">
-            <h2>หลักสูตรทั้งหมด</h2>
+            <h2><?= $allcourse ?></h2>
             <div class="row">
                 <?php
                 $sql = "SELECT * FROM add_course ORDER BY id DESC";
@@ -248,12 +249,12 @@ if (isset($_GET['delete_id'])) {
 
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
-                        ?>
+                ?>
                         <div class="card">
                             <button class="deleteitem" data-course-id="<?php echo $row['id']; ?>">&times;</button>
                             <img src="<?php echo $row['img']; ?>" class="w-100" alt="course image">
                             <div class="course-body">
-                                <p class="card-text">ประเภท:
+                                <p class="card-text"><?= $types ?> :
                                     <?php echo $row['type']; ?>
                                 </p>
                                 <h5 class="card-title">
@@ -269,23 +270,23 @@ if (isset($_GET['delete_id'])) {
                                     <?php echo $row['detail_eng']; ?>
                                 </p>
                                 <div class="course-fotter">
-                                    <p class="card-text">ระยะเวลาการอบรม
+                                    <p class="card-text"><?= $training ?> :
                                         <?php echo $row['day']; ?>
                                     </p>
                                 </div>
                                 <div class="course-fotter">
-                                    <p class="card-text">ราคา
+                                    <p class="card-text"><?= $prices ?> :
                                         <?php echo $row['price']; ?>
                                     </p>
                                 </div>
                                 <div class="course-fotter">
-                                    <p class="card-text">จำนวนชั่วโมงใบประกาศ
+                                    <p class="card-text"><?= $hours ?> :
                                         <?php echo $row['hour']; ?>
                                     </p>
                                 </div>
                             </div>
                         </div>
-                        <?php
+                <?php
                     }
                 } else {
                     echo "ไม่พบหลักสูตรในระบบ";
@@ -315,8 +316,7 @@ if (isset($_GET['delete_id'])) {
                 <span class="close-popup" id="close-popup2">&times;</span>
                 <div class="container">
                     <p style="text-align: center;">คุณต้องการที่จะลบสินค้า</p>
-                    <button class="button-close-2" id="confirm-delete-button"
-                        href='add_course.php?delete_id=<?php echo $row['id']; ?>'>ยืนยันการลบ</ิ>
+                    <button class="button-close-2" id="confirm-delete-button" href='add_course.php?delete_id=<?php echo $row['id']; ?>'>ยืนยันการลบ</ิ>
                         <button class="button-close-2" id="button-close2">ยกเลิก</button>
                 </div>
             </div>
@@ -417,7 +417,7 @@ if (isset($_GET['delete_id'])) {
             var day = $("input[name='day']").val();
             var price = $("input[name='price']").val();
             var hour = $("input[name='hour']").val();
-            
+
             if (imageFile && type && name_th && name_eng && detail_th && detail_eng && day && price && hour) {
                 var formData = new FormData();
                 formData.append("img", imageFile);

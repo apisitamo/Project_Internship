@@ -19,19 +19,47 @@ if (empty($_SESSION['lang']) || $_SESSION['lang'] == 1) {
     $add_gallery = 'เพิ่มแกลลอรี่';
     $product_order = 'คำสั่งซื้อผลิตภัณฑ์';
     $course_order = 'คำสั่งซื้อหลักสูตร';
+    $picture = 'รูปภาพ';
+    $types = 'ประเภท';
+    $THname = 'ชื่อสินค้าภาษาไทย';
+    $ENGname = 'ชื่อสินค้าภาษาอังกฤษ';
+    $THdetail = 'รายละเอียดภาษาไทย';
+    $ENGdetail = 'รายละเอียดภาษาอังกฤษ';
+    $training = 'ระยะเวลาการฝึกอบรม';
+    $prices = 'ราคา';
+    $hours = 'จำนวนชั่วโมงใบประกาศ';
+    $allcourse = 'หลักสูตรทั้งหมด';
+    $allgallery = 'แกลลอรี่ทั้งหมด';
+    $allproduct = 'ผลิตภัณฑ์ทั้งหมด';
+    $add = 'เพิ่ม';
+    $price2 = "บาท/กก.";
 } else {
     $_SESSION['lang'] = 2;
     $flag = 'enflag.png';
     $profile = 'profile.png';
     $langId = 2;
     $login = 'Login';
-    $admin = 'For Admin';
+    $admin = 'For admin';
     $logout = 'Logout';
-    $add_product = 'Add Product';
-    $add_course = 'Add Course';
-    $add_gallery = 'Add Gallery';
-    $product_order = 'Product Order';
+    $add_product = 'Add product';
+    $add_course = 'Add course';
+    $add_gallery = 'Add gallery';
+    $product_order = 'Product order';
     $course_order = 'Course Order';
+    $picture = 'Picture';
+    $types = 'Types';
+    $THname = 'Thai product name';
+    $ENGname = 'English product name';
+    $THdetail = 'Thai details';
+    $ENGdetail = 'Englist details';
+    $training = 'Training period';
+    $prices = 'Price';
+    $hours = 'Number of certificate hours';
+    $allcourse = 'All course';
+    $allgallery = 'All gallery';
+    $allproduct = 'All product';
+    $add = 'Add';
+    $price2 = "Baht / Kg.";
 }
 
 // if (!isset($_SESSION['admin'])) {
