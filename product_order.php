@@ -67,12 +67,13 @@ if (isset($_GET['delete_id'])) {
     .pro-order th,
     .pro-order td {
         border: 1px solid #ccc;
-        padding: 10px 5px;
+        padding: 12px 23px;
         text-align: center;
     }
 
     .pro-order th {
         background-color: #f2f2f2;
+        padding: 15px;
     }
 
     .pro-order button {

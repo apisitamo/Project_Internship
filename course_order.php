@@ -67,12 +67,13 @@ if (isset($_GET['delete_id'])) {
     .course-order th,
     .course-order td {
         border: 1px solid #ccc;
-        padding: 10px 20px;
+        padding: 12px 23px;
         text-align: center;
     }
 
     .course-order th {
         background-color: #f2f2f2;
+        padding: 15px;
     }
 
     .course-order button {
