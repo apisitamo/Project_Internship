@@ -60,6 +60,7 @@ if (isset($_GET['delete_id'])) {
         border: none;
         background: red;
         margin-right: -85%;
+        border-radius: 10px;
     }
 
     .popup {

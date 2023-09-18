@@ -64,7 +64,8 @@ if (isset($_GET['delete_id'])) {
     }
 
     .addpro2 .product-body .card-text {
-        margin-bottom: 35px;
+        margin-bottom: 30px;
+        margin-top: 10px;
     }
 
     .addpro2 .fa-sharp {
@@ -143,6 +144,7 @@ if (isset($_GET['delete_id'])) {
         border: none;
         background: red;
         margin-right: -85%;
+        border-radius: 10px;
     }
 
     .popup-add button {
