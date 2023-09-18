@@ -15,7 +15,7 @@ $db = mysqli_connect($servername, $username, $password, $dbname);
 $itemsPerPage = 10;
 
 // หากมีค่า page ที่รับมาจาก query string ให้ใช้ค่านั้น มิฉะนั้นใช้หน้าที่ 1 โดย default
-$page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+$page = isset($_GET['page']) ? (int) $_GET['page'] : 1;
 
 // คำนวณ offset สำหรับดึงข้อมูลตามหน้า
 $offset = ($page - 1) * $itemsPerPage;
@@ -43,76 +43,80 @@ if (isset($_GET['delete_id'])) {
 ?>
 
 <style>
-    .pro-order .homeheader {
+    .course-order .homeheader {
         margin-top: 75px;
     }
 
-    .pro-order .bottom-box {
+    .course-order #con-table {
+        max-width: 1450px;
+    }
+
+    .course-order .bottom-box {
         flex: 1;
         padding: 20px;
         box-sizing: border-box;
         background-color: #c0c0c0;
     }
 
-    .pro-order table {
+    .course-order table {
         border-collapse: collapse;
         width: 100%;
         border: 1px solid #ccc;
     }
 
-    .pro-order th,
-    .pro-order td {
+    .course-order th,
+    .course-order td {
         border: 1px solid #ccc;
-        padding: 8px;
+        padding: 10px 20px;
         text-align: center;
     }
 
-    .pro-order th {
+    .course-order th {
         background-color: #f2f2f2;
     }
 
-    .pro-order button {
+    .course-order button {
         padding: 6px 20px;
         border-radius: 10px;
         border: none;
         margin-top: 5px;
     }
 
-    .pro-order .filter-buttons {
+    .course-order .filter-buttons {
         margin: 0px 15px 15px 0px;
     }
 
-    .pro-order .filter-buttons button:nth-child(1) {
+    .course-order .filter-buttons button:nth-child(1) {
         background-color: aqua;
     }
 
-    .pro-order .filter-buttons button:nth-child(2) {
+    .course-order .filter-buttons button:nth-child(2) {
         background-color: yellow;
     }
 
-    .pro-order .filter-buttons button:nth-child(3) {
+    .course-order .filter-buttons button:nth-child(3) {
         background-color: #00e700;
     }
 
-    .pro-order .filter-buttons button:nth-child(4) {
+    .course-order .filter-buttons button:nth-child(4) {
         background-color: #ff1e1e;
     }
 
-    .pro-order .table_order .status-dropdown {
+    .course-order .table_order .status-dropdown {
         border: none;
         background: yellow;
         padding: 0px 5px;
     }
 
-    .pro-order .table_order .status-dropdown option:nth-child(2) {
+    .course-order .table_order .status-dropdown option:nth-child(2) {
         background: #00e700;
     }
 
-    .pro-order .table_order .status-dropdown option:nth-child(3) {
+    .course-order .table_order .status-dropdown option:nth-child(3) {
         background: red;
     }
 
-    .pro-order .table_order tr td:nth-child(9) {
+    .course-order .table_order tr td:nth-child(9) {
         border: none;
     }
 
@@ -236,14 +240,14 @@ if (isset($_GET['delete_id'])) {
 </style>
 
 <body>
-    <section class="pro-order">
+    <section class="course-order">
         <div class="click-overlay" id="click-overlay1"></div>
         <div class="homeheader">
             <h2 style="text-align: center;">
                 <?= $course_order ?>
             </h2>
         </div>
-        <div class="container">
+        <div class="container" id="con-table">
             <div class="filter-buttons">
                 <button data-status="All">ทั้งหมด (<span id="total-orders">0</span>)</button>
                 <button data-status="รอตรวจสอบ">รอตรวจสอบ (<span id="pending-orders">0</span>)</button>
@@ -272,7 +276,7 @@ if (isset($_GET['delete_id'])) {
                         $i = 1;
                         if ($result->num_rows > 0) {
                             while ($row = $result->fetch_assoc()) {
-                        ?>
+                                ?>
                                 <tr data-status="<?php echo $row['status']; ?>">
                                     <td>
                                         <?php echo $i++; ?>
@@ -300,25 +304,33 @@ if (isset($_GET['delete_id'])) {
                                     </td>
                                     <td>
                                         <select class="status-dropdown" data-row-id="<?php echo $row['id']; ?>" disabled>
-                                            <option value="รอตรวจสอบ" <?php if ($row['status'] === 'รอตรวจสอบ') echo 'selected'; ?>>รอตรวจสอบ</option>
-                                            <option value="สำเร็จ" <?php if ($row['status'] === 'สำเร็จ') echo 'selected'; ?>>สำเร็จ</option>
-                                            <option value="ปฏิเสธ" <?php if ($row['status'] === 'ปฏิเสธ') echo 'selected'; ?>>ปฏิเสธ</option>
+                                            <option value="รอตรวจสอบ" <?php if ($row['status'] === 'รอตรวจสอบ')
+                                                echo 'selected'; ?>>รอตรวจสอบ</option>
+                                            <option value="สำเร็จ" <?php if ($row['status'] === 'สำเร็จ')
+                                                echo 'selected'; ?>>
+                                                สำเร็จ</option>
+                                            <option value="ปฏิเสธ" <?php if ($row['status'] === 'ปฏิเสธ')
+                                                echo 'selected'; ?>>
+                                                ปฏิเสธ</option>
                                         </select>
                                         <button class="edit-button" data-row-id="<?php echo $row['id']; ?>">แก้ไข</button>
                                         <button class="save-button" data-row-id="<?php echo $row['id']; ?>">บันทึก</button>
-                                        <button class="cancle-button" id="canclestatus" data-row-id="<?php echo $row['id']; ?>" style="display: none;">ยกเลิก</button>
+                                        <button class="cancle-button" id="canclestatus" data-row-id="<?php echo $row['id']; ?>"
+                                            style="display: none;">ยกเลิก</button>
                                     </td>
                                     <td>
-                                        <input type="text" class="note-input" data-row-id="<?php echo $row['id']; ?>" value="<?php echo $row['note']; ?>" disabled>
+                                        <input type="text" class="note-input" data-row-id="<?php echo $row['id']; ?>"
+                                            value="<?php echo $row['note']; ?>" disabled>
                                         <button class="edit-note-button" data-row-id="<?php echo $row['id']; ?>">แก้ไข</button>
                                         <button class="save-note-button" data-row-id="<?php echo $row['id']; ?>">บันทึก</button>
-                                        <button class="cancle-note-button" data-row-id="<?php echo $row['id']; ?>" style="display: none;">ยกเลิก</button>
+                                        <button class="cancle-note-button" data-row-id="<?php echo $row['id']; ?>"
+                                            style="display: none;">ยกเลิก</button>
                                     </td>
                                     <td>
                                         <button class="deleteitem" data-row-id="<?php echo $row['id']; ?>">ลบ</button>
                                     </td>
                                 </tr>
-                        <?php
+                                <?php
                             }
                         } else {
                             echo "ไม่พบสินค้าในระบบ";
@@ -359,7 +371,8 @@ if (isset($_GET['delete_id'])) {
                 <span class="close-popup" id="close-popup2">&times;</span>
                 <div class="container">
                     <p style="text-align: center;">คุณต้องการที่จะลบรูปภาพ</p>
-                    <button class="button-close-2" id="confirm-delete-button" href='course_order.php?delete_id=<?php echo $row['id']; ?>'>ยืนยันการลบ</button>
+                    <button class="button-close-2" id="confirm-delete-button"
+                        href='course_order.php?delete_id=<?php echo $row['id']; ?>'>ยืนยันการลบ</button>
                     <button class="button-close-2" id="button-close2">ยกเลิก</button>
                 </div>
             </div>
@@ -376,7 +389,7 @@ if (isset($_GET['delete_id'])) {
     const cancle = document.querySelectorAll('.cancle-button');
     cancle.forEach(button => {
         const rowId = button.getAttribute('data-row-id');
-        button.addEventListener('click', function() {
+        button.addEventListener('click', function () {
             location.reload();
         });
     });
@@ -384,7 +397,7 @@ if (isset($_GET['delete_id'])) {
 
     editButtons.forEach(button => {
         const rowId = button.getAttribute('data-row-id');
-        button.addEventListener('click', function() {
+        button.addEventListener('click', function () {
             const row = button.closest('tr');
             const statusDropdown = row.querySelector(`select[data-row-id="${rowId}"]`);
             const cancelButton = row.querySelector(`button.cancle-button[data-row-id="${rowId}"]`);
@@ -400,7 +413,7 @@ if (isset($_GET['delete_id'])) {
 
     saveButtons.forEach(button => {
         const rowId = button.getAttribute('data-row-id');
-        button.addEventListener('click', async function() {
+        button.addEventListener('click', async function () {
             const row = button.closest('tr');
             const statusDropdown = row.querySelector(`select[data-row-id="${rowId}"]`);
             const selectedStatus = statusDropdown.value;
@@ -432,14 +445,14 @@ if (isset($_GET['delete_id'])) {
     const canclenote = document.querySelectorAll('.cancle-note-button');
     canclenote.forEach(button => {
         const rowId = button.getAttribute('data-row-id');
-        button.addEventListener('click', function() {
+        button.addEventListener('click', function () {
             location.reload();
         });
     });
 
     editNoteButtons.forEach(button => {
         const rowId = button.getAttribute('data-row-id');
-        button.addEventListener('click', function() {
+        button.addEventListener('click', function () {
             const row = button.closest('tr');
             const noteInput = row.querySelector(`input.note-input[data-row-id="${rowId}"]`);
             const cancelButton = row.querySelector(`button.cancle-note-button[data-row-id="${rowId}"]`);
@@ -456,7 +469,7 @@ if (isset($_GET['delete_id'])) {
     noteInputs.forEach(input => {
         const rowId = input.getAttribute('data-row-id');
 
-        input.addEventListener('input', function() {
+        input.addEventListener('input', function () {
             const noteValue = input.value.trim();
             const saveNoteButton = input.parentElement.querySelector(`button.save-note-button[data-row-id="${rowId}"]`);
 
@@ -472,7 +485,7 @@ if (isset($_GET['delete_id'])) {
 
     saveNoteButtons.forEach(button => {
         const rowId = button.getAttribute('data-row-id');
-        button.addEventListener('click', async function() {
+        button.addEventListener('click', async function () {
             const row = button.closest('tr');
             const noteInput = row.querySelector(`input.note-input[data-row-id="${rowId}"]`);
             const noteValue = noteInput.value.trim();
@@ -573,7 +586,7 @@ if (isset($_GET['delete_id'])) {
 
     // ตรวจสอบการคลิกที่ตัวกรองและแสดงรายการตามสถานะที่เลือก
     filterButtons.forEach(button => {
-        button.addEventListener('click', function() {
+        button.addEventListener('click', function () {
             const status = this.getAttribute('data-status');
             let i = 1; // ตัวแปร i สำหรับเลขลำดับ
 
