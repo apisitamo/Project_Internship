@@ -977,6 +977,7 @@ a {
 .gallery .row .card-img:hover {
     filter: opacity(0.5) drop-shadow(0 0 rgb(112, 76, 54));
     transform: scale(1.1);
+    cursor: pointer;
     .search-hover{
         opacity: 1;
         transform: scale(1.1);
