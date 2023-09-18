@@ -126,6 +126,7 @@ if (isset($_GET['delete_id'])) {
     .popup-add #popup2 .popup-content .container {
         margin-top: 20px;
     }
+
     .popup-add #popup1 {
         width: 30%;
         height: 20%;
@@ -155,11 +156,11 @@ if (isset($_GET['delete_id'])) {
         <section class="add-img">
             <div class="containertop mt-5">
                 <h2><?= $add_gallery ?></h2>
-                    <div class="mb-3">
-                        <label for="img" class="form-label"><?= $picture ?></label>
-                        <input type="file" class="form-control" name="img" required>
-                    </div>
-                    <button type="submit" class="additem btn btn-primary"><?= $add ?></button>
+                <div class="mb-3">
+                    <label for="img" class="form-label"><?= $picture ?></label>
+                    <input type="file" class="form-control" name="img" required>
+                </div>
+                <button type="submit" class="additem btn btn-primary"><?= $add ?></button>
             </div>
         </section>
 
@@ -201,9 +202,9 @@ if (isset($_GET['delete_id'])) {
             <div class="popup-content">
                 <span class="close-popup" id="close-popup1">&times;</span>
                 <div class="container">
-                    <p style="text-align: center;">คุณต้องการที่จะเพิ่มรูปภาพ</p>
-                    <button class="button-success-1" id="button-success1">ยืนยัน</button>
-                    <button class="button-close-1" id="button-close1">ยกเลิก</button>
+                    <p style="text-align: center;"><?= $wantadd ?></p>
+                    <button class="button-success-1" id="button-success1"><?= $conf ?></button>
+                    <button class="button-close-1" id="button-close1"><?= $canc ?></button>
                 </div>
             </div>
         </div>
@@ -212,9 +213,9 @@ if (isset($_GET['delete_id'])) {
             <div class="popup-content">
                 <span class="close-popup" id="close-popup2">&times;</span>
                 <div class="container">
-                    <p style="text-align: center;">คุณต้องการที่จะลบรูปภาพ</p>
-                    <button class="button-close-2" id="confirm-delete-button" href='add_gallery.php?delete_id=<?php echo $row['id']; ?>'>ยืนยันการลบ</button>
-                    <button class="button-close-2" id="button-close2">ยกเลิก</button>
+                    <p style="text-align: center;"><?= $wantdel ?></p>
+                    <button class="button-close-2" id="confirm-delete-button" href='add_gallery.php?delete_id=<?php echo $row['id']; ?>'><?= $condel ?></button>
+                    <button class="button-close-2" id="button-close2"><?= $canc ?></button>
                 </div>
             </div>
         </div>
@@ -303,34 +304,34 @@ if (isset($_GET['delete_id'])) {
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script>
-$(document).ready(function() {
-    $(".button-success-1").click(function() {
-        var imageInput = $("input[name='img']")[0];
-        var imageFile = imageInput.files[0];
-        
-        if (imageFile) {
-            var formData = new FormData();
-            formData.append("img", imageFile);
+    $(document).ready(function() {
+        $(".button-success-1").click(function() {
+            var imageInput = $("input[name='img']")[0];
+            var imageFile = imageInput.files[0];
 
-            $.ajax({
-                type: "POST",
-                url: "add_gallery_process.php",
-                data: formData,
-                contentType: false,
-                processData: false,
-                success: function(response) {
-                    location.reload();
-                    alert("รูปภาพถูกอัปโหลดสำเร็จ");
-                },
-                error: function() {
-                    alert("เกิดข้อผิดพลาดในการอัปโหลดรูปภาพ");
-                }
-            });
-        } else {
-            alert("กรุณาเลือกรูปภาพก่อนกดปุ่ม Submit");
-        }
+            if (imageFile) {
+                var formData = new FormData();
+                formData.append("img", imageFile);
+
+                $.ajax({
+                    type: "POST",
+                    url: "add_gallery_process.php",
+                    data: formData,
+                    contentType: false,
+                    processData: false,
+                    success: function(response) {
+                        location.reload();
+                        alert("รูปภาพถูกอัปโหลดสำเร็จ");
+                    },
+                    error: function() {
+                        alert("เกิดข้อผิดพลาดในการอัปโหลดรูปภาพ");
+                    }
+                });
+            } else {
+                alert("กรุณาเลือกรูปภาพก่อนกดปุ่ม Submit");
+            }
+        });
     });
-});
 </script>
 
 

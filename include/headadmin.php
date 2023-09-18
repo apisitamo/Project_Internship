@@ -33,6 +33,11 @@ if (empty($_SESSION['lang']) || $_SESSION['lang'] == 1) {
     $allproduct = 'ผลิตภัณฑ์ทั้งหมด';
     $add = 'เพิ่ม';
     $price2 = "บาท/กก.";
+    $conf = "ยืนยัน";
+    $canc = "ยกเลิก";
+    $condel = "ยืนยันการลบ";
+    $wantadd = "คุณต้องการที่จะเพิ่ม";
+    $wantdel = "คุณต้องการที่จะลบ";
 } else {
     $_SESSION['lang'] = 2;
     $flag = 'enflag.png';
@@ -60,6 +65,11 @@ if (empty($_SESSION['lang']) || $_SESSION['lang'] == 1) {
     $allproduct = 'All product';
     $add = 'Add';
     $price2 = "Baht / Kg.";
+    $conf = "Confirm";
+    $canc = "Cancle";
+    $condel = "Confirm deletion";
+    $wantadd = "Do you want to add";
+    $wantdel = "Do you want to delete";
 }
 
 // if (!isset($_SESSION['admin'])) {

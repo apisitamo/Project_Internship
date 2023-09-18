@@ -278,7 +278,7 @@ if (isset($_GET['delete_id'])) {
 
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
-                        ?>
+                ?>
                         <div class="card">
                             <button class="deleteitem" data-course-id="<?php echo $row['id']; ?>">&times;</button>
                             <img src="<?php echo $row['img']; ?>" class="w-100" alt="course image">
@@ -319,7 +319,7 @@ if (isset($_GET['delete_id'])) {
                                 </div>
                             </div>
                         </div>
-                        <?php
+                <?php
                     }
                 } else {
                     echo "ไม่พบหลักสูตรในระบบ";
@@ -337,9 +337,9 @@ if (isset($_GET['delete_id'])) {
             <div class="popup-content">
                 <span class="close-popup" id="close-popup1">&times;</span>
                 <div class="container">
-                    <p style="text-align: center;">คุณต้องการที่จะเพิ่มสินค้า</p>
-                    <button class="button-success-1" id="button-success1">ยืนยัน</button>
-                    <button class="button-close-1" id="button-close1">ยกเลิก</button>
+                    <p style="text-align: center;"><?= $wantadd ?></p>
+                    <button class="button-success-1" id="button-success1"><?= $conf ?></button>
+                    <button class="button-close-1" id="button-close1"><?= $canc ?></button>
                 </div>
             </div>
         </div>
@@ -348,10 +348,9 @@ if (isset($_GET['delete_id'])) {
             <div class="popup-content">
                 <span class="close-popup" id="close-popup2">&times;</span>
                 <div class="container">
-                    <p style="text-align: center;">คุณต้องการที่จะลบสินค้า</p>
-                    <button class="button-close-2" id="confirm-delete-button"
-                        href='add_course.php?delete_id=<?php echo $row['id']; ?>'>ยืนยันการลบ</ิ>
-                        <button class="button-close-2" id="button-close2">ยกเลิก</button>
+                    <p style="text-align: center;"><?= $wantdel ?></p>
+                    <button class="button-close-2" id="confirm-delete-button" href='add_course.php?delete_id=<?php echo $row['id']; ?>'><?= $condel ?></button>
+                    <button class="button-close-2" id="button-close2"><?= $cancle ?></button>
                 </div>
             </div>
         </div>
@@ -439,8 +438,8 @@ if (isset($_GET['delete_id'])) {
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script>
-    $(document).ready(function () {
-        $(".button-success-1").click(function () {
+    $(document).ready(function() {
+        $(".button-success-1").click(function() {
             var imageInput = $("input[name='img']")[0];
             var imageFile = imageInput.files[0];
             var type = $("select[name='type']").val();
@@ -470,11 +469,11 @@ if (isset($_GET['delete_id'])) {
                     data: formData,
                     contentType: false,
                     processData: false,
-                    success: function (response) {
+                    success: function(response) {
                         location.reload();
                         alert("เพิ่มหลักสูตรสำเร็จ");
                     },
-                    error: function () {
+                    error: function() {
                         alert("เกิดข้อผิดพลาดในการเพิ่มหลักสูตร");
                     }
                 });
