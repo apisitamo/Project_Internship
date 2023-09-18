@@ -33,7 +33,7 @@ if (isset($_GET['delete_id'])) {
         text-align: center;
     }
 
-    .addcourse1 .containertop form .mb-3:nth-child(2) {
+    .addcourse1 .containertop .mb-3:nth-child(3) {
         text-align: center;
         margin-bottom: 0px !important;
     }
@@ -165,6 +165,26 @@ if (isset($_GET['delete_id'])) {
     }
 
     .popup-add #popup2 .popup-content .container {
+        margin-top: 20px;
+    }
+    .popup-add #popup1 {
+        width: 30%;
+        height: 20%;
+    }
+
+    .popup-add #popup1 #button-success1 {
+        margin-right: 5px;
+        background: #00e500;
+        padding: 6px 25px;
+    }
+
+    .popup-add #popup1 #button-close1 {
+        margin-left: 5px;
+        background: red;
+        padding: 6px 25px;
+    }
+
+    .popup-add #popup1 .popup-content .container {
         margin-top: 20px;
     }
 </style>
