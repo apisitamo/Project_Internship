@@ -43,9 +43,10 @@ if (isset($_GET['delete_id'])) {
 ?>
 
 <style>
-    .pro-order .homeheader{
+    .pro-order .homeheader {
         margin-top: 75px;
     }
+
     .pro-order .bottom-box {
         flex: 1;
         padding: 20px;
@@ -259,6 +260,7 @@ if (isset($_GET['delete_id'])) {
                             <th>รายการ</th>
                             <th>จำนวน</th>
                             <th>ราคา</th>
+                            <th>เวลา</th>
                             <th>สถานะ</th>
                             <th>หมายเหตุ</th>
                             <th>ดำเนินการ</th>
@@ -288,6 +290,9 @@ if (isset($_GET['delete_id'])) {
                                     </td>
                                     <td>
                                         <?php echo $row['price']; ?>
+                                    </td>
+                                    <td>
+                                        <?php echo date('d/m/y H:i', strtotime($row['order_time'])); ?>
                                     </td>
                                     <td>
                                         <select class="status-dropdown" data-row-id="<?php echo $row['id']; ?>" disabled>

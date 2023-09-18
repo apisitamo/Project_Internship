@@ -365,8 +365,9 @@ if (isset($_GET['logout'])) {
                                 <?php echo $row_product_order['price']; ?>
                             </td>
                             <td>
-                                <?php echo $row_product_order['order_time']; ?>
+                                <?php echo date('d/m/y H:i', strtotime($row_product_order['order_time'])); ?>
                             </td>
+
                             <td style="background-color:
                     <?php
                         if ($row_product_order['status'] == 'ปฏิเสธ') {
@@ -410,7 +411,7 @@ if (isset($_GET['logout'])) {
                                 <?php echo $row_course_order['price']; ?>
                             </td>
                             <td>
-                                <?php echo $row_course_order['order_time']; ?>
+                                <?php echo date('d/m/y H:i', strtotime($row_course_order['order_time'])); ?>
                             </td>
                             <td style="background-color:
                     <?php
