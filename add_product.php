@@ -91,7 +91,7 @@ if (isset($_GET['delete_id'])) {
         align-items: center;
     }
 
-    .addpro1 .containertop .mb-3:nth-child(2) {
+    .addpro1 .containertop .mb-3:nth-child(3) {
         text-align: center;
         margin-bottom: 0px !important;
     }
