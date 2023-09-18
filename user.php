@@ -116,9 +116,8 @@ if (isset($_GET['logout'])) {
 
     .user1 table {
         border-collapse: collapse;
-        width: 100%;
-        max-width: 1320px;
-        margin: auto;
+        width: 102%;
+        margin-left: -15px;
         border: 1px solid #ccc;
     }
 
