@@ -234,6 +234,11 @@ if ($langId == 1) {
         display: none;
     }
 
+    .product #owl-sl .owl-dots {
+        display: block;
+        margin-top: 0px;
+    }
+
     .product #owl-sl2 .owl-dots {
         display: block;
         margin-top: 0px;
