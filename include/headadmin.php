@@ -44,7 +44,7 @@ if (empty($_SESSION['lang']) || $_SESSION['lang'] == 1) {
     $add_product = 'Add product';
     $add_course = 'Add course';
     $add_gallery = 'Add gallery';
-    $product_order = 'Product order';
+    $product_order = 'Product Order';
     $course_order = 'Course Order';
     $picture = 'Picture';
     $types = 'Types';
