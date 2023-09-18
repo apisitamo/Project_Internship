@@ -428,7 +428,7 @@
             <div class="popup-content">
                 <span class="close-popup" id="close-popup2">&times;</span>
                 <div class="container">
-                    <p style="text-align: center;">คุณต้องการซื้อ....</p>
+                    <p style="text-align: center;">คุณต้องการซื้อ </p>
                     <img src="assets/images/QR.svg" alt="" class="w-65">
                     <p style="text-align: center;font-size: 30px;">ราคา บาท</p>
                     <button class="button-success-2" id="button-success2" href="productdetail.php?product_id=<?php echo $row['id']; ?>&type=<?php echo $row['type']; ?>">ยืนยันการโอน</button>
