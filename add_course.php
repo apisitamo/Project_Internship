@@ -20,10 +20,6 @@ if (isset($_GET['delete_id'])) {
 ?>
 
 <style>
-    body {
-        background: #f2f2f2;
-    }
-
     .addcourse1 .containertop,
     .addcourse2 .containerbuttom {
         padding: 30px;
@@ -63,7 +59,7 @@ if (isset($_GET['delete_id'])) {
         align-items: center;
         text-align: center;
         padding: 10px;
-        background: #FFF9EA;
+        /*background: #FFF9EA;*/
         box-shadow: 0px 4px 4px rgb(111 51 27 / 25%);
         border-radius: 5px;
     }
@@ -152,7 +148,7 @@ if (isset($_GET['delete_id'])) {
     }
 
     .deleteitem {
-        padding: 4px 11px;
+        padding: 6px 13px;
         margin-top: 5px;
         border: none;
         background: red;

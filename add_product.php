@@ -147,7 +147,7 @@ if (isset($_GET['delete_id'])) {
     }
 
     .deleteitem {
-        padding: 4px 11px;
+        padding: 6px 13px;
         margin-top: 5px;
         border: none;
         background: red;
