@@ -247,6 +247,10 @@
     .product .card {
         width: 410px;
     }
+
+    .course-detail .item:nth-child(2) .detail {
+        padding-left: 10% !important;
+    }
 </style>
 
 <body>
@@ -276,9 +280,11 @@
                     <div class="content">
                         <div class="wrap">
                             <div class="item">
-                                <div class="title" style="width:110%;" data-aos="zoom-in" data-aos-duration="2000">
+                                <div class="title" style="width:40%;" data-aos="zoom-in" data-aos-duration="2000">
                                     <img src="assets/images/icon-chat.png">
-                                    <span><?= $detail ?></span>
+                                    <span>
+                                        <?= $detail ?>
+                                    </span>
                                 </div>
                                 <div class="detail" data-aos="zoom-in" data-aos-duration="2000">
                                     <?php if ($langId == 1) { ?>
@@ -295,15 +301,23 @@
                             <div class="item">
                                 <div class="title" data-aos="zoom-in" data-aos-duration="2000">
                                     <img src="assets/images/icon-chat.png">
-                                    <span><?= $types ?></span>
+                                    <span>
+                                        <?= $types ?>
+                                    </span>
                                 </div>
                                 <div class="detail" data-aos="zoom-in" data-aos-duration="2000">
-                                    <span><?php echo $type ?></span>
+                                    <span>
+                                        <?php echo $type ?>
+                                    </span>
                                 </div>
                             </div>
                         </div>
                         <button class="open-popup">
-                            <p class="price" data-aos="fade-up" data-aos-duration="2000"><?= $prices ?> <?php echo $price ?> <?= $price2 ?></p>
+                            <p class="price" data-aos="fade-up" data-aos-duration="2000">
+                                <?= $prices ?>
+                                <?php echo $price ?>
+                                <?= $price2 ?>
+                            </p>
                         </button>
 
                     </div>
@@ -314,19 +328,24 @@
 
     <section class="regiscourse">
         <div class="wrap">
-            <span class="title" data-aos="fade-up" data-aos-duration="2000"><?= $other ?></span>
+            <span class="title" data-aos="fade-up" data-aos-duration="2000">
+                <?= $other ?>
+            </span>
             <div class="row">
                 <div class="col-lg-6" data-aos="fade-up" data-aos-duration="2000">
                     <img src="assets/images/contact-qr.png" alt="">
                 </div>
                 <div class="col-lg-6">
                     <div class="wrap-contact">
-                        <div class="item call" data-aos="fade-up" data-aos-duration="2000"><i class="fa-regular fa-phone"></i><span>086-322-1922</span></div>
+                        <div class="item call" data-aos="fade-up" data-aos-duration="2000"><i
+                                class="fa-regular fa-phone"></i><span>086-322-1922</span></div>
                         <a href="https://line.me/ti/p/~@108toots">
-                            <div class="item line" data-aos="fade-up" data-aos-duration="2000"><img class="line-img" src="assets/images/line.png" alt=""><span>@bsathailand</span></div>
+                            <div class="item line" data-aos="fade-up" data-aos-duration="2000"><img class="line-img"
+                                    src="assets/images/line.png" alt=""><span>@bsathailand</span></div>
                         </a>
                         <a href="https://th-th.facebook.com/BSABangkok/">
-                            <div class="item facebook" data-aos="fade-up" data-aos-duration="2000"><i class="bi bi-facebook"></i><span>Bangkok Spa Academy</span></div>
+                            <div class="item facebook" data-aos="fade-up" data-aos-duration="2000"><i
+                                    class="bi bi-facebook"></i><span>Bangkok Spa Academy</span></div>
                         </a>
                     </div>
                 </div>
@@ -345,7 +364,7 @@
             <div class="popup-content">
                 <span class="close-popup" id="close-popup1">&times;</span>
                 <div class="homecontent">
-                    <?php if (isset($_SESSION['username'])) : ?>
+                    <?php if (isset($_SESSION['username'])): ?>
                         <div class="box">
                             <div class="container">
                                 <div class="row">
@@ -361,7 +380,7 @@
                                 </button>
                             </div>
                         </div>
-                    <?php else : ?>
+                    <?php else: ?>
                         <div class="box">
                             <div class="container">
                                 <div class="row">
@@ -429,14 +448,27 @@
                 <span class="close-popup" id="close-popup2">&times;</span>
                 <div class="container">
                     <?php if ($langId == 1) { ?>
-                        <p style="text-align: center;"><?php echo $name_th ?></p>
+                        <p style="text-align: center;">
+                            <?php echo $name_th ?>
+                        </p>
                     <?php } else { ?>
-                        <p style="text-align: center;"><?php echo $name_eng ?></p>
+                        <p style="text-align: center;">
+                            <?php echo $name_eng ?>
+                        </p>
                     <?php } ?>
                     <img src="assets/images/QR.svg" alt="" class="w-65">
-                    <p style="text-align: center;font-size: 30px;"><?= $prices ?> <?php echo $price ?> <?= $price2 ?></p>
-                    <button class="button-success-2" id="button-success2" href="productdetail.php?product_id=<?php echo $row['id']; ?>&type=<?php echo $row['type']; ?>"><?= $confirm ?></button>
-                    <button class="button-close-2" id="button-close2"><?= $cancle ?></button>
+                    <p style="text-align: center;font-size: 30px;">
+                        <?= $prices ?>
+                        <?php echo $price ?>
+                        <?= $price2 ?>
+                    </p>
+                    <button class="button-success-2" id="button-success2"
+                        href="productdetail.php?product_id=<?php echo $row['id']; ?>&type=<?php echo $row['type']; ?>">
+                        <?= $confirm ?>
+                    </button>
+                    <button class="button-close-2" id="button-close2">
+                        <?= $cancle ?>
+                    </button>
                 </div>
             </div>
         </div>
@@ -561,8 +593,8 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script>
-    $(document).ready(function() {
-        $(".button-success-2").click(function() {
+    $(document).ready(function () {
+        $(".button-success-2").click(function () {
             var type = "<?php echo $type ?>";
             var name = "<?php echo $name_th ?>";
             var quantity = 1;
@@ -577,7 +609,7 @@
                     quantity: quantity,
                     price: price
                 },
-                success: function(response) {
+                success: function (response) {
                     alert(response);
                 }
             });

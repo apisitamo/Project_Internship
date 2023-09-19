@@ -488,12 +488,12 @@ a {
     margin-bottom: 30px;
 }
 
-.course-detail .item:nth-child(1){
+.course-detail .item:nth-child(1) {
     margin-bottom: 90px !important;
     padding-left: 0px !important;
 }
 
-.course-detail .item:nth-child(3){
+.course-detail .item:nth-child(3) .detail {
     padding-left: 9% !important;
 }
 
