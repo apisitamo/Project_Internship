@@ -428,7 +428,7 @@ if (isset($_GET['delete_id'])) {
 
             await updateStatusInDatabase(rowId, selectedStatus);
             location.reload();
-            alert('บันทึกสถานะเรียบร้อยแล้ว');
+            alert('Status saved successfully');
         });
     });
 
