@@ -89,7 +89,9 @@
                             <div class="item">
                                 <div class="title" style="width:110%;" data-aos="zoom-in" data-aos-duration="2000">
                                     <img src="assets/images/icon-chat.png">
-                                    <span><?= $detail ?></span>
+                                    <span>
+                                        <?= $detail ?>
+                                    </span>
                                 </div>
                                 <div class="detail" data-aos="zoom-in" data-aos-duration="2000">
                                     <?php if ($langId == 1) { ?>
@@ -105,34 +107,50 @@
                             </div>
                             <div class="item">
                                 <div class="title" data-aos="zoom-in" data-aos-duration="2000">
-                                    <img src="assets/images/icon-time.png">
-                                    <span><?= $duration ?></span>
-                                </div>
-                                <div class="detail" data-aos="zoom-in" data-aos-duration="2000">
-                                    <span><?php echo $day ?> <?= $days ?></span>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="title" data-aos="zoom-in" data-aos-duration="2000">
                                     <img src="assets/images/icon11.png">
-                                    <span><?= $certificate ?></span>
+                                    <span>
+                                        <?= $certificate ?>
+                                    </span>
                                 </div>
                                 <div class="detail" data-aos="zoom-in" data-aos-duration="2000">
                                     <!-- <span><?php echo $hour ?></span> -->
                                     <?php if ($langId == 1) { ?>
                                         <span>
-                                            <?php echo $name_th ?> ( <?php echo $hour ?> <?= $hours ?> )
+                                            <?php echo $name_th ?> (
+                                            <?php echo $hour ?>
+                                            <?= $hours ?> )
                                         </span>
                                     <?php } else { ?>
                                         <span>
-                                            <?php echo $name_eng ?> ( <?php echo $hour ?> <?= $hours ?> )
+                                            <?php echo $name_eng ?> (
+                                            <?php echo $hour ?>
+                                            <?= $hours ?> )
                                         </span>
                                     <?php } ?>
                                 </div>
                             </div>
+                            <div class="item">
+                                <div class="title" data-aos="zoom-in" data-aos-duration="2000">
+                                    <img src="assets/images/icon-time.png">
+                                    <span>
+                                        <?= $duration ?>
+                                    </span>
+                                </div>
+                                <div class="detail" data-aos="zoom-in" data-aos-duration="2000">
+                                    <span>
+                                        <?php echo $day ?>
+                                        <?= $days ?>
+                                    </span>
+                                </div>
+                            </div>
                         </div>
-                        <button class="open-popup" href="coursedetail.php?course_id=<?php echo $row['id']; ?>&type=<?php echo $row['type']; ?>">
-                            <p class="price" data-aos="fade-up" data-aos-duration="2000"><?= $prices ?> <?php echo $price ?> <?= $baht ?></p>
+                        <button class="open-popup"
+                            href="coursedetail.php?course_id=<?php echo $row['id']; ?>&type=<?php echo $row['type']; ?>">
+                            <p class="price" data-aos="fade-up" data-aos-duration="2000">
+                                <?= $prices ?>
+                                <?php echo $price ?>
+                                <?= $baht ?>
+                            </p>
                         </button>
 
                     </div>
@@ -143,19 +161,24 @@
 
     <section class="regiscourse">
         <div class="wrap">
-            <span class="title" data-aos="fade-up" data-aos-duration="2000"><?= $other ?></span>
+            <span class="title" data-aos="fade-up" data-aos-duration="2000">
+                <?= $other ?>
+            </span>
             <div class="row">
                 <div class="col-lg-6" data-aos="fade-up" data-aos-duration="2000">
                     <img src="assets/images/contact-qr.png" alt="">
                 </div>
                 <div class="col-lg-6">
                     <div class="wrap-contact">
-                        <div class="item call" data-aos="fade-up" data-aos-duration="2000"><i class="fa-regular fa-phone"></i><span>086-322-1922</span></div>
+                        <div class="item call" data-aos="fade-up" data-aos-duration="2000"><i
+                                class="fa-regular fa-phone"></i><span>086-322-1922</span></div>
                         <a href="https://line.me/ti/p/~@108toots">
-                            <div class="item line" data-aos="fade-up" data-aos-duration="2000"><img class="line-img" src="assets/images/line.png" alt=""><span>@bsathailand</span></div>
+                            <div class="item line" data-aos="fade-up" data-aos-duration="2000"><img class="line-img"
+                                    src="assets/images/line.png" alt=""><span>@bsathailand</span></div>
                         </a>
                         <a href="https://th-th.facebook.com/BSABangkok/">
-                            <div class="item facebook" data-aos="fade-up" data-aos-duration="2000"><i class="bi bi-facebook"></i><span>Bangkok Spa Academy</span></div>
+                            <div class="item facebook" data-aos="fade-up" data-aos-duration="2000"><i
+                                    class="bi bi-facebook"></i><span>Bangkok Spa Academy</span></div>
                         </a>
                     </div>
                 </div>
@@ -172,8 +195,8 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <script>
-        $(document).ready(function() {
-            $(".open-popup").click(function() {
+        $(document).ready(function () {
+            $(".open-popup").click(function () {
                 var type = "<?php echo $type ?>";
                 var name = "<?php echo $name_th ?>";
                 var day = "<?php echo $day ?>";
@@ -190,7 +213,7 @@
                         quantity: quantity,
                         price: price
                     },
-                    success: function(response) {
+                    success: function (response) {
                         alert(response);
                     }
                 });
