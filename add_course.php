@@ -318,6 +318,7 @@ if (isset($_GET['delete_id'])) {
                         ?>
                         <div class="card">
                             <button class="deleteitem" data-course-id="<?php echo $row['id']; ?>">&times;</button>
+                            <!-- <button class="edititem" data-course-id="<?php echo $row['id']; ?>"><img src="assets/images/fix.png" alt=""></button> -->
                             <img src="<?php echo $row['img']; ?>" class="w-100" alt="course image">
                             <div class="course-body">
                                 <p class="card-text">
