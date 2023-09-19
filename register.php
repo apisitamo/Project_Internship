@@ -14,14 +14,14 @@ if ($langId == 1) {
     // $alredy = "มีบัญชีแล้วแล้ว ? ";
     $signin = "เข้าสู่ระบบ";
 } else {
-    $register = "REGISTER";
-    $email = "EMAIL";
-    $username = "USERNAME";
-    $password = "PASSWORD";
-    $confirm = "CONFIRM PASSWORD";
-    $submit = "SUBMIT";
+    $register = "Register";
+    $email = "Email";
+    $username = "Username";
+    $password = "Password";
+    $confirm = "Confirm Password";
+    $submit = "Submit";
     // $alredy = "ALREADY MEMBER ?";
-    $signin = "SIGN IN";
+    $signin = "Sign In";
 }
 ?>
 

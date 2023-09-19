@@ -11,11 +11,11 @@ if ($langId == 1) {
     // $notyet = "มีบัญชีแล้วหรือยัง ? ";
     $signup = "ลงทะเบียน";
 } else {
-    $login = "LOGIN";
-    $username = "USERNAME";
-    $password = "PASSWORD";
+    $login = "Login";
+    $username = "Username";
+    $password = "Password";
     // $notyet = "NOTYET MEMBER ?";
-    $signup = "SIGN UP";
+    $signup = "Sign up";
 }
 
 ?>

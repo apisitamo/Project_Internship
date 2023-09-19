@@ -11,8 +11,8 @@ if ($langId == 1) {
     $employee_code = "รหัสพนักงาน";
 } else {
     $admin = "Admin";
-    $username = "USERNAME";
-    $password = "PASSWORD";
+    $username = "Username";
+    $password = "Password";
     $employee_code = "Employee Code";
 }
 
