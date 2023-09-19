@@ -124,7 +124,7 @@ if (isset($_GET['delete_id'])) {
         padding: 5px 10px;
         margin-top: 5px;
         border: none;
-        background: orange;
+        background: white;
     }
 
     .popup {
@@ -322,7 +322,7 @@ if (isset($_GET['delete_id'])) {
                                             style="display: none;"><?= $cancle ?></button>
                                     </td>
                                     <td>
-                                        <button class="deleteitem" data-row-id="<?php echo $row['id']; ?>"><?= $del ?></button>
+                                        <button class="deleteitem" data-row-id="<?php echo $row['id']; ?>"><img src="assets/images/bin.png" alt=""></button>
                                     </td>
                                 </tr>
                                 <?php
@@ -367,7 +367,7 @@ if (isset($_GET['delete_id'])) {
                 <div class="container">
                     <p style="text-align: center;"><?= $wantdel ?></p>
                     <button class="button-close-2" id="confirm-delete-button"
-                        href='course_order.php?delete_id=<?php echo $row['id']; ?>'><?= $condel ?></button>
+                        href='course_order.php?delete_id=<?php echo $row['id']; ?>'><?= $confirm ?></button>
                     <button class="button-close-2" id="button-close2"><?= $cancle ?></button>
                 </div>
             </div>

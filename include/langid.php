@@ -75,12 +75,12 @@ if($langId == 1){
     $register = "Register";
     $email = "Email";
     $signin = "Sign in";
-    $pleasesignin ='PLEASE SIGNIN';
+    $pleasesignin ='Please Sign in';
     $history = 'History';
-    $confirmorder="CONFIRM ORDER";
-    $confirm="CONFIRM";
-    $confirmtran="CONFIRM MONEY TRANSFER";
-    $cancle="CANCLE";
+    $confirmorder="Confirm Order";
+    $confirm="Confirm";
+    $confirmtran="Confirm Money Transfer";
+    $cancle="Cancle";
     $picture = 'Picture';
     $types = 'Types';
     $THname = 'Thai product name';
@@ -95,9 +95,9 @@ if($langId == 1){
     $allproduct = 'All product';
     $add = 'Add';
     $price2 = "Baht / Kg.";
-    $condel = "Confirm deletion";
-    $wantadd = "Do you want to add";
-    $wantdel = "Do you want to delete";
+    $condel = "Confirm Deletion";
+    $wantadd = "Do you want to add.";
+    $wantdel = "Do you want to delete.";
     $all = "All";
     $check = "Pending";
     $complete = "Completed";
@@ -114,10 +114,10 @@ if($langId == 1){
     $notess = "Note";
     $deletion = "Deletion";
     $edit = "Edit";
-    $save = "Saved";
+    $save = "Save";
     $del = "Delete";
-    $thx = "Thank you for purchasing";
-    $wait = "Please wait to check the money transfer within 24 hours";
+    $thx = "Thank you for purchasing.";
+    $wait = "Please wait to check the money transfer within 24 hours.";
     $close = "Close";
 
 }
