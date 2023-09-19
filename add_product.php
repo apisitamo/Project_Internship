@@ -330,6 +330,7 @@ if (isset($_GET['delete_id'])) {
                                     <p class="card-text">
                                         <?= $prices ?> :
                                         <?php echo $row['price']; ?>
+                                        <?= $baht ?>
                                     </p>
                                 </div>
                             </div>

@@ -276,22 +276,22 @@ if (isset($_GET['delete_id'])) {
                 <textarea class="form-control" name="detail_eng" required></textarea>
             </div>
             <div class="mb-3">
+                <label for="hour" class="form-label">
+                    <?= $hoursb ?>
+                </label>
+                <input type="number" class="form-control" name="hour" required>
+            </div>
+            <div class="mb-3">
                 <label for="day" class="form-label">
-                    <?= $training ?>
+                    <?= $trainingb ?>
                 </label>
                 <input type="number" class="form-control" name="day" required>
             </div>
             <div class="mb-3">
                 <label for="price" class="form-label">
-                    <?= $prices ?>
+                    <?= $pricesb ?>
                 </label>
                 <input type="number" class="form-control" name="price" required>
-            </div>
-            <div class="mb-3">
-                <label for="hour" class="form-label">
-                    <?= $hours ?>
-                </label>
-                <input type="number" class="form-control" name="hour" required>
             </div>
             <button type="submit" class="additem btn btn-primary">
                 <?= $add ?>
@@ -311,7 +311,7 @@ if (isset($_GET['delete_id'])) {
 
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
-                        ?>
+                ?>
                         <div class="card">
                             <button class="deleteitem" data-course-id="<?php echo $row['id']; ?>">&times;</button>
                             <img src="<?php echo $row['img']; ?>" class="w-100" alt="course image">
@@ -334,25 +334,28 @@ if (isset($_GET['delete_id'])) {
                                 </p>
                                 <div class="course-fotter">
                                     <p class="card-text">
+                                        <?= $hours ?> :
+                                        <?php echo $row['hour']; ?>
+                                        <?= $hour ?>
+                                    </p>
+                                </div>
+                                <div class="course-fotter">
+                                    <p class="card-text">
                                         <?= $training ?> :
                                         <?php echo $row['day']; ?>
+                                        <?= $dayss ?>
                                     </p>
                                 </div>
                                 <div class="course-fotter">
                                     <p class="card-text">
                                         <?= $prices ?> :
                                         <?php echo $row['price']; ?>
-                                    </p>
-                                </div>
-                                <div class="course-fotter">
-                                    <p class="card-text">
-                                        <?= $hours ?> :
-                                        <?php echo $row['hour']; ?>
+                                        <?= $baht ?>
                                     </p>
                                 </div>
                             </div>
                         </div>
-                        <?php
+                <?php
                     }
                 } else {
                     echo "ไม่พบหลักสูตรในระบบ";
@@ -390,8 +393,7 @@ if (isset($_GET['delete_id'])) {
                     <p style="text-align: center;">
                         <?= $wantdel ?>
                     </p>
-                    <button class="button-close-2" id="confirm-delete-button"
-                        href='add_course.php?delete_id=<?php echo $row['id']; ?>'>
+                    <button class="button-close-2" id="confirm-delete-button" href='add_course.php?delete_id=<?php echo $row['id']; ?>'>
                         <?= $condel ?>
                     </button>
                     <button class="button-close-2" id="button-close2">
@@ -484,8 +486,8 @@ if (isset($_GET['delete_id'])) {
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script>
-    $(document).ready(function () {
-        $(".button-success-1").click(function () {
+    $(document).ready(function() {
+        $(".button-success-1").click(function() {
             var imageInput = $("input[name='img']")[0];
             var imageFile = imageInput.files[0];
             var type = $("select[name='type']").val();
@@ -515,11 +517,11 @@ if (isset($_GET['delete_id'])) {
                     data: formData,
                     contentType: false,
                     processData: false,
-                    success: function (response) {
+                    success: function(response) {
                         location.reload();
                         alert("เพิ่มหลักสูตรสำเร็จ");
                     },
-                    error: function () {
+                    error: function() {
                         alert("เกิดข้อผิดพลาดในการเพิ่มหลักสูตร");
                     }
                 });

@@ -27,13 +27,17 @@ if($langId == 1){
     $THdetail = 'รายละเอียดภาษาไทย';
     $ENGdetail = 'รายละเอียดภาษาอังกฤษ';
     $training = 'ระยะเวลาการฝึกอบรม';
+    $trainingb = 'ระยะเวลาการฝึกอบรม : วัน';
     $prices = 'ราคา';
+    $pricesb = 'ราคา : บาท';
+    $hour = 'ชั่วโมง';
     $hours = 'จำนวนชั่วโมงใบประกาศ';
+    $hoursb = 'จำนวนชั่วโมงใบประกาศ : ชั่วโมง';
     $allcourse = 'หลักสูตรทั้งหมด';
     $allgallery = 'แกลลอรี่ทั้งหมด';
     $allproduct = 'ผลิตภัณฑ์ทั้งหมด';
     $add = 'เพิ่ม';
-    $price2 = "บาท/กก.";
+    $price2 = "บาท / กิโลกรัม.";
     $condel = "ยืนยันการลบ";
     $wantadd = "คุณต้องการที่จะเพิ่ม";
     $wantdel = "คุณต้องการที่จะลบ";
@@ -58,6 +62,7 @@ if($langId == 1){
     $thx = "ขอบคุณสำหรับการซื้อ";
     $wait = "กรุณารอตรวจสอบการโอนเงินภายใน 24 ชม";
     $close = "ปิด";
+    $baht = "บาท";
     
 
 }else{
@@ -88,13 +93,17 @@ if($langId == 1){
     $THdetail = 'Thai details';
     $ENGdetail = 'Englist details';
     $training = 'Training period';
+    $trainingb = 'Training period : Days';
     $prices = 'Price';
+    $pricesb = 'Price : Baht';
+    $hour = 'Hours';
     $hours = 'Number of certificate hours';
+    $hoursb = 'Number of certificate hours : Hours';
     $allcourse = 'All course';
     $allgallery = 'All gallery';
     $allproduct = 'All product';
     $add = 'Add';
-    $price2 = "Baht / Kg.";
+    $price2 = "Baht / Kilograms.";
     $condel = "Confirm Deletion";
     $wantadd = "Do you want to add.";
     $wantdel = "Do you want to delete.";
@@ -119,6 +128,7 @@ if($langId == 1){
     $thx = "Thank you for purchasing.";
     $wait = "Please wait to check the money transfer within 24 hours.";
     $close = "Close";
+    $baht = "Baht";
 
 }
 ?>
