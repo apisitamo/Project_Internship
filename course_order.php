@@ -65,7 +65,7 @@ if (isset($_GET['delete_id'])) {
     .course-order th,
     .course-order td {
         border: 1px solid #ccc;
-        padding: 12px 23px;
+        padding: 12px 25px;
         text-align: center;
     }
 
@@ -79,6 +79,10 @@ if (isset($_GET['delete_id'])) {
         border-radius: 10px;
         border: none;
         margin-top: 5px;
+    }
+
+    .course-order button img{
+        width: 30%;
     }
 
     .course-order .filter-buttons {
@@ -113,6 +117,18 @@ if (isset($_GET['delete_id'])) {
 
     .course-order .table_order .status-dropdown option:nth-child(3) {
         background: red;
+    }
+
+    .course-order td:nth-child(3){
+        width: 10%;
+    }
+
+    .course-order td:nth-child(11){
+        padding: 12px 0px;
+    }
+
+    .course-order .deleteitem{
+        padding: 6px 0px;
     }
 
     .save-button,
