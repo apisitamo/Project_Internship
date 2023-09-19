@@ -29,6 +29,10 @@ if (isset($_GET['delete_id'])) {
         background: #efefef;
     }
 
+    .form-control-option {
+        margin-left: 5px;
+    }
+
     .addpro1 .containertop,
     .addpro2 .containerbuttom {
         padding: 30px;
