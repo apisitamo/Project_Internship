@@ -253,7 +253,7 @@ if (isset($_GET['logout'])) {
             <div class="container-top">
                 <div class="left-box">
                     <div class="homecontent">
-                        <?php if (isset($_SESSION['username'])): ?>
+                        <?php if (isset($_SESSION['username'])) : ?>
                             <label for="username">
                                 <?= $usernames ?>
                             </label><label> : </label>
@@ -261,7 +261,7 @@ if (isset($_GET['logout'])) {
                         <?php endif ?>
                     </div>
                     <div class="homecontent">
-                        <?php if (isset($_SESSION['username'])): ?>
+                        <?php if (isset($_SESSION['username'])) : ?>
                             <label for="username">
                                 <?= $email ?>
                             </label><label> : </label>
@@ -288,13 +288,12 @@ if (isset($_GET['logout'])) {
                             $fullname = $row['fullname'];
                             ?>
                             <input type="text" id="fullname" name="fullname" value="<?php echo $fullname; ?>" <?php if (isset($_SESSION['edit_fullname']))
-                                   echo '';
-                               else
-                                   echo 'disabled'; ?>>
-                            <button type="button" id="editfullname" onclick="enableFullname()">แก้ไข</button>
-                            <button type="submit" id="submitfullname" <?php if (!isset($_SESSION['edit_fullname']))
-                                ; ?>>บันทึก</button>
-                            <button type="button" id="canclefullname" onclick="cancleFullname()">ยกเลิก</button>
+                                                                                                                    echo '';
+                                                                                                                else
+                                                                                                                    echo 'disabled'; ?>>
+                            <button type="button" id="editfullname" onclick="enableFullname()"><?= $edit ?></button>
+                            <button type="submit" id="submitfullname" <?php if (!isset($_SESSION['edit_fullname'])); ?>><?= $save ?></button>
+                            <button type="button" id="canclefullname" onclick="cancleFullname()"><?= $cancle ?></button>
                         </div>
                     </form>
                     <form action="save_phone.php" class="save-phone" method="post">
@@ -308,15 +307,13 @@ if (isset($_GET['logout'])) {
                             $row = mysqli_fetch_assoc($result);
                             $phone = $row['phone'];
                             ?>
-                            <input type="text" id="phone" name="phone" pattern="[0-9]+" value="<?php echo $phone; ?>"
-                                <?php if (isset($_SESSION['edit_phone']))
-                                    echo '';
-                                else
-                                    echo 'disabled'; ?>>
-                            <button type="button" id="editphone" onclick="enablePhone()">แก้ไข</button>
-                            <button type="submit" id="submitphone" <?php if (!isset($_SESSION['edit_phone']))
-                                ; ?>>บันทึก</button>
-                            <button type="button" id="canclephone" onclick="canclePhone()">ยกเลิก</button>
+                            <input type="text" id="phone" name="phone" pattern="[0-9]+" value="<?php echo $phone; ?>" <?php if (isset($_SESSION['edit_phone']))
+                                                                                                                            echo '';
+                                                                                                                        else
+                                                                                                                            echo 'disabled'; ?>>
+                            <button type="button" id="editphone" onclick="enablePhone()"><?= $edit ?></button>
+                            <button type="submit" id="submitphone" <?php if (!isset($_SESSION['edit_phone'])); ?>><?= $save ?></button>
+                            <button type="button" id="canclephone" onclick="canclePhone()"><?= $cancle ?></button>
                         </div>
                     </form>
                 </div>
@@ -333,15 +330,14 @@ if (isset($_GET['logout'])) {
                             $address = $row['address'];
                             ?>
                             <textarea id="address" name="address" <?php if (isset($_SESSION['edit_address']))
-                                echo '';
-                            else
-                                echo 'disabled'; ?>><?php echo $address; ?></textarea>
+                                                                        echo '';
+                                                                    else
+                                                                        echo 'disabled'; ?>><?php echo $address; ?></textarea>
                         </div>
                         <div class="button-address">
-                            <button type="button" id="editaddress" onclick="enableAddress()">แก้ไข</button>
-                            <button type="submit" id="submitaddress" <?php if (!isset($_SESSION['edit_address']))
-                                ; ?>>บันทึก</button>
-                            <button type="button" id="cancleaddress" onclick="cancleAddress()">ยกเลิก</button>
+                            <button type="button" id="editaddress" onclick="enableAddress()"><?= $edit ?></button>
+                            <button type="submit" id="submitaddress" <?php if (!isset($_SESSION['edit_address'])); ?>><?= $save ?></button>
+                            <button type="button" id="cancleaddress" onclick="cancleAddress()"><?= $cancle ?></button>
                         </div>
                     </form>
                 </div>
@@ -349,105 +345,69 @@ if (isset($_GET['logout'])) {
             <div class="bottom-box">
                 <table>
                     <tr>
-                        <th>ลำดับ</th>
-                        <th>ชนิด</th>
-                        <th>รายการ</th>
-                        <th>จำนวน</th>
-                        <th>ราคา</th>
-                        <th>เวลา</th>
-                        <th>สถานะ</th>
-                        <th>หมายเหตุ</th>
+                        <th><?= $order ?></th>
+                        <th><?= $types2 ?></th>
+                        <th><?= $types ?></th>
+                        <th><?= $lists ?></th>
+                        <th><?= $quantityy ?></th>
+                        <th><?= $prices ?></th>
+                        <th><?= $timess ?></th>
+                        <th><?= $statuss ?></th>
+                        <th><?= $notess ?></th>
                     </tr>
                     <?php
                     $username = $_SESSION['username'];
 
-                    // Query สำหรับดึงข้อมูลจากตาราง "product_order"
-                    $query_product_order = "SELECT * FROM product_order WHERE username='$username' ORDER BY id DESC";
-                    $result_product_order = mysqli_query($db, $query_product_order);
+                    // Query สำหรับดึงข้อมูลจากตาราง "product_order" และ "course_order" และรวมผลลัพธ์
+                    $query = "SELECT 'Product' AS typee,type, id, name, quantity, price, order_time, status, note
+          FROM product_order WHERE username='$username'
+          UNION ALL
+          SELECT 'Course' AS typee,type, id, name, quantity, price, order_time, status, note
+          FROM course_order WHERE username='$username'
+          ORDER BY order_time DESC";
+
+                    $result = mysqli_query($db, $query);
 
                     $i = 1;
-                    while ($row_product_order = mysqli_fetch_assoc($result_product_order)):
-                        ?>
+                    while ($row = mysqli_fetch_assoc($result)) :
+                    ?>
                         <tr>
                             <td>
                                 <?php echo $i++; ?>
                             </td>
                             <td>
-                                <?php echo $row_product_order['type']; ?>
+                                <?php echo $row['typee']; ?>
                             </td>
                             <td>
-                                <?php echo $row_product_order['name']; ?>
+                                <?php echo $row['type']; ?>
                             </td>
                             <td>
-                                <?php echo $row_product_order['quantity']; ?>
+                                <?php echo $row['name']; ?>
                             </td>
                             <td>
-                                <?php echo $row_product_order['price']; ?>
+                                <?php echo $row['quantity']; ?>
                             </td>
                             <td>
-                                <?php echo date('d/m/y H:i', strtotime($row_product_order['order_time'])); ?>
-                            </td>
-
-                            <td style="background-color:
-                    <?php
-                    if ($row_product_order['status'] == 'ปฏิเสธ') {
-                        echo 'red';
-                    } elseif ($row_product_order['status'] == 'สำเร็จ') {
-                        echo 'green';
-                    } else {
-                        echo 'yellow';
-                    }
-                    ?>;
-                ">
-                                <?php echo $row_product_order['status']; ?>
+                                <?php echo $row['price']; ?>
                             </td>
                             <td>
-                                <?php echo $row_product_order['note']; ?>
-                            </td>
-                        </tr>
-                    <?php endwhile; ?>
-
-                    <?php
-                    // Query สำหรับดึงข้อมูลจากตาราง "course_order"
-                    $query_course_order = "SELECT * FROM course_order WHERE username='$username' ORDER BY id DESC";
-                    $result_course_order = mysqli_query($db, $query_course_order);
-
-                    while ($row_course_order = mysqli_fetch_assoc($result_course_order)):
-                        ?>
-                        <tr>
-                            <td>
-                                <?php echo $i++; ?>
-                            </td>
-                            <td>
-                                <?php echo $row_course_order['type']; ?>
-                            </td>
-                            <td>
-                                <?php echo $row_course_order['name']; ?>
-                            </td>
-                            <td>
-                                <?php echo $row_course_order['quantity']; ?>
-                            </td>
-                            <td>
-                                <?php echo $row_course_order['price']; ?>
-                            </td>
-                            <td>
-                                <?php echo date('d/m/y H:i', strtotime($row_course_order['order_time'])); ?>
+                                <?php echo date('d/m/y H:i', strtotime($row['order_time'])); ?>
                             </td>
                             <td style="background-color:
-                    <?php
-                    if ($row_course_order['status'] == 'ปฏิเสธ') {
-                        echo 'red';
-                    } elseif ($row_course_order['status'] == 'สำเร็จ') {
-                        echo 'green';
-                    } else {
-                        echo 'yellow';
-                    }
-                    ?>;
-                ">
-                                <?php echo $row_course_order['status']; ?>
+        <?php
+                        if ($row['status'] == 'ปฏิเสธ') {
+                            echo 'red';
+                        } elseif ($row['status'] == 'สำเร็จ') {
+                            echo 'green';
+                        } else {
+                            echo 'yellow';
+                        }
+        ?>;
+        ">
+                                <?php echo $row['status']; ?>
                             </td>
                             <td>
-                                <?php echo $row_course_order['note']; ?>
+                                <?php echo $row['note']; ?>
                             </td>
                         </tr>
                     <?php endwhile; ?>
