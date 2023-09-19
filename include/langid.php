@@ -2,6 +2,8 @@
 if($langId == 1){
     $login = "เข้าสู่ระบบ";
     $usernames = "ชื่อผู้ใช้";
+    $fullname = "ชื่อ-นามสกุล";
+    $tell = "เบอร์โทร";
     $passwords = "รหัสผ่าน";
     $notyet = "มีบัญชีแล้วหรือยัง ? ";
     $signup = "ลงทะเบียน";
@@ -58,17 +60,19 @@ if($langId == 1){
     
 
 }else{
-    $login = "LOGIN";
-    $usernames = "USERNAME";
-    $passwords = "PASSWORD";
-    $notyet = "NOTYET MEMBER ?";
-    $signup = "SIGN UP";
+    $login = "Login";
+    $usernames = "Username";
+    $fullname = "Fullname";
+    $tell = "Phone Number";
+    $passwords = "Password";
+    $notyet = "Notyet Member ?";
+    $signup = "Sign up";
     $logout = 'Logout';
     $user = 'User Detail';
     $admin='For Admin';
-    $register = "REGISTER";
-    $email = "EMAIL";
-    $signin = "SIGN IN";
+    $register = "Register";
+    $email = "Email";
+    $signin = "Sign in";
     $pleasesignin ='PLEASE SIGNIN';
     $history = 'History';
     $confirmorder="CONFIRM ORDER";
