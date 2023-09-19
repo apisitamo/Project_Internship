@@ -21,10 +21,6 @@ if (isset($_GET['delete_id'])) {
 ?>
 
 <style>
-    body {
-        background-color: #f1f9f9;
-    }
-
     .form-control {
         background: #efefef;
     }
@@ -32,16 +28,26 @@ if (isset($_GET['delete_id'])) {
     .add-gallery .containertop,
     .add-gallery .containerbuttom {
         padding: 30px;
+        background-color: #f1f9f9;
+        border-radius: 20px;
 
     }
 
     .add-gallery .add-img {
         text-align: center;
-        padding: 0px 180px;
+        padding: 0px 70px;
     }
 
     .add-gallery .add-img .form-label {
         float: left;
+    }
+
+    .add-gallery .show-gallery {
+        padding: 20px 70px;
+    }
+
+    .add-gallery .show-gallery .containerbuttom h2 {
+        text-align: center;
     }
 
     .add-gallery .show-gallery .card {
@@ -55,6 +61,7 @@ if (isset($_GET['delete_id'])) {
         box-shadow: 0px 4px 4px rgb(111 51 27 / 25%);
         border-radius: 5px;
         background: #fffefb;
+        padding-top: 5px;
     }
 
     .add-gallery .show-gallery .card .btn-danger {
@@ -70,11 +77,13 @@ if (isset($_GET['delete_id'])) {
     }
 
     .deleteitem {
-        padding: 6px 13px;
+        padding: 0px 11px;
         margin-top: 5px;
         border: none;
         background: red;
         border-radius: 20px;
+        margin-bottom: 10px;
+        font-size: 25px;
     }
 
     .popup {

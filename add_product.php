@@ -20,10 +20,6 @@ if (isset($_GET['delete_id'])) {
 ?>
 
 <style>
-    body {
-        background-color: #f1f9f9;
-    }
-
     .form-control,
     .form-control-option {
         background: #efefef;
@@ -36,26 +32,35 @@ if (isset($_GET['delete_id'])) {
     .addpro1 .containertop,
     .addpro2 .containerbuttom {
         padding: 30px;
-
+        background-color: #f1f9f9;
+        border-radius: 20px;
     }
 
     .addpro1 {
-        padding: 0px 180px;
+        padding: 0px 70px;
     }
 
     .addpro1 .containertop {
         text-align: center;
     }
 
+    .addpro2 {
+        padding: 20px 70px;
+    }
+
     .addpro2 .row {
-        column-gap: 30px;
+        column-gap: 26px;
+    }
+
+    .containerbuttom h2 {
+        text-align: center;
     }
 
     .addpro2 .card {
         display: flex;
         /* border: 1px solid #e0e0e0;*/
         margin-bottom: 20px;
-        width: 30% !important;
+        width: 32% !important;
         align-items: center;
         text-align: center;
         padding: 10px;
@@ -161,12 +166,13 @@ if (isset($_GET['delete_id'])) {
     }
 
     .deleteitem {
-        padding: 6px 13px;
+        padding: 0px 11px;
         margin-top: 5px;
         border: none;
         background: red;
         border-radius: 20px;
         margin-bottom: 10px;
+        font-size: 25px;
     }
 
     .popup-add button {
