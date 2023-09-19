@@ -18,9 +18,9 @@ move_uploaded_file($imgTemp, $imgPath);
 $sql = "INSERT INTO add_gallery (img) VALUES ('$imgPath')";
 
 if ($conn->query($sql) === TRUE) {
-    echo "<script>alert('สินค้าถูกเพิ่มเรียบร้อยแล้ว'); window.location.href = 'add_gallery.php';</script>";
+    echo "<script>alert('There was an error adding a gallery'); window.location.href = 'add_gallery.php';</script>";
 } else {
-    echo "<script>alert('เกิดข้อผิดพลาด: " . $conn->error . "'); window.location.href = 'add_gallery.php';</script>";
+    echo "<script>alert('Error : " . $conn->error . "'); window.location.href = 'add_gallery.php';</script>";
 }
 
 

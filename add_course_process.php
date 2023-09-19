@@ -27,9 +27,9 @@ move_uploaded_file($imgTemp, $imgPath);
 $sql = "INSERT INTO add_course (img, name_th,name_eng,type , detail_th, detail_eng,day, price,hour) VALUES ('$imgPath', '$name_th', '$name_eng', '$type','$detail_th', '$detail_eng','$day' ,'$price','$hour')";
 
 if ($conn->query($sql) === TRUE) {
-    echo "<script>alert('หลักสูตรถูกเพิ่มเรียบร้อยแล้ว'); window.location.href = 'add_course.php';</script>";
+    echo "<script>alert('There was an error adding a course'); window.location.href = 'add_course.php';</script>";
 } else {
-    echo "<script>alert('เกิดข้อผิดพลาด: " . $conn->error . "'); window.location.href = 'add_course.php';</script>";
+    echo "<script>alert('Error : " . $conn->error . "'); window.location.href = 'add_course.php';</script>";
 }
 
 

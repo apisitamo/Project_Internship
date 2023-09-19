@@ -25,9 +25,9 @@ move_uploaded_file($imgTemp, $imgPath);
 $sql = "INSERT INTO add_product (img, name_th,name_eng,type , detail_th, detail_eng, price) VALUES ('$imgPath', '$name_th', '$name_eng', '$type','$detail_th', '$detail_eng', '$price')";
 
 if ($conn->query($sql) === TRUE) {
-    echo "<script>alert('สินค้าถูกเพิ่มเรียบร้อยแล้ว'); window.location.href = 'add_product.php';</script>";
+    echo "<script>alert('There was an error adding a product'); window.location.href = 'add_product.php';</script>";
 } else {
-    echo "<script>alert('เกิดข้อผิดพลาด: " . $conn->error . "'); window.location.href = 'add_product.php';</script>";
+    echo "<script>alert('Error : " . $conn->error . "'); window.location.href = 'add_product.php';</script>";
 }
 
 
