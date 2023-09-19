@@ -108,6 +108,10 @@ if (isset($_GET['delete_id'])) {
         color: #71BD1F;
     }
 
+    .addcourse2 .course-foot {
+        width: 100%;
+    }
+
     .addcourse2 .course-fotter {
         padding: 0.5rem 1rem;
     }
@@ -311,7 +315,7 @@ if (isset($_GET['delete_id'])) {
 
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
-                ?>
+                        ?>
                         <div class="card">
                             <button class="deleteitem" data-course-id="<?php echo $row['id']; ?>">&times;</button>
                             <img src="<?php echo $row['img']; ?>" class="w-100" alt="course image">
@@ -332,6 +336,8 @@ if (isset($_GET['delete_id'])) {
                                 <p class="card-text"><i class="fa-sharp fa-solid fa-circle-check"></i>
                                     <?php echo $row['detail_eng']; ?>
                                 </p>
+                            </div>
+                            <div class="course-foot">
                                 <div class="course-fotter">
                                     <p class="card-text">
                                         <?= $hours ?> :
@@ -355,7 +361,7 @@ if (isset($_GET['delete_id'])) {
                                 </div>
                             </div>
                         </div>
-                <?php
+                        <?php
                     }
                 } else {
                     echo "Course not found in database";
@@ -393,7 +399,8 @@ if (isset($_GET['delete_id'])) {
                     <p style="text-align: center;">
                         <?= $wantdel ?>
                     </p>
-                    <button class="button-close-2" id="confirm-delete-button" href='add_course.php?delete_id=<?php echo $row['id']; ?>'>
+                    <button class="button-close-2" id="confirm-delete-button"
+                        href='add_course.php?delete_id=<?php echo $row['id']; ?>'>
                         <?= $condel ?>
                     </button>
                     <button class="button-close-2" id="button-close2">
@@ -486,8 +493,8 @@ if (isset($_GET['delete_id'])) {
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script>
-    $(document).ready(function() {
-        $(".button-success-1").click(function() {
+    $(document).ready(function () {
+        $(".button-success-1").click(function () {
             var imageInput = $("input[name='img']")[0];
             var imageFile = imageInput.files[0];
             var type = $("select[name='type']").val();
@@ -517,11 +524,11 @@ if (isset($_GET['delete_id'])) {
                     data: formData,
                     contentType: false,
                     processData: false,
-                    success: function(response) {
+                    success: function (response) {
                         location.reload();
                         alert("Successfully added course");
                     },
-                    error: function() {
+                    error: function () {
                         alert("There was an error adding a course.");
                     }
                 });

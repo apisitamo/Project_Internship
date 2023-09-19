@@ -97,6 +97,7 @@ if (isset($_GET['delete_id'])) {
 
     .addpro2 .product-fotter {
         padding: 0.5rem 1rem;
+        width: 100%;
     }
 
     .addpro2 .product-fotter .card-text {
@@ -326,13 +327,13 @@ if (isset($_GET['delete_id'])) {
                                 <p class="card-text"><i class="fa-sharp fa-solid fa-circle-check"></i>
                                     <?php echo $row['detail_eng']; ?>
                                 </p>
-                                <div class="product-fotter">
-                                    <p class="card-text">
-                                        <?= $prices ?> :
-                                        <?php echo $row['price']; ?>
-                                        <?= $baht ?>
-                                    </p>
-                                </div>
+                            </div>
+                            <div class="product-fotter">
+                                <p class="card-text">
+                                    <?= $prices ?> :
+                                    <?php echo $row['price']; ?>
+                                    <?= $baht ?>
+                                </p>
                             </div>
                         </div>
                         <?php
