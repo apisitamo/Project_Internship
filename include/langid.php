@@ -12,7 +12,7 @@ if($langId == 1){
     $register = "ลงทะเบียน";
     $signin = "เข้าสู่ระบบ";
     $pleasesignin ='กรุณาเข้าสู่ระบบ';
-    $purchase_history = 'ประวัติการซื้อ';
+    $history = 'ประวัติ';
     $confirmorder="ยืนยันการสั่งซื้อ";
     $confirm="ยืนยัน";
     $confirmtran="ยืนยันการโอนเงิน";
@@ -52,6 +52,9 @@ if($langId == 1){
     $edit = "แก้ไข";
     $save = "บันทึก";
     $del = "ลบ";
+    $thx = "ขอบคุณสำหรับการซื้อ";
+    $wait = "กรุณารอตรวจสอบการโอนเงินภายใน 24 ชม";
+    $close = "ปิด";
     
 
 }else{
@@ -67,7 +70,7 @@ if($langId == 1){
     $email = "EMAIL";
     $signin = "SIGN IN";
     $pleasesignin ='PLEASE SIGNIN';
-    $purchase_history = 'PURCHASE HISTORY';
+    $history = 'History';
     $confirmorder="CONFIRM ORDER";
     $confirm="CONFIRM";
     $confirmtran="CONFIRM MONEY TRANSFER";
@@ -107,6 +110,9 @@ if($langId == 1){
     $edit = "Edit";
     $save = "Saved";
     $del = "Delete";
+    $thx = "Thank you for purchasing";
+    $wait = "Please wait to check the money transfer within 24 hours";
+    $close = "Close";
 
 }
 ?>

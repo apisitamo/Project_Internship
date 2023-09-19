@@ -479,15 +479,15 @@
             <div class="popup-content">
                 <span class="close-popup" id="close-popup3">&times;</span>
                 <div class="container">
-                    <p style="text-align: center;">ขอบคุณการซื้อ ผลิตภัณฑ์</p>
+                    <p style="text-align: center;"><?= $thx ?></p>
                     <img src="assets/images/image 9.svg" alt="" class="w-70">
-                    <p style="text-align: center;font-size: 30px;">รอตรวจสอบการโอนเงินภายใน 24 ชม.</p>
+                    <p style="text-align: center;font-size: 30px;"><?= $wait ?></p>
                     <button class="button-success" id="button-success3">
                         <a href="user.php">
-                            <?= $purchase_history ?>
+                            <?= $history ?>
                         </a>
                     </button>
-                    <button class="button-close" id="button-close3">ปิด</button>
+                    <button class="button-close" id="button-close3"><?= $close ?></button>
                 </div>
             </div>
         </div>
