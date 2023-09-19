@@ -486,6 +486,12 @@ a {
 .course-detail .item {
     display: flex;
     margin-bottom: 30px;
+    padding-left: 10%;
+}
+
+.course-detail .item:nth-child(1){
+    margin-bottom: 90px !important;
+    padding-left: 0px !important;
 }
 
 .course-detail .item .title {
