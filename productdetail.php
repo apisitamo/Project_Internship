@@ -42,12 +42,12 @@
                 $price = $row['price'];
             }
         } else {
-            echo "ไม่พบข้อมูลหลักสูตร";
+            echo "Product not found in database";
         }
 
         $conn->close();
     } else {
-        echo "ไม่พบรหัสหลักสูตรที่ระบุ";
+        echo "The specified product code was not found.";
     }
     ?>
 
