@@ -20,7 +20,7 @@ if (empty($_SESSION['lang']) || $_SESSION['lang'] == 1) {
     $logout = 'ออกจากระบบ';
     $register = 'สมัครสมาชิก';
     $user = 'ข้อมูลผู้ใช้งาน';
-    $admin='แอดมินเท่านั้น';
+    $admin = 'แอดมินเท่านั้น';
 } else {
     $_SESSION['lang'] = 2;
     $flag = 'enflag.png';
@@ -36,7 +36,7 @@ if (empty($_SESSION['lang']) || $_SESSION['lang'] == 1) {
     $logout = 'Logout';
     $register = 'Register';
     $user = 'User Detail';
-    $admin='For Admin';
+    $admin = 'For Admin';
 }
 
 // if (!isset($_SESSION['username'])) {
@@ -57,6 +57,10 @@ if (isset($_GET['logout'])) {
 <html lang="en">
 
 <head>
+    <title>Bangkok Spa Academy</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="assets/style.css">
 
@@ -122,7 +126,7 @@ if (isset($_GET['logout'])) {
                             <li class="nav-item">
                                 <a class="nav-link" href="register.php"><?= $register ?></a>
                             </li>
-                            <li class="nav-item" >
+                            <li class="nav-item">
                                 <a class="nav-admin" href="login_admin.php"><?= $admin ?></a>
                             </li>
                         <?php } ?>

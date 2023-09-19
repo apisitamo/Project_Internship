@@ -24,13 +24,6 @@ if ($langId == 1) {
 }
 ?>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-</head>
-
 <body>
     <section class="link-click" data-aos="zoom-out-right" data-aos-duration="2000">
         <div class="wrap">
