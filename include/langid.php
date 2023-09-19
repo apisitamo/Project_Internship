@@ -4,6 +4,7 @@ if($langId == 1){
     $usernames = "ชื่อผู้ใช้";
     $fullname = "ชื่อ-นามสกุล";
     $tell = "เบอร์โทร";
+    $home = "ที่อยู่";
     $passwords = "รหัสผ่าน";
     $notyet = "มีบัญชีแล้วหรือยัง ? ";
     $signup = "ลงทะเบียน";
@@ -64,6 +65,7 @@ if($langId == 1){
     $usernames = "Username";
     $fullname = "Fullname";
     $tell = "Phone Number";
+    $home = "Address";
     $passwords = "Password";
     $notyet = "Notyet Member ?";
     $signup = "Sign up";

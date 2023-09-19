@@ -312,7 +312,7 @@ if (isset($_GET['logout'])) {
                 <div class="right-box">
                     <form action="save_address.php" method="post">
                         <div class="input-group" id="addressuser">
-                            <label for="address">ที่อยู่ :</label>
+                            <label for="address"><?= $home?></label><label> : </label>
                             <?php
                             $query = "SELECT address FROM user WHERE username='$username'";
                             $result = mysqli_query($db, $query);
