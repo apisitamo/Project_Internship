@@ -82,6 +82,10 @@ if (isset($_GET['delete_id'])) {
         padding: 12px 0px;
     }
 
+    .pro-order td:nth-child(3) {
+        width: 12%;
+    }
+
     .pro-order .deleteitem {
         padding: 6px 0px;
     }
