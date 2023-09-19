@@ -56,12 +56,12 @@ if (isset($_GET['logout'])) {
 
     .user1 .homecontent {
         margin-bottom: 15px;
-        padding-left: 50px;
+       /* padding-right: 55px;*/
     }
 
     .user1 .homecontent:nth-child(1) input {
         padding-right: 50px;
-        margin-right: 25px;
+        /* margin-right: 25px;*/
         margin-left: 0px;
         background: #e0e0e0;
         padding-left: 5px;
@@ -69,7 +69,7 @@ if (isset($_GET['logout'])) {
 
     .user1 .homecontent:nth-child(2) input {
         padding-right: 50px;
-        margin-right: 17px;
+        /* margin-right: 17px;*/
         margin-left: 0px;
         background: #e0e0e0;
         padding-left: 5px;
@@ -96,11 +96,19 @@ if (isset($_GET['logout'])) {
     }
 
     .user1 .left-box form {
-        padding-left: 150px;
+        /*padding-left: 150px;*/
     }
 
     .user1 .left-box .save-phone {
-        padding-left: 175px;
+        /* padding-left: 175px;*/
+    }
+
+    .user1 .left-box .input-group {
+        display: block;
+    }
+
+    .user1 .left-box .input-group button {
+    
     }
 
     .user1 .right-box {
@@ -253,14 +261,18 @@ if (isset($_GET['logout'])) {
             <div class="container-top">
                 <div class="left-box">
                     <div class="homecontent">
-                        <?php if (isset($_SESSION['username'])) : ?>
-                            <label for="username"><?= $usernames ?></label><label> : </label>
+                        <?php if (isset($_SESSION['username'])): ?>
+                            <label for="username">
+                                <?= $usernames ?>
+                            </label><label> : </label>
                             <input type="text" value="<?php echo $_SESSION['username'] ?>" disabled>
                         <?php endif ?>
                     </div>
                     <div class="homecontent">
-                        <?php if (isset($_SESSION['username'])) : ?>
-                            <label for="username"><?= $email ?></label><label> : </label>
+                        <?php if (isset($_SESSION['username'])): ?>
+                            <label for="username">
+                                <?= $email ?>
+                            </label><label> : </label>
                             <?php
                             $db = mysqli_connect($servername, $username, $password, $dbname);
                             $username = $_SESSION['username'];
@@ -274,7 +286,9 @@ if (isset($_GET['logout'])) {
                     </div>
                     <form action="save_fullname.php" method="post">
                         <div class="input-group">
-                            <label for="fullname"><?= $fullname?></label><label> : </label>
+                            <label for="fullname">
+                                <?= $fullname ?>
+                            </label><label> : </label>
                             <?php
                             $query = "SELECT fullname FROM user WHERE username='$username'";
                             $result = mysqli_query($db, $query);
@@ -282,29 +296,34 @@ if (isset($_GET['logout'])) {
                             $fullname = $row['fullname'];
                             ?>
                             <input type="text" id="fullname" name="fullname" value="<?php echo $fullname; ?>" <?php if (isset($_SESSION['edit_fullname']))
-                                                                                                                    echo '';
-                                                                                                                else
-                                                                                                                    echo 'disabled'; ?>>
+                                   echo '';
+                               else
+                                   echo 'disabled'; ?>>
                             <button type="button" id="editfullname" onclick="enableFullname()">แก้ไข</button>
-                            <button type="submit" id="submitfullname" <?php if (!isset($_SESSION['edit_fullname'])); ?>>บันทึก</button>
+                            <button type="submit" id="submitfullname" <?php if (!isset($_SESSION['edit_fullname']))
+                                ; ?>>บันทึก</button>
                             <button type="button" id="canclefullname" onclick="cancleFullname()">ยกเลิก</button>
                         </div>
                     </form>
                     <form action="save_phone.php" class="save-phone" method="post">
                         <div class="input-group">
-                            <label for="phone"><?= $tell?></label><label> : </label>
+                            <label for="phone">
+                                <?= $tell ?>
+                            </label><label> : </label>
                             <?php
                             $query = "SELECT phone FROM user WHERE username='$username'";
                             $result = mysqli_query($db, $query);
                             $row = mysqli_fetch_assoc($result);
                             $phone = $row['phone'];
                             ?>
-                            <input type="text" id="phone" name="phone" pattern="[0-9]+" value="<?php echo $phone; ?>" <?php if (isset($_SESSION['edit_phone']))
-                                                                                                                            echo '';
-                                                                                                                        else
-                                                                                                                            echo 'disabled'; ?>>
+                            <input type="text" id="phone" name="phone" pattern="[0-9]+" value="<?php echo $phone; ?>"
+                                <?php if (isset($_SESSION['edit_phone']))
+                                    echo '';
+                                else
+                                    echo 'disabled'; ?>>
                             <button type="button" id="editphone" onclick="enablePhone()">แก้ไข</button>
-                            <button type="submit" id="submitphone" <?php if (!isset($_SESSION['edit_phone'])); ?>>บันทึก</button>
+                            <button type="submit" id="submitphone" <?php if (!isset($_SESSION['edit_phone']))
+                                ; ?>>บันทึก</button>
                             <button type="button" id="canclephone" onclick="canclePhone()">ยกเลิก</button>
                         </div>
                     </form>
@@ -312,7 +331,9 @@ if (isset($_GET['logout'])) {
                 <div class="right-box">
                     <form action="save_address.php" method="post">
                         <div class="input-group" id="addressuser">
-                            <label for="address"><?= $home?></label><label> : </label>
+                            <label for="address">
+                                <?= $home ?>
+                            </label><label> : </label>
                             <?php
                             $query = "SELECT address FROM user WHERE username='$username'";
                             $result = mysqli_query($db, $query);
@@ -320,13 +341,14 @@ if (isset($_GET['logout'])) {
                             $address = $row['address'];
                             ?>
                             <textarea id="address" name="address" <?php if (isset($_SESSION['edit_address']))
-                                                                        echo '';
-                                                                    else
-                                                                        echo 'disabled'; ?>><?php echo $address; ?></textarea>
+                                echo '';
+                            else
+                                echo 'disabled'; ?>><?php echo $address; ?></textarea>
                         </div>
                         <div class="button-address">
                             <button type="button" id="editaddress" onclick="enableAddress()">แก้ไข</button>
-                            <button type="submit" id="submitaddress" <?php if (!isset($_SESSION['edit_address'])); ?>>บันทึก</button>
+                            <button type="submit" id="submitaddress" <?php if (!isset($_SESSION['edit_address']))
+                                ; ?>>บันทึก</button>
                             <button type="button" id="cancleaddress" onclick="cancleAddress()">ยกเลิก</button>
                         </div>
                     </form>
@@ -352,8 +374,8 @@ if (isset($_GET['logout'])) {
                     $result_product_order = mysqli_query($db, $query_product_order);
 
                     $i = 1;
-                    while ($row_product_order = mysqli_fetch_assoc($result_product_order)) :
-                    ?>
+                    while ($row_product_order = mysqli_fetch_assoc($result_product_order)):
+                        ?>
                         <tr>
                             <td>
                                 <?php echo $i++; ?>
@@ -376,13 +398,13 @@ if (isset($_GET['logout'])) {
 
                             <td style="background-color:
                     <?php
-                        if ($row_product_order['status'] == 'ปฏิเสธ') {
-                            echo 'red';
-                        } elseif ($row_product_order['status'] == 'สำเร็จ') {
-                            echo 'green';
-                        } else {
-                            echo 'yellow';
-                        }
+                    if ($row_product_order['status'] == 'ปฏิเสธ') {
+                        echo 'red';
+                    } elseif ($row_product_order['status'] == 'สำเร็จ') {
+                        echo 'green';
+                    } else {
+                        echo 'yellow';
+                    }
                     ?>;
                 ">
                                 <?php echo $row_product_order['status']; ?>
@@ -398,8 +420,8 @@ if (isset($_GET['logout'])) {
                     $query_course_order = "SELECT * FROM course_order WHERE username='$username' ORDER BY id DESC";
                     $result_course_order = mysqli_query($db, $query_course_order);
 
-                    while ($row_course_order = mysqli_fetch_assoc($result_course_order)) :
-                    ?>
+                    while ($row_course_order = mysqli_fetch_assoc($result_course_order)):
+                        ?>
                         <tr>
                             <td>
                                 <?php echo $i++; ?>
@@ -421,13 +443,13 @@ if (isset($_GET['logout'])) {
                             </td>
                             <td style="background-color:
                     <?php
-                        if ($row_course_order['status'] == 'ปฏิเสธ') {
-                            echo 'red';
-                        } elseif ($row_course_order['status'] == 'สำเร็จ') {
-                            echo 'green';
-                        } else {
-                            echo 'yellow';
-                        }
+                    if ($row_course_order['status'] == 'ปฏิเสธ') {
+                        echo 'red';
+                    } elseif ($row_course_order['status'] == 'สำเร็จ') {
+                        echo 'green';
+                    } else {
+                        echo 'yellow';
+                    }
                     ?>;
                 ">
                                 <?php echo $row_course_order['status']; ?>
