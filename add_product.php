@@ -24,6 +24,11 @@ if (isset($_GET['delete_id'])) {
         background-color: #f1f9f9;
     }
 
+    .form-control,
+    .form-control-option {
+        background: #efefef;
+    }
+
     .addpro1 .containertop,
     .addpro2 .containerbuttom {
         padding: 30px;
