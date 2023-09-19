@@ -6,7 +6,7 @@ if (isset($_SESSION['username'])) {
     $phone = isset($_POST['phone']) ? $_POST['phone'] : '';
 
     if (empty($phone)) {
-        $_SESSION['save_error'] = "กรุณากรอกเบอร์โทร";
+        $_SESSION['save_error'] = "Please enter your phone number.";
         header("Location: user.php");
         exit();
     }
@@ -29,13 +29,13 @@ if (isset($_SESSION['username'])) {
             header("Location: user.php");
             exit();
         } else {
-            echo "เกิดข้อผิดพลาดในการบันทึกข้อมูล: " . $stmt->error;
+            echo "Error : " . $stmt->error;
         }
 
         $stmt->close();
         $conn->close();
     }
 } else {
-    echo "ไม่สามารถบันทึกข้อมูลได้เนื่องจากผู้ใช้ไม่ได้ล็อคอินหรือข้อมูลไม่เพียงพอ";
+    echo "The data cannot be saved because the user is not logged in or there is insufficient information.";
 }
 ?>

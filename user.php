@@ -9,7 +9,7 @@ include('server.php');
 // session_start();
 
 if (isset($_SESSION['save_success']) && $_SESSION['save_success']) {
-    echo "<script>alert('บันทึกข้อมูลเรียบร้อย');</script>";
+    echo "<script>alert('Data saved successfully.');</script>";
     $_SESSION['save_success'] = false;
 }
 if (isset($_SESSION['save_error'])) {
