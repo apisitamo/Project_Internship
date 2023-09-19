@@ -56,7 +56,7 @@ if (isset($_GET['logout'])) {
 
     .user1 .homecontent {
         margin-bottom: 15px;
-       /* padding-right: 55px;*/
+        padding-right: 145px;
     }
 
     .user1 .homecontent:nth-child(1) input {
@@ -90,25 +90,17 @@ if (isset($_GET['logout'])) {
 
     .user1 .left-box {
         background-color: #f2f2f2;
-        text-align: center;
+        text-align: end;
         padding-right: 30px;
         border-radius: 15px 0px 0px 15px;
-    }
-
-    .user1 .left-box form {
-        /*padding-left: 150px;*/
-    }
-
-    .user1 .left-box .save-phone {
-        /* padding-left: 175px;*/
     }
 
     .user1 .left-box .input-group {
         display: block;
     }
 
-    .user1 .left-box .input-group button {
-    
+    .user1 .left-box form {
+        padding-right: 87px;
     }
 
     .user1 .right-box {
@@ -477,8 +469,8 @@ if (isset($_GET['logout'])) {
     function enableFullname() {
         document.getElementById('fullname').removeAttribute('disabled');
         document.getElementById('editfullname').style.display = 'none';
-        document.getElementById('submitfullname').style.display = 'block';
-        document.getElementById('canclefullname').style.display = 'block';
+        document.getElementById('submitfullname').style.display = 'inline';
+        document.getElementById('canclefullname').style.display = 'inline';
         console.log("enableFullname");
         <?php $_SESSION['edit_fullname'] = true; ?>
     }
@@ -492,8 +484,8 @@ if (isset($_GET['logout'])) {
     function enablePhone() {
         document.getElementById('phone').removeAttribute('disabled');
         document.getElementById('editphone').style.display = 'none';
-        document.getElementById('submitphone').style.display = 'block';
-        document.getElementById('canclephone').style.display = 'block';
+        document.getElementById('submitphone').style.display = 'inline';
+        document.getElementById('canclephone').style.display = 'inline';
         <?php $_SESSION['edit_phone'] = true; ?>
     }
 
