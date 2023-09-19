@@ -55,13 +55,13 @@ if (isset($_GET['logout'])) {
 
     .user1 .homecontent {
         margin-bottom: 15px;
-        padding-left: 20px;
+        padding-left: 50px;
     }
 
     .user1 .homecontent:nth-child(1) input {
         padding-right: 50px;
         margin-right: 25px;
-        margin-left: 25px;
+        margin-left: 0px;
         background: #e0e0e0;
         padding-left: 5px;
     }
@@ -69,7 +69,7 @@ if (isset($_GET['logout'])) {
     .user1 .homecontent:nth-child(2) input {
         padding-right: 50px;
         margin-right: 17px;
-        margin-left: 28px;
+        margin-left: 0px;
         background: #e0e0e0;
         padding-left: 5px;
     }
@@ -99,7 +99,7 @@ if (isset($_GET['logout'])) {
     }
 
     .user1 .left-box .save-phone {
-        padding-left: 162px;
+        padding-left: 175px;
     }
 
     .user1 .right-box {
@@ -159,7 +159,7 @@ if (isset($_GET['logout'])) {
     .user1 .input-group #phone {
         padding-right: 50px;
         border-radius: 10px;
-        margin-left: 12px;
+        margin-left: 0px;
         background: white;
         padding-left: 5px;
     }
