@@ -20,6 +20,10 @@ if (isset($_GET['delete_id'])) {
 ?>
 
 <style>
+    body {
+        background-color: #f1f9f9;
+    }
+
     .addpro1 .containertop,
     .addpro2 .containerbuttom {
         padding: 30px;
@@ -48,6 +52,7 @@ if (isset($_GET['delete_id'])) {
         padding: 10px;
         box-shadow: 0px 4px 4px rgb(111 51 27 / 25%);
         border-radius: 5px;
+        background: #fffefb;
     }
 
     .addpro2 .product-body {

@@ -21,6 +21,10 @@ if (isset($_GET['delete_id'])) {
 ?>
 
 <style>
+    body {
+        background-color: #f1f9f9;
+    }
+
     .add-gallery .containertop,
     .add-gallery .containerbuttom {
         padding: 30px;
@@ -46,6 +50,7 @@ if (isset($_GET['delete_id'])) {
         margin-bottom: 15px;
         box-shadow: 0px 4px 4px rgb(111 51 27 / 25%);
         border-radius: 5px;
+        background: #fffefb;
     }
 
     .add-gallery .show-gallery .card .btn-danger {
