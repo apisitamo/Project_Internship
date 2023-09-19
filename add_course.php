@@ -11,9 +11,9 @@ if (isset($_GET['delete_id'])) {
     $deleteId = $_GET['delete_id'];
     $deleteQuery = "DELETE FROM add_course WHERE id = '$deleteId'";
     if ($conn->query($deleteQuery) === TRUE) {
-        echo "<script>alert('ลบหลักสูตรเรียบร้อยแล้ว'); window.location.href = 'add_course.php';</script>";
+        echo "<script>alert('Successfully deleted'); window.location.href = 'add_course.php';</script>";
     } else {
-        echo "<script>alert('เกิดข้อผิดพลาด: " . $conn->error . "'); window.location.href = 'add_course.php';</script>";
+        echo "<script>alert('Error: " . $conn->error . "'); window.location.href = 'add_course.php';</script>";
     }
 }
 
@@ -358,7 +358,7 @@ if (isset($_GET['delete_id'])) {
                 <?php
                     }
                 } else {
-                    echo "ไม่พบหลักสูตรในระบบ";
+                    echo "Course not found in database";
                 }
 
                 $conn->close();
@@ -519,14 +519,14 @@ if (isset($_GET['delete_id'])) {
                     processData: false,
                     success: function(response) {
                         location.reload();
-                        alert("เพิ่มหลักสูตรสำเร็จ");
+                        alert("Successfully added course");
                     },
                     error: function() {
-                        alert("เกิดข้อผิดพลาดในการเพิ่มหลักสูตร");
+                        alert("There was an error adding a course.");
                     }
                 });
             } else {
-                alert("กรุณากรอกข้อมูลให้ครบทุกช่องก่อนเพิ่มหลักสูตร");
+                alert("Please add information before pressing the button.");
             }
         });
     });

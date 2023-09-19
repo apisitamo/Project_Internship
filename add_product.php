@@ -11,9 +11,9 @@ if (isset($_GET['delete_id'])) {
     $deleteId = $_GET['delete_id'];
     $deleteQuery = "DELETE FROM add_product WHERE id = '$deleteId'";
     if ($conn->query($deleteQuery) === TRUE) {
-        echo "<script>alert('ลบสินค้าเรียบร้อยแล้ว'); window.location.href = 'add_product.php';</script>";
+        echo "<script>alert('Successfully deleted'); window.location.href = 'add_product.php';</script>";
     } else {
-        echo "<script>alert('เกิดข้อผิดพลาด: " . $conn->error . "'); window.location.href = 'add_product.php';</script>";
+        echo "<script>alert('Error: " . $conn->error . "'); window.location.href = 'add_product.php';</script>";
     }
 }
 
@@ -338,7 +338,7 @@ if (isset($_GET['delete_id'])) {
                         <?php
                     }
                 } else {
-                    echo "ไม่พบสินค้าในระบบ";
+                    echo "The product was not found in the database.";
                 }
                 $conn->close();
                 ?>
@@ -497,14 +497,14 @@ if (isset($_GET['delete_id'])) {
                     processData: false,
                     success: function (response) {
                         location.reload();
-                        alert("เพิ่มสินค้าสำเร็จ");
+                        alert("Successfully added products.");
                     },
                     error: function () {
-                        alert("เกิดข้อผิดพลาดในการเพิ่มสินค้า");
+                        alert("There was an error adding a product.");
                     }
                 });
             } else {
-                alert("กรุณากรอกข้อมูลให้ครบทุกช่องก่อนเพิ่มสินค้า");
+                alert("Please add information before pressing the button.");
             }
         });
     });

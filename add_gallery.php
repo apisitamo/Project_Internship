@@ -13,9 +13,9 @@ if (isset($_GET['delete_id'])) {
     $deleteId = $_GET['delete_id'];
     $deleteQuery = "DELETE FROM add_gallery WHERE id = '$deleteId'";
     if ($conn->query($deleteQuery) === TRUE) {
-        echo "<script>alert('ลบรูปภาพเรียบร้อยแล้ว'); window.location.href = 'add_gallery.php';</script>";
+        echo "<script>alert('Successfully deleted'); window.location.href = 'add_gallery.php';</script>";
     } else {
-        echo "<script>alert('เกิดข้อผิดพลาด: " . $conn->error . "'); window.location.href = 'add_gallery.php';</script>";
+        echo "<script>alert('Error: " . $conn->error . "'); window.location.href = 'add_gallery.php';</script>";
     }
 }
 ?>
@@ -221,7 +221,7 @@ if (isset($_GET['delete_id'])) {
                             <?php
                         }
                     } else {
-                        echo "ไม่พบสินค้าในระบบ";
+                        echo "The product was not found in the database.";
                     }
 
                     $conn->close();
@@ -370,14 +370,14 @@ if (isset($_GET['delete_id'])) {
                     processData: false,
                     success: function (response) {
                         location.reload();
-                        alert("รูปภาพถูกอัปโหลดสำเร็จ");
+                        alert("Successfully Uploaded.");
                     },
                     error: function () {
-                        alert("เกิดข้อผิดพลาดในการอัปโหลดรูปภาพ");
+                        alert("There was an error adding a gallery.");
                     }
                 });
             } else {
-                alert("กรุณาเลือกรูปภาพก่อนกดปุ่ม Submit");
+                alert("Please add information before pressing the button.");
             }
         });
     });
