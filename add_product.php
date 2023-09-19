@@ -40,12 +40,14 @@ if (isset($_GET['delete_id'])) {
 
     .addpro2 .card {
         display: flex;
-        border: 1px solid #e0e0e0;
+        /* border: 1px solid #e0e0e0;*/
         margin-bottom: 20px;
         width: 30% !important;
         align-items: center;
         text-align: center;
         padding: 10px;
+        box-shadow: 0px 4px 4px rgb(111 51 27 / 25%);
+        border-radius: 5px;
     }
 
     .addpro2 .product-body {
@@ -99,6 +101,11 @@ if (isset($_GET['delete_id'])) {
 
     .addpro1 .containertop .mb-3:nth-child(3) {
         margin-bottom: 0px !important;
+        margin-top: 25px;
+    }
+
+    .addpro1 .containertop .btn-primary {
+        padding: 6px 20px;
     }
 
     .popup {
@@ -140,12 +147,12 @@ if (isset($_GET['delete_id'])) {
     }
 
     .deleteitem {
-        padding: 3px 10px;
+        padding: 4px 11px;
         margin-top: 5px;
         border: none;
         background: red;
-        margin-right: -85%;
-        border-radius: 10px;
+        border-radius: 20px;
+        margin-bottom: 10px;
     }
 
     .popup-add button {
@@ -273,7 +280,7 @@ if (isset($_GET['delete_id'])) {
 
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
-                ?>
+                        ?>
                         <div class="card">
                             <button class="deleteitem" data-product-id="<?php echo $row['id']; ?>">&times;</button>
                             <img src="<?php echo $row['img']; ?>" class="w-100" alt="Product Image">
@@ -302,7 +309,7 @@ if (isset($_GET['delete_id'])) {
                                 </div>
                             </div>
                         </div>
-                <?php
+                        <?php
                     }
                 } else {
                     echo "ไม่พบสินค้าในระบบ";
@@ -320,9 +327,15 @@ if (isset($_GET['delete_id'])) {
             <div class="popup-content">
                 <span class="close-popup" id="close-popup1">&times;</span>
                 <div class="container">
-                    <p style="text-align: center;"><?= $wantadd ?></p>
-                    <button class="button-success-1" id="button-success1"><?= $confirm ?></button>
-                    <button class="button-close-1" id="button-close1"><?= $cancle ?></button>
+                    <p style="text-align: center;">
+                        <?= $wantadd ?>
+                    </p>
+                    <button class="button-success-1" id="button-success1">
+                        <?= $confirm ?>
+                    </button>
+                    <button class="button-close-1" id="button-close1">
+                        <?= $cancle ?>
+                    </button>
                 </div>
             </div>
         </div>
@@ -331,9 +344,16 @@ if (isset($_GET['delete_id'])) {
             <div class="popup-content">
                 <span class="close-popup" id="close-popup2">&times;</span>
                 <div class="container">
-                    <p style="text-align: center;"><?= $wantdel ?></p>
-                    <button class="button-close-2" id="confirm-delete-button" href='add_product.php?delete_id=<?php echo $row['id']; ?>'><?= $condel ?></button>
-                    <button class="button-close-2" id="button-close2"><?= $cancle ?></button>
+                    <p style="text-align: center;">
+                        <?= $wantdel ?>
+                    </p>
+                    <button class="button-close-2" id="confirm-delete-button"
+                        href='add_product.php?delete_id=<?php echo $row['id']; ?>'>
+                        <?= $condel ?>
+                    </button>
+                    <button class="button-close-2" id="button-close2">
+                        <?= $cancle ?>
+                    </button>
                 </div>
             </div>
         </div>
@@ -422,8 +442,8 @@ if (isset($_GET['delete_id'])) {
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script>
-    $(document).ready(function() {
-        $(".button-success-1").click(function() {
+    $(document).ready(function () {
+        $(".button-success-1").click(function () {
             var imageInput = $("input[name='img']")[0];
             var imageFile = imageInput.files[0];
             var type = $("select[name='type']").val();
@@ -449,11 +469,11 @@ if (isset($_GET['delete_id'])) {
                     data: formData,
                     contentType: false,
                     processData: false,
-                    success: function(response) {
+                    success: function (response) {
                         location.reload();
                         alert("เพิ่มสินค้าสำเร็จ");
                     },
-                    error: function() {
+                    error: function () {
                         alert("เกิดข้อผิดพลาดในการเพิ่มสินค้า");
                     }
                 });

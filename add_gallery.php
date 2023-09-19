@@ -38,13 +38,14 @@ if (isset($_GET['delete_id'])) {
 
     .add-gallery .show-gallery .card {
         display: flex;
-        border: 1px solid #e0e0e0;
-        margin-bottom: 20px;
+        /* border: 1px solid #e0e0e0;*/
         width: 100% !important;
         align-items: center;
         text-align: center;
         margin: 10px;
-        margin-bottom: 15px
+        margin-bottom: 15px;
+        box-shadow: 0px 4px 4px rgb(111 51 27 / 25%);
+        border-radius: 5px;
     }
 
     .add-gallery .show-gallery .card .btn-danger {
@@ -55,13 +56,16 @@ if (isset($_GET['delete_id'])) {
         padding: 10px;
     }
 
+    .add-gallery .add-img .containertop .btn-primary {
+        padding: 6px 20px;
+    }
+
     .deleteitem {
-        padding: 3px 10px;
+        padding: 4px 11px;
         margin-top: 5px;
         border: none;
         background: red;
-        margin-right: -85%;
-        border-radius: 10px;
+        border-radius: 20px;
     }
 
     .popup {
@@ -156,18 +160,26 @@ if (isset($_GET['delete_id'])) {
         <div class="click-overlay" id="click-overlay1"></div>
         <section class="add-img">
             <div class="containertop mt-5">
-                <h2><?= $add_gallery ?></h2>
+                <h2>
+                    <?= $add_gallery ?>
+                </h2>
                 <div class="mb-3">
-                    <label for="img" class="form-label"><?= $picture ?></label>
+                    <label for="img" class="form-label">
+                        <?= $picture ?>
+                    </label>
                     <input type="file" class="form-control" name="img" required>
                 </div>
-                <button type="submit" class="additem btn btn-primary"><?= $add ?></button>
+                <button type="submit" class="additem btn btn-primary">
+                    <?= $add ?>
+                </button>
             </div>
         </section>
 
         <section class="show-gallery">
             <div class="containerbuttom mt-5">
-                <h2><?= $allgallery ?></h2>
+                <h2>
+                    <?= $allgallery ?>
+                </h2>
                 <div class="row">
 
                     <?php
@@ -176,14 +188,14 @@ if (isset($_GET['delete_id'])) {
 
                     if ($result->num_rows > 0) {
                         while ($row = $result->fetch_assoc()) {
-                    ?>
+                            ?>
                             <div class="col-lg-3">
                                 <div class="card">
                                     <button class="deleteitem" data-gallery-id="<?php echo $row['id']; ?>">&times;</button>
                                     <img src="<?php echo $row['img']; ?>" class="w-100" alt="gallery Image">
                                 </div>
                             </div>
-                    <?php
+                            <?php
                         }
                     } else {
                         echo "ไม่พบสินค้าในระบบ";
@@ -203,9 +215,15 @@ if (isset($_GET['delete_id'])) {
             <div class="popup-content">
                 <span class="close-popup" id="close-popup1">&times;</span>
                 <div class="container">
-                    <p style="text-align: center;"><?= $wantadd ?></p>
-                    <button class="button-success-1" id="button-success1"><?= $confirm ?></button>
-                    <button class="button-close-1" id="button-close1"><?= $cancle ?></button>
+                    <p style="text-align: center;">
+                        <?= $wantadd ?>
+                    </p>
+                    <button class="button-success-1" id="button-success1">
+                        <?= $confirm ?>
+                    </button>
+                    <button class="button-close-1" id="button-close1">
+                        <?= $cancle ?>
+                    </button>
                 </div>
             </div>
         </div>
@@ -214,9 +232,16 @@ if (isset($_GET['delete_id'])) {
             <div class="popup-content">
                 <span class="close-popup" id="close-popup2">&times;</span>
                 <div class="container">
-                    <p style="text-align: center;"><?= $wantdel ?></p>
-                    <button class="button-close-2" id="confirm-delete-button" href='add_gallery.php?delete_id=<?php echo $row['id']; ?>'><?= $condel ?></button>
-                    <button class="button-close-2" id="button-close2"><?= $cancle ?></button>
+                    <p style="text-align: center;">
+                        <?= $wantdel ?>
+                    </p>
+                    <button class="button-close-2" id="confirm-delete-button"
+                        href='add_gallery.php?delete_id=<?php echo $row['id']; ?>'>
+                        <?= $condel ?>
+                    </button>
+                    <button class="button-close-2" id="button-close2">
+                        <?= $cancle ?>
+                    </button>
                 </div>
             </div>
         </div>
@@ -305,8 +330,8 @@ if (isset($_GET['delete_id'])) {
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script>
-    $(document).ready(function() {
-        $(".button-success-1").click(function() {
+    $(document).ready(function () {
+        $(".button-success-1").click(function () {
             var imageInput = $("input[name='img']")[0];
             var imageFile = imageInput.files[0];
 
@@ -320,11 +345,11 @@ if (isset($_GET['delete_id'])) {
                     data: formData,
                     contentType: false,
                     processData: false,
-                    success: function(response) {
+                    success: function (response) {
                         location.reload();
                         alert("รูปภาพถูกอัปโหลดสำเร็จ");
                     },
-                    error: function() {
+                    error: function () {
                         alert("เกิดข้อผิดพลาดในการอัปโหลดรูปภาพ");
                     }
                 });
