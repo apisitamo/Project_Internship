@@ -86,6 +86,11 @@ if (isset($_GET['delete_id'])) {
         font-size: 25px;
     }
 
+    .deleteitem:hover {
+        transform: scale(1.3);
+        transition: 0.5s ease;
+    }
+
     .popup {
         display: none;
         z-index: 1000;

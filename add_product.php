@@ -175,6 +175,11 @@ if (isset($_GET['delete_id'])) {
         font-size: 25px;
     }
 
+    .deleteitem:hover {
+        transform: scale(1.3);
+        transition: 0.5s ease;
+    }
+
     .popup-add button {
         padding: 6px;
         border-radius: 10px;
