@@ -63,6 +63,9 @@ if($langId == 1){
     $wait = "กรุณารอตรวจสอบการโอนเงินภายใน 24 ชม";
     $close = "ปิดรายการสั่งซื้อ";
     $baht = "บาท";
+    $HSC = "สปาเพื่อสุขภาพ";
+    $BSC = "สปาเพื่อความงาม";
+    $AS = "สปาขั้นสูง";
     
 
 }else{
@@ -129,6 +132,9 @@ if($langId == 1){
     $wait = "Please wait to check the money transfer within 24 hours.";
     $close = "Close";
     $baht = "Baht";
+    $HSC = "Health Spa Course";
+    $BSC = "Beauty Spa Course";
+    $AS = "Advanced Spa";
 
 }
 ?>

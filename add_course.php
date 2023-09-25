@@ -17,6 +17,51 @@ if (isset($_GET['delete_id'])) {
     }
 }
 
+$db = mysqli_connect($servername, $username, $password, $dbname);
+
+?>
+
+<?php
+// คำนวณจำนวนสินค้าทั้งหมด
+$totalCourseQuery = "SELECT COUNT(*) AS total FROM add_course";
+$totalCourseResult = mysqli_query($db, $totalCourseQuery);
+
+if ($totalCourseResult) {
+    $totalCourseRow = mysqli_fetch_assoc($totalCourseResult);
+    $totalCourse = $totalCourseRow['total'];
+} else {
+    $totalCourse = 0;
+}
+// คำนวณจำนวนสินค้าที่มีสถานะเป็น 'HSC'
+$HSCOrdersQuery = "SELECT COUNT(*) AS HSCCount FROM add_course WHERE type = 'Health Spa Course'";
+$HSCOrdersResult = mysqli_query($db, $HSCOrdersQuery);
+
+if ($HSCOrdersResult) {
+    $HSCOrdersRow = mysqli_fetch_assoc($HSCOrdersResult);
+    $HSCOrdersCount = $HSCOrdersRow['HSCCount'];
+} else {
+    $HSCOrdersCount = 0;
+}
+// คำนวณจำนวนสินค้าที่มีสถานะเป็น 'BSC'
+$BSCOrdersQuery = "SELECT COUNT(*) AS BSCCount FROM add_course WHERE type = 'Beauty Spa Course'";
+$BSCOrdersResult = mysqli_query($db, $BSCOrdersQuery);
+
+if ($BSCOrdersResult) {
+    $BSCOrdersRow = mysqli_fetch_assoc($BSCOrdersResult);
+    $BSCOrdersCount = $BSCOrdersRow['BSCCount'];
+} else {
+    $BSCOrdersCount = 0;
+}
+// คำนวณจำนวนสินค้าที่มีสถานะเป็น 'AS'
+$ASOrdersQuery = "SELECT COUNT(*) AS ASCount FROM add_course WHERE type = 'Advanced Spa'";
+$ASOrdersResult = mysqli_query($db, $ASOrdersQuery);
+
+if ($ASOrdersResult) {
+    $ASOrdersRow = mysqli_fetch_assoc($ASOrdersResult);
+    $ASOrdersCount = $ASOrdersRow['ASCount'];
+} else {
+    $ASOrdersCount = 0;
+}
 ?>
 
 <style>
@@ -62,7 +107,7 @@ if (isset($_GET['delete_id'])) {
     }
 
     .containerbuttom h2 {
-        text-align: center;
+        text-align: start;
     }
 
     .addcourse2 .row {
@@ -308,6 +353,36 @@ if (isset($_GET['delete_id'])) {
             <h2>
                 <?= $allcourse ?>
             </h2>
+            <div class="filter-buttons">
+                <a href="add_course.php">
+                    <button data-type="All">
+                        <?= $all ?> (<span id="all-orders">
+                            <?= $totalCourse ?>
+                        </span>)
+                    </button>
+                </a>
+                <a href="add_course2.php">
+                    <button data-type="HSC">
+                        <?= $HSC ?> (<span id="HSC-orders">
+                            <?= $HSCOrdersCount ?>
+                        </span>)
+                    </button>
+                </a>
+                <a href="add_course3.php">
+                    <button data-type="BSC">
+                        <?= $BSC ?> (<span id="BSC-orders">
+                            <?= $BSCOrdersCount ?>
+                        </span>)
+                    </button>
+                </a>
+                <a href="add_course4.php">
+                    <button data-type="AS">
+                        <?= $AS ?> (<span id="AS-orders">
+                            <?= $ASOrdersCount ?>
+                        </span>)
+                    </button>
+                </a>
+            </div>
             <div class="row">
                 <?php
                 $sql = "SELECT * FROM add_course ORDER BY id DESC";
@@ -315,7 +390,7 @@ if (isset($_GET['delete_id'])) {
 
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
-                        ?>
+                ?>
                         <div class="card">
                             <button class="deleteitem" data-course-id="<?php echo $row['id']; ?>">&times;</button>
                             <!-- <button class="edititem" data-course-id="<?php echo $row['id']; ?>"><img src="assets/images/fix.png" alt=""></button> -->
@@ -362,7 +437,7 @@ if (isset($_GET['delete_id'])) {
                                 </div>
                             </div>
                         </div>
-                        <?php
+                <?php
                     }
                 } else {
                     echo "Course not found in database";
@@ -400,8 +475,7 @@ if (isset($_GET['delete_id'])) {
                     <p style="text-align: center;">
                         <?= $wantdel ?>
                     </p>
-                    <button class="button-close-2" id="confirm-delete-button"
-                        href='add_course.php?delete_id=<?php echo $row['id']; ?>'>
+                    <button class="button-close-2" id="confirm-delete-button" href='add_course.php?delete_id=<?php echo $row['id']; ?>'>
                         <?= $condel ?>
                     </button>
                     <button class="button-close-2" id="button-close2">
@@ -494,8 +568,8 @@ if (isset($_GET['delete_id'])) {
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script>
-    $(document).ready(function () {
-        $(".button-success-1").click(function () {
+    $(document).ready(function() {
+        $(".button-success-1").click(function() {
             var imageInput = $("input[name='img']")[0];
             var imageFile = imageInput.files[0];
             var type = $("select[name='type']").val();
@@ -525,11 +599,11 @@ if (isset($_GET['delete_id'])) {
                     data: formData,
                     contentType: false,
                     processData: false,
-                    success: function (response) {
+                    success: function(response) {
                         location.reload();
                         alert("Successfully added course");
                     },
-                    error: function () {
+                    error: function() {
                         alert("There was an error adding a course.");
                     }
                 });
