@@ -108,8 +108,13 @@ if (isset($_GET['delete_id'])) {
     .pro-order th,
     .pro-order td {
         border: 1px solid #ccc;
-        padding: 12px 26px;
+        padding-left: 10px;
+        padding-right: 10px;
         text-align: center;
+    }
+
+    .pro-order .table_order td:nth-child(9) {
+       width: 14%;
     }
 
     .pro-order th {
@@ -117,7 +122,7 @@ if (isset($_GET['delete_id'])) {
         padding: 15px;
     }
 
-    .pro-order .table_order td:nth-child(11){
+    .pro-order .table_order td:nth-child(11) {
         padding: 0px;
     }
 
@@ -414,7 +419,8 @@ if (isset($_GET['delete_id'])) {
                                             </option>
                                             <option value="completed" <?php if ($row['status'] === 'completed')
                                                 echo 'selected'; ?>>
-                                          <?= $complete ?></option>
+                                                <?= $complete ?>
+                                            </option>
                                             <option value="rejected" <?php if ($row['status'] === 'rejected')
                                                 echo 'selected'; ?>>
                                           <?= $reject ?></option>
