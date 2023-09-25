@@ -15,7 +15,7 @@ if($langId == 1){
     $register = "ลงทะเบียน";
     $signin = "เข้าสู่ระบบ";
     $pleasesignin ='กรุณาเข้าสู่ระบบ';
-    $history = 'ประวัติ';
+    $history = 'ประวัติการสั่งซื้อ';
     $confirmorder="ยืนยันการสั่งซื้อ";
     $confirm="ยืนยัน";
     $confirmtran="ยืนยันการโอนเงิน";
@@ -61,7 +61,7 @@ if($langId == 1){
     $del = "ลบ";
     $thx = "ขอบคุณสำหรับการซื้อ";
     $wait = "กรุณารอตรวจสอบการโอนเงินภายใน 24 ชม";
-    $close = "ปิด";
+    $close = "ปิดรายการสั่งซื้อ";
     $baht = "บาท";
     
 
@@ -85,7 +85,7 @@ if($langId == 1){
     $confirmorder="Confirm Order";
     $confirm="Confirm";
     $confirmtran="Confirm Money Transfer";
-    $cancle="Cancle";
+    $cancle="Cancel";
     $picture = 'Picture';
     $types = 'Types';
     $THname = 'Thai product name';
