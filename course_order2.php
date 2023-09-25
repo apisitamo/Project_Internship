@@ -128,7 +128,7 @@ if (isset($_GET['delete_id'])) {
     }
 
     .pro-order button img {
-        width: 30%;
+        width: 35%;
     }
 
     .pro-order td:nth-child(10) {
