@@ -12,23 +12,66 @@ include('server.php');
 <?php
 $db = mysqli_connect($servername, $username, $password, $dbname);
 
-$itemsPerPage = 10;
+$page = isset($_GET['page']) ? $_GET['page'] : 1;
 
-$page = isset($_GET['page']) ? (int) $_GET['page'] : 1;
+$limit = 10;
 
-$offset = ($page - 1) * $itemsPerPage;
+$offset = ($page - 1) * $limit;
 
 $query = "SELECT * FROM course_order
           ORDER BY CASE
-            WHEN status = 'รอตรวจสอบ' THEN 0
-            WHEN status = 'สำเร็จ' THEN 1
-            WHEN status = 'ปฏิเสธ' THEN 2
+            WHEN status = 'pending' THEN 0
+            WHEN status = 'completed' THEN 1
+            WHEN status = 'rejected' THEN 2
             ELSE 3
           END, id DESC
-          LIMIT $offset, $itemsPerPage";
+          LIMIT $limit OFFSET $offset";
 
 $result = mysqli_query($db, $query);
 
+// คำนวณจำนวนสินค้าทั้งหมด
+$totalCourseQuery = "SELECT COUNT(*) AS total FROM course_order";
+$totalCourseResult = mysqli_query($db, $totalCourseQuery);
+
+if ($totalCourseResult) {
+    $totalCourseRow = mysqli_fetch_assoc($totalCourseResult);
+    $totalCourse = $totalCourseRow['total'];
+} else {
+    $totalCourse = 0;
+}
+// คำนวณจำนวนสินค้าที่มีสถานะเป็น 'pending'
+$pendingOrdersQuery = "SELECT COUNT(*) AS pendingCount FROM course_order WHERE status = 'pending'";
+$pendingOrdersResult = mysqli_query($db, $pendingOrdersQuery);
+
+if ($pendingOrdersResult) {
+    $pendingOrdersRow = mysqli_fetch_assoc($pendingOrdersResult);
+    $pendingOrdersCount = $pendingOrdersRow['pendingCount'];
+} else {
+    $pendingOrdersCount = 0;
+}
+// คำนวณจำนวนสินค้าที่มีสถานะเป็น 'completed'
+$completedOrdersQuery = "SELECT COUNT(*) AS completedCount FROM course_order WHERE status = 'completed'";
+$completedOrdersResult = mysqli_query($db, $completedOrdersQuery);
+
+if ($completedOrdersResult) {
+    $completedOrdersRow = mysqli_fetch_assoc($completedOrdersResult);
+    $completedOrdersCount = $completedOrdersRow['completedCount'];
+} else {
+    $completedOrdersCount = 0;
+}
+// คำนวณจำนวนสินค้าที่มีสถานะเป็น 'rejected'
+$rejectedOrdersQuery = "SELECT COUNT(*) AS rejectedCount FROM course_order WHERE status = 'rejected'";
+$rejectedOrdersResult = mysqli_query($db, $rejectedOrdersQuery);
+
+if ($rejectedOrdersResult) {
+    $rejectedOrdersRow = mysqli_fetch_assoc($rejectedOrdersResult);
+    $rejectedOrdersCount = $rejectedOrdersRow['rejectedCount'];
+} else {
+    $rejectedOrdersCount = 0;
+}
+?>
+
+<?php
 if (isset($_GET['delete_id'])) {
     $deleteId = $_GET['delete_id'];
     $deleteQuery = "DELETE FROM course_order WHERE id = '$deleteId'";
@@ -41,94 +84,121 @@ if (isset($_GET['delete_id'])) {
 ?>
 
 <style>
-    .course-order .homeheader {
+    .pro-order .homeheader {
         margin-top: 75px;
     }
 
-    .course-order #con-table {
+    .pro-order #con-table {
         max-width: 1450px;
     }
 
-    .course-order .bottom-box {
+    .pro-order .bottom-box {
         flex: 1;
         padding: 20px;
         box-sizing: border-box;
         background-color: #c0c0c0;
     }
 
-    .course-order table {
+    .pro-order table {
         border-collapse: collapse;
         width: 100%;
         border: 1px solid #ccc;
     }
 
-    .course-order th,
-    .course-order td {
+    .pro-order th,
+    .pro-order td {
         border: 1px solid #ccc;
-        padding: 12px 25px;
+        padding: 12px 26px;
         text-align: center;
     }
 
-    .course-order th {
+    .pro-order th {
         background-color: #f2f2f2;
         padding: 15px;
     }
 
-    .course-order button {
+    .pro-order button img {
+        width: 27%;
+    }
+
+    .pro-order td:nth-child(10) {
+        padding: 12px 0px;
+    }
+
+    .pro-order td:nth-child(3) {
+        width: 12%;
+    }
+
+    .pro-order .deleteitem {
+        padding: 6px 0px;
+    }
+
+    .pro-order button {
         padding: 6px 20px;
         border-radius: 10px;
         border: none;
         margin-top: 5px;
     }
 
-    .course-order button img {
-        width: 30%;
-    }
-
-    .course-order .filter-buttons {
+    .pro-order .filter-buttons {
         margin: 0px 15px 15px 0px;
     }
 
-    .course-order .filter-buttons button:nth-child(1) {
+    .pro-order .filter-buttons a:nth-child(1) button {
         background-color: aqua;
     }
 
-    .course-order .filter-buttons button:nth-child(2) {
+    .pro-order .filter-buttons a:nth-child(2) button {
         background-color: yellow;
     }
 
-    .course-order .filter-buttons button:nth-child(3) {
+    .pro-order .filter-buttons a:nth-child(3) button {
         background-color: #00e700;
     }
 
-    .course-order .filter-buttons button:nth-child(4) {
+    .pro-order .filter-buttons a:nth-child(4) button {
         background-color: #ff1e1e;
     }
 
-    .course-order .table_order .status-dropdown {
+    .pro-order .table_order .status-dropdown {
         border: none;
         background: yellow;
         padding: 0px 5px;
     }
 
-    .course-order .table_order .status-dropdown option:nth-child(2) {
+    .pro-order .table_order .status-dropdown option:nth-child(2) {
         background: #00e700;
     }
 
-    .course-order .table_order .status-dropdown option:nth-child(3) {
+    .pro-order .table_order .status-dropdown option:nth-child(3) {
         background: red;
     }
 
-    .course-order td:nth-child(3) {
-        width: 10%;
+    .pro-order .pagination {
+        display: block;
+        text-align: center;
+        margin-top: 30px;
+        margin-bottom: 30px;
     }
 
-    .course-order td:nth-child(11) {
-        padding: 12px 0px;
+    .pro-order .pagination a {
+        margin-left: 5px;
+        margin-right: 5px;
+        background: #e5e5e5;
+        padding: 9px 19px;
+        border-radius: 40px;
+        font-size: 19px;
     }
 
-    .course-order .deleteitem {
-        padding: 6px 0px;
+    .pro-order .pagination a:hover {
+        background-color: #0d6efd;
+        color: white !important;
+        transition: 0.4s;
+    }
+
+    .pro-order .pagination .pagination-link.active {
+        background-color: #0d6efd;
+        color: white !important;
     }
 
     .save-button,
@@ -223,35 +293,8 @@ if (isset($_GET['delete_id'])) {
     }
 </style>
 
-<style>
-    .pagination {
-        display: flex;
-        list-style: none;
-        padding: 0;
-        justify-content: center;
-        margin-top: 20px;
-        margin-bottom: 40px;
-    }
-
-    .pagination a,
-    .pagination .current-page {
-        margin: 0 5px;
-        padding: 5px 10px;
-        text-decoration: none;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        background-color: #f2f2f2;
-        color: #333;
-    }
-
-    .pagination .current-page {
-        background-color: #007bff;
-        color: #fff;
-    }
-</style>
-
 <body>
-    <section class="course-order">
+    <section class="pro-order">
         <div class="click-overlay" id="click-overlay1"></div>
         <div class="homeheader">
             <h2 style="text-align: center;">
@@ -260,35 +303,80 @@ if (isset($_GET['delete_id'])) {
         </div>
         <div class="container" id="con-table">
             <div class="filter-buttons">
-                <button data-status="All"><?= $all ?> (<span id="total-orders">0</span>)</button>
-                <button data-status="รอตรวจสอบ"><?= $check ?> (<span id="pending-orders">0</span>)</button>
-                <button data-status="สำเร็จ"><?= $complete ?> (<span id="completed-orders">0</span>)</button>
-                <button data-status="ปฏิเสธ"><?= $reject ?> (<span id="rejected-orders">0</span>)</button>
+                <a href="course_order.php">
+                    <button data-status="All">
+                        <?= $all ?> (<span id="all-orders">
+                            <?= $totalCourse ?>
+                        </span>)
+                    </button>
+                </a>
+                <a href="course_order2.php">
+                    <button data-status="pending">
+                        <?= $check ?> (<span id="pending-orders">
+                            <?= $pendingOrdersCount ?>
+                        </span>)
+                    </button>
+                </a>
+                <a href="course_order3.php">
+                    <button data-status="completed">
+                        <?= $complete ?> (<span id="completed-orders">
+                            <?= $completedOrdersCount ?>
+                        </span>)
+                    </button>
+                </a>
+                <a href="course_order4.php">
+                    <button data-status="rejected">
+                        <?= $reject ?> (<span id="rejected-orders">
+                            <?= $rejectedOrdersCount ?>
+                        </span>)
+                    </button>
+                </a>
             </div>
-
             <div class="table_order">
                 <table>
                     <thead>
                         <tr>
-                            <th><?= $order ?></th>
-                            <th><?= $User ?></th>
-                            <th><?= $types2 ?></th>
-                            <th><?= $lists ?></th>
-                            <th><?= $quantityy ?></th>
-                            <th><?= $dayss ?></th>
-                            <th><?= $pricess ?></th>
-                            <th><?= $timess ?></th>
-                            <th><?= $statuss ?></th>
-                            <th><?= $notess ?></th>
-                            <th><?= $deletion ?></th>
+                            <th>
+                                <?= $order ?>
+                            </th>
+                            <th>
+                                <?= $User ?>
+                            </th>
+                            <th>
+                                <?= $types2 ?>
+                            </th>
+                            <th>
+                                <?= $lists ?>
+                            </th>
+                            <th>
+                                <?= $quantityy ?>
+                            </th>
+                            <th>
+                                <?= $dayss ?>
+                            </th>
+                            <th>
+                                <?= $pricess ?>
+                            </th>
+                            <th>
+                                <?= $timess ?>
+                            </th>
+                            <th>
+                                <?= $statuss ?>
+                            </th>
+                            <th>
+                                <?= $notess ?>
+                            </th>
+                            <th>
+
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
-                        $i = 1;
+                        $i = 1 + $offset;
                         if ($result->num_rows > 0) {
                             while ($row = $result->fetch_assoc()) {
-                        ?>
+                                ?>
                                 <tr data-status="<?php echo $row['status']; ?>">
                                     <td>
                                         <?php echo $i++; ?>
@@ -316,30 +404,47 @@ if (isset($_GET['delete_id'])) {
                                     </td>
                                     <td>
                                         <select class="status-dropdown" data-row-id="<?php echo $row['id']; ?>" disabled>
-                                            <option value="รอตรวจสอบ" <?php if ($row['status'] === 'รอตรวจสอบ')
-                                                                            echo 'selected'; ?>><?= $check ?></option>
-                                            <option value="สำเร็จ" <?php if ($row['status'] === 'สำเร็จ')
-                                                                        echo 'selected'; ?>>
-                                                <?= $complete ?></option>
-                                            <option value="ปฏิเสธ" <?php if ($row['status'] === 'ปฏิเสธ')
-                                                                        echo 'selected'; ?>>
-                                                <?= $reject ?></option>
+                                            <option value="pending" <?php if ($row['status'] === 'pending')
+                                                echo 'selected'; ?>><?= $check ?>
+                                            </option>
+                                            <option value="completed" <?php if ($row['status'] === 'completed')
+                                                echo 'selected'; ?>>
+                                          <?= $complete ?></option>
+                                            <option value="rejected" <?php if ($row['status'] === 'rejected')
+                                                echo 'selected'; ?>>
+                                          <?= $reject ?></option>
                                         </select>
-                                        <button class="edit-button" data-row-id="<?php echo $row['id']; ?>"><?= $edit ?></button>
-                                        <button class="save-button" data-row-id="<?php echo $row['id']; ?>"><?= $save ?></button>
-                                        <button class="cancle-button" id="canclestatus" data-row-id="<?php echo $row['id']; ?>" style="display: none;"><?= $cancle ?></button>
+                                        <button class="edit-button" data-row-id="<?php echo $row['id']; ?>">
+                                            <?= $edit ?>
+                                        </button>
+                                        <button class="save-button" data-row-id="<?php echo $row['id']; ?>">
+                                            <?= $save ?>
+                                        </button>
+                                        <button class="cancle-button" id="canclestatus" data-row-id="<?php echo $row['id']; ?>"
+                                            style="display: none;">
+                                            <?= $cancle ?>
+                                        </button>
                                     </td>
                                     <td>
-                                        <input type="text" class="note-input" data-row-id="<?php echo $row['id']; ?>" value="<?php echo $row['note']; ?>" disabled>
-                                        <button class="edit-note-button" data-row-id="<?php echo $row['id']; ?>"><?= $edit ?></button>
-                                        <button class="save-note-button" data-row-id="<?php echo $row['id']; ?>"><?= $save ?></button>
-                                        <button class="cancle-note-button" data-row-id="<?php echo $row['id']; ?>" style="display: none;"><?= $cancle ?></button>
+                                        <input type="text" class="note-input" data-row-id="<?php echo $row['id']; ?>"
+                                            value="<?php echo $row['note']; ?>" disabled>
+                                        <button class="edit-note-button" data-row-id="<?php echo $row['id']; ?>">
+                                            <?= $edit ?>
+                                        </button>
+                                        <button class="save-note-button" data-row-id="<?php echo $row['id']; ?>">
+                                            <?= $save ?>
+                                        </button>
+                                        <button class="cancle-note-button" data-row-id="<?php echo $row['id']; ?>"
+                                            style="display: none;">
+                                            <?= $cancle ?>
+                                        </button>
                                     </td>
                                     <td>
-                                        <button class="deleteitem" data-row-id="<?php echo $row['id']; ?>"><img src="assets/images/bin.png" alt=""></button>
+                                        <button class="deleteitem" data-row-id="<?php echo $row['id']; ?>"><img
+                                                src="assets/images/bin.png" alt=""></button>
                                     </td>
                                 </tr>
-                        <?php
+                                <?php
                             }
                         } else {
                             echo "ไม่พบสินค้าในระบบ";
@@ -349,28 +454,18 @@ if (isset($_GET['delete_id'])) {
                     </tbody>
                 </table>
             </div>
-
         </div>
+
         <div class="pagination">
             <?php
-            // หาจำนวนรายการทั้งหมดในฐานข้อมูล
-            $totalItemsQuery = "SELECT COUNT(*) as total FROM course_order";
-            $totalItemsResult = mysqli_query($db, $totalItemsQuery);
-            $totalItemsRow = mysqli_fetch_assoc($totalItemsResult);
-            $totalItems = $totalItemsRow['total'];
-
-            // คำนวณจำนวนหน้าทั้งหมด
-            $totalPages = ceil($totalItems / $itemsPerPage);
-
+            $totalPages = ceil($totalCourse / $limit); // คำนวณจำนวนหน้าทั้งหมด
             for ($i = 1; $i <= $totalPages; $i++) {
-                if ($i === $page) {
-                    echo "<span class='current-page'>$i</span>";
-                } else {
-                    echo "<a href='course_order.php?page=$i'>$i</a>";
-                }
+                $activeClass = ($i == $page) ? 'active' : '';
+                echo "<a href='course_order.php?page=$i' class='pagination-link $activeClass'>$i</a>";
             }
             ?>
         </div>
+
     </section>
 
     <section class="popup-add">
@@ -379,9 +474,16 @@ if (isset($_GET['delete_id'])) {
             <div class="popup-content">
                 <span class="close-popup" id="close-popup2">&times;</span>
                 <div class="container">
-                    <p style="text-align: center;"><?= $wantdel ?></p>
-                    <button class="button-close-2" id="confirm-delete-button" href='course_order.php?delete_id=<?php echo $row['id']; ?>'><?= $confirm ?></button>
-                    <button class="button-close-2" id="button-close2"><?= $cancle ?></button>
+                    <p style="text-align: center;">
+                        <?= $wantdel ?>
+                    </p>
+                    <button class="button-close-2" id="confirm-delete-button"
+                        href='course_order.php?delete_id=<?php echo $row['id']; ?>'>
+                        <?= $confirm ?>
+                    </button>
+                    <button class="button-close-2" id="button-close2">
+                        <?= $cancle ?>
+                    </button>
                 </div>
             </div>
         </div>
@@ -397,7 +499,7 @@ if (isset($_GET['delete_id'])) {
     const cancle = document.querySelectorAll('.cancle-button');
     cancle.forEach(button => {
         const rowId = button.getAttribute('data-row-id');
-        button.addEventListener('click', function() {
+        button.addEventListener('click', function () {
             location.reload();
         });
     });
@@ -405,7 +507,7 @@ if (isset($_GET['delete_id'])) {
 
     editButtons.forEach(button => {
         const rowId = button.getAttribute('data-row-id');
-        button.addEventListener('click', function() {
+        button.addEventListener('click', function () {
             const row = button.closest('tr');
             const statusDropdown = row.querySelector(`select[data-row-id="${rowId}"]`);
             const cancelButton = row.querySelector(`button.cancle-button[data-row-id="${rowId}"]`);
@@ -421,7 +523,7 @@ if (isset($_GET['delete_id'])) {
 
     saveButtons.forEach(button => {
         const rowId = button.getAttribute('data-row-id');
-        button.addEventListener('click', async function() {
+        button.addEventListener('click', async function () {
             const row = button.closest('tr');
             const statusDropdown = row.querySelector(`select[data-row-id="${rowId}"]`);
             const selectedStatus = statusDropdown.value;
@@ -453,14 +555,14 @@ if (isset($_GET['delete_id'])) {
     const canclenote = document.querySelectorAll('.cancle-note-button');
     canclenote.forEach(button => {
         const rowId = button.getAttribute('data-row-id');
-        button.addEventListener('click', function() {
+        button.addEventListener('click', function () {
             location.reload();
         });
     });
 
     editNoteButtons.forEach(button => {
         const rowId = button.getAttribute('data-row-id');
-        button.addEventListener('click', function() {
+        button.addEventListener('click', function () {
             const row = button.closest('tr');
             const noteInput = row.querySelector(`input.note-input[data-row-id="${rowId}"]`);
             const cancelButton = row.querySelector(`button.cancle-note-button[data-row-id="${rowId}"]`);
@@ -477,7 +579,7 @@ if (isset($_GET['delete_id'])) {
     noteInputs.forEach(input => {
         const rowId = input.getAttribute('data-row-id');
 
-        input.addEventListener('input', function() {
+        input.addEventListener('input', function () {
             const noteValue = input.value.trim();
             const saveNoteButton = input.parentElement.querySelector(`button.save-note-button[data-row-id="${rowId}"]`);
 
@@ -493,7 +595,7 @@ if (isset($_GET['delete_id'])) {
 
     saveNoteButtons.forEach(button => {
         const rowId = button.getAttribute('data-row-id');
-        button.addEventListener('click', async function() {
+        button.addEventListener('click', async function () {
             const row = button.closest('tr');
             const noteInput = row.querySelector(`input.note-input[data-row-id="${rowId}"]`);
             const noteValue = noteInput.value.trim();
@@ -571,46 +673,5 @@ if (isset($_GET['delete_id'])) {
     });
 </script>
 
-<script>
-    //ตัวกรอง
-    // ฟังก์ชันเพิ่ม
-    function updateOrderCounts() {
-        const totalOrders = document.querySelectorAll('.table_order table tbody tr').length;
-        const pendingOrders = document.querySelectorAll('.table_order table tbody tr[data-status="รอตรวจสอบ"]').length;
-        const completedOrders = document.querySelectorAll('.table_order table tbody tr[data-status="สำเร็จ"]').length;
-        const rejectedOrders = document.querySelectorAll('.table_order table tbody tr[data-status="ปฏิเสธ"]').length;
-
-        document.getElementById('total-orders').textContent = totalOrders;
-        document.getElementById('pending-orders').textContent = pendingOrders;
-        document.getElementById('completed-orders').textContent = completedOrders;
-        document.getElementById('rejected-orders').textContent = rejectedOrders;
-    }
-
-    // โฟกัสไปที่ฟังก์ชัน updateOrderCounts
-    updateOrderCounts();
-
-    const filterButtons = document.querySelectorAll('.filter-buttons button');
-    const tableRows = document.querySelectorAll('.table_order table tbody tr');
-
-    // ตรวจสอบการคลิกที่ตัวกรองและแสดงรายการตามสถานะที่เลือก
-    filterButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const status = this.getAttribute('data-status');
-            let i = 1; // ตัวแปร i สำหรับเลขลำดับ
-
-            tableRows.forEach(row => {
-                const rowStatus = row.getAttribute('data-status');
-
-                if (status === 'All' || rowStatus === status) {
-                    row.style.display = 'table-row';
-                    const tdNumber = row.querySelector('td:first-child');
-                    tdNumber.textContent = i++; // ตั้งค่าเลขลำดับให้กับคอลัมน์ลำดับ
-                } else {
-                    row.style.display = 'none';
-                }
-            });
-        });
-    });
-</script>
 
 </html>

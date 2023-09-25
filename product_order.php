@@ -69,9 +69,6 @@ if ($rejectedOrdersResult) {
 } else {
     $rejectedOrdersCount = 0;
 }
-
-
-
 ?>
 
 <?php

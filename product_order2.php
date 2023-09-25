@@ -456,7 +456,7 @@ if (isset($_GET['delete_id'])) {
 
         <div class="pagination">
             <?php
-            $totalPages = ceil($totalProducts / $limit); // คำนวณจำนวนหน้าทั้งหมด
+            $totalPages = ceil($pendingOrdersCount / $limit); // คำนวณจำนวนหน้าทั้งหมด
             for ($i = 1; $i <= $totalPages; $i++) {
                 $activeClass = ($i == $page) ? 'active' : '';
                 echo "<a href='product_order2.php?page=$i' class='pagination-link $activeClass'>$i</a>";

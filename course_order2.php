@@ -18,8 +18,8 @@ $limit = 10;
 
 $offset = ($page - 1) * $limit;
 
-$query = "SELECT * FROM product_order
-WHERE `status` = 'completed'
+$query = "SELECT * FROM course_order
+WHERE `status` = 'pending'
           ORDER BY CASE
             WHEN status = 'pending' THEN 0
             WHEN status = 'completed' THEN 1
@@ -31,17 +31,17 @@ WHERE `status` = 'completed'
 $result = mysqli_query($db, $query);
 
 // คำนวณจำนวนสินค้าทั้งหมด
-$totalProductsQuery = "SELECT COUNT(*) AS total FROM product_order  ";
-$totalProductsResult = mysqli_query($db, $totalProductsQuery);
+$totalCourseQuery = "SELECT COUNT(*) AS total FROM course_order";
+$totalCourseResult = mysqli_query($db, $totalCourseQuery);
 
-if ($totalProductsResult) {
-    $totalProductsRow = mysqli_fetch_assoc($totalProductsResult);
-    $totalProducts = $totalProductsRow['total'];
+if ($totalCourseResult) {
+    $totalCourseRow = mysqli_fetch_assoc($totalCourseResult);
+    $totalCourse = $totalCourseRow['total'];
 } else {
-    $totalProducts = 0;
+    $totalCourse = 0;
 }
 // คำนวณจำนวนสินค้าที่มีสถานะเป็น 'pending'
-$pendingOrdersQuery = "SELECT COUNT(*) AS pendingCount FROM product_order WHERE status = 'pending'";
+$pendingOrdersQuery = "SELECT COUNT(*) AS pendingCount FROM course_order WHERE status = 'pending'";
 $pendingOrdersResult = mysqli_query($db, $pendingOrdersQuery);
 
 if ($pendingOrdersResult) {
@@ -51,7 +51,7 @@ if ($pendingOrdersResult) {
     $pendingOrdersCount = 0;
 }
 // คำนวณจำนวนสินค้าที่มีสถานะเป็น 'completed'
-$completedOrdersQuery = "SELECT COUNT(*) AS completedCount FROM product_order WHERE status = 'completed'";
+$completedOrdersQuery = "SELECT COUNT(*) AS completedCount FROM course_order WHERE status = 'completed'";
 $completedOrdersResult = mysqli_query($db, $completedOrdersQuery);
 
 if ($completedOrdersResult) {
@@ -61,7 +61,7 @@ if ($completedOrdersResult) {
     $completedOrdersCount = 0;
 }
 // คำนวณจำนวนสินค้าที่มีสถานะเป็น 'rejected'
-$rejectedOrdersQuery = "SELECT COUNT(*) AS rejectedCount FROM product_order WHERE status = 'rejected'";
+$rejectedOrdersQuery = "SELECT COUNT(*) AS rejectedCount FROM course_order WHERE status = 'rejected'";
 $rejectedOrdersResult = mysqli_query($db, $rejectedOrdersQuery);
 
 if ($rejectedOrdersResult) {
@@ -70,19 +70,16 @@ if ($rejectedOrdersResult) {
 } else {
     $rejectedOrdersCount = 0;
 }
-
-
-
 ?>
 
 <?php
 if (isset($_GET['delete_id'])) {
     $deleteId = $_GET['delete_id'];
-    $deleteQuery = "DELETE FROM product_order WHERE id = '$deleteId'";
+    $deleteQuery = "DELETE FROM course_order WHERE id = '$deleteId'";
     if ($conn->query($deleteQuery) === TRUE) {
-        echo "<script>alert('Successfully deleted'); window.location.href = 'product_order.php';</script>";
+        echo "<script>alert('Successfully deleted'); window.location.href = 'course_order.php';</script>";
     } else {
-        echo "<script>alert('Error: " . $conn->error . "'); window.location.href = 'product_order.php';</script>";
+        echo "<script>alert('Error: " . $conn->error . "'); window.location.href = 'course_order.php';</script>";
     }
 }
 ?>
@@ -302,33 +299,33 @@ if (isset($_GET['delete_id'])) {
         <div class="click-overlay" id="click-overlay1"></div>
         <div class="homeheader">
             <h2 style="text-align: center;">
-                <?= $product_order ?>
+                <?= $course_order ?>
             </h2>
         </div>
         <div class="container" id="con-table">
             <div class="filter-buttons">
-                <a href="product_order.php">
+                <a href="course_order.php">
                     <button data-status="All">
                         <?= $all ?> (<span id="all-orders">
-                            <?= $totalProducts ?>
+                            <?= $totalCourse ?>
                         </span>)
                     </button>
                 </a>
-                <a href="product_order2.php">
+                <a href="course_order2.php">
                     <button data-status="pending">
                         <?= $check ?> (<span id="pending-orders">
                             <?= $pendingOrdersCount ?>
                         </span>)
                     </button>
                 </a>
-                <a href="product_order3.php">
+                <a href="course_order3.php">
                     <button data-status="completed">
                         <?= $complete ?> (<span id="completed-orders">
                             <?= $completedOrdersCount ?>
                         </span>)
                     </button>
                 </a>
-                <a href="product_order4.php">
+                <a href="course_order4.php">
                     <button data-status="rejected">
                         <?= $reject ?> (<span id="rejected-orders">
                             <?= $rejectedOrdersCount ?>
@@ -354,6 +351,9 @@ if (isset($_GET['delete_id'])) {
                             </th>
                             <th>
                                 <?= $quantityy ?>
+                            </th>
+                            <th>
+                                <?= $dayss ?>
                             </th>
                             <th>
                                 <?= $pricess ?>
@@ -393,6 +393,9 @@ if (isset($_GET['delete_id'])) {
                                     </td>
                                     <td>
                                         <?php echo $row['quantity']; ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $row['day']; ?>
                                     </td>
                                     <td>
                                         <?php echo $row['price']; ?>
@@ -456,10 +459,10 @@ if (isset($_GET['delete_id'])) {
 
         <div class="pagination">
             <?php
-            $totalPages = ceil($completedOrdersCount / $limit); // คำนวณจำนวนหน้าทั้งหมด
+            $totalPages = ceil($pendingOrdersCount / $limit); // คำนวณจำนวนหน้าทั้งหมด
             for ($i = 1; $i <= $totalPages; $i++) {
                 $activeClass = ($i == $page) ? 'active' : '';
-                echo "<a href='product_order3.php?page=$i' class='pagination-link $activeClass'>$i</a>";
+                echo "<a href='course_order2.php?page=$i' class='pagination-link $activeClass'>$i</a>";
             }
             ?>
         </div>
@@ -476,7 +479,7 @@ if (isset($_GET['delete_id'])) {
                         <?= $wantdel ?>
                     </p>
                     <button class="button-close-2" id="confirm-delete-button"
-                        href='product_order.php?delete_id=<?php echo $row['id']; ?>'>
+                        href='course_order.php?delete_id=<?php echo $row['id']; ?>'>
                         <?= $confirm ?>
                     </button>
                     <button class="button-close-2" id="button-close2">
@@ -533,7 +536,7 @@ if (isset($_GET['delete_id'])) {
     });
 
     async function updateStatusInDatabase(rowId, selectedStatus) {
-        const response = await fetch('product_order_update_status.php', {
+        const response = await fetch('course_order_update_status.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
@@ -611,7 +614,7 @@ if (isset($_GET['delete_id'])) {
     });
 
     async function updateNoteInDatabase(rowId, noteValue) {
-        const response = await fetch('product_order_update_note.php', {
+        const response = await fetch('course_order_update_note.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
@@ -665,7 +668,7 @@ if (isset($_GET['delete_id'])) {
     confirmDeleteButton.addEventListener('click', () => {
         const deleteId = confirmDeleteButton.getAttribute('data-delete-id');
         if (deleteId) {
-            const deleteLink = `product_order.php?delete_id=${deleteId}`;
+            const deleteLink = `course_order.php?delete_id=${deleteId}`;
             window.location.href = deleteLink;
         }
     });
