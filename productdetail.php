@@ -596,7 +596,7 @@
     $(document).ready(function () {
         $(".button-success-2").click(function () {
             var type = "<?php echo $type ?>";
-            var name = "<?php echo $name_th ?>";
+            var name = "<?php echo $name_eng ?>";
             var quantity = 1;
             var price = "<?php echo $price ?>";
 

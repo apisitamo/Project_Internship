@@ -12,7 +12,7 @@ $type = $_POST['type'];
 $name = $_POST['name'];
 $quantity = $_POST['quantity'];
 $price = $_POST['price'];
-$status = 'รอตรวจสอบ';
+$status = 'pending';
 
 $sql = "INSERT INTO product_order (username, type, name,  quantity, price, status)
         VALUES ('$username', '$type', '$name',  '$quantity', '$price', '$status')";

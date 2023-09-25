@@ -13,7 +13,7 @@ $name = $_POST['name'];
 $day = $_POST['day'];
 $quantity = $_POST['quantity'];
 $price = $_POST['price'];
-$status = 'รอตรวจสอบ';
+$status = 'pending';
 
 $sql = "INSERT INTO course_order (username, type, name, day, quantity, price, status)
         VALUES ('$username', '$type', '$name', '$day', '$quantity', '$price', '$status')";

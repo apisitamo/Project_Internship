@@ -19,11 +19,11 @@ $limit = 10;
 $offset = ($page - 1) * $limit;
 
 $query = "SELECT * FROM product_order
-WHERE `status` = 'ปฏิเสธ'
+WHERE `status` = 'rejected'
           ORDER BY CASE
-            WHEN status = 'รอตรวจสอบ' THEN 0
-            WHEN status = 'สำเร็จ' THEN 1
-            WHEN status = 'ปฏิเสธ' THEN 2
+            WHEN status = 'pending' THEN 0
+            WHEN status = 'completed' THEN 1
+            WHEN status = 'rejected' THEN 2
             ELSE 3
           END, id DESC
           LIMIT $limit OFFSET $offset";
@@ -31,7 +31,7 @@ WHERE `status` = 'ปฏิเสธ'
 $result = mysqli_query($db, $query);
 
 // คำนวณจำนวนสินค้าทั้งหมด
-$totalProductsQuery = "SELECT COUNT(*) AS total FROM product_order WHERE `status` = 'ปฏิเสธ' ";
+$totalProductsQuery = "SELECT COUNT(*) AS total FROM product_order  ";
 $totalProductsResult = mysqli_query($db, $totalProductsQuery);
 
 if ($totalProductsResult) {
@@ -40,8 +40,8 @@ if ($totalProductsResult) {
 } else {
     $totalProducts = 0;
 }
-// คำนวณจำนวนสินค้าที่มีสถานะเป็น 'รอตรวจสอบ'
-$pendingOrdersQuery = "SELECT COUNT(*) AS pendingCount FROM product_order WHERE status = 'รอตรวจสอบ'";
+// คำนวณจำนวนสินค้าที่มีสถานะเป็น 'pending'
+$pendingOrdersQuery = "SELECT COUNT(*) AS pendingCount FROM product_order WHERE status = 'pending'";
 $pendingOrdersResult = mysqli_query($db, $pendingOrdersQuery);
 
 if ($pendingOrdersResult) {
@@ -50,8 +50,8 @@ if ($pendingOrdersResult) {
 } else {
     $pendingOrdersCount = 0;
 }
-// คำนวณจำนวนสินค้าที่มีสถานะเป็น 'สำเร็จ'
-$completedOrdersQuery = "SELECT COUNT(*) AS completedCount FROM product_order WHERE status = 'สำเร็จ'";
+// คำนวณจำนวนสินค้าที่มีสถานะเป็น 'completed'
+$completedOrdersQuery = "SELECT COUNT(*) AS completedCount FROM product_order WHERE status = 'completed'";
 $completedOrdersResult = mysqli_query($db, $completedOrdersQuery);
 
 if ($completedOrdersResult) {
@@ -60,8 +60,8 @@ if ($completedOrdersResult) {
 } else {
     $completedOrdersCount = 0;
 }
-// คำนวณจำนวนสินค้าที่มีสถานะเป็น 'ปฏิเสธ'
-$rejectedOrdersQuery = "SELECT COUNT(*) AS rejectedCount FROM product_order WHERE status = 'ปฏิเสธ'";
+// คำนวณจำนวนสินค้าที่มีสถานะเป็น 'rejected'
+$rejectedOrdersQuery = "SELECT COUNT(*) AS rejectedCount FROM product_order WHERE status = 'rejected'";
 $rejectedOrdersResult = mysqli_query($db, $rejectedOrdersQuery);
 
 if ($rejectedOrdersResult) {
@@ -315,21 +315,21 @@ if (isset($_GET['delete_id'])) {
                     </button>
                 </a>
                 <a href="product_order2.php">
-                    <button data-status="รอตรวจสอบ">
+                    <button data-status="pending">
                         <?= $check ?> (<span id="pending-orders">
                             <?= $pendingOrdersCount ?>
                         </span>)
                     </button>
                 </a>
                 <a href="product_order3.php">
-                    <button data-status="สำเร็จ">
+                    <button data-status="completed">
                         <?= $complete ?> (<span id="completed-orders">
                             <?= $completedOrdersCount ?>
                         </span>)
                     </button>
                 </a>
                 <a href="product_order4.php">
-                    <button data-status="ปฏิเสธ">
+                    <button data-status="rejected">
                         <?= $reject ?> (<span id="rejected-orders">
                             <?= $rejectedOrdersCount ?>
                         </span>)
@@ -402,13 +402,13 @@ if (isset($_GET['delete_id'])) {
                                     </td>
                                     <td>
                                         <select class="status-dropdown" data-row-id="<?php echo $row['id']; ?>" disabled>
-                                            <option value="รอตรวจสอบ" <?php if ($row['status'] === 'รอตรวจสอบ')
+                                            <option value="pending" <?php if ($row['status'] === 'pending')
                                                 echo 'selected'; ?>><?= $check ?>
                                             </option>
-                                            <option value="สำเร็จ" <?php if ($row['status'] === 'สำเร็จ')
+                                            <option value="completed" <?php if ($row['status'] === 'completed')
                                                 echo 'selected'; ?>>
                                           <?= $complete ?></option>
-                                            <option value="ปฏิเสธ" <?php if ($row['status'] === 'ปฏิเสธ')
+                                            <option value="rejected" <?php if ($row['status'] === 'rejected')
                                                 echo 'selected'; ?>>
                                           <?= $reject ?></option>
                                         </select>

@@ -198,7 +198,7 @@
         $(document).ready(function () {
             $(".open-popup").click(function () {
                 var type = "<?php echo $type ?>";
-                var name = "<?php echo $name_th ?>";
+                var name = "<?php echo $name_eng ?>";
                 var day = "<?php echo $day ?>";
                 var quantity = 1;
                 var price = "<?php echo $price ?>";

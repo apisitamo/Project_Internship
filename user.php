@@ -441,9 +441,9 @@ if (isset($_GET['logout'])) {
                             </td>
                             <td style="background-color:
         <?php
-        if ($row['status'] == 'ปฏิเสธ') {
+        if ($row['status'] == 'rejected') {
             echo 'red';
-        } elseif ($row['status'] == 'สำเร็จ') {
+        } elseif ($row['status'] == 'completed') {
             echo 'green';
         } else {
             echo 'yellow';
