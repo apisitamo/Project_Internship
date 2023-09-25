@@ -117,8 +117,12 @@ if (isset($_GET['delete_id'])) {
         padding: 15px;
     }
 
+    .pro-order .table_order td:nth-child(11){
+        padding: 0px;
+    }
+
     .pro-order button img {
-        width: 27%;
+        width: 30%;
     }
 
     .pro-order td:nth-child(10) {
@@ -265,6 +269,7 @@ if (isset($_GET['delete_id'])) {
     .popup-add #popup2 #confirm-delete-button {
         margin-right: 5px;
         background: #00e500;
+        padding: 6px 25px;
     }
 
     .popup-add #popup2 #button-close2 {
