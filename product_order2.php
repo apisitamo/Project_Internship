@@ -96,19 +96,19 @@ if (isset($_GET['delete_id'])) {
         margin: 0px 15px 15px 0px;
     }
 
-    .pro-order .filter-buttons button:nth-child(1) {
+    .pro-order .filter-buttons a:nth-child(1) button {
         background-color: aqua;
     }
 
-    .pro-order .filter-buttons button:nth-child(2) {
+    .pro-order .filter-buttons a:nth-child(2) button {
         background-color: yellow;
     }
 
-    .pro-order .filter-buttons button:nth-child(3) {
+    .pro-order .filter-buttons a:nth-child(3) button {
         background-color: #00e700;
     }
 
-    .pro-order .filter-buttons button:nth-child(4) {
+    .pro-order .filter-buttons a:nth-child(4) button {
         background-color: #ff1e1e;
     }
 
