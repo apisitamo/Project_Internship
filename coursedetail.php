@@ -45,7 +45,6 @@
                 $day = $row['day'];
                 $hour = $row['hour'];
                 $price = $row['price'];
-
             }
         } else {
             echo "ไม่พบข้อมูลหลักสูตร";
@@ -144,8 +143,7 @@
                                 </div>
                             </div>
                         </div>
-                        <button class="open-popup"
-                            href="coursedetail.php?course_id=<?php echo $row['id']; ?>&type=<?php echo $row['type']; ?>">
+                        <button class="open-popup" href="coursedetail.php?course_id=<?php echo $row['id']; ?>&type=<?php echo $row['type']; ?>">
                             <p class="price" data-aos="fade-up" data-aos-duration="2000">
                                 <?= $prices ?>
                                 <?php echo $price ?>
@@ -170,15 +168,12 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="wrap-contact">
-                        <div class="item call" data-aos="fade-up" data-aos-duration="2000"><i
-                                class="fa-regular fa-phone"></i><span>086-322-1922</span></div>
+                        <div class="item call" data-aos="fade-up" data-aos-duration="2000"><i class="fa-regular fa-phone"></i><span>086-322-1922</span></div>
                         <a href="https://line.me/ti/p/~@108toots">
-                            <div class="item line" data-aos="fade-up" data-aos-duration="2000"><img class="line-img"
-                                    src="assets/images/line.png" alt=""><span>@bsathailand</span></div>
+                            <div class="item line" data-aos="fade-up" data-aos-duration="2000"><img class="line-img" src="assets/images/line.png" alt=""><span>@bsathailand</span></div>
                         </a>
                         <a href="https://th-th.facebook.com/BSABangkok/">
-                            <div class="item facebook" data-aos="fade-up" data-aos-duration="2000"><i
-                                    class="bi bi-facebook"></i><span>Bangkok Spa Academy</span></div>
+                            <div class="item facebook" data-aos="fade-up" data-aos-duration="2000"><i class="bi bi-facebook"></i><span>Bangkok Spa Academy</span></div>
                         </a>
                     </div>
                 </div>
@@ -192,35 +187,37 @@
         AOS.init();
     </script>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-    <script>
-        $(document).ready(function () {
-            $(".open-popup").click(function () {
-                var type = "<?php echo $type ?>";
-                var name = "<?php echo $name_eng ?>";
-                var day = "<?php echo $day ?>";
-                var quantity = 1;
-                var price = "<?php echo $price ?>";
-
-                $.ajax({
-                    type: "POST",
-                    url: "coursedetail_insert.php",
-                    data: {
-                        type: type,
-                        name: name,
-                        day: day,
-                        quantity: quantity,
-                        price: price
-                    },
-                    success: function (response) {
-                        alert(response);
-                    }
-                });
-            });
-        });
-    </script>
 
 </body>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        $(".open-popup").click(function() {
+            var type = "<?php echo $type ?>";
+            var name = "<?php echo $name_eng ?>";
+            var day = "<?php echo $day ?>";
+            var quantity = 1;
+            var price = "<?php echo $price ?>";
+
+            $.ajax({
+                type: "POST",
+                url: "coursedetail_insert.php",
+                data: {
+                    type: type,
+                    name: name,
+                    day: day,
+                    quantity: quantity,
+                    price: price
+                },
+                success: function(response) {
+                    alert(response);
+                }
+            });
+        });
+    });
+</script>
 
 </html>
