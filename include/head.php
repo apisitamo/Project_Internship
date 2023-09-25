@@ -109,7 +109,11 @@ if (isset($_GET['logout'])) {
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="assets/images/profile1.png" alt="" class='profile-icon'>
+                        <?php if (isset($_SESSION['username'])) { ?>
+                            <img src="assets/images/profile2.png" alt="" class='profile-icon'>
+                        <?php } else { ?>
+                            <img src="assets/images/profile1.png" alt="" class='profile-icon'>
+                        <?php } ?>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
                         <?php if (isset($_SESSION['username'])) { ?>
