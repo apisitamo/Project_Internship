@@ -86,9 +86,9 @@ if (isset($_GET['logout'])) {
         <a class="navbar-brand" href="index.php">
             <img src="assets/images/logo.png" alt="" class="logo">
         </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="true" aria-label="Toggle navigation">
+        <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="true" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
-        </button>
+        </button> -->
         <div class="navbar-collapse collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
                 <li class="nav-item">
