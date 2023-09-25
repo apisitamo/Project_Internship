@@ -8,7 +8,6 @@ if (!empty($_POST['lang'])) {
 if (empty($_SESSION['lang']) || $_SESSION['lang'] == 1) {
     $_SESSION['lang'] = 1;
     $flag = 'thflag.png';
-    $profile = 'profile.png';
     $langId = 1;
     $home = 'หน้าเเรก';
     $aboutus = 'เกี่ยวกับเรา';
@@ -24,7 +23,6 @@ if (empty($_SESSION['lang']) || $_SESSION['lang'] == 1) {
 } else {
     $_SESSION['lang'] = 2;
     $flag = 'enflag.png';
-    $profile = 'profile.png';
     $langId = 2;
     $home = 'Home';
     $aboutus = 'About us';
@@ -111,7 +109,7 @@ if (isset($_GET['logout'])) {
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="assets/images/<?= $profile ?>" alt="" class='profile-icon'>
+                        <img src="assets/images/profile1.png" alt="" class='profile-icon'>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
                         <?php if (isset($_SESSION['username'])) { ?>
