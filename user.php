@@ -85,7 +85,7 @@ if (isset($_GET['logout'])) {
         flex: 1;
         padding: 25px;
         box-sizing: border-box;
-        padding-bottom: 20px;
+        padding-bottom: 15px;
     }
 
     .user1 .left-box {
@@ -93,6 +93,7 @@ if (isset($_GET['logout'])) {
         text-align: end;
         padding-right: 30px;
         border-radius: 15px 0px 0px 15px;
+        padding-top: 29px;
     }
 
     .user1 .left-box .input-group {
@@ -107,6 +108,11 @@ if (isset($_GET['logout'])) {
         background-color: #f2f2f2;
         padding-left: 30px;
         border-radius: 0px 15px 15px 0px;
+        text-align: left;
+    }
+
+    .user1 .right-box form {
+        padding-right: 50px;
     }
 
     .user1 .bottom-box {
@@ -166,7 +172,7 @@ if (isset($_GET['logout'])) {
     }
 
     .user1 .input-group #address {
-        width: 85%;
+        width: 100%;
         height: 120px;
         padding: 5px;
         border-radius: 10px;
@@ -237,12 +243,12 @@ if (isset($_GET['logout'])) {
     }
 
     .user1 #addressuser {
-        margin-bottom: 20px;
+        margin-bottom: 10px;
     }
 
-    .user1 .button-address {
+    /* .user1 .button-address {
         padding-left: 40px;
-    }
+    }*/
 </style>
 
 <body>
@@ -253,7 +259,7 @@ if (isset($_GET['logout'])) {
             <div class="container-top">
                 <div class="left-box">
                     <div class="homecontent">
-                        <?php if (isset($_SESSION['username'])) : ?>
+                        <?php if (isset($_SESSION['username'])): ?>
                             <label for="username">
                                 <?= $usernames ?>
                             </label><label> : </label>
@@ -261,7 +267,7 @@ if (isset($_GET['logout'])) {
                         <?php endif ?>
                     </div>
                     <div class="homecontent">
-                        <?php if (isset($_SESSION['username'])) : ?>
+                        <?php if (isset($_SESSION['username'])): ?>
                             <label for="username">
                                 <?= $email ?>
                             </label><label> : </label>
@@ -288,12 +294,19 @@ if (isset($_GET['logout'])) {
                             $fullname = $row['fullname'];
                             ?>
                             <input type="text" id="fullname" name="fullname" value="<?php echo $fullname; ?>" <?php if (isset($_SESSION['edit_fullname']))
-                                                                                                                    echo '';
-                                                                                                                else
-                                                                                                                    echo 'disabled'; ?>>
-                            <button type="button" id="editfullname" onclick="enableFullname()"><?= $edit ?></button>
-                            <button type="submit" id="submitfullname" <?php if (!isset($_SESSION['edit_fullname'])); ?>><?= $save ?></button>
-                            <button type="button" id="canclefullname" onclick="cancleFullname()"><?= $cancle ?></button>
+                                   echo '';
+                               else
+                                   echo 'disabled'; ?>>
+                            <button type="button" id="editfullname" onclick="enableFullname()">
+                                <?= $edit ?>
+                            </button>
+                            <button type="submit" id="submitfullname" <?php if (!isset($_SESSION['edit_fullname']))
+                                ; ?>>
+                                <?= $save ?>
+                            </button>
+                            <button type="button" id="canclefullname" onclick="cancleFullname()">
+                                <?= $cancle ?>
+                            </button>
                         </div>
                     </form>
                     <form action="save_phone.php" class="save-phone" method="post">
@@ -307,13 +320,21 @@ if (isset($_GET['logout'])) {
                             $row = mysqli_fetch_assoc($result);
                             $phone = $row['phone'];
                             ?>
-                            <input type="text" id="phone" name="phone" pattern="[0-9]+" value="<?php echo $phone; ?>" <?php if (isset($_SESSION['edit_phone']))
-                                                                                                                            echo '';
-                                                                                                                        else
-                                                                                                                            echo 'disabled'; ?>>
-                            <button type="button" id="editphone" onclick="enablePhone()"><?= $edit ?></button>
-                            <button type="submit" id="submitphone" <?php if (!isset($_SESSION['edit_phone'])); ?>><?= $save ?></button>
-                            <button type="button" id="canclephone" onclick="canclePhone()"><?= $cancle ?></button>
+                            <input type="text" id="phone" name="phone" pattern="[0-9]+" value="<?php echo $phone; ?>"
+                                <?php if (isset($_SESSION['edit_phone']))
+                                    echo '';
+                                else
+                                    echo 'disabled'; ?>>
+                            <button type="button" id="editphone" onclick="enablePhone()">
+                                <?= $edit ?>
+                            </button>
+                            <button type="submit" id="submitphone" <?php if (!isset($_SESSION['edit_phone']))
+                                ; ?>>
+                                <?= $save ?>
+                            </button>
+                            <button type="button" id="canclephone" onclick="canclePhone()">
+                                <?= $cancle ?>
+                            </button>
                         </div>
                     </form>
                 </div>
@@ -330,14 +351,21 @@ if (isset($_GET['logout'])) {
                             $address = $row['address'];
                             ?>
                             <textarea id="address" name="address" <?php if (isset($_SESSION['edit_address']))
-                                                                        echo '';
-                                                                    else
-                                                                        echo 'disabled'; ?>><?php echo $address; ?></textarea>
+                                echo '';
+                            else
+                                echo 'disabled'; ?>><?php echo $address; ?></textarea>
                         </div>
                         <div class="button-address">
-                            <button type="button" id="editaddress" onclick="enableAddress()"><?= $edit ?></button>
-                            <button type="submit" id="submitaddress" <?php if (!isset($_SESSION['edit_address'])); ?>><?= $save ?></button>
-                            <button type="button" id="cancleaddress" onclick="cancleAddress()"><?= $cancle ?></button>
+                            <button type="button" id="editaddress" onclick="enableAddress()">
+                                <?= $edit ?>
+                            </button>
+                            <button type="submit" id="submitaddress" <?php if (!isset($_SESSION['edit_address']))
+                                ; ?>>
+                                <?= $save ?>
+                            </button>
+                            <button type="button" id="cancleaddress" onclick="cancleAddress()">
+                                <?= $cancle ?>
+                            </button>
                         </div>
                     </form>
                 </div>
@@ -345,15 +373,33 @@ if (isset($_GET['logout'])) {
             <div class="bottom-box">
                 <table>
                     <tr>
-                        <th><?= $order ?></th>
-                        <th><?= $types2 ?></th>
-                        <th><?= $types ?></th>
-                        <th><?= $lists ?></th>
-                        <th><?= $quantityy ?></th>
-                        <th><?= $prices ?></th>
-                        <th><?= $timess ?></th>
-                        <th><?= $statuss ?></th>
-                        <th><?= $notess ?></th>
+                        <th>
+                            <?= $order ?>
+                        </th>
+                        <th>
+                            <?= $types2 ?>
+                        </th>
+                        <th>
+                            <?= $types ?>
+                        </th>
+                        <th>
+                            <?= $lists ?>
+                        </th>
+                        <th>
+                            <?= $quantityy ?>
+                        </th>
+                        <th>
+                            <?= $prices ?>
+                        </th>
+                        <th>
+                            <?= $timess ?>
+                        </th>
+                        <th>
+                            <?= $statuss ?>
+                        </th>
+                        <th>
+                            <?= $notess ?>
+                        </th>
                     </tr>
                     <?php
                     $username = $_SESSION['username'];
@@ -369,8 +415,8 @@ if (isset($_GET['logout'])) {
                     $result = mysqli_query($db, $query);
 
                     $i = 1;
-                    while ($row = mysqli_fetch_assoc($result)) :
-                    ?>
+                    while ($row = mysqli_fetch_assoc($result)):
+                        ?>
                         <tr>
                             <td>
                                 <?php echo $i++; ?>
@@ -395,13 +441,13 @@ if (isset($_GET['logout'])) {
                             </td>
                             <td style="background-color:
         <?php
-                        if ($row['status'] == 'ปฏิเสธ') {
-                            echo 'red';
-                        } elseif ($row['status'] == 'สำเร็จ') {
-                            echo 'green';
-                        } else {
-                            echo 'yellow';
-                        }
+        if ($row['status'] == 'ปฏิเสธ') {
+            echo 'red';
+        } elseif ($row['status'] == 'สำเร็จ') {
+            echo 'green';
+        } else {
+            echo 'yellow';
+        }
         ?>;
         ">
                                 <?php echo $row['status']; ?>
