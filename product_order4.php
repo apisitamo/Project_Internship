@@ -12,17 +12,70 @@ include('server.php');
 <?php
 $db = mysqli_connect($servername, $username, $password, $dbname);
 
+$page = isset($_GET['page']) ? $_GET['page'] : 1;
+
+$limit = 10;
+
+$offset = ($page - 1) * $limit;
+
 $query = "SELECT * FROM product_order
-          WHERE `status` = 'ปฏิเสธ'
+WHERE `status` = 'ปฏิเสธ'
           ORDER BY CASE
             WHEN status = 'รอตรวจสอบ' THEN 0
             WHEN status = 'สำเร็จ' THEN 1
             WHEN status = 'ปฏิเสธ' THEN 2
             ELSE 3
-          END, id DESC";
+          END, id DESC
+          LIMIT $limit OFFSET $offset";
 
 $result = mysqli_query($db, $query);
 
+// คำนวณจำนวนสินค้าทั้งหมด
+$totalProductsQuery = "SELECT COUNT(*) AS total FROM product_order WHERE `status` = 'ปฏิเสธ' ";
+$totalProductsResult = mysqli_query($db, $totalProductsQuery);
+
+if ($totalProductsResult) {
+    $totalProductsRow = mysqli_fetch_assoc($totalProductsResult);
+    $totalProducts = $totalProductsRow['total'];
+} else {
+    $totalProducts = 0;
+}
+// คำนวณจำนวนสินค้าที่มีสถานะเป็น 'รอตรวจสอบ'
+$pendingOrdersQuery = "SELECT COUNT(*) AS pendingCount FROM product_order WHERE status = 'รอตรวจสอบ'";
+$pendingOrdersResult = mysqli_query($db, $pendingOrdersQuery);
+
+if ($pendingOrdersResult) {
+    $pendingOrdersRow = mysqli_fetch_assoc($pendingOrdersResult);
+    $pendingOrdersCount = $pendingOrdersRow['pendingCount'];
+} else {
+    $pendingOrdersCount = 0;
+}
+// คำนวณจำนวนสินค้าที่มีสถานะเป็น 'สำเร็จ'
+$completedOrdersQuery = "SELECT COUNT(*) AS completedCount FROM product_order WHERE status = 'สำเร็จ'";
+$completedOrdersResult = mysqli_query($db, $completedOrdersQuery);
+
+if ($completedOrdersResult) {
+    $completedOrdersRow = mysqli_fetch_assoc($completedOrdersResult);
+    $completedOrdersCount = $completedOrdersRow['completedCount'];
+} else {
+    $completedOrdersCount = 0;
+}
+// คำนวณจำนวนสินค้าที่มีสถานะเป็น 'ปฏิเสธ'
+$rejectedOrdersQuery = "SELECT COUNT(*) AS rejectedCount FROM product_order WHERE status = 'ปฏิเสธ'";
+$rejectedOrdersResult = mysqli_query($db, $rejectedOrdersQuery);
+
+if ($rejectedOrdersResult) {
+    $rejectedOrdersRow = mysqli_fetch_assoc($rejectedOrdersResult);
+    $rejectedOrdersCount = $rejectedOrdersRow['rejectedCount'];
+} else {
+    $rejectedOrdersCount = 0;
+}
+
+
+
+?>
+
+<?php
 if (isset($_GET['delete_id'])) {
     $deleteId = $_GET['delete_id'];
     $deleteQuery = "DELETE FROM product_order WHERE id = '$deleteId'";
@@ -125,6 +178,33 @@ if (isset($_GET['delete_id'])) {
         background: red;
     }
 
+    .pro-order .pagination {
+        display: block;
+        text-align: center;
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+
+    .pro-order .pagination a {
+        margin-left: 5px;
+        margin-right: 5px;
+        background: #e5e5e5;
+        padding: 9px 19px;
+        border-radius: 40px;
+        font-size: 19px;
+    }
+
+    .pro-order .pagination a:hover {
+        background-color: #0d6efd;
+        color: white !important;
+        transition: 0.4s;
+    }
+
+    .pro-order .pagination .pagination-link.active {
+        background-color: #0d6efd;
+        color: white !important;
+    }
+
     .save-button,
     .save-note-button {
         display: none;
@@ -217,33 +297,6 @@ if (isset($_GET['delete_id'])) {
     }
 </style>
 
-<style>
-    .pagination {
-        display: flex;
-        list-style: none;
-        padding: 0;
-        justify-content: center;
-        margin-top: 20px;
-        margin-bottom: 40px;
-    }
-
-    .pagination a,
-    .pagination .current-page {
-        margin: 0 5px;
-        padding: 5px 10px;
-        text-decoration: none;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        background-color: #f2f2f2;
-        color: #333;
-    }
-
-    .pagination .current-page {
-        background-color: #007bff;
-        color: #fff;
-    }
-</style>
-
 <body>
     <section class="pro-order">
         <div class="click-overlay" id="click-overlay1"></div>
@@ -256,22 +309,30 @@ if (isset($_GET['delete_id'])) {
             <div class="filter-buttons">
                 <a href="product_order.php">
                     <button data-status="All">
-                        <?= $all ?> (<span id="all-orders">0</span>)
+                        <?= $all ?> (<span id="all-orders">
+                            <?= $totalProducts ?>
+                        </span>)
                     </button>
                 </a>
                 <a href="product_order2.php">
                     <button data-status="รอตรวจสอบ">
-                        <?= $check ?> (<span id="pending-orders">0</span>)
+                        <?= $check ?> (<span id="pending-orders">
+                            <?= $pendingOrdersCount ?>
+                        </span>)
                     </button>
                 </a>
                 <a href="product_order3.php">
                     <button data-status="สำเร็จ">
-                        <?= $complete ?> (<span id="completed-orders">0</span>)
+                        <?= $complete ?> (<span id="completed-orders">
+                            <?= $completedOrdersCount ?>
+                        </span>)
                     </button>
                 </a>
                 <a href="product_order4.php">
                     <button data-status="ปฏิเสธ">
-                        <?= $reject ?> (<span id="rejected-orders">0</span>)
+                        <?= $reject ?> (<span id="rejected-orders">
+                            <?= $rejectedOrdersCount ?>
+                        </span>)
                     </button>
                 </a>
             </div>
@@ -307,16 +368,16 @@ if (isset($_GET['delete_id'])) {
                                 <?= $notess ?>
                             </th>
                             <th>
-                                
+
                             </th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
-                        $i = 1;
+                        $i = 1 + $offset;
                         if ($result->num_rows > 0) {
                             while ($row = $result->fetch_assoc()) {
-                        ?>
+                                ?>
                                 <tr data-status="<?php echo $row['status']; ?>">
                                     <td>
                                         <?php echo $i++; ?>
@@ -342,14 +403,14 @@ if (isset($_GET['delete_id'])) {
                                     <td>
                                         <select class="status-dropdown" data-row-id="<?php echo $row['id']; ?>" disabled>
                                             <option value="รอตรวจสอบ" <?php if ($row['status'] === 'รอตรวจสอบ')
-                                                                            echo 'selected'; ?>><?= $check ?>
+                                                echo 'selected'; ?>><?= $check ?>
                                             </option>
                                             <option value="สำเร็จ" <?php if ($row['status'] === 'สำเร็จ')
-                                                                        echo 'selected'; ?>>
-                                                <?= $complete ?></option>
+                                                echo 'selected'; ?>>
+                                          <?= $complete ?></option>
                                             <option value="ปฏิเสธ" <?php if ($row['status'] === 'ปฏิเสธ')
-                                                                        echo 'selected'; ?>>
-                                                <?= $reject ?></option>
+                                                echo 'selected'; ?>>
+                                          <?= $reject ?></option>
                                         </select>
                                         <button class="edit-button" data-row-id="<?php echo $row['id']; ?>">
                                             <?= $edit ?>
@@ -357,27 +418,31 @@ if (isset($_GET['delete_id'])) {
                                         <button class="save-button" data-row-id="<?php echo $row['id']; ?>">
                                             <?= $save ?>
                                         </button>
-                                        <button class="cancle-button" id="canclestatus" data-row-id="<?php echo $row['id']; ?>" style="display: none;">
+                                        <button class="cancle-button" id="canclestatus" data-row-id="<?php echo $row['id']; ?>"
+                                            style="display: none;">
                                             <?= $cancle ?>
                                         </button>
                                     </td>
                                     <td>
-                                        <input type="text" class="note-input" data-row-id="<?php echo $row['id']; ?>" value="<?php echo $row['note']; ?>" disabled>
+                                        <input type="text" class="note-input" data-row-id="<?php echo $row['id']; ?>"
+                                            value="<?php echo $row['note']; ?>" disabled>
                                         <button class="edit-note-button" data-row-id="<?php echo $row['id']; ?>">
                                             <?= $edit ?>
                                         </button>
                                         <button class="save-note-button" data-row-id="<?php echo $row['id']; ?>">
                                             <?= $save ?>
                                         </button>
-                                        <button class="cancle-note-button" data-row-id="<?php echo $row['id']; ?>" style="display: none;">
+                                        <button class="cancle-note-button" data-row-id="<?php echo $row['id']; ?>"
+                                            style="display: none;">
                                             <?= $cancle ?>
                                         </button>
                                     </td>
                                     <td>
-                                        <button class="deleteitem" data-row-id="<?php echo $row['id']; ?>"><img src="assets/images/bin.png" alt=""></button>
+                                        <button class="deleteitem" data-row-id="<?php echo $row['id']; ?>"><img
+                                                src="assets/images/bin.png" alt=""></button>
                                     </td>
                                 </tr>
-                        <?php
+                                <?php
                             }
                         } else {
                             echo "ไม่พบสินค้าในระบบ";
@@ -387,7 +452,16 @@ if (isset($_GET['delete_id'])) {
                     </tbody>
                 </table>
             </div>
+        </div>
 
+        <div class="pagination">
+            <?php
+            $totalPages = ceil($totalProducts / $limit); // คำนวณจำนวนหน้าทั้งหมด
+            for ($i = 1; $i <= $totalPages; $i++) {
+                $activeClass = ($i == $page) ? 'active' : '';
+                echo "<a href='product_order4.php?page=$i' class='pagination-link $activeClass'>$i</a>";
+            }
+            ?>
         </div>
 
     </section>
@@ -401,7 +475,8 @@ if (isset($_GET['delete_id'])) {
                     <p style="text-align: center;">
                         <?= $wantdel ?>
                     </p>
-                    <button class="button-close-2" id="confirm-delete-button" href='product_order.php?delete_id=<?php echo $row['id']; ?>'>
+                    <button class="button-close-2" id="confirm-delete-button"
+                        href='product_order.php?delete_id=<?php echo $row['id']; ?>'>
                         <?= $confirm ?>
                     </button>
                     <button class="button-close-2" id="button-close2">
@@ -422,7 +497,7 @@ if (isset($_GET['delete_id'])) {
     const cancle = document.querySelectorAll('.cancle-button');
     cancle.forEach(button => {
         const rowId = button.getAttribute('data-row-id');
-        button.addEventListener('click', function() {
+        button.addEventListener('click', function () {
             location.reload();
         });
     });
@@ -430,7 +505,7 @@ if (isset($_GET['delete_id'])) {
 
     editButtons.forEach(button => {
         const rowId = button.getAttribute('data-row-id');
-        button.addEventListener('click', function() {
+        button.addEventListener('click', function () {
             const row = button.closest('tr');
             const statusDropdown = row.querySelector(`select[data-row-id="${rowId}"]`);
             const cancelButton = row.querySelector(`button.cancle-button[data-row-id="${rowId}"]`);
@@ -446,7 +521,7 @@ if (isset($_GET['delete_id'])) {
 
     saveButtons.forEach(button => {
         const rowId = button.getAttribute('data-row-id');
-        button.addEventListener('click', async function() {
+        button.addEventListener('click', async function () {
             const row = button.closest('tr');
             const statusDropdown = row.querySelector(`select[data-row-id="${rowId}"]`);
             const selectedStatus = statusDropdown.value;
@@ -478,14 +553,14 @@ if (isset($_GET['delete_id'])) {
     const canclenote = document.querySelectorAll('.cancle-note-button');
     canclenote.forEach(button => {
         const rowId = button.getAttribute('data-row-id');
-        button.addEventListener('click', function() {
+        button.addEventListener('click', function () {
             location.reload();
         });
     });
 
     editNoteButtons.forEach(button => {
         const rowId = button.getAttribute('data-row-id');
-        button.addEventListener('click', function() {
+        button.addEventListener('click', function () {
             const row = button.closest('tr');
             const noteInput = row.querySelector(`input.note-input[data-row-id="${rowId}"]`);
             const cancelButton = row.querySelector(`button.cancle-note-button[data-row-id="${rowId}"]`);
@@ -502,7 +577,7 @@ if (isset($_GET['delete_id'])) {
     noteInputs.forEach(input => {
         const rowId = input.getAttribute('data-row-id');
 
-        input.addEventListener('input', function() {
+        input.addEventListener('input', function () {
             const noteValue = input.value.trim();
             const saveNoteButton = input.parentElement.querySelector(`button.save-note-button[data-row-id="${rowId}"]`);
 
@@ -518,7 +593,7 @@ if (isset($_GET['delete_id'])) {
 
     saveNoteButtons.forEach(button => {
         const rowId = button.getAttribute('data-row-id');
-        button.addEventListener('click', async function() {
+        button.addEventListener('click', async function () {
             const row = button.closest('tr');
             const noteInput = row.querySelector(`input.note-input[data-row-id="${rowId}"]`);
             const noteValue = noteInput.value.trim();
