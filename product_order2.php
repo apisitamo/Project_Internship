@@ -13,12 +13,14 @@ include('server.php');
 $db = mysqli_connect($servername, $username, $password, $dbname);
 
 $query = "SELECT * FROM product_order
+          WHERE `status` = 'รอตรวจสอบ'
           ORDER BY CASE
             WHEN status = 'รอตรวจสอบ' THEN 0
             WHEN status = 'สำเร็จ' THEN 1
             WHEN status = 'ปฏิเสธ' THEN 2
             ELSE 3
           END, id DESC";
+
 
 $result = mysqli_query($db, $query);
 
