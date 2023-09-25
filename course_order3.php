@@ -109,13 +109,12 @@ if (isset($_GET['delete_id'])) {
     .pro-order th,
     .pro-order td {
         border: 1px solid #ccc;
-        padding-left: 10px;
-        padding-right: 10px;
+        padding: 20px 15px;
         text-align: center;
     }
 
     .pro-order .table_order td:nth-child(9) {
-        width: 14%;
+        width: 15%;
     }
 
     .pro-order th {
@@ -133,7 +132,7 @@ if (isset($_GET['delete_id'])) {
     }
 
     .pro-order td:nth-child(10) {
-        padding: 12px 0px;
+        padding: 12px;
     }
 
     .pro-order td:nth-child(3) {
