@@ -9,7 +9,6 @@ if (!empty($_POST['lang'])) {
 if (empty($_SESSION['lang']) || $_SESSION['lang'] == 1) {
     $_SESSION['lang'] = 1;
     $flag = 'thflag.png';
-    $profile = 'profile.png';
     $langId = 1;
     $login = 'เข้าสู่ระบบ';
     $admin = 'แอดมินเท่านั้น';
@@ -19,11 +18,9 @@ if (empty($_SESSION['lang']) || $_SESSION['lang'] == 1) {
     $add_gallery = 'เพิ่มแกลลอรี่';
     $product_order = 'คำสั่งซื้อผลิตภัณฑ์';
     $course_order = 'คำสั่งซื้อหลักสูตร';
-    
 } else {
     $_SESSION['lang'] = 2;
     $flag = 'enflag.png';
-    $profile = 'profile.png';
     $langId = 2;
     $login = 'Login';
     $admin = 'For admin';
@@ -33,7 +30,6 @@ if (empty($_SESSION['lang']) || $_SESSION['lang'] == 1) {
     $add_gallery = 'Add gallery';
     $product_order = 'Product Order';
     $course_order = 'Course Order';
-    
 }
 
 // if (!isset($_SESSION['admin'])) {
@@ -105,7 +101,11 @@ if (isset($_GET['logout'])) {
 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="assets/images/<?= $profile ?>" alt="" class='profile-icon'>
+                        <?php if (isset($_SESSION['admin'])) { ?>
+                            <img src="assets/images/profile2.png" alt="" class='profile-icon'>
+                        <?php } else { ?>
+                            <img src="assets/images/profile1.png" alt="" class='profile-icon'>
+                        <?php } ?>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
                         <?php if (isset($_SESSION['admin'])) { ?>
