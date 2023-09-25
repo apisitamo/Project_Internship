@@ -66,6 +66,9 @@ if($langId == 1){
     $HSC = "สปาเพื่อสุขภาพ";
     $BSC = "สปาเพื่อความงาม";
     $AS = "สปาขั้นสูง";
+    $BS = "Body Scrub";
+    $BM = "Body Mask";
+    $BMO = "Body Massage Oil";
     
 
 }else{
@@ -135,6 +138,9 @@ if($langId == 1){
     $HSC = "Health Spa Course";
     $BSC = "Beauty Spa Course";
     $AS = "Advanced Spa";
+    $BS = "Body Scrub";
+    $BM = "Body Mask";
+    $BMO = "Body Massage Oil";
 
 }
 ?>

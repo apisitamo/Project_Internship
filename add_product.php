@@ -17,6 +17,51 @@ if (isset($_GET['delete_id'])) {
     }
 }
 
+$db = mysqli_connect($servername, $username, $password, $dbname);
+
+?>
+
+<?php
+// คำนวณจำนวนสินค้าทั้งหมด
+$totalproductQuery = "SELECT COUNT(*) AS total FROM add_product";
+$totalproductResult = mysqli_query($db, $totalproductQuery);
+
+if ($totalproductResult) {
+    $totalproductRow = mysqli_fetch_assoc($totalproductResult);
+    $totalproduct = $totalproductRow['total'];
+} else {
+    $totalproduct = 0;
+}
+// คำนวณจำนวนสินค้าที่มีสถานะเป็น 'BS'
+$BSOrdersQuery = "SELECT COUNT(*) AS BMount FROM add_product WHERE type = 'Body Scrub'";
+$BSOrdersResult = mysqli_query($db, $BSOrdersQuery);
+
+if ($BSOrdersResult) {
+    $BSOrdersRow = mysqli_fetch_assoc($BSOrdersResult);
+    $BSOrdersCount = $BSOrdersRow['BMount'];
+} else {
+    $BSOrdersCount = 0;
+}
+// คำนวณจำนวนสินค้าที่มีสถานะเป็น 'BM'
+$BMOrdersQuery = "SELECT COUNT(*) AS BMCount FROM add_product WHERE type = 'Body Mask'";
+$BMOrdersResult = mysqli_query($db, $BMOrdersQuery);
+
+if ($BMOrdersResult) {
+    $BMOrdersRow = mysqli_fetch_assoc($BMOrdersResult);
+    $BMOrdersCount = $BMOrdersRow['BMCount'];
+} else {
+    $BMOrdersCount = 0;
+}
+// คำนวณจำนวนสินค้าที่มีสถานะเป็น 'BMO'
+$BMOOrdersQuery = "SELECT COUNT(*) AS BMOCount FROM add_product WHERE type = 'Body Massage Oil'";
+$BMOOrdersResult = mysqli_query($db, $BMOOrdersQuery);
+
+if ($BMOOrdersResult) {
+    $BMOOrdersRow = mysqli_fetch_assoc($BMOOrdersResult);
+    $BMOOrdersCount = $BMOOrdersRow['BMOCount'];
+} else {
+    $BMOOrdersCount = 0;
+}
 ?>
 
 <style>
@@ -53,7 +98,7 @@ if (isset($_GET['delete_id'])) {
     }
 
     .containerbuttom h2 {
-        text-align: center;
+        text-align: start;
     }
 
     .addpro2 .card {
@@ -297,6 +342,36 @@ if (isset($_GET['delete_id'])) {
             <h2>
                 <?= $allproduct ?>
             </h2>
+            <div class="filter-buttons">
+                <a href="add_product.php">
+                    <button data-type="All">
+                        <?= $all ?> (<span id="all-orders">
+                            <?= $totalproduct ?>
+                        </span>)
+                    </button>
+                </a>
+                <a href="add_product2.php">
+                    <button data-type="BS">
+                        <?= $BS ?> (<span id="BS-orders">
+                            <?= $BSOrdersCount ?>
+                        </span>)
+                    </button>
+                </a>
+                <a href="add_product3.php">
+                    <button data-type="BM">
+                        <?= $BM ?> (<span id="BM-orders">
+                            <?= $BMOrdersCount ?>
+                        </span>)
+                    </button>
+                </a>
+                <a href="add_product4.php">
+                    <button data-type="BMO">
+                        <?= $BMO ?> (<span id="BMO-orders">
+                            <?= $BMOOrdersCount ?>
+                        </span>)
+                    </button>
+                </a>
+            </div>
             <div class="row">
 
                 <?php
