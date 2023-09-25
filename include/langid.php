@@ -69,6 +69,7 @@ if($langId == 1){
     $BS = "Body Scrub";
     $BM = "Body Mask";
     $BMO = "Body Massage Oil";
+    $back = "ย้อนกลับ";
     
 
 }else{
@@ -141,6 +142,7 @@ if($langId == 1){
     $BS = "Body Scrub";
     $BM = "Body Mask";
     $BMO = "Body Massage Oil";
+    $back = "Back";
 
 }
 ?>
