@@ -155,6 +155,38 @@ if ($BMOOrdersResult) {
         margin-top: -5px;
     }
 
+    .addpro2 .adc2 {
+        display: flex;
+        column-gap: 140px;
+    }
+
+    .addpro2 .filter-buttons {
+        margin: 0px 0px 20px;
+    }
+
+    .addpro2 .filter-buttons a button {
+        padding: 6px 20px;
+        border-radius: 10px;
+        border: none;
+        margin-top: 5px;
+    }
+
+    .addpro2 .filter-buttons a:nth-child(1) button {
+        background-color: aqua;
+    }
+
+    .addpro2 .filter-buttons a:nth-child(2) button {
+        background-color: yellow;
+    }
+
+    .addpro2 .filter-buttons a:nth-child(3) button {
+        background-color: #00e700;
+    }
+
+    .addpro2 .filter-buttons a:nth-child(4) button {
+        background-color: #ff1e1e;
+    }
+
     .w-100 {
         width: 50% !important;
         align-items: center;
@@ -339,38 +371,40 @@ if ($BMOOrdersResult) {
     <section class="addpro2">
 
         <div class="containerbuttom mt-5">
-            <h2>
-                <?= $allproduct ?>
-            </h2>
-            <div class="filter-buttons">
-                <a href="add_product.php">
-                    <button data-type="All">
-                        <?= $all ?> (<span id="all-orders">
-                            <?= $totalproduct ?>
-                        </span>)
-                    </button>
-                </a>
-                <a href="add_product2.php">
-                    <button data-type="BS">
-                        <?= $BS ?> (<span id="BS-orders">
-                            <?= $BSOrdersCount ?>
-                        </span>)
-                    </button>
-                </a>
-                <a href="add_product3.php">
-                    <button data-type="BM">
-                        <?= $BM ?> (<span id="BM-orders">
-                            <?= $BMOrdersCount ?>
-                        </span>)
-                    </button>
-                </a>
-                <a href="add_product4.php">
-                    <button data-type="BMO">
-                        <?= $BMO ?> (<span id="BMO-orders">
-                            <?= $BMOOrdersCount ?>
-                        </span>)
-                    </button>
-                </a>
+            <div class="adc2">
+                <h2>
+                    <?= $allproduct ?>
+                </h2>
+                <div class="filter-buttons">
+                    <a href="add_product.php">
+                        <button data-type="All">
+                            <?= $all ?> (<span id="all-orders">
+                                <?= $totalproduct ?>
+                            </span>)
+                        </button>
+                    </a>
+                    <a href="add_product2.php">
+                        <button data-type="BS">
+                            <?= $BS ?> (<span id="BS-orders">
+                                <?= $BSOrdersCount ?>
+                            </span>)
+                        </button>
+                    </a>
+                    <a href="add_product3.php">
+                        <button data-type="BM">
+                            <?= $BM ?> (<span id="BM-orders">
+                                <?= $BMOrdersCount ?>
+                            </span>)
+                        </button>
+                    </a>
+                    <a href="add_product4.php">
+                        <button data-type="BMO">
+                            <?= $BMO ?> (<span id="BMO-orders">
+                                <?= $BMOOrdersCount ?>
+                            </span>)
+                        </button>
+                    </a>
+                </div>
             </div>
             <div class="row">
 
