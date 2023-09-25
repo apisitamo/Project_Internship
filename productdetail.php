@@ -251,6 +251,36 @@
     .course-detail .item:nth-child(2) .detail {
         padding-left: 10% !important;
     }
+
+    .banner-page .wrap a {
+        position: absolute;
+        top: 10%;
+        left: 3%;
+    }
+
+    .course-detail {
+        margin: 1rem 0 3rem 0 !important;
+    }
+
+    .course-detail .bu-back {
+        margin-left: 3%;
+        margin-bottom: 5px;
+    }
+
+    .banner-page .wrap a button,
+    .course-detail .bu-back a button {
+        padding: 5px 10px;
+        border: none;
+        background: #ff0000cf;
+        border-radius: 10px;
+    }
+
+    .banner-page .wrap a button:hover,
+    .course-detail .bu-back a button:hover {
+        background: blue;
+        color: white;
+        transition: 0.4s;
+    }
 </style>
 
 <body>
@@ -268,12 +298,21 @@
                 </p>
             <?php } ?>
             <a href="product.php">
-                <button><?= $back ?></button>
+                <button>
+                    <?= $back ?>
+                </button>
             </a>
         </div>
     </section>
 
     <section class="course-detail">
+        <div class="bu-back" data-aos="fade-up" data-aos-duration="2000">
+            <a href="product.php">
+                <button>
+                    <?= $back ?>
+                </button>
+            </a>
+        </div>
         <div class="container">
             <div class="row">
                 <div class="col-lg-6" data-aos="zoom-in" data-aos-duration="2000">
@@ -340,12 +379,15 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="wrap-contact">
-                        <div class="item call" data-aos="fade-up" data-aos-duration="2000"><i class="fa-regular fa-phone"></i><span>086-322-1922</span></div>
+                        <div class="item call" data-aos="fade-up" data-aos-duration="2000"><i
+                                class="fa-regular fa-phone"></i><span>086-322-1922</span></div>
                         <a href="https://line.me/ti/p/~@108toots">
-                            <div class="item line" data-aos="fade-up" data-aos-duration="2000"><img class="line-img" src="assets/images/line.png" alt=""><span>@bsathailand</span></div>
+                            <div class="item line" data-aos="fade-up" data-aos-duration="2000"><img class="line-img"
+                                    src="assets/images/line.png" alt=""><span>@bsathailand</span></div>
                         </a>
                         <a href="https://th-th.facebook.com/BSABangkok/">
-                            <div class="item facebook" data-aos="fade-up" data-aos-duration="2000"><i class="bi bi-facebook"></i><span>Bangkok Spa Academy</span></div>
+                            <div class="item facebook" data-aos="fade-up" data-aos-duration="2000"><i
+                                    class="bi bi-facebook"></i><span>Bangkok Spa Academy</span></div>
                         </a>
                     </div>
                 </div>
@@ -364,7 +406,7 @@
             <div class="popup-content">
                 <span class="close-popup" id="close-popup1">&times;</span>
                 <div class="homecontent">
-                    <?php if (isset($_SESSION['username'])) : ?>
+                    <?php if (isset($_SESSION['username'])): ?>
                         <div class="box">
                             <div class="container">
                                 <div class="row">
@@ -380,7 +422,7 @@
                                 </button>
                             </div>
                         </div>
-                    <?php else : ?>
+                    <?php else: ?>
                         <div class="box">
                             <div class="container">
                                 <div class="row">
@@ -462,7 +504,8 @@
                         <?php echo $price ?>
                         <?= $price2 ?>
                     </p>
-                    <button class="button-success-2" id="button-success2" href="productdetail.php?product_id=<?php echo $row['id']; ?>&type=<?php echo $row['type']; ?>">
+                    <button class="button-success-2" id="button-success2"
+                        href="productdetail.php?product_id=<?php echo $row['id']; ?>&type=<?php echo $row['type']; ?>">
                         <?= $confirm ?>
                     </button>
                     <button class="button-close-2" id="button-close2">
@@ -478,15 +521,21 @@
             <div class="popup-content">
                 <span class="close-popup" id="close-popup3">&times;</span>
                 <div class="container">
-                    <p style="text-align: center;"><?= $thx ?></p>
+                    <p style="text-align: center;">
+                        <?= $thx ?>
+                    </p>
                     <img src="assets/images/image 9.svg" alt="" class="w-70">
-                    <p style="text-align: center;font-size: 30px;"><?= $wait ?></p>
+                    <p style="text-align: center;font-size: 30px;">
+                        <?= $wait ?>
+                    </p>
                     <button class="button-success" id="button-success3">
                         <a href="user.php">
                             <?= $history ?>
                         </a>
                     </button>
-                    <button class="button-close" id="button-close3"><?= $close ?></button>
+                    <button class="button-close" id="button-close3">
+                        <?= $close ?>
+                    </button>
                 </div>
             </div>
         </div>
@@ -593,8 +642,8 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script>
-    $(document).ready(function() {
-        $(".button-success-2").click(function() {
+    $(document).ready(function () {
+        $(".button-success-2").click(function () {
             var type = "<?php echo $type ?>";
             var name = "<?php echo $name_eng ?>";
             var quantity = 1;
@@ -609,7 +658,7 @@
                     quantity: quantity,
                     price: price
                 },
-                success: function(response) {
+                success: function (response) {
                     alert(response);
                 }
             });

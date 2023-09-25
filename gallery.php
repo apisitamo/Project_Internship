@@ -7,11 +7,16 @@ if ($langId == 1) {
 }
 ?>
 
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
 <body>
-    <section class="banner-page">
+    <section class="banner-page" data-aos="flip-down" data-aos-duration="2000">
         <div class="wrap">
             <img src="assets/images/banner-page.png" alt="">
-            <p><?= $gallery ?></p>
+            <p>
+                <?= $gallery ?>
+            </p>
         </div>
     </section>
 
@@ -30,14 +35,15 @@ if ($langId == 1) {
 
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
-                ?>
-                        <div onclick="swap('<?php echo $row['img']; ?>')" class="col-lg-3 col-md-4 mb-4 position-relative" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        ?>
+                        <div onclick="swap('<?php echo $row['img']; ?>')" class="col-lg-3 col-md-4 mb-4 position-relative"
+                            data-bs-toggle="modal" data-bs-target="#exampleModal" data-aos="fade-up" data-aos-duration="2000">
                             <div class="w-100 h-100 card-img position-relative">
                                 <img class="search-hover" src="assets/images/hover-search.svg" alt="">
                                 <img class="w-100 rounded-3" src="<?php echo $row['img']; ?>" alt="">
                             </div>
                         </div>
-                <?php
+                        <?php
                     }
                 } else {
                     echo "ไม่พบสินค้าในระบบ";
@@ -61,6 +67,10 @@ if ($langId == 1) {
         function swap(path) {
             document.getElementById("modal-img").src = path
         }
+    </script>
+
+    <script>
+        AOS.init();
     </script>
 
     <?php include 'include/footer.php'; ?>
