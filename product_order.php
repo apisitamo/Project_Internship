@@ -12,16 +12,69 @@ include('server.php');
 <?php
 $db = mysqli_connect($servername, $username, $password, $dbname);
 
+$page = isset($_GET['page']) ? $_GET['page'] : 1;
+
+$limit = 10;
+
+$offset = ($page - 1) * $limit;
+
 $query = "SELECT * FROM product_order
           ORDER BY CASE
             WHEN status = 'รอตรวจสอบ' THEN 0
             WHEN status = 'สำเร็จ' THEN 1
             WHEN status = 'ปฏิเสธ' THEN 2
             ELSE 3
-          END, id DESC";
+          END, id DESC
+          LIMIT $limit OFFSET $offset";
 
 $result = mysqli_query($db, $query);
 
+// คำนวณจำนวนสินค้าทั้งหมด
+$totalProductsQuery = "SELECT COUNT(*) AS total FROM product_order";
+$totalProductsResult = mysqli_query($db, $totalProductsQuery);
+
+if ($totalProductsResult) {
+    $totalProductsRow = mysqli_fetch_assoc($totalProductsResult);
+    $totalProducts = $totalProductsRow['total'];
+} else {
+    $totalProducts = 0;
+}
+// คำนวณจำนวนสินค้าที่มีสถานะเป็น 'รอตรวจสอบ'
+$pendingOrdersQuery = "SELECT COUNT(*) AS pendingCount FROM product_order WHERE status = 'รอตรวจสอบ'";
+$pendingOrdersResult = mysqli_query($db, $pendingOrdersQuery);
+
+if ($pendingOrdersResult) {
+    $pendingOrdersRow = mysqli_fetch_assoc($pendingOrdersResult);
+    $pendingOrdersCount = $pendingOrdersRow['pendingCount'];
+} else {
+    $pendingOrdersCount = 0;
+}
+// คำนวณจำนวนสินค้าที่มีสถานะเป็น 'สำเร็จ'
+$completedOrdersQuery = "SELECT COUNT(*) AS completedCount FROM product_order WHERE status = 'สำเร็จ'";
+$completedOrdersResult = mysqli_query($db, $completedOrdersQuery);
+
+if ($completedOrdersResult) {
+    $completedOrdersRow = mysqli_fetch_assoc($completedOrdersResult);
+    $completedOrdersCount = $completedOrdersRow['completedCount'];
+} else {
+    $completedOrdersCount = 0;
+}
+// คำนวณจำนวนสินค้าที่มีสถานะเป็น 'ปฏิเสธ'
+$rejectedOrdersQuery = "SELECT COUNT(*) AS rejectedCount FROM product_order WHERE status = 'ปฏิเสธ'";
+$rejectedOrdersResult = mysqli_query($db, $rejectedOrdersQuery);
+
+if ($rejectedOrdersResult) {
+    $rejectedOrdersRow = mysqli_fetch_assoc($rejectedOrdersResult);
+    $rejectedOrdersCount = $rejectedOrdersRow['rejectedCount'];
+} else {
+    $rejectedOrdersCount = 0;
+}
+
+
+
+?>
+
+<?php
 if (isset($_GET['delete_id'])) {
     $deleteId = $_GET['delete_id'];
     $deleteQuery = "DELETE FROM product_order WHERE id = '$deleteId'";
@@ -216,33 +269,6 @@ if (isset($_GET['delete_id'])) {
     }
 </style>
 
-<style>
-    .pagination {
-        display: flex;
-        list-style: none;
-        padding: 0;
-        justify-content: center;
-        margin-top: 20px;
-        margin-bottom: 40px;
-    }
-
-    .pagination a,
-    .pagination .current-page {
-        margin: 0 5px;
-        padding: 5px 10px;
-        text-decoration: none;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        background-color: #f2f2f2;
-        color: #333;
-    }
-
-    .pagination .current-page {
-        background-color: #007bff;
-        color: #fff;
-    }
-</style>
-
 <body>
     <section class="pro-order">
         <div class="click-overlay" id="click-overlay1"></div>
@@ -255,22 +281,22 @@ if (isset($_GET['delete_id'])) {
             <div class="filter-buttons">
                 <a href="product_order.php">
                     <button data-status="All">
-                        <?= $all ?> (<span id="all-orders">0</span>)
+                        <?= $all ?> (<span id="all-orders"><?= $totalProducts ?></span>)
                     </button>
                 </a>
                 <a href="product_order2.php">
                     <button data-status="รอตรวจสอบ">
-                        <?= $check ?> (<span id="pending-orders">0</span>)
+                        <?= $check ?> (<span id="pending-orders"><?= $pendingOrdersCount ?></span>)
                     </button>
                 </a>
                 <a href="product_order3.php">
                     <button data-status="สำเร็จ">
-                        <?= $complete ?> (<span id="completed-orders">0</span>)
+                        <?= $complete ?> (<span id="completed-orders"><?= $completedOrdersCount ?></span>)
                     </button>
                 </a>
                 <a href="product_order4.php">
                     <button data-status="ปฏิเสธ">
-                        <?= $reject ?> (<span id="rejected-orders">0</span>)
+                        <?= $reject ?> (<span id="rejected-orders"><?= $rejectedOrdersCount ?></span>)
                     </button>
                 </a>
             </div>
@@ -306,13 +332,13 @@ if (isset($_GET['delete_id'])) {
                                 <?= $notess ?>
                             </th>
                             <th>
-                                
+
                             </th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
-                        $i = 1;
+                        $i = 1 + $offset;
                         if ($result->num_rows > 0) {
                             while ($row = $result->fetch_assoc()) {
                         ?>
@@ -386,7 +412,16 @@ if (isset($_GET['delete_id'])) {
                     </tbody>
                 </table>
             </div>
+        </div>
 
+        <div class="pagination">
+            <?php
+            $totalPages = ceil($totalProducts / $limit); // คำนวณจำนวนหน้าทั้งหมด
+            for ($i = 1; $i <= $totalPages; $i++) {
+                $activeClass = ($i == $page) ? 'active' : '';
+                echo "<a href='product_order.php?page=$i' class='pagination-link $activeClass'>$i</a>";
+            }
+            ?>
         </div>
 
     </section>
