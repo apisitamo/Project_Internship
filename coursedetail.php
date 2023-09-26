@@ -728,7 +728,7 @@
                     price: price
                 },
                 success: function (response) {
-                    alert(response);
+                    // alert(response);
                 }
             });
         });

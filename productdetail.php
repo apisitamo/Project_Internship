@@ -405,7 +405,7 @@
                                     <?= $ordernow ?>
                                 </p>
                             </button>
-                            <div class="error" style="display: none;">Please enter quantity</div>
+                            <div class="error" style="display: none;"><?= $pinput ?></div>
                         <?php else : ?>
                             <button class="open-popup-out">
                                 <p class="price" data-aos="fade-up" data-aos-duration="2000">
@@ -729,7 +729,7 @@
                     price: price
                 },
                 success: function(response) {
-                    alert(response);
+                    // alert(response);
                 }
             });
         });

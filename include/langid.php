@@ -73,6 +73,7 @@ if($langId == 1){
     $totalprice = "ราคารวม";
     $Kg = "กิโลกรัม";
     $ordernow = "สั่งซื้อตอนนี้";
+    $pinput = "โปรดระบุจำนวน";
     
 
 }else{
@@ -149,6 +150,7 @@ if($langId == 1){
     $totalprice = "Total price";
     $Kg = "kilogram";
     $ordernow = "Order Now";
+    $pinput = "Please enter quantity";
 
 }
 ?>
