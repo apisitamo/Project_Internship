@@ -188,20 +188,17 @@ if ($ASOrdersResult) {
         margin-top: 5px;
     }
 
-    .addcourse2 .filter-buttons a:nth-child(1) button {
-        background-color: aqua;
+    .addcourse2 .filter-buttons a button {
+        background-color: #52adff;
     }
 
-    .addcourse2 .filter-buttons a:nth-child(2) button {
-        background-color: yellow;
+    .addcourse2 .filter-buttons .menu-course button {
+        background-color: #0d6efd;
     }
 
-    .addcourse2 .filter-buttons a:nth-child(3) button {
-        background-color: #00e700;
-    }
-
-    .addcourse2 .filter-buttons a:nth-child(4) button {
-        background-color: #ff1e1e;
+    .addcourse2 .filter-buttons a button:hover {
+        background-color: #0d6efd;
+        transition: 0.4s;
     }
 
     .w-100 {
@@ -389,7 +386,7 @@ if ($ASOrdersResult) {
                     <?= $allcourse ?>
                 </h2>
                 <div class="filter-buttons">
-                    <a href="add_course.php" class="active-link">
+                    <a href="add_course.php" class="menu-course">
                         <button data-type="All">
                             <?= $all ?> (<span id="all-orders">
                                 <?= $totalCourse ?>

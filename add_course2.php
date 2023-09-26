@@ -188,20 +188,17 @@ if ($ASOrdersResult) {
         margin-top: 5px;
     }
 
-    .addcourse2 .filter-buttons a:nth-child(1) button {
-        background-color: aqua;
+    .addcourse2 .filter-buttons a button {
+        background-color: #52adff;
     }
 
-    .addcourse2 .filter-buttons a:nth-child(2) button {
-        background-color: yellow;
+    .addcourse2 .filter-buttons .menu-course button {
+        background-color: #0d6efd;
     }
 
-    .addcourse2 .filter-buttons a:nth-child(3) button {
-        background-color: #00e700;
-    }
-
-    .addcourse2 .filter-buttons a:nth-child(4) button {
-        background-color: #ff1e1e;
+    .addcourse2 .filter-buttons a button:hover {
+        background-color: #0d6efd;
+        transition: 0.4s;
     }
 
     .w-100 {
@@ -396,7 +393,7 @@ if ($ASOrdersResult) {
                             </span>)
                         </button>
                     </a>
-                    <a href="add_course2.php" class="active-link">
+                    <a href="add_course2.php" class="menu-course">
                         <button data-type="HSC">
                             <?= $HSC ?> (<span id="HSC-orders">
                                 <?= $HSCOrdersCount ?>
@@ -426,7 +423,7 @@ if ($ASOrdersResult) {
 
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
-                ?>
+                        ?>
                         <div class="card">
                             <button class="deleteitem" data-course-id="<?php echo $row['id']; ?>">&times;</button>
                             <!-- <button class="edititem" data-course-id="<?php echo $row['id']; ?>"><img src="assets/images/fix.png" alt=""></button> -->
@@ -473,7 +470,7 @@ if ($ASOrdersResult) {
                                 </div>
                             </div>
                         </div>
-                <?php
+                        <?php
                     }
                 } else {
                     echo "Course not found in database";
@@ -511,7 +508,8 @@ if ($ASOrdersResult) {
                     <p style="text-align: center;">
                         <?= $wantdel ?>
                     </p>
-                    <button class="button-close-2" id="confirm-delete-button" href='add_course.php?delete_id=<?php echo $row['id']; ?>'>
+                    <button class="button-close-2" id="confirm-delete-button"
+                        href='add_course.php?delete_id=<?php echo $row['id']; ?>'>
                         <?= $condel ?>
                     </button>
                     <button class="button-close-2" id="button-close2">
@@ -604,8 +602,8 @@ if ($ASOrdersResult) {
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script>
-    $(document).ready(function() {
-        $(".button-success-1").click(function() {
+    $(document).ready(function () {
+        $(".button-success-1").click(function () {
             var imageInput = $("input[name='img']")[0];
             var imageFile = imageInput.files[0];
             var type = $("select[name='type']").val();
@@ -635,11 +633,11 @@ if ($ASOrdersResult) {
                     data: formData,
                     contentType: false,
                     processData: false,
-                    success: function(response) {
+                    success: function (response) {
                         window.location.href = 'add_course.php';
                         alert("Successfully added course");
                     },
-                    error: function() {
+                    error: function () {
                         alert("There was an error adding a course.");
                     }
                 });

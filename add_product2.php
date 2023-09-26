@@ -172,20 +172,17 @@ if ($BMOOrdersResult) {
         margin-top: 5px;
     }
 
-    .addpro2 .filter-buttons a:nth-child(1) button {
-        background-color: aqua;
+    .addpro2 .filter-buttons a button {
+        background-color: #52adff;
     }
 
-    .addpro2 .filter-buttons a:nth-child(2) button {
-        background-color: yellow;
+    .addpro2 .filter-buttons .menu-product button {
+        background-color: #0d6efd;
     }
 
-    .addpro2 .filter-buttons a:nth-child(3) button {
-        background-color: #00e700;
-    }
-
-    .addpro2 .filter-buttons a:nth-child(4) button {
-        background-color: #ff1e1e;
+    .addpro2 .filter-buttons a button:hover {
+        background-color: #0d6efd;
+        transition: 0.4s;
     }
 
     .w-100 {
@@ -385,7 +382,7 @@ if ($BMOOrdersResult) {
                             </span>)
                         </button>
                     </a>
-                    <a href="add_product2.php" class="active-link">
+                    <a href="add_product2.php" class="menu-product">
                         <button data-type="BS">
                             <?= $BS ?> (<span id="BS-orders">
                                 <?= $BSOrdersCount ?>

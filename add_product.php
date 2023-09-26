@@ -172,20 +172,18 @@ if ($BMOOrdersResult) {
         margin-top: 5px;
     }
 
-    .addpro2 .filter-buttons a:nth-child(1) button {
-        background-color: aqua;
+
+    .addpro2 .filter-buttons a button {
+        background-color: #52adff;
     }
 
-    .addpro2 .filter-buttons a:nth-child(2) button {
-        background-color: yellow;
+    .addpro2 .filter-buttons .menu-product button {
+        background-color: #0d6efd;
     }
 
-    .addpro2 .filter-buttons a:nth-child(3) button {
-        background-color: #00e700;
-    }
-
-    .addpro2 .filter-buttons a:nth-child(4) button {
-        background-color: #ff1e1e;
+    .addpro2 .filter-buttons a button:hover {
+        background-color: #0d6efd;
+        transition: 0.4s;
     }
 
     .w-100 {
@@ -378,7 +376,7 @@ if ($BMOOrdersResult) {
                     <?= $allproduct ?>
                 </h2>
                 <div class="filter-buttons">
-                    <a href="add_product.php" class="active-link">
+                    <a href="add_product.php" class="menu-product">
                         <button data-type="All">
                             <?= $all ?> (<span id="all-orders">
                                 <?= $totalproduct ?>
@@ -591,7 +589,7 @@ if ($BMOOrdersResult) {
             var detail_eng = $("textarea[name='detail_eng']").val();
             var price = $("input[name='price']").val();
 
-            if (imageFile && type!== "null" && name_th && name_eng && detail_th && detail_eng && price) {
+            if (imageFile && type !== "null" && name_th && name_eng && detail_th && detail_eng && price) {
                 var formData = new FormData();
                 formData.append("img", imageFile);
                 formData.append("type", type);
