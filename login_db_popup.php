@@ -51,7 +51,7 @@ if (isset($_POST['login_user'])) {
         $errorMessages = implode("\\n", $errors);
         echo "<script>
                 alert('$errorMessages');
-                window.location.href = 'product.php';
+                window.location.href = 'login.php';
               </script>";
         exit();
     }
