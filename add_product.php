@@ -71,6 +71,7 @@ if ($BMOOrdersResult) {
     }
 
     .form-control-option {
+        width: 20%;
         margin-left: 5px;
     }
 
@@ -326,6 +327,7 @@ if ($BMOOrdersResult) {
                     <?= $types ?>
                 </label>
                 <select class="form-control-option" name="type">
+                    <option value="null"></option>
                     <option value="Body Scrub">Body Scrub</option>
                     <option value="Body Mask">Body Mask</option>
                     <option value="Body Massage Oil">Body Massage Oil</option>
@@ -589,7 +591,7 @@ if ($BMOOrdersResult) {
             var detail_eng = $("textarea[name='detail_eng']").val();
             var price = $("input[name='price']").val();
 
-            if (imageFile && type && name_th && name_eng && detail_th && detail_eng && price) {
+            if (imageFile && type!== "null" && name_th && name_eng && detail_th && detail_eng && price) {
                 var formData = new FormData();
                 formData.append("img", imageFile);
                 formData.append("type", type);

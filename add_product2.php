@@ -72,6 +72,7 @@ if ($BMOOrdersResult) {
 
     .form-control-option {
         margin-left: 5px;
+        width: 20%;
     }
 
     .addpro1 .containertop,
@@ -326,6 +327,7 @@ if ($BMOOrdersResult) {
                     <?= $types ?>
                 </label>
                 <select class="form-control-option" name="type">
+                    <option value="null"></option>
                     <option value="Body Scrub">Body Scrub</option>
                     <option value="Body Mask">Body Mask</option>
                     <option value="Body Massage Oil">Body Massage Oil</option>
@@ -415,7 +417,7 @@ if ($BMOOrdersResult) {
 
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
-                        ?>
+                ?>
                         <div class="card">
                             <button class="deleteitem" data-product-id="<?php echo $row['id']; ?>">&times;</button>
                             <img src="<?php echo $row['img']; ?>" class="w-100" alt="Product Image">
@@ -445,7 +447,7 @@ if ($BMOOrdersResult) {
                                 </p>
                             </div>
                         </div>
-                        <?php
+                <?php
                     }
                 } else {
                     echo "The product was not found in the database.";
@@ -483,8 +485,7 @@ if ($BMOOrdersResult) {
                     <p style="text-align: center;">
                         <?= $wantdel ?>
                     </p>
-                    <button class="button-close-2" id="confirm-delete-button"
-                        href='add_product.php?delete_id=<?php echo $row['id']; ?>'>
+                    <button class="button-close-2" id="confirm-delete-button" href='add_product.php?delete_id=<?php echo $row['id']; ?>'>
                         <?= $condel ?>
                     </button>
                     <button class="button-close-2" id="button-close2">
@@ -578,8 +579,8 @@ if ($BMOOrdersResult) {
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script>
-    $(document).ready(function () {
-        $(".button-success-1").click(function () {
+    $(document).ready(function() {
+        $(".button-success-1").click(function() {
             var imageInput = $("input[name='img']")[0];
             var imageFile = imageInput.files[0];
             var type = $("select[name='type']").val();
@@ -589,7 +590,7 @@ if ($BMOOrdersResult) {
             var detail_eng = $("textarea[name='detail_eng']").val();
             var price = $("input[name='price']").val();
 
-            if (imageFile && type && name_th && name_eng && detail_th && detail_eng && price) {
+            if (imageFile && type !== "null" && name_th && name_eng && detail_th && detail_eng && price) {
                 var formData = new FormData();
                 formData.append("img", imageFile);
                 formData.append("type", type);
@@ -605,11 +606,11 @@ if ($BMOOrdersResult) {
                     data: formData,
                     contentType: false,
                     processData: false,
-                    success: function (response) {
+                    success: function(response) {
                         window.location.href = 'add_product.php';
                         alert("Successfully added products.");
                     },
-                    error: function () {
+                    error: function() {
                         alert("There was an error adding a product.");
                     }
                 });

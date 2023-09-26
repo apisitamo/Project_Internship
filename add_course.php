@@ -72,6 +72,7 @@ if ($ASOrdersResult) {
 
     .form-control-option {
         margin-left: 5px;
+        width: 20%;
     }
 
     .addcourse1 .containertop,
@@ -327,6 +328,7 @@ if ($ASOrdersResult) {
                     <?= $types ?>
                 </label>
                 <select class="form-control-option" name="type">
+                    <option value="null"></option>
                     <option value="Health Spa Course">Health Spa Course</option>
                     <option value="Beauty Spa Course">Beauty Spa Course</option>
                     <option value="Advanced Spa">Advanced Spa</option>
@@ -424,7 +426,7 @@ if ($ASOrdersResult) {
 
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
-                        ?>
+                ?>
                         <div class="card">
                             <button class="deleteitem" data-course-id="<?php echo $row['id']; ?>">&times;</button>
                             <!-- <button class="edititem" data-course-id="<?php echo $row['id']; ?>"><img src="assets/images/fix.png" alt=""></button> -->
@@ -471,7 +473,7 @@ if ($ASOrdersResult) {
                                 </div>
                             </div>
                         </div>
-                        <?php
+                <?php
                     }
                 } else {
                     echo "Course not found in database";
@@ -509,8 +511,7 @@ if ($ASOrdersResult) {
                     <p style="text-align: center;">
                         <?= $wantdel ?>
                     </p>
-                    <button class="button-close-2" id="confirm-delete-button"
-                        href='add_course.php?delete_id=<?php echo $row['id']; ?>'>
+                    <button class="button-close-2" id="confirm-delete-button" href='add_course.php?delete_id=<?php echo $row['id']; ?>'>
                         <?= $condel ?>
                     </button>
                     <button class="button-close-2" id="button-close2">
@@ -603,8 +604,8 @@ if ($ASOrdersResult) {
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script>
-    $(document).ready(function () {
-        $(".button-success-1").click(function () {
+    $(document).ready(function() {
+        $(".button-success-1").click(function() {
             var imageInput = $("input[name='img']")[0];
             var imageFile = imageInput.files[0];
             var type = $("select[name='type']").val();
@@ -616,7 +617,7 @@ if ($ASOrdersResult) {
             var price = $("input[name='price']").val();
             var hour = $("input[name='hour']").val();
 
-            if (imageFile && type && name_th && name_eng && detail_th && detail_eng && day && price && hour) {
+            if (imageFile && type !== "null" && name_th && name_eng && detail_th && detail_eng && day && price && hour) {
                 var formData = new FormData();
                 formData.append("img", imageFile);
                 formData.append("type", type);
@@ -634,11 +635,11 @@ if ($ASOrdersResult) {
                     data: formData,
                     contentType: false,
                     processData: false,
-                    success: function (response) {
+                    success: function(response) {
                         location.reload();
                         alert("Successfully added course");
                     },
-                    error: function () {
+                    error: function() {
                         alert("There was an error adding a course.");
                     }
                 });
