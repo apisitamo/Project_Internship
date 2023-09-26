@@ -20,7 +20,7 @@ $sql = "INSERT INTO product_order (username, type, name,  quantity, price, statu
 if ($conn->query($sql) === TRUE) {
     echo "successfully";
 } else {
-    echo "ผิดพลาด: " . $conn->error;
+    echo "error: " . $conn->error;
 }
 
 $conn->close();

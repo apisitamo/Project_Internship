@@ -19,9 +19,9 @@ $sql = "INSERT INTO course_order (username, type, name, day, quantity, price, st
         VALUES ('$username', '$type', '$name', '$day', '$quantity', '$price', '$status')";
 
 if ($conn->query($sql) === TRUE) {
-    echo "เพิ่มรายการสำเร็จ";
+    echo "successfully";
 } else {
-    echo "ผิดพลาด: " . $conn->error;
+    echo "error: " . $conn->error;
 }
 
 $conn->close();
