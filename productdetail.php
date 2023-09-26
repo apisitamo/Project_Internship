@@ -639,13 +639,13 @@
         console.log("X first popup ");
         popup1.style.display = 'none';
         clickOverlay1.style.display = 'none';
-        location.reload();
+        // location.reload();
     });
     buttonclosefirst.addEventListener('click', () => {
         console.log("close BTN first POPUP");
         popup1.style.display = 'none';
         clickOverlay1.style.display = 'none';
-        location.reload();
+        // location.reload();
     });
     buttonsuccessfirst.forEach(button => {
         button.addEventListener('click', () => {
@@ -661,7 +661,7 @@
         console.log("X second popup");
         popup2.style.display = 'none';
         clickOverlay1.style.display = 'none';
-        location.reload();
+        // location.reload();
     });
     buttonclosesecond.addEventListener('click', () => {
         console.log("back BTN second POPUP");
@@ -699,7 +699,7 @@
         popup2.style.display = 'none';
         popup3.style.display = 'none';
         clickOverlay1.style.display = 'none';
-        location.reload();
+        // location.reload();
     });
 </script>
 
