@@ -330,7 +330,7 @@
 
     <section class="course-detail">
         <div class="bu-back" data-aos="fade-up" data-aos-duration="2000">
-            <a href="product.php">
+            <a href="allcourse.php">
                 <button>
                     <?= $back ?>
                 </button>
