@@ -387,25 +387,35 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="input-quantity" data-aos="zoom-in" data-aos-duration="2000">
-                            <span>
-                                <?= $quantityy ?>
-                            </span>
-                            <input style="width:70px; background-color:#F5EBEB;" type="number" class="form-control"
-                                name="quantity" id="quantityInput" oninput="calculateTotal()" required>
-                            <span>
-                                <?= $Kg ?>
-                            </span>
-                        </div>
-                        <button class="open-popup">
-                            <p class="price" data-aos="fade-up" data-aos-duration="2000">
-                                <!-- <?= $prices ?>
+                        <?php if (isset($_SESSION['username'])) : ?>
+                            <div class="input-quantity" data-aos="zoom-in" data-aos-duration="2000">
+                                <span>
+                                    <?= $quantityy ?>
+                                </span>
+                                <input style="width:70px; background-color:#F5EBEB;" type="number" class="form-control" name="quantity" id="quantityInput" oninput="calculateTotal()" required>
+                                <span>
+                                    <?= $Kg ?>
+                                </span>
+                            </div>
+                            <button class="open-popup">
+                                <p class="price" data-aos="fade-up" data-aos-duration="2000">
+                                    <!-- <?= $prices ?>
                                 <?php echo $price ?>
                                 <?= $price2 ?> -->
-                                <?= $ordernow ?>
-                            </p>
-                        </button>
-                        <div class="error" style="display: none;">Please enter quantity</div>
+                                    <?= $ordernow ?>
+                                </p>
+                            </button>
+                            <div class="error" style="display: none;">Please enter quantity</div>
+                        <?php else : ?>
+                            <button class="open-popup-out">
+                                <p class="price" data-aos="fade-up" data-aos-duration="2000">
+                                    <!-- <?= $prices ?>
+                                <?php echo $price ?>
+                                <?= $price2 ?> -->
+                                    <?= $ordernow ?>
+                                </p>
+                            </button>
+                        <?php endif ?>
                     </div>
                 </div>
             </div>
@@ -423,15 +433,12 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="wrap-contact">
-                        <div class="item call" data-aos="fade-up" data-aos-duration="2000"><i
-                                class="fa-regular fa-phone"></i><span>086-322-1922</span></div>
+                        <div class="item call" data-aos="fade-up" data-aos-duration="2000"><i class="fa-regular fa-phone"></i><span>086-322-1922</span></div>
                         <a href="https://line.me/ti/p/~@108toots">
-                            <div class="item line" data-aos="fade-up" data-aos-duration="2000"><img class="line-img"
-                                    src="assets/images/line.png" alt=""><span>@bsathailand</span></div>
+                            <div class="item line" data-aos="fade-up" data-aos-duration="2000"><img class="line-img" src="assets/images/line.png" alt=""><span>@bsathailand</span></div>
                         </a>
                         <a href="https://th-th.facebook.com/BSABangkok/">
-                            <div class="item facebook" data-aos="fade-up" data-aos-duration="2000"><i
-                                    class="bi bi-facebook"></i><span>Bangkok Spa Academy</span></div>
+                            <div class="item facebook" data-aos="fade-up" data-aos-duration="2000"><i class="bi bi-facebook"></i><span>Bangkok Spa Academy</span></div>
                         </a>
                     </div>
                 </div>
@@ -450,7 +457,7 @@
             <div class="popup-content">
                 <span class="close-popup" id="close-popup1">&times;</span>
                 <div class="homecontent">
-                    <?php if (isset($_SESSION['username'])): ?>
+                    <?php if (isset($_SESSION['username'])) : ?>
                         <div class="box">
                             <div class="container">
                                 <div class="row">
@@ -466,7 +473,7 @@
                                 </button>
                             </div>
                         </div>
-                    <?php else: ?>
+                    <?php else : ?>
                         <div class="box">
                             <div class="container">
                                 <div class="row">
@@ -549,8 +556,7 @@
                         <?= $price2 ?> -->
                         <span id="totalValue"></span>
                     </p>
-                    <button class="button-success-2" id="button-success2"
-                        href="productdetail.php?product_id=<?php echo $row['id']; ?>&type=<?php echo $row['type']; ?>">
+                    <button class="button-success-2" id="button-success2" href="productdetail.php?product_id=<?php echo $row['id']; ?>&type=<?php echo $row['type']; ?>">
                         <?= $confirm ?>
                     </button>
                     <button class="button-close-2" id="button-close2">
@@ -590,6 +596,7 @@
 
 <script>
     const openpopup = document.querySelectorAll('.open-popup');
+    const openpopupout = document.querySelectorAll('.open-popup-out');
     const inputQuantity = document.querySelector('.input-quantity input');
 
     const popup1 = document.querySelector('#popup1');
@@ -620,6 +627,13 @@
         });
     });
 
+    openpopupout.forEach(button => {
+        button.addEventListener('click', () => {
+            console.log("Open first popup");
+            popup1.style.display = 'flex';
+            clickOverlay1.style.display = 'block';
+        });
+    });
 
     closefirstpopup.addEventListener('click', () => {
         console.log("X first popup ");
@@ -698,8 +712,8 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script>
-    $(document).ready(function () {
-        $(".button-success-2").click(function () {
+    $(document).ready(function() {
+        $(".button-success-2").click(function() {
             var type = "<?php echo $type ?>";
             var name = "<?php echo $name_eng ?>";
             var quantity = $("input[name='quantity']").val();
@@ -714,7 +728,7 @@
                     quantity: quantity,
                     price: price
                 },
-                success: function (response) {
+                success: function(response) {
                     alert(response);
                 }
             });
@@ -725,7 +739,7 @@
 <script>
     var quantityInput = document.getElementById("quantityInput");
 
-    quantityInput.addEventListener("change", function () {
+    quantityInput.addEventListener("change", function() {
         var inputValue = parseFloat(quantityInput.value);
         if (inputValue < 0) {
             quantityInput.value = 0;
