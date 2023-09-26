@@ -254,11 +254,11 @@
     }
 
     .course-detail .item:nth-child(2) .detail {
-        padding-left: 10% !important;
+        padding-left: 4% !important;
     }
 
     .course-detail .item:nth-child(3) .detail {
-        padding-left: 7% !important;
+        padding-left: 13% !important;
     }
 
     .banner-page .wrap a {
@@ -289,12 +289,16 @@
         transition: 0.4s;
     }
 
-    .course-detail .col-lg-6 .wrap .item:nth-child(3) img {
+    .course-detail .col-lg-6 .wrap .item:nth-child(4) img {
         width: 25%;
     }
 
-    .course-detail .col-lg-6 .wrap .item:nth-child(3) .title {
+    .course-detail .col-lg-6 .wrap .item:nth-child(4) .title {
         width: 13%;
+    }
+
+    .course-detail .item:nth-child(4) .detail {
+        padding-left: 14% !important;
     }
 
     .course-detail .col-lg-6 .input-quantity {
@@ -437,12 +441,15 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="wrap-contact">
-                        <div class="item call" data-aos="fade-up" data-aos-duration="2000"><i class="fa-regular fa-phone"></i><span>086-322-1922</span></div>
+                        <div class="item call" data-aos="fade-up" data-aos-duration="2000"><i
+                                class="fa-regular fa-phone"></i><span>086-322-1922</span></div>
                         <a href="https://line.me/ti/p/~@108toots">
-                            <div class="item line" data-aos="fade-up" data-aos-duration="2000"><img class="line-img" src="assets/images/line.png" alt=""><span>@bsathailand</span></div>
+                            <div class="item line" data-aos="fade-up" data-aos-duration="2000"><img class="line-img"
+                                    src="assets/images/line.png" alt=""><span>@bsathailand</span></div>
                         </a>
                         <a href="https://th-th.facebook.com/BSABangkok/">
-                            <div class="item facebook" data-aos="fade-up" data-aos-duration="2000"><i class="bi bi-facebook"></i><span>Bangkok Spa Academy</span></div>
+                            <div class="item facebook" data-aos="fade-up" data-aos-duration="2000"><i
+                                    class="bi bi-facebook"></i><span>Bangkok Spa Academy</span></div>
                         </a>
                     </div>
                 </div>
@@ -461,7 +468,7 @@
             <div class="popup-content">
                 <span class="close-popup" id="close-popup1">&times;</span>
                 <div class="homecontent">
-                    <?php if (isset($_SESSION['username'])) : ?>
+                    <?php if (isset($_SESSION['username'])): ?>
                         <div class="box">
                             <div class="container">
                                 <div class="row">
@@ -477,7 +484,7 @@
                                 </button>
                             </div>
                         </div>
-                    <?php else : ?>
+                    <?php else: ?>
                         <div class="box">
                             <div class="container">
                                 <div class="row">
@@ -558,7 +565,8 @@
                         <?php echo $price ?>
                         <?= $baht ?>
                     </p>
-                    <button class="button-success-2" id="button-success2" href="productdetail.php?product_id=<?php echo $row['id']; ?>&type=<?php echo $row['type']; ?>">
+                    <button class="button-success-2" id="button-success2"
+                        href="productdetail.php?product_id=<?php echo $row['id']; ?>&type=<?php echo $row['type']; ?>">
                         <?= $confirm ?>
                     </button>
                     <button class="button-close-2" id="button-close2">
@@ -701,8 +709,8 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script>
-    $(document).ready(function() {
-        $(".button-success-2").click(function() {
+    $(document).ready(function () {
+        $(".button-success-2").click(function () {
             var type = "<?php echo $type ?>";
             var name = "<?php echo $name_eng ?>";
             var day = "<?php echo $day ?>";
@@ -719,7 +727,7 @@
                     quantity: quantity,
                     price: price
                 },
-                success: function(response) {
+                success: function (response) {
                     alert(response);
                 }
             });
