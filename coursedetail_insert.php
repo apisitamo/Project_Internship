@@ -19,7 +19,6 @@ $sql = "INSERT INTO course_order (username, type, name, day, quantity, price, st
         VALUES ('$username', '$type', '$name', '$day', '$quantity', '$price', '$status')";
 
 if ($conn->query($sql) === TRUE) {
-    echo "successfully";
 } else {
     echo "error: " . $conn->error;
 }

@@ -18,7 +18,6 @@ $sql = "INSERT INTO product_order (username, type, name,  quantity, price, statu
         VALUES ('$username', '$type', '$name',  '$quantity', '$price', '$status')";
 
 if ($conn->query($sql) === TRUE) {
-    echo "successfully";
 } else {
     echo "error: " . $conn->error;
 }
