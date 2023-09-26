@@ -382,7 +382,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="input-quantity">
+                        <div class="input-quantity" data-aos="zoom-in" data-aos-duration="2000">
                             <span>
                                 <?= $quantityy ?>
                             </span>
