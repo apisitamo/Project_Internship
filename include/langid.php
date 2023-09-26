@@ -70,6 +70,9 @@ if($langId == 1){
     $BM = "Body Mask";
     $BMO = "Body Massage Oil";
     $back = "ย้อนกลับ";
+    $totalprice = "ราคารวม";
+    $Kg = "กิโลกรัม";
+    $ordernow = "สั่งซื้อตอนนี้";
     
 
 }else{
@@ -143,6 +146,9 @@ if($langId == 1){
     $BM = "Body Mask";
     $BMO = "Body Massage Oil";
     $back = "Back";
+    $totalprice = "Total price";
+    $Kg = "kilogram";
+    $ordernow = "Order Now";
 
 }
 ?>

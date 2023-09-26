@@ -38,7 +38,7 @@ $db = mysqli_connect($servername, $username, $password, $dbname);
 
 $page = isset($_GET['page']) ? $_GET['page'] : 1;
 
-$limit = 10;
+$limit = 20;
 
 $offset = ($page - 1) * $limit;
 
