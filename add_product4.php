@@ -399,7 +399,7 @@ if ($BMOOrdersResult) {
                             </span>)
                         </button>
                     </a>
-                    <a href="add_product4.php">
+                    <a href="add_product4.php" class="active-link">
                         <button data-type="BMO">
                             <?= $BMO ?> (<span id="BMO-orders">
                                 <?= $BMOOrdersCount ?>

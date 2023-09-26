@@ -378,7 +378,7 @@ if ($BMOOrdersResult) {
                     <?= $allproduct ?>
                 </h2>
                 <div class="filter-buttons">
-                    <a href="add_product.php">
+                    <a href="add_product.php" class="active-link">
                         <button data-type="All">
                             <?= $all ?> (<span id="all-orders">
                                 <?= $totalproduct ?>

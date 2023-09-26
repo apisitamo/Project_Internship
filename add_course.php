@@ -389,7 +389,7 @@ if ($ASOrdersResult) {
                     <?= $allcourse ?>
                 </h2>
                 <div class="filter-buttons">
-                    <a href="add_course.php">
+                    <a href="add_course.php" class="active-link">
                         <button data-type="All">
                             <?= $all ?> (<span id="all-orders">
                                 <?= $totalCourse ?>

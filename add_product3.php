@@ -392,7 +392,7 @@ if ($BMOOrdersResult) {
                             </span>)
                         </button>
                     </a>
-                    <a href="add_product3.php">
+                    <a href="add_product3.php" class="active-link">
                         <button data-type="BM">
                             <?= $BM ?> (<span id="BM-orders">
                                 <?= $BMOrdersCount ?>

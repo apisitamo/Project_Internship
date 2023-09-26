@@ -396,7 +396,7 @@ if ($ASOrdersResult) {
                             </span>)
                         </button>
                     </a>
-                    <a href="add_course2.php">
+                    <a href="add_course2.php" class="active-link">
                         <button data-type="HSC">
                             <?= $HSC ?> (<span id="HSC-orders">
                                 <?= $HSCOrdersCount ?>

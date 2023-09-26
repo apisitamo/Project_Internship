@@ -403,7 +403,7 @@ if ($ASOrdersResult) {
                             </span>)
                         </button>
                     </a>
-                    <a href="add_course3.php">
+                    <a href="add_course3.php" class="active-link">
                         <button data-type="BSC">
                             <?= $BSC ?> (<span id="BSC-orders">
                                 <?= $BSCOrdersCount ?>
