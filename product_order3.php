@@ -41,34 +41,34 @@ if ($totalProductsResult) {
     $totalProducts = 0;
 }
 // คำนวณจำนวนสินค้าที่มีสถานะเป็น 'pending'
-$pendingOrdersQuery = "SELECT COUNT(*) AS pendingCount FROM product_order WHERE status = 'pending'";
-$pendingOrdersResult = mysqli_query($db, $pendingOrdersQuery);
+$pendingProductQuery = "SELECT COUNT(*) AS pendingCount FROM product_order WHERE status = 'pending'";
+$pendingProductResult = mysqli_query($db, $pendingProductQuery);
 
-if ($pendingOrdersResult) {
-    $pendingOrdersRow = mysqli_fetch_assoc($pendingOrdersResult);
-    $pendingOrdersCount = $pendingOrdersRow['pendingCount'];
+if ($pendingProductResult) {
+    $pendingProductRow = mysqli_fetch_assoc($pendingProductResult);
+    $pendingProductCount = $pendingProductRow['pendingCount'];
 } else {
-    $pendingOrdersCount = 0;
+    $pendingProductCount = 0;
 }
 // คำนวณจำนวนสินค้าที่มีสถานะเป็น 'completed'
-$completedOrdersQuery = "SELECT COUNT(*) AS completedCount FROM product_order WHERE status = 'completed'";
-$completedOrdersResult = mysqli_query($db, $completedOrdersQuery);
+$completedProductQuery = "SELECT COUNT(*) AS completedCount FROM product_order WHERE status = 'completed'";
+$completedProductResult = mysqli_query($db, $completedProductQuery);
 
-if ($completedOrdersResult) {
-    $completedOrdersRow = mysqli_fetch_assoc($completedOrdersResult);
-    $completedOrdersCount = $completedOrdersRow['completedCount'];
+if ($completedProductResult) {
+    $completedProductRow = mysqli_fetch_assoc($completedProductResult);
+    $completedProductCount = $completedProductRow['completedCount'];
 } else {
-    $completedOrdersCount = 0;
+    $completedProductCount = 0;
 }
 // คำนวณจำนวนสินค้าที่มีสถานะเป็น 'rejected'
-$rejectedOrdersQuery = "SELECT COUNT(*) AS rejectedCount FROM product_order WHERE status = 'rejected'";
-$rejectedOrdersResult = mysqli_query($db, $rejectedOrdersQuery);
+$rejectedProductQuery = "SELECT COUNT(*) AS rejectedCount FROM product_order WHERE status = 'rejected'";
+$rejectedProductResult = mysqli_query($db, $rejectedProductQuery);
 
-if ($rejectedOrdersResult) {
-    $rejectedOrdersRow = mysqli_fetch_assoc($rejectedOrdersResult);
-    $rejectedOrdersCount = $rejectedOrdersRow['rejectedCount'];
+if ($rejectedProductResult) {
+    $rejectedProductRow = mysqli_fetch_assoc($rejectedProductResult);
+    $rejectedProductCount = $rejectedProductRow['rejectedCount'];
 } else {
-    $rejectedOrdersCount = 0;
+    $rejectedProductCount = 0;
 }
 
 
@@ -315,29 +315,29 @@ if (isset($_GET['delete_id'])) {
             <div class="filter-buttons">
                 <a href="product_order.php">
                     <button data-status="All">
-                        <?= $all ?> (<span id="all-orders">
+                        <?= $all ?> (<span id="all-Product">
                             <?= $totalProducts ?>
                         </span>)
                     </button>
                 </a>
                 <a href="product_order2.php">
                     <button data-status="pending">
-                        <?= $check ?> (<span id="pending-orders">
-                            <?= $pendingOrdersCount ?>
+                        <?= $check ?> (<span id="pending-Product">
+                            <?= $pendingProductCount ?>
                         </span>)
                     </button>
                 </a>
                 <a href="product_order3.php">
                     <button data-status="completed">
-                        <?= $complete ?> (<span id="completed-orders">
-                            <?= $completedOrdersCount ?>
+                        <?= $complete ?> (<span id="completed-Product">
+                            <?= $completedProductCount ?>
                         </span>)
                     </button>
                 </a>
                 <a href="product_order4.php">
                     <button data-status="rejected">
-                        <?= $reject ?> (<span id="rejected-orders">
-                            <?= $rejectedOrdersCount ?>
+                        <?= $reject ?> (<span id="rejected-Product">
+                            <?= $rejectedProductCount ?>
                         </span>)
                     </button>
                 </a>
@@ -463,11 +463,26 @@ if (isset($_GET['delete_id'])) {
 
         <div class="pagination">
             <?php
-            $totalPages = ceil($completedOrdersCount / $limit); // คำนวณจำนวนหน้าทั้งหมด
+            $totalPages = ceil($completedProductCount / $limit); // คำนวณจำนวนหน้าทั้งหมด
+            $prevPage = ($page > 1) ? $page - 1 : 1;
+            $nextPage = ($page < $totalPages) ? $page + 1 : $totalPages;
+
+            // echo "<a href='product_order3.php?page=1' class='pagination-link'>First</a>"; // ลิงก์ไปหน้าแรก
+
+            if ($page > 1) {
+                echo "<a href='product_order3.php?page=$prevPage' class='pagination-link'><</a>"; // ลิงก์หน้าก่อนหน้า
+            }
+
             for ($i = 1; $i <= $totalPages; $i++) {
                 $activeClass = ($i == $page) ? 'active' : '';
                 echo "<a href='product_order3.php?page=$i' class='pagination-link $activeClass'>$i</a>";
             }
+
+            if ($page < $totalPages) {
+                echo "<a href='product_order3.php?page=$nextPage' class='pagination-link'>></a>"; // ลิงก์หน้าถัดไป
+            }
+
+            // echo "<a href='product_order3.php?page=$totalPages' class='pagination-link'>Last</a>"; // ลิงก์ไปหน้าสุดท้าย
             ?>
         </div>
 

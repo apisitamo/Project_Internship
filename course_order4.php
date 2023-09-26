@@ -41,34 +41,34 @@ if ($totalCourseResult) {
     $totalCourse = 0;
 }
 // คำนวณจำนวนสินค้าที่มีสถานะเป็น 'pending'
-$pendingOrdersQuery = "SELECT COUNT(*) AS pendingCount FROM course_order WHERE status = 'pending'";
-$pendingOrdersResult = mysqli_query($db, $pendingOrdersQuery);
+$pendingCourseQuery = "SELECT COUNT(*) AS pendingCount FROM course_order WHERE status = 'pending'";
+$pendingCourseResult = mysqli_query($db, $pendingCourseQuery);
 
-if ($pendingOrdersResult) {
-    $pendingOrdersRow = mysqli_fetch_assoc($pendingOrdersResult);
-    $pendingOrdersCount = $pendingOrdersRow['pendingCount'];
+if ($pendingCourseResult) {
+    $pendingCourseRow = mysqli_fetch_assoc($pendingCourseResult);
+    $pendingCourseCount = $pendingCourseRow['pendingCount'];
 } else {
-    $pendingOrdersCount = 0;
+    $pendingCourseCount = 0;
 }
 // คำนวณจำนวนสินค้าที่มีสถานะเป็น 'completed'
-$completedOrdersQuery = "SELECT COUNT(*) AS completedCount FROM course_order WHERE status = 'completed'";
-$completedOrdersResult = mysqli_query($db, $completedOrdersQuery);
+$completedCourseQuery = "SELECT COUNT(*) AS completedCount FROM course_order WHERE status = 'completed'";
+$completedCourseResult = mysqli_query($db, $completedCourseQuery);
 
-if ($completedOrdersResult) {
-    $completedOrdersRow = mysqli_fetch_assoc($completedOrdersResult);
-    $completedOrdersCount = $completedOrdersRow['completedCount'];
+if ($completedCourseResult) {
+    $completedCourseRow = mysqli_fetch_assoc($completedCourseResult);
+    $completedCourseCount = $completedCourseRow['completedCount'];
 } else {
-    $completedOrdersCount = 0;
+    $completedCourseCount = 0;
 }
 // คำนวณจำนวนสินค้าที่มีสถานะเป็น 'rejected'
-$rejectedOrdersQuery = "SELECT COUNT(*) AS rejectedCount FROM course_order WHERE status = 'rejected'";
-$rejectedOrdersResult = mysqli_query($db, $rejectedOrdersQuery);
+$rejectedCourseQuery = "SELECT COUNT(*) AS rejectedCount FROM course_order WHERE status = 'rejected'";
+$rejectedCourseResult = mysqli_query($db, $rejectedCourseQuery);
 
-if ($rejectedOrdersResult) {
-    $rejectedOrdersRow = mysqli_fetch_assoc($rejectedOrdersResult);
-    $rejectedOrdersCount = $rejectedOrdersRow['rejectedCount'];
+if ($rejectedCourseResult) {
+    $rejectedCourseRow = mysqli_fetch_assoc($rejectedCourseResult);
+    $rejectedCourseCount = $rejectedCourseRow['rejectedCount'];
 } else {
-    $rejectedOrdersCount = 0;
+    $rejectedCourseCount = 0;
 }
 ?>
 
@@ -316,29 +316,29 @@ if (isset($_GET['delete_id'])) {
             <div class="filter-buttons">
                 <a href="course_order.php">
                     <button data-status="All">
-                        <?= $all ?> (<span id="all-orders">
+                        <?= $all ?> (<span id="all-Course">
                             <?= $totalCourse ?>
                         </span>)
                     </button>
                 </a>
                 <a href="course_order2.php">
                     <button data-status="pending">
-                        <?= $check ?> (<span id="pending-orders">
-                            <?= $pendingOrdersCount ?>
+                        <?= $check ?> (<span id="pending-Course">
+                            <?= $pendingCourseCount ?>
                         </span>)
                     </button>
                 </a>
                 <a href="course_order3.php">
                     <button data-status="completed">
-                        <?= $complete ?> (<span id="completed-orders">
-                            <?= $completedOrdersCount ?>
+                        <?= $complete ?> (<span id="completed-Course">
+                            <?= $completedCourseCount ?>
                         </span>)
                     </button>
                 </a>
                 <a href="course_order4.php">
                     <button data-status="rejected">
-                        <?= $reject ?> (<span id="rejected-orders">
-                            <?= $rejectedOrdersCount ?>
+                        <?= $reject ?> (<span id="rejected-Course">
+                            <?= $rejectedCourseCount ?>
                         </span>)
                     </button>
                 </a>
@@ -470,11 +470,26 @@ if (isset($_GET['delete_id'])) {
 
         <div class="pagination">
             <?php
-            $totalPages = ceil($rejectedOrdersCount / $limit); // คำนวณจำนวนหน้าทั้งหมด
+            $totalPages = ceil($rejectedCourseCount / $limit); // คำนวณจำนวนหน้าทั้งหมด
+            $prevPage = ($page > 1) ? $page - 1 : 1;
+            $nextPage = ($page < $totalPages) ? $page + 1 : $totalPages;
+
+            // echo "<a href='course_order2.php?page=1' class='pagination-link'>First</a>"; // ลิงก์ไปหน้าแรก
+
+            if ($page > 1) {
+                echo "<a href='course_order2.php?page=$prevPage' class='pagination-link'><</a>"; // ลิงก์หน้าก่อนหน้า
+            }
+
             for ($i = 1; $i <= $totalPages; $i++) {
                 $activeClass = ($i == $page) ? 'active' : '';
-                echo "<a href='course_order4.php?page=$i' class='pagination-link $activeClass'>$i</a>";
+                echo "<a href='course_order2.php?page=$i' class='pagination-link $activeClass'>$i</a>";
             }
+
+            if ($page < $totalPages) {
+                echo "<a href='course_order2.php?page=$nextPage' class='pagination-link'>></a>"; // ลิงก์หน้าถัดไป
+            }
+
+            // echo "<a href='course_order2.php?page=$totalPages' class='pagination-link'>Last</a>"; // ลิงก์ไปหน้าสุดท้าย
             ?>
         </div>
 

@@ -32,6 +32,29 @@ if (isset($_GET['logout'])) {
 }
 ?>
 
+<?php
+
+$db = mysqli_connect($servername, $username, $password, $dbname);
+
+$page = isset($_GET['page']) ? $_GET['page'] : 1;
+
+$limit = 10;
+
+$offset = ($page - 1) * $limit;
+
+// คำนวณจำนวนสินค้าทั้งหมด
+$totalProductsQuery = "SELECT COUNT(*) AS total FROM product_order";
+$totalProductsResult = mysqli_query($db, $totalProductsQuery);
+
+if ($totalProductsResult) {
+    $totalProductsRow = mysqli_fetch_assoc($totalProductsResult);
+    $totalProducts = $totalProductsRow['total'];
+} else {
+    $totalProducts = 0;
+}
+
+?>
+
 <style>
     .user1 {
         margin-top: 30px;
@@ -251,6 +274,35 @@ if (isset($_GET['logout'])) {
     }*/
 </style>
 
+<style>
+    .pagination {
+        display: block;
+        text-align: center;
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+
+    .pagination a {
+        margin-left: 5px;
+        margin-right: 5px;
+        background: #e5e5e5;
+        padding: 9px 19px;
+        border-radius: 40px;
+        font-size: 19px;
+    }
+
+    .pagination a:hover {
+        background-color: #094195;
+        color: white !important;
+        transition: 0.4s;
+    }
+
+    .pagination .pagination-link.active {
+        background-color: #094195;
+        color: white !important;
+    }
+</style>
+
 <body>
     <section class="user1">
         <div class="homeheader">
@@ -259,7 +311,7 @@ if (isset($_GET['logout'])) {
             <div class="container-top">
                 <div class="left-box">
                     <div class="homecontent">
-                        <?php if (isset($_SESSION['username'])): ?>
+                        <?php if (isset($_SESSION['username'])) : ?>
                             <label for="username">
                                 <?= $usernames ?>
                             </label><label> : </label>
@@ -267,7 +319,7 @@ if (isset($_GET['logout'])) {
                         <?php endif ?>
                     </div>
                     <div class="homecontent">
-                        <?php if (isset($_SESSION['username'])): ?>
+                        <?php if (isset($_SESSION['username'])) : ?>
                             <label for="username">
                                 <?= $email ?>
                             </label><label> : </label>
@@ -294,14 +346,13 @@ if (isset($_GET['logout'])) {
                             $fullname = $row['fullname'];
                             ?>
                             <input type="text" id="fullname" name="fullname" value="<?php echo $fullname; ?>" <?php if (isset($_SESSION['edit_fullname']))
-                                   echo '';
-                               else
-                                   echo 'disabled'; ?>>
+                                                                                                                    echo '';
+                                                                                                                else
+                                                                                                                    echo 'disabled'; ?>>
                             <button type="button" id="editfullname" onclick="enableFullname()">
                                 <?= $edit ?>
                             </button>
-                            <button type="submit" id="submitfullname" <?php if (!isset($_SESSION['edit_fullname']))
-                                ; ?>>
+                            <button type="submit" id="submitfullname" <?php if (!isset($_SESSION['edit_fullname'])); ?>>
                                 <?= $save ?>
                             </button>
                             <button type="button" id="canclefullname" onclick="cancleFullname()">
@@ -320,16 +371,14 @@ if (isset($_GET['logout'])) {
                             $row = mysqli_fetch_assoc($result);
                             $phone = $row['phone'];
                             ?>
-                            <input type="text" id="phone" name="phone" pattern="[0-9]+" value="<?php echo $phone; ?>"
-                                <?php if (isset($_SESSION['edit_phone']))
-                                    echo '';
-                                else
-                                    echo 'disabled'; ?>>
+                            <input type="text" id="phone" name="phone" pattern="[0-9]+" value="<?php echo $phone; ?>" <?php if (isset($_SESSION['edit_phone']))
+                                                                                                                            echo '';
+                                                                                                                        else
+                                                                                                                            echo 'disabled'; ?>>
                             <button type="button" id="editphone" onclick="enablePhone()">
                                 <?= $edit ?>
                             </button>
-                            <button type="submit" id="submitphone" <?php if (!isset($_SESSION['edit_phone']))
-                                ; ?>>
+                            <button type="submit" id="submitphone" <?php if (!isset($_SESSION['edit_phone'])); ?>>
                                 <?= $save ?>
                             </button>
                             <button type="button" id="canclephone" onclick="canclePhone()">
@@ -351,16 +400,15 @@ if (isset($_GET['logout'])) {
                             $address = $row['address'];
                             ?>
                             <textarea id="address" name="address" <?php if (isset($_SESSION['edit_address']))
-                                echo '';
-                            else
-                                echo 'disabled'; ?>><?php echo $address; ?></textarea>
+                                                                        echo '';
+                                                                    else
+                                                                        echo 'disabled'; ?>><?php echo $address; ?></textarea>
                         </div>
                         <div class="button-address">
                             <button type="button" id="editaddress" onclick="enableAddress()">
                                 <?= $edit ?>
                             </button>
-                            <button type="submit" id="submitaddress" <?php if (!isset($_SESSION['edit_address']))
-                                ; ?>>
+                            <button type="submit" id="submitaddress" <?php if (!isset($_SESSION['edit_address'])); ?>>
                                 <?= $save ?>
                             </button>
                             <button type="button" id="cancleaddress" onclick="cancleAddress()">
@@ -406,17 +454,18 @@ if (isset($_GET['logout'])) {
 
                     // Query สำหรับดึงข้อมูลจากตาราง "product_order" และ "course_order" และรวมผลลัพธ์
                     $query = "SELECT 'Product' AS typee,type, id, name, quantity, price, order_time, status, note
-          FROM product_order WHERE username='$username'
-          UNION ALL
-          SELECT 'Course' AS typee,type, id, name, quantity, price, order_time, status, note
-          FROM course_order WHERE username='$username'
-          ORDER BY order_time DESC";
+                    FROM product_order WHERE username='$username'
+                    UNION ALL
+                    SELECT 'Course' AS typee,type, id, name, quantity, price, order_time, status, note
+                    FROM course_order WHERE username='$username'
+                    ORDER BY order_time DESC
+                    LIMIT $limit OFFSET $offset";
 
                     $result = mysqli_query($db, $query);
 
-                    $i = 1;
-                    while ($row = mysqli_fetch_assoc($result)):
-                        ?>
+                    $i = 1 + $offset;
+                    while ($row = mysqli_fetch_assoc($result)) :
+                    ?>
                         <tr>
                             <td>
                                 <?php echo $i++; ?>
@@ -440,16 +489,16 @@ if (isset($_GET['logout'])) {
                                 <?php echo date('d/m/y H:i', strtotime($row['order_time'])); ?>
                             </td>
                             <td style="background-color:
-        <?php
-        if ($row['status'] == 'rejected') {
-            echo 'red';
-        } elseif ($row['status'] == 'completed') {
-            echo 'green';
-        } else {
-            echo 'yellow';
-        }
-        ?>;
-        ">
+                        <?php
+                        if ($row['status'] == 'rejected') {
+                            echo 'red';
+                        } elseif ($row['status'] == 'completed') {
+                            echo 'green';
+                        } else {
+                            echo 'yellow';
+                        }
+                        ?>;
+                        ">
                                 <?php echo $row['status']; ?>
                             </td>
                             <td>
@@ -459,7 +508,30 @@ if (isset($_GET['logout'])) {
                     <?php endwhile; ?>
                 </table>
             </div>
+        </div>
+        <div class="pagination">
+            <?php
+            $totalPages = ceil($totalProducts / $limit); // คำนวณจำนวนหน้าทั้งหมด
+            $prevPage = ($page > 1) ? $page - 1 : 1;
+            $nextPage = ($page < $totalPages) ? $page + 1 : $totalPages;
 
+            // echo "<a href='user.php?page=1' class='pagination-link'>First</a>"; // ลิงก์ไปหน้าแรก
+
+            if ($page > 1) {
+                echo "<a href='user.php?page=$prevPage' class='pagination-link'><</a>"; // ลิงก์หน้าก่อนหน้า
+            }
+
+            for ($i = 1; $i <= $totalPages; $i++) {
+                $activeClass = ($i == $page) ? 'active' : '';
+                echo "<a href='user.php?page=$i' class='pagination-link $activeClass'>$i</a>";
+            }
+
+            if ($page < $totalPages) {
+                echo "<a href='user.php?page=$nextPage' class='pagination-link'>></a>"; // ลิงก์หน้าถัดไป
+            }
+
+            // echo "<a href='user.php?page=$totalPages' class='pagination-link'>Last</a>"; // ลิงก์ไปหน้าสุดท้าย
+            ?>
         </div>
     </section>
 
