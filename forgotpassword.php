@@ -133,29 +133,29 @@ if ($langId == 1) {
         </div>
         <div class="header-mid">
             <div class="wrapper">
-                <form action="forgot_db.php" method="post">
+                <form action="forgotpassword_db.php" method="post">
                     <div class="input-box">
                         <i class="bi bi-envelope-fill"></i>
-                        <label for="username"><?= $mail ?></label>
-                        <input type="text" name="username" placeholder="<?= $email ?>">
+                        <label for="email"><?= $mail ?></label>
+                        <input type="text" name="email" placeholder="<?= $email ?>">
                     </div>
                     <div class="input-box">
                     <i class="bi bi-person-fill"></i>
-                        <label for="password"><?= $username ?></label>
-                        <input type="password" name="password" placeholder="<?= $username ?>">
+                        <label for="username"><?= $username ?></label>
+                        <input type="text" name="username" placeholder="<?= $username ?>">
                     </div>
                     <div class="input-box">
                     <i class="bi bi-lock-fill"></i>
-                        <label for="password"><?= $newpassword ?></label>
-                        <input type="password" name="password" placeholder="<?= $password ?>">
+                        <label for="password_1"><?= $newpassword ?></label>
+                        <input type="password" name="password_1" placeholder="<?= $password ?>">
                     </div>
                     <div class="input-box">
                     <i class="bi bi-shield-lock-fill"></i>
-                        <label for="password"><?= $repassword ?></label>
-                        <input type="password" name="password" placeholder="<?= $password ?>">
+                        <label for="password_2"><?= $repassword ?></label>
+                        <input type="password" name="password_2" placeholder="<?= $password ?>">
                     </div>
                     <div class="confirm-password">
-                        <a href="login.php"><?= $confirmpassword ?></a>
+                        <button type="submit" name="forgot_pw" class="btn" ><?= $confirmpassword ?></button>
                     </div>
                 </form>
             </div>

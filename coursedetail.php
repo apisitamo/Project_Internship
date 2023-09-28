@@ -60,6 +60,12 @@
 </head>
 
 <style>
+
+    #popup3{
+        width: 1500px;
+        height: 700px;
+    }
+
     .popup {
         display: none;
         z-index: 1000;
@@ -582,6 +588,15 @@
             <div class="popup-content">
                 <span class="close-popup" id="close-popup3">&times;</span>
                 <div class="container">
+                    
+                </div>
+            </div>
+        </div>
+
+        <!-- <div class="popup" id="popup3">
+            <div class="popup-content">
+                <span class="close-popup" id="close-popup3">&times;</span>
+                <div class="container">
                     <p style="text-align: center;">
                         <?= $thx ?>
                     </p>
@@ -599,7 +614,8 @@
                     </button>
                 </div>
             </div>
-        </div>
+        </div> -->
+
     </section>
 
     <script>
@@ -686,24 +702,15 @@
         console.log("X third popup ");
         popup3.style.display = 'none';
         clickOverlay1.style.display = 'none';
-        location.reload();
+        // location.reload();
     });
     buttonclosethird.addEventListener('click', () => {
         console.log("close BTN third POPUP");
         popup3.style.display = 'none';
         clickOverlay1.style.display = 'none';
-        location.reload();
-    });
-
-
-    clickOverlay1.addEventListener('click', () => {
-        console.log("Clicked on overlay");
-        popup1.style.display = 'none'; // ปิด popup1 ที่มี id="popup1"
-        popup2.style.display = 'none';
-        popup3.style.display = 'none';
-        clickOverlay1.style.display = 'none';
         // location.reload();
     });
+
 </script>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

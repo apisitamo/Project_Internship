@@ -27,22 +27,22 @@ if ($langId == 1) {
 
 <style>
     .banner-page-regis img {
-    width: 100%;
-    height: 300px;
+        width: 100%;
+        height: 300px;
     }
 
     .banner-page-regis .wrap {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     .banner-page-regis .wrap p {
-    position: absolute;
-    color: #945834;
-    font-size: 46px;
-    font-weight: bold;
-    margin: 0;
+        position: absolute;
+        color: #945834;
+        font-size: 46px;
+        font-weight: bold;
+        margin: 0;
     }
 
     .header-mid {
@@ -60,7 +60,7 @@ if ($langId == 1) {
 
     .wrapper .input-box {
         width: 100%;
-        height: 70px; 
+        height: 70px;
         background: #FFFFFFB9;
         margin: 30px 0;
         position: relative;
@@ -68,6 +68,7 @@ if ($langId == 1) {
         color: #905537;
         font-weight: 700;
     }
+
     .input-box {
         margin-bottom: 10px;
         display: flex;
@@ -75,10 +76,10 @@ if ($langId == 1) {
         align-items: flex-start;
     }
 
-    .input-box i{
+    .input-box i {
         position: absolute;
         padding: 43.5px 15px;
-        color:#905537;
+        color: #905537;
         font-size: 20px;
         right: 20px;
     }
@@ -88,10 +89,10 @@ if ($langId == 1) {
         width: 100%;
         padding: 15px;
         margin-top: 5px;
-        background:transparent;
+        background: transparent;
         border: none;
         outline: none;
-        border:2px solid #905537;
+        border: 2px solid #905537;
         border-radius: 40px;
     }
 
@@ -116,7 +117,9 @@ if ($langId == 1) {
     .btn:hover {
         background-color: #008000;
     }
-    .header-mid .signin a:link, .a:visited {
+
+    .header-mid .signin a:link,
+    .a:visited {
         width: 100%;
         height: 45px;
         background-color: #C19A6B;
@@ -131,7 +134,7 @@ if ($langId == 1) {
 
     .signin a:hover {
         background-color: #905537;
-        color:#fff !important;
+        color: #fff !important;
     }
 </style>
 
@@ -145,7 +148,7 @@ if ($langId == 1) {
             <div class="wrapper">
                 <form action="register_db.php" method="post">
                     <div class="input-box">
-                    <i class="bi bi-person-fill"></i>
+                        <i class="bi bi-person-fill"></i>
                         <label for="username"><?= $username ?></label>
                         <input type="text" name="username" placeholder="<?= $username ?>">
                     </div>
@@ -155,21 +158,22 @@ if ($langId == 1) {
                         <input type="email" name="email" placeholder="<?= $email ?>">
                     </div>
                     <div class="input-box">
-                    <i class="bi bi-lock-fill"></i>
+                        <i class="bi bi-lock-fill"></i>
                         <label for="password_1"><?= $password ?></label>
                         <input type="password" name="password_1" placeholder="<?= $password ?>">
                     </div>
                     <div class="input-box">
-                    <i class="bi bi-shield-lock-fill"></i>
+                        <i class="bi bi-shield-lock-fill"></i>
                         <label for="password_2"><?= $confirm ?></label>
                         <input type="password" name="password_2" placeholder="<?= $confirm ?>">
                     </div>
                     <div class="input-box">
                         <button type="submit" name="reg_user" class="btn"><?= $submit ?></button>
                     </div>
-                    <div class="signin">
-                        <a href="login.php"><?= $signin ?></a>
                 </form>
+                <div class="signin">
+                    <a href="login.php"><?= $signin ?></a>
+                </div>
             </div>
         </div>
     </section>

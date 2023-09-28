@@ -26,22 +26,22 @@ if ($langId == 1) {
 
 <style>
     .page-login img {
-    width: 100%;
-    height: 300px;
+        width: 100%;
+        height: 300px;
     }
 
     .page-login .wrap {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     .page-login .wrap p {
-    position: absolute;
-    color: #945834;
-    font-size: 46px;
-    font-weight: bold;
-    margin: 0;
+        position: absolute;
+        color: #945834;
+        font-size: 46px;
+        font-weight: bold;
+        margin: 0;
     }
 
     .header-mid {
@@ -67,6 +67,7 @@ if ($langId == 1) {
         color: #905537;
         font-weight: 700;
     }
+
     .input-box {
         margin-bottom: 10px;
         display: flex;
@@ -74,10 +75,10 @@ if ($langId == 1) {
         align-items: flex-start;
     }
 
-    .input-box i{
+    .input-box i {
         position: absolute;
-        padding: 43.5px  15px;
-        color:#905537;
+        padding: 43.5px 15px;
+        color: #905537;
         font-size: 20px;
         right: 20px;
     }
@@ -87,10 +88,10 @@ if ($langId == 1) {
         width: 100%;
         padding: 15px;
         margin-top: 5px;
-        background:transparent;
+        background: transparent;
         border: none;
         outline: none;
-        border:2px solid #905537;
+        border: 2px solid #905537;
         border-radius: 40px;
     }
 
@@ -100,12 +101,13 @@ if ($langId == 1) {
 
     .register-link {
         margin-top: 15px;
-        color:#905537;
+        color: #905537;
     }
 
     .register-link a:hover {
         color: #E57722 !important;
     }
+
     .wrapper .btn {
         width: 100%;
         height: 45px;
@@ -123,12 +125,12 @@ if ($langId == 1) {
     .wrapper .remember-forgot {
         display: flex;
         justify-content: space-between;
-        color:#905537;
+        color: #905537;
     }
+
     .btn:hover {
         background-color: #008000;
     }
-
 </style>
 
 <body>
@@ -141,24 +143,24 @@ if ($langId == 1) {
             <div class="wrapper">
                 <form action="login_db.php" method="post">
                     <div class="input-box">
-                    <i class="bi bi-person-fill"></i>
+                        <i class="bi bi-person-fill"></i>
                         <label for="username"><?= $username ?></label>
                         <input type="text" name="username" placeholder="<?= $username ?>">
                     </div>
                     <div class="input-box">
-                    <i class="bi bi-lock-fill"></i>
+                        <i class="bi bi-lock-fill"></i>
                         <label for="password"><?= $password ?></label>
                         <input type="password" name="password" placeholder="<?= $password ?>">
                     </div>
                     <button type="submit" name="login_user" class="btn"><?= $login ?></button>
-                    <div class="register-link">
-                        <p><?= $member ?><a href="register.php"><?= $signup ?></a></p>
-                    </div>
-                    <div class="remember-forgot">
-                        <lable><input type="checkbox"><?= $remem ?></lable>
-                        <a href="forgot_pw.php"><?= $forgot ?></a>
-                    </div>
                 </form>
+                <div class="register-link">
+                    <p><?= $member ?><a href="register.php"><?= $signup ?></a></p>
+                </div>
+                <div class="remember-forgot">
+                    <lable><input type="checkbox"><?= $remem ?></lable>
+                    <a href="forgotpassword.php"><?= $forgot ?></a>
+                </div>
             </div>
         </div>
     </section>

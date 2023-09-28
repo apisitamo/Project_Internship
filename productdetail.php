@@ -692,15 +692,6 @@
         location.reload();
     });
 
-
-    clickOverlay1.addEventListener('click', () => {
-        console.log("Clicked on overlay");
-        popup1.style.display = 'none'; // ปิด popup1 ที่มี id="popup1"
-        popup2.style.display = 'none';
-        popup3.style.display = 'none';
-        clickOverlay1.style.display = 'none';
-        // location.reload();
-    });
 </script>
 
 <script>
