@@ -104,7 +104,7 @@ if ($langId == 1) {
         color: #000;
     }
 
-    .confirm-password .btn{
+    .confirm-password a:link, a:visited{
         width: 100%;
         height: 45px;
         background-color: #6ACC6D;
@@ -117,8 +117,9 @@ if ($langId == 1) {
         margin-top: 10px;
     }
 
-    .confirm-password .btn:hover {
+    .confirm-password a:hover {
         background-color: #008000;
+        color:#fff !important;
     }
 
 
@@ -154,7 +155,7 @@ if ($langId == 1) {
                         <input type="password" name="password" placeholder="<?= $password ?>">
                     </div>
                     <div class="confirm-password">
-                        <button type="button" class="btn" onclick="location.href'login.php'"><?= $confirmpassword ?></button>
+                        <a href="login.php"><?= $confirmpassword ?></a>
                     </div>
                 </form>
             </div>

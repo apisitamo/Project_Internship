@@ -116,7 +116,7 @@ if ($langId == 1) {
     .btn:hover {
         background-color: #008000;
     }
-    .header-mid .signin .btn {
+    .header-mid .signin a:link, .a:visited {
         width: 100%;
         height: 45px;
         background-color: #C19A6B;
@@ -129,8 +129,9 @@ if ($langId == 1) {
         color: #fff;
     }
 
-    .signin .btn:hover {
+    .signin a:hover {
         background-color: #905537;
+        color:#fff !important;
     }
 </style>
 
@@ -167,7 +168,7 @@ if ($langId == 1) {
                         <button type="submit" name="reg_user" class="btn"><?= $submit ?></button>
                     </div>
                     <div class="signin">
-                        <button type="button" class="btn" onclick="location.href'login.php'"><?= $signin ?></button>
+                        <a href="login.php"><?= $signin ?></a>
                 </form>
             </div>
         </div>
