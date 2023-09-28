@@ -5,43 +5,48 @@ include 'include/head.php';
 include('server.php');
 
 if ($langId == 1) {
-    $login = "เข้าสู่ระบบ";
     $username = "ชื่อผู้ใช้";
     $password = "รหัสผ่าน";
-    $remem = " จดจำฉันไว้";
-    $member = "มีบัญชีแล้วหรือยัง? ";
-    $signup = "ลงทะเบียน";
+    $email = "อีเมลล์";
+    $mail = "กรุณาระบุอีเมลของคุณ";
+    $newpassword = "กรุณระบุรหัสผ่านอันใหม่";
+    $repassword = "กรุณาระบุรหัสผ่านอันใหม่อีกครั้ง";
+    $confirmpassword = "ยืนยันรหัสผ่านที่คุณตั้งใหม่";
     $forgot = "ลืมรหัสผ่าน?";
+    $reset = "รีเซ็ตรหัสผ่าน";
+    
 } else {
-    $login = "Login";
     $username = "Username";
     $password = "Password";
-    $remem = " Remember me";
-    $member = "Doesn't have member? ";
-    $signup = "Sign up";
+    $email = "E-mail";
+    $mail = "Please Input Your E-mail";
+    $newpassword = "Please input your new password";
+    $repassword = "Please input your new password again";
+    $confirmpassword = "Confirm your new password";
     $forgot = "Forgot password?";
+    $reset = "Reset password";
 }
 
 ?>
 
 <style>
-    .page-login img {
-    width: 100%;
-    height: 300px;
+    .page-forgot_pw img {
+        width: 100%;
+        height: 300px;
     }
 
-    .page-login .wrap {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    .page-forgot_pw .wrap {
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
-    .page-login .wrap p {
-    position: absolute;
-    color: #945834;
-    font-size: 46px;
-    font-weight: bold;
-    margin: 0;
+    .page-forgot_pw .wrap p {
+        position: absolute;
+        color: #945834;
+        font-size: 46px;
+        font-weight: bold;
+        margin: 0;
     }
 
     .header-mid {
@@ -66,6 +71,7 @@ if ($langId == 1) {
         font-size: 15px;
         color: #905537;
         font-weight: 700;
+
     }
     .input-box {
         margin-bottom: 10px;
@@ -76,7 +82,7 @@ if ($langId == 1) {
 
     .input-box i{
         position: absolute;
-        padding: 43.5px  15px;
+        padding: 46.5px 15px;
         color:#905537;
         font-size: 20px;
         right: 20px;
@@ -98,65 +104,57 @@ if ($langId == 1) {
         color: #000;
     }
 
-    .register-link {
-        margin-top: 15px;
-        color:#905537;
-    }
-
-    .register-link a:hover {
-        color: #E57722 !important;
-    }
-    .wrapper .btn {
+    .confirm-password .btn{
         width: 100%;
         height: 45px;
         background-color: #6ACC6D;
-        color: white;
         padding: 10px;
-        border: none;
-        cursor: pointer;
-        outline: none;
+        color: #fff;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
         border-radius: 40px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, .1);
         margin-top: 10px;
     }
 
-    .wrapper .remember-forgot {
-        display: flex;
-        justify-content: space-between;
-        color:#905537;
-    }
-    .btn:hover {
+    .confirm-password .btn:hover {
         background-color: #008000;
     }
+
 
 </style>
 
 <body>
-    <section class="page-login">
+    <section class="page-forgot_pw">
         <div class="wrap">
             <img src="assets/images/banner-page.png" alt="">
-            <p><?= $login ?></p>
+            <p><?= $reset ?></p>
         </div>
         <div class="header-mid">
             <div class="wrapper">
-                <form action="login_db.php" method="post">
+                <form action="forgot_db.php" method="post">
+                    <div class="input-box">
+                        <i class="bi bi-envelope-fill"></i>
+                        <label for="username"><?= $mail ?></label>
+                        <input type="text" name="username" placeholder="<?= $email ?>">
+                    </div>
                     <div class="input-box">
                     <i class="bi bi-person-fill"></i>
-                        <label for="username"><?= $username ?></label>
-                        <input type="text" name="username" placeholder="<?= $username ?>">
+                        <label for="password"><?= $username ?></label>
+                        <input type="password" name="password" placeholder="<?= $username ?>">
                     </div>
                     <div class="input-box">
                     <i class="bi bi-lock-fill"></i>
-                        <label for="password"><?= $password ?></label>
+                        <label for="password"><?= $newpassword ?></label>
                         <input type="password" name="password" placeholder="<?= $password ?>">
                     </div>
-                    <button type="submit" name="login_user" class="btn"><?= $login ?></button>
-                    <div class="register-link">
-                        <p><?= $member ?><a href="register.php"><?= $signup ?></a></p>
+                    <div class="input-box">
+                    <i class="bi bi-shield-lock-fill"></i>
+                        <label for="password"><?= $repassword ?></label>
+                        <input type="password" name="password" placeholder="<?= $password ?>">
                     </div>
-                    <div class="remember-forgot">
-                        <lable><input type="checkbox"><?= $remem ?></lable>
-                        <a href="forgot_pw.php"><?= $forgot ?></a>
+                    <div class="confirm-password">
+                        <button type="button" class="btn" onclick="location.href'login.php'"><?= $confirmpassword ?></button>
                     </div>
                 </form>
             </div>

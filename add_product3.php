@@ -67,7 +67,7 @@ if ($BMOOrdersResult) {
 <style>
     .form-control,
     .form-control-option {
-        background: #efefef;
+        background: #fff;
     }
 
     .form-control-option {
@@ -78,7 +78,7 @@ if ($BMOOrdersResult) {
     .addpro1 .containertop,
     .addpro2 .containerbuttom {
         padding: 30px;
-        background-color: #f1f9f9;
+        background-color: #FFF6E7;
         border-radius: 20px;
     }
 

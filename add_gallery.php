@@ -22,13 +22,13 @@ if (isset($_GET['delete_id'])) {
 
 <style>
     .form-control {
-        background: #efefef;
+        background: #fff;
     }
 
     .add-gallery .containertop,
     .add-gallery .containerbuttom {
         padding: 30px;
-        background-color: #f1f9f9;
+        background-color: #FFF6E7;
         border-radius: 20px;
 
     }

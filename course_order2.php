@@ -118,7 +118,7 @@ if (isset($_GET['delete_id'])) {
     }
 
     .pro-order th {
-        background-color: #f2f2f2;
+        background-color: #FFF6E7;
         padding: 15px;
     }
 
