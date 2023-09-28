@@ -104,7 +104,7 @@ if ($langId == 1) {
         color: #000;
     }
 
-    .confirm-password a:link, a:visited{
+    .confirm-password button{
         width: 100%;
         height: 45px;
         background-color: #6ACC6D;
@@ -117,7 +117,7 @@ if ($langId == 1) {
         margin-top: 10px;
     }
 
-    .confirm-password a:hover {
+    .confirm-password button:hover {
         background-color: #008000;
         color:#fff !important;
     }
