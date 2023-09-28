@@ -158,7 +158,7 @@ if ($langId == 1) {
                     <p><?= $member ?><a href="register.php"><?= $signup ?></a></p>
                 </div>
                 <div class="remember-forgot">
-                    <lable><input type="checkbox"><?= $remem ?></lable>
+                    <!-- <lable><input type="checkbox"><?= $remem ?></lable> -->
                     <a href="forgotpassword.php"><?= $forgot ?></a>
                 </div>
             </div>
