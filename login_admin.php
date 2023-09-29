@@ -93,7 +93,7 @@ if ($langId == 1) {
     }
 
     .wrapper .btn {
-        width: 100%;
+        width: 65%;
         height: 45px;
         background-color: #6ACC6D;
         color: white;
@@ -104,6 +104,7 @@ if ($langId == 1) {
         border-radius: 40px;
         box-shadow: 0 0 10px rgba(0, 0, 0, .1);
         margin-top: 10px;
+        margin-left: 70px;
     }
 
     .btn:hover {

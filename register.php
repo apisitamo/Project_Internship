@@ -56,6 +56,7 @@ if ($langId == 1) {
 
     .wrapper {
         width: 420px;
+        text-align: center;
     }
 
     .wrapper .input-box {
@@ -101,7 +102,7 @@ if ($langId == 1) {
     }
 
     .wrapper .btn {
-        width: 100%;
+        width: 65%;
         height: 45px;
         background-color: #6ACC6D;
         color: #fff;
@@ -112,6 +113,7 @@ if ($langId == 1) {
         border-radius: 40px;
         box-shadow: 0 0 10px rgba(0, 0, 0, .1);
         margin-top: 10px;
+        margin-left: 75px;
     }
 
     .btn:hover {
@@ -120,7 +122,7 @@ if ($langId == 1) {
 
     .header-mid .signin a:link,
     .a:visited {
-        width: 100%;
+        width: 65%;
         height: 45px;
         background-color: #C19A6B;
         padding: 10px;

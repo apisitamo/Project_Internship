@@ -104,8 +104,11 @@ if ($langId == 1) {
         color: #000;
     }
 
+    .confirm-password {
+        text-align: center;
+    }
     .confirm-password button{
-        width: 100%;
+        width: 65%;
         height: 45px;
         background-color: #6ACC6D;
         padding: 10px;

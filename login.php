@@ -121,7 +121,7 @@ if ($langId == 1) {
     }
 
     .wrapper .btn {
-        width: 100%;
+        width: 65%;
         height: 45px;
         background-color: #6ACC6D;
         color: white;
