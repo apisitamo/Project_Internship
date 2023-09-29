@@ -114,7 +114,7 @@ if ($langId == 1) {
         text-decoration: none;
         display: inline-block;
         border-radius: 40px;
-        margin-top: 10px;
+        margin-top: 15px;
     }
 
     .confirm-password button:hover {

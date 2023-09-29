@@ -53,8 +53,10 @@ if ($langId == 1) {
         background-color: #FFFFFFB9;
     }
 
-    .wrapper {
+    .wrapper, .underline-forgot, .forgot-pw, .btn {
         width: 420px;
+        text-align: center;
+        margin-top: 15px;
     }
 
     .wrapper .input-box {
@@ -99,13 +101,23 @@ if ($langId == 1) {
         color: #000;
     }
 
-    .register-link {
+    .wrapper .register-link {
+        width: 65%;
+        height: 45px;
+        background-color: #BD9A7A;
+        color: white;
+        padding: 10px;
+        border: none;
+        cursor: pointer;
+        outline: none;
+        border-radius: 40px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+        margin-left: 70px;
         margin-top: 15px;
-        color: #905537;
     }
 
-    .register-link a:hover {
-        color: #E57722 !important;
+    .register-link:hover {
+        background-color: #905537;
     }
 
     .wrapper .btn {
@@ -119,13 +131,14 @@ if ($langId == 1) {
         outline: none;
         border-radius: 40px;
         box-shadow: 0 0 10px rgba(0, 0, 0, .1);
-        margin-top: 10px;
     }
 
-    .wrapper .remember-forgot {
-        display: flex;
-        justify-content: space-between;
+    .wrapper .forgot-pw {
         color: #905537;
+    }
+
+    .wrapper .underline-forgot {
+        border-bottom: 0.5px solid #905537;
     }
 
     .btn:hover {
@@ -154,12 +167,12 @@ if ($langId == 1) {
                     </div>
                     <button type="submit" name="login_user" class="btn"><?= $login ?></button>
                 </form>
-                <div class="register-link">
-                    <p><?= $member ?><a href="register.php"><?= $signup ?></a></p>
-                </div>
-                <div class="remember-forgot">
-                    <!-- <lable><input type="checkbox"><?= $remem ?></lable> -->
+                <div class="forgot-pw">
                     <a href="forgotpassword.php"><?= $forgot ?></a>
+                </div>
+                <div class="underline-forgot"></div>
+                <div class="register-link">
+                    <a href="register.php"><?= $signup ?></a>
                 </div>
             </div>
         </div>
