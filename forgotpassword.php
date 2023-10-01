@@ -14,7 +14,7 @@ if ($langId == 1) {
     $confirmpassword = "ยืนยันรหัสผ่านที่คุณตั้งใหม่";
     $forgot = "ลืมรหัสผ่าน?";
     $reset = "รีเซ็ตรหัสผ่าน";
-    
+    $back = "ย้อนกลับ";
 } else {
     $username = "Username";
     $password = "Password";
@@ -25,6 +25,7 @@ if ($langId == 1) {
     $confirmpassword = "Confirm your new password";
     $forgot = "Forgot password?";
     $reset = "Reset password";
+    $back = "Back";
 }
 
 ?>
@@ -73,6 +74,7 @@ if ($langId == 1) {
         font-weight: 700;
 
     }
+
     .input-box {
         margin-bottom: 10px;
         display: flex;
@@ -80,10 +82,10 @@ if ($langId == 1) {
         align-items: flex-start;
     }
 
-    .input-box i{
+    .input-box i {
         position: absolute;
         padding: 46.5px 15px;
-        color:#905537;
+        color: #905537;
         font-size: 20px;
         right: 20px;
     }
@@ -93,10 +95,10 @@ if ($langId == 1) {
         width: 100%;
         padding: 15px;
         margin-top: 5px;
-        background:transparent;
+        background: transparent;
         border: none;
         outline: none;
-        border:2px solid #905537;
+        border: 2px solid #905537;
         border-radius: 40px;
     }
 
@@ -107,7 +109,8 @@ if ($langId == 1) {
     .confirm-password {
         text-align: center;
     }
-    .confirm-password button{
+
+    .confirm-password button {
         width: 65%;
         height: 45px;
         background-color: #6ACC6D;
@@ -122,10 +125,25 @@ if ($langId == 1) {
 
     .confirm-password button:hover {
         background-color: #008000;
-        color:#fff !important;
+        color: #fff !important;
     }
 
+    .bu-back {
+        margin-left: 1%;
+        margin-top: 1%;
+    }
 
+    .bu-back button {
+        padding: 7px 10px;
+        border: none;
+        background: #ff0000cf;
+        border-radius: 10px;
+    }
+
+    .bu-back button:hover {
+        background: #BB0707;
+        transition: 0.4s;
+    }
 </style>
 
 <body>
@@ -133,6 +151,11 @@ if ($langId == 1) {
         <div class="wrap">
             <img src="assets/images/banner-page.png" alt="">
             <p><?= $reset ?></p>
+        </div>
+        <div class="bu-back">
+                <button id="backButton">
+                    <?= $back ?>
+                </button>
         </div>
         <div class="header-mid">
             <div class="wrapper">
@@ -143,22 +166,22 @@ if ($langId == 1) {
                         <input type="text" name="email" placeholder="<?= $email ?>">
                     </div>
                     <div class="input-box">
-                    <i class="bi bi-person-fill"></i>
+                        <i class="bi bi-person-fill"></i>
                         <label for="username"><?= $username ?></label>
                         <input type="text" name="username" placeholder="<?= $username ?>">
                     </div>
                     <div class="input-box">
-                    <i class="bi bi-lock-fill"></i>
+                        <i class="bi bi-lock-fill"></i>
                         <label for="password_1"><?= $newpassword ?></label>
                         <input type="password" name="password_1" placeholder="<?= $password ?>">
                     </div>
                     <div class="input-box">
-                    <i class="bi bi-shield-lock-fill"></i>
+                        <i class="bi bi-shield-lock-fill"></i>
                         <label for="password_2"><?= $repassword ?></label>
                         <input type="password" name="password_2" placeholder="<?= $password ?>">
                     </div>
                     <div class="confirm-password">
-                        <button type="submit" name="forgot_pw" class="btn" ><?= $confirmpassword ?></button>
+                        <button type="submit" name="forgot_pw" class="btn"><?= $confirmpassword ?></button>
                     </div>
                 </form>
             </div>
@@ -172,6 +195,12 @@ if ($langId == 1) {
 
 <script>
     AOS.init();
+</script>
+
+<script>
+    document.getElementById('backButton').addEventListener('click', function() {
+        window.history.back();
+    });
 </script>
 
 </html>

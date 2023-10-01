@@ -278,20 +278,19 @@
     }
 
     .course-detail .bu-back {
-        margin-left: 2%;
-        margin-bottom: 5px;
+        margin-left: 1%;
+        margin-top: 1%;
     }
 
-    .course-detail .bu-back a button {
+    .course-detail .bu-back button {
         padding: 7px 10px;
         border: none;
         background: #ff0000cf;
         border-radius: 10px;
     }
 
-    .course-detail .bu-back a button:hover {
-        background: blue;
-        color: white;
+    .course-detail .bu-back button:hover {
+        background: #BB0707;
         transition: 0.4s;
     }
 
@@ -336,11 +335,9 @@
 
     <section class="course-detail">
         <div class="bu-back" data-aos="fade-up" data-aos-duration="2000">
-            <a href="allcourse.php">
-                <button>
+                <button id="backButton">
                     <?= $back ?>
                 </button>
-            </a>
         </div>
         <div class="container">
             <div class="row">
@@ -711,6 +708,12 @@
         // location.reload();
     });
 
+</script>
+
+<script>
+    document.getElementById('backButton').addEventListener('click', function() {
+        window.history.back();
+    });
 </script>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
