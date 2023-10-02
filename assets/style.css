@@ -1574,7 +1574,7 @@ a {
     color:  #945834 !important ;
 }
 
-.navbar-light .navbar-nav .dropdown-menu {
+.navbar-light .navbar-nav .nav-item:nth-child(7) .dropdown-menu {
     padding: 0%;
 }
 
