@@ -585,21 +585,23 @@
                             </div>
                         <?php
                         } else { ?>
-                        <div class="homecontent">                  
-                            <div class="container">
-                                <div class="row">
-                                    <p style="text-align: center;">
-                                        <?= $fillinformation ?>
-                                    </p>
+                            <div class="homecontent">
+                                <div class="container">
+                                    <div class="row">
+                                        <p style="text-align: center;">
+                                            <?= $fillinformation ?>
+                                        </p>
+                                    </div>
+                                    <a href="user.php" class="button-success" id="button-success3">
+                                        <p style="text-align: center; color:black;">
+                                            <?= $fillin ?>
+                                        </p>
+                                    </a>
+                                    <button class="button-close" id="button-close1">
+                                        <?= $closeorder ?>
+                                    </button>
                                 </div>
-                                <a href="user.php" class="button-success" id="button-success3">
-                                    <?= $fillin ?>
-                                </a>
-                                <button class="button-close" id="button-close1">
-                                    <?= $closeorder ?>
-                                </button>
                             </div>
-                        </div>
                 <?php        }
                     } else {
                         // ไม่พบข้อมูลของ username นี้

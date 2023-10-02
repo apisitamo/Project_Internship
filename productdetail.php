@@ -208,7 +208,7 @@
         display: inherit;
         position: relative;
         text-align: center;
-        
+
     }
 
     .homecontent {
@@ -584,7 +584,9 @@
                         </p>
                     </div>
                     <a href="user.php" class="button-success" id="button-success3">
-                        <?= $fillin ?>
+                        <p style="text-align: center; color:black;">
+                            <?= $fillin ?>
+                        </p>
                     </a>
                     <button class="button-close" id="button-close1">
                         <?= $closeorder ?>
@@ -619,7 +621,9 @@
                         <?= $wait ?>
                     </p>
                     <a href="history.php" class="button-success" id="button-success3">
-                        <?= $history ?>
+                        <p style="text-align: center; color:black;">
+                            <?= $history ?>
+                        </p>
                     </a>
                     <button class="button-close" id="button-close3">
                         <?= $close ?>
@@ -744,26 +748,26 @@
 
 <script>
     $(document).ready(function() {
-        $(".button-success-2").click(function() {
-            var type = "<?php echo $type ?>";
-            var name = "<?php echo $name_eng ?>";
-            var quantity = $("input[name='quantity']").val();
-            var price = <?php echo $price ?> * quantity;
+    // $(".button-success-2").click(function() {
+    var type = "<?php echo $type ?>";
+    var name = "<?php echo $name_eng ?>";
+    var quantity = $("input[name='quantity']").val();
+    var price = <?php echo $price ?> * quantity;
 
-            $.ajax({
-                type: "POST",
-                url: "productdetail_insert.php",
-                data: {
-                    type: type,
-                    name: name,
-                    quantity: quantity,
-                    price: price
-                },
-                success: function(response) {
-                    // alert(response);
-                }
-            });
-        });
+    $.ajax({
+        type: "POST",
+        url: "productdetail_insert.php",
+        data: {
+            type: type,
+            name: name,
+            quantity: quantity,
+            price: price
+        },
+        success: function(response) {
+            // alert(response);
+        }
+    });
+    });
     });
 </script>
 
