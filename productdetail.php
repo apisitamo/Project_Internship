@@ -576,7 +576,7 @@
                 <a href="user.php" class="button-success" id="button-success3">
                     <?= $fillin ?>
                 </a>
-                <button class="button-close" id="button-close-">
+                <button class="button-close" id="button-close1">
                     <?= $close2 ?>
                 </button>
             </div>
