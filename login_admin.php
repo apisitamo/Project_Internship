@@ -153,7 +153,8 @@ if ($langId == 1) {
                 <div class="left-inner-addon input-box">
                 <i class="bi bi-person-badge"></i>
                     <label for="employee_code"><?= $employee_code ?></label>
-                    <input type="password" name="employee_code" placeholder="<?= $employee_code ?>">
+                    <input type="password" name="employee_code" id="employId" placeholder="<?= $employee_code ?>">
+                    <span toggle="#employId" class="fa fa-fw fa-eye field-icon toggle-password"></span>
                 </div>
                 <div class="input-box">
                     <button type="submit" name="login_admin" class="btn"><?= $login ?></button>
