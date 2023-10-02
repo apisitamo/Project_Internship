@@ -570,14 +570,14 @@
             <div class="container">
                 <div class="row">
                     <p style="text-align: center;">
-                        กรอกข้อมูลของท่านก่อนทำการสั่งซื้อ
+                        <?= $fillinformation ?>
                     </p>
                 </div>
-                <a href="user.php">
-                    กรอกข้อมูล
+                <a href="history.php" class="button-success" id="button-success3">
+                    <?= $history ?>
                 </a>
-                <button>
-                    ปิด
+                <button class="button-close" id="button-close-">
+                    <?= $close2 ?>
                 </button>
             </div>
 <?php        }
@@ -607,11 +607,9 @@
                     <p style="text-align: center;font-size: 30px;">
                         <?= $wait ?>
                     </p>
-                    <button class="button-success" id="button-success3">
-                        <a href="history.php">
-                            <?= $history ?>
-                        </a>
-                    </button>
+                    <a href="history.php" class="button-success" id="button-success3">
+                        <?= $history ?>
+                    </a>
                     <button class="button-close" id="button-close3">
                         <?= $close ?>
                     </button>

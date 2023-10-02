@@ -62,6 +62,7 @@ if($langId == 1){
     $thx = "ขอบคุณสำหรับการซื้อ";
     $wait = "กรุณารอตรวจสอบการโอนเงินภายใน 24 ชม";
     $close = "ปิดรายการสั่งซื้อ";
+    $close2 = "ปิด";
     $baht = "บาท";
     $HSC = "สปาเพื่อสุขภาพ";
     $BSC = "สปาเพื่อความงาม";
@@ -74,6 +75,7 @@ if($langId == 1){
     $Kg = "กิโลกรัม";
     $ordernow = "สั่งซื้อตอนนี้";
     $pinput = "โปรดระบุจำนวน";
+    $fillinformation = "กรอกข้อมูลของท่านก่อนทำการสั่งซื้อ";
     
 
 }else{
@@ -139,6 +141,7 @@ if($langId == 1){
     $thx = "Thank you for purchasing.";
     $wait = "Please wait to check the money transfer within 24 hours.";
     $close = "Close";
+    $close2 = "Close";
     $baht = "Baht";
     $HSC = "Health Spa Course";
     $BSC = "Beauty Spa Course";
@@ -151,6 +154,7 @@ if($langId == 1){
     $Kg = "kilogram";
     $ordernow = "Order Now";
     $pinput = "Please enter quantity";
+    $fillinformation = "Fill in your information before placing an order.";
 
 }
 ?>
