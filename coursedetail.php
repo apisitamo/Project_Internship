@@ -250,7 +250,7 @@
     .button-success p {
         font-size: 18px;
     }
-    
+
     .button-close {
         background-color: red;
         margin-left: 100px;
@@ -588,21 +588,23 @@
                             </div>
                         <?php
                         } else { ?>
-                        <div class="homecontent">                  
-                            <div class="container">
-                                <div class="row">
-                                    <p style="text-align: center;">
-                                        <?= $fillinformation ?>
-                                    </p>
+                            <div class="homecontent">
+                                <div class="container">
+                                    <div class="row">
+                                        <p style="text-align: center;">
+                                            <?= $fillinformation ?>
+                                        </p>
+                                    </div>
+                                    <a href="user.php" class="button-success" id="button-success3">
+                                        <p style="color:black;">
+                                            <?= $fillin ?>
+                                        </p>
+                                    </a>
+                                    <button class="button-close" id="button-close1">
+                                        <?= $closeorder ?>
+                                    </button>
                                 </div>
-                                <a href="user.php" class="button-success" id="button-success3">
-                                    <?= $fillin ?>
-                                </a>
-                                <button class="button-close" id="button-close1">
-                                    <?= $closeorder ?>
-                                </button>
                             </div>
-                        </div>
                 <?php        }
                     } else {
                         // ไม่พบข้อมูลของ username นี้
@@ -622,16 +624,16 @@
 
         <!-- เป็นส่วนของ popup ตอนเด้งขึ้นมา ขั้่น 3-->
 
-        <div class="popup" id="popup3">
+        <!-- <div class="popup" id="popup3">
             <div class="popup-content">
                 <span class="close-popup" id="close-popup3">&times;</span>
                 <div class="container">
 
                 </div>
             </div>
-        </div>
+        </div> -->
 
-        <!-- <div class="popup" id="popup3">
+        <div class="popup" id="popup3">
             <div class="popup-content">
                 <span class="close-popup" id="close-popup3">&times;</span>
                 <div class="container">
@@ -652,7 +654,7 @@
                     </button>
                 </div>
             </div>
-        </div> -->
+        </div>
 
     </section>
 
@@ -760,7 +762,7 @@
 
 <script>
     $(document).ready(function() {
-        $(".button-success-2").click(function() {
+        // $(".button-success-2").click(function() {
             var type = "<?php echo $type ?>";
             var name = "<?php echo $name_eng ?>";
             var day = "<?php echo $day ?>";

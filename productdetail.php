@@ -208,7 +208,7 @@
         display: inherit;
         position: relative;
         text-align: center;
-        
+
     }
 
     .homecontent {
@@ -227,7 +227,7 @@
         margin-top: 10px;
         padding: 15px 50px;
         display: inline-block;
-        
+
     }
 
     .button-success {
@@ -238,7 +238,8 @@
         padding: 15px 50px;
         display: inline-block;
     }
-    .button-success p{
+
+    .button-success p {
         font-size: 18px;
     }
 
@@ -587,7 +588,9 @@
                         </p>
                     </div>
                     <a href="user.php" class="button-success" id="button-success3">
-                        <?= $fillin ?>
+                        <p style="color:black;">
+                            <?= $fillin ?>
+                        </p>
                     </a>
                     <button class="button-close" id="button-close1">
                         <?= $closeorder ?>
@@ -622,7 +625,9 @@
                         <?= $wait ?>
                     </p>
                     <a href="history.php" class="button-success" id="button-success3">
-                        <?= $history ?>
+                        <p style="color:black;">
+                            <?= $history ?>
+                        </p>
                     </a>
                     <button class="button-close" id="button-close3">
                         <?= $close ?>
@@ -747,7 +752,7 @@
 
 <script>
     $(document).ready(function() {
-        $(".button-success-2").click(function() {
+        // $(".button-success-2").click(function() {
             var type = "<?php echo $type ?>";
             var name = "<?php echo $name_eng ?>";
             var quantity = $("input[name='quantity']").val();
