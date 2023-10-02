@@ -35,7 +35,7 @@ if (isset($_GET['logout'])) {
 <style>
     .user1 {
         margin-top: 30px;
-        margin-bottom: 130px;
+        margin-bottom: 120px;
     }
 
     .user1 .container {
