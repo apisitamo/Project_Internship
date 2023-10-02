@@ -241,13 +241,16 @@
     .button-success {
         background-color: green;
         border-radius: 25px;
-        font-size: 18px;
         border: none;
         margin-top: 10px;
         padding: 15px 50px;
         display: inline-block;
     }
 
+    .button-success p {
+        font-size: 18px;
+    }
+    
     .button-close {
         background-color: red;
         margin-left: 100px;
@@ -572,7 +575,7 @@
                                     </p>
                                 <?php } ?>
                                 <img src="assets/images/QR.svg" alt="" class="w-65">
-                                <p style="text-align: center;font-size: 25px;">
+                                <p style="text-align: center;font-size: 30px;">
                                     <?php echo $price ?>
                                     <?= $baht ?>
                                 </p>
@@ -585,23 +588,21 @@
                             </div>
                         <?php
                         } else { ?>
-                            <div class="homecontent">
-                                <div class="container">
-                                    <div class="row">
-                                        <p style="text-align: center;">
-                                            <?= $fillinformation ?>
-                                        </p>
-                                    </div>
-                                    <a href="user.php" class="button-success" id="button-success3">
-                                        <p style="text-align: center; color:black;">
-                                            <?= $fillin ?>
-                                        </p>
-                                    </a>
-                                    <button class="button-close" id="button-close1">
-                                        <?= $closeorder ?>
-                                    </button>
+                        <div class="homecontent">                  
+                            <div class="container">
+                                <div class="row">
+                                    <p style="text-align: center;">
+                                        <?= $fillinformation ?>
+                                    </p>
                                 </div>
+                                <a href="user.php" class="button-success" id="button-success3">
+                                    <?= $fillin ?>
+                                </a>
+                                <button class="button-close" id="button-close1">
+                                    <?= $closeorder ?>
+                                </button>
                             </div>
+                        </div>
                 <?php        }
                     } else {
                         // ไม่พบข้อมูลของ username นี้

@@ -208,7 +208,7 @@
         display: inherit;
         position: relative;
         text-align: center;
-
+        
     }
 
     .homecontent {
@@ -227,16 +227,19 @@
         margin-top: 10px;
         padding: 15px 50px;
         display: inline-block;
+        
     }
 
     .button-success {
         background-color: green;
         border-radius: 25px;
-        font-size: 18px;
         border: none;
         margin-top: 10px;
         padding: 15px 50px;
         display: inline-block;
+    }
+    .button-success p{
+        font-size: 18px;
     }
 
     .button-close {
@@ -584,9 +587,7 @@
                         </p>
                     </div>
                     <a href="user.php" class="button-success" id="button-success3">
-                        <p style="text-align: center; color:black;">
-                            <?= $fillin ?>
-                        </p>
+                        <?= $fillin ?>
                     </a>
                     <button class="button-close" id="button-close1">
                         <?= $closeorder ?>
@@ -621,9 +622,7 @@
                         <?= $wait ?>
                     </p>
                     <a href="history.php" class="button-success" id="button-success3">
-                        <p style="text-align: center; color:black;">
-                            <?= $history ?>
-                        </p>
+                        <?= $history ?>
                     </a>
                     <button class="button-close" id="button-close3">
                         <?= $close ?>
@@ -748,26 +747,26 @@
 
 <script>
     $(document).ready(function() {
-    // $(".button-success-2").click(function() {
-    var type = "<?php echo $type ?>";
-    var name = "<?php echo $name_eng ?>";
-    var quantity = $("input[name='quantity']").val();
-    var price = <?php echo $price ?> * quantity;
+        $(".button-success-2").click(function() {
+            var type = "<?php echo $type ?>";
+            var name = "<?php echo $name_eng ?>";
+            var quantity = $("input[name='quantity']").val();
+            var price = <?php echo $price ?> * quantity;
 
-    $.ajax({
-        type: "POST",
-        url: "productdetail_insert.php",
-        data: {
-            type: type,
-            name: name,
-            quantity: quantity,
-            price: price
-        },
-        success: function(response) {
-            // alert(response);
-        }
-    });
-    });
+            $.ajax({
+                type: "POST",
+                url: "productdetail_insert.php",
+                data: {
+                    type: type,
+                    name: name,
+                    quantity: quantity,
+                    price: price
+                },
+                success: function(response) {
+                    // alert(response);
+                }
+            });
+        });
     });
 </script>
 
