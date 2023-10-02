@@ -580,14 +580,14 @@
                             <div class="container">
                                 <div class="row">
                                     <p style="text-align: center;">
-                                        กรอกข้อมูลของท่านก่อนทำการสั่งซื้อ
+                                        <?= $fillinformation ?>
                                     </p>
                                 </div>
-                                <a href="user.php">
-                                    กรอกข้อมูล
+                                <a href="user.php" class="button-success" id="button-success3">
+                                    <?= $fillin ?>
                                 </a>
-                                <button>
-                                    ปิด
+                                <button class="button-close" id="button-close1">
+                                    <?= $close2 ?>
                                 </button>
                             </div>
                 <?php        }
