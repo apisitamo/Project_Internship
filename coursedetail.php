@@ -168,8 +168,6 @@
         border-color: #AFAFAF;
     }
 
-    .course-product .BSAlogo {}
-
     .course-product .col-lg-6 {
         text-align: center;
     }
@@ -243,12 +241,13 @@
         border-radius: 25px;
         border: none;
         margin-top: 10px;
-        padding: 15px 50px;
+        padding: 15px 50px 0px;
         display: inline-block;
     }
 
     .button-success p {
-        font-size: 18px;
+        font-size: 18px !important;
+        color: black !important;
     }
 
     .button-close {
@@ -596,7 +595,7 @@
                                         </p>
                                     </div>
                                     <a href="user.php" class="button-success" id="button-success3">
-                                        <p style="color:black;">
+                                        <p>
                                             <?= $fillin ?>
                                         </p>
                                     </a>
