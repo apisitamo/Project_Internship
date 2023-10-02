@@ -16,6 +16,7 @@
         $prices = 'ราคา';
         $price1 = "ราคาส่ง :";
         $price2 = "บาท/กก.";
+        $closeorder = "ปิดรายการ";
     } else {
         $types = 'Type :';
         $detail = 'Detail :';
@@ -23,6 +24,7 @@
         $prices = 'Price';
         $price1 = "ราคาส่ง :";
         $price2 = "Baht / Kg.";
+        $closeorder = "Close";
     }
     ?>
 
@@ -206,6 +208,7 @@
         display: inherit;
         position: relative;
         text-align: center;
+        
     }
 
     .homecontent {
@@ -213,7 +216,7 @@
     }
 
     .popup .container p {
-        font-size: 45px;
+        font-size: 35px;
         color: #A97C53;
     }
 
@@ -228,6 +231,12 @@
 
     .button-success {
         background-color: green;
+        border-radius: 25px;
+        font-size: 18px;
+        border: none;
+        margin-top: 10px;
+        padding: 15px 50px;
+        display: inline-block;
     }
 
     .button-close {
@@ -567,18 +576,20 @@
             </div>
         <?php
                         } else { ?>
-            <div class="container">
-                <div class="row">
-                    <p style="text-align: center;">
-                        <?= $fillinformation ?>
-                    </p>
+            <div class="homecontent">
+                <div class="container">
+                    <div class="row">
+                        <p style="text-align: center;">
+                            <?= $fillinformation ?>
+                        </p>
+                    </div>
+                    <a href="user.php" class="button-success" id="button-success3">
+                        <?= $fillin ?>
+                    </a>
+                    <button class="button-close" id="button-close1">
+                        <?= $closeorder ?>
+                    </button>
                 </div>
-                <a href="user.php" class="button-success" id="button-success3">
-                    <?= $fillin ?>
-                </a>
-                <button class="button-close" id="button-close1">
-                    <?= $close2 ?>
-                </button>
             </div>
 <?php        }
                     } else {
@@ -604,7 +615,7 @@
                         <?= $thx ?>
                     </p>
                     <img src="assets/images/image 9.svg" alt="" class="w-70">
-                    <p style="text-align: center;font-size: 30px;">
+                    <p style="text-align: center;font-size: 25px;">
                         <?= $wait ?>
                     </p>
                     <a href="history.php" class="button-success" id="button-success3">

@@ -18,6 +18,7 @@
         $days = 'วัน';
         $prices = 'ราคา';
         $baht = 'บาท';
+        $closeorder = "ปิดรายการ";
     } else {
         $detail = 'Detail :';
         $duration = 'Duration :';
@@ -27,6 +28,7 @@
         $days = 'Days';
         $prices = 'Price';
         $baht = 'Baht';
+        $closeorder = "Close";
     }
     ?>
 
@@ -223,7 +225,7 @@
     }
 
     .popup .container p {
-        font-size: 45px;
+        font-size: 35px;
         color: #A97C53;
     }
 
@@ -238,6 +240,12 @@
 
     .button-success {
         background-color: green;
+        border-radius: 25px;
+        font-size: 18px;
+        border: none;
+        margin-top: 10px;
+        padding: 15px 50px;
+        display: inline-block;
     }
 
     .button-close {
@@ -564,7 +572,7 @@
                                     </p>
                                 <?php } ?>
                                 <img src="assets/images/QR.svg" alt="" class="w-65">
-                                <p style="text-align: center;font-size: 30px;">
+                                <p style="text-align: center;font-size: 25px;">
                                     <?php echo $price ?>
                                     <?= $baht ?>
                                 </p>
@@ -577,6 +585,7 @@
                             </div>
                         <?php
                         } else { ?>
+                        <div class="homecontent">                  
                             <div class="container">
                                 <div class="row">
                                     <p style="text-align: center;">
@@ -587,9 +596,10 @@
                                     <?= $fillin ?>
                                 </a>
                                 <button class="button-close" id="button-close1">
-                                    <?= $close2 ?>
+                                    <?= $closeorder ?>
                                 </button>
                             </div>
+                        </div>
                 <?php        }
                     } else {
                         // ไม่พบข้อมูลของ username นี้
