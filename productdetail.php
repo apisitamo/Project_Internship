@@ -586,10 +586,11 @@
                             <?= $fillinformation ?>
                         </p>
                     </div>
-                    <button class="button-success" id="button-success3">
-                        <a href="user.php">
+                    <a href="user.php" class="button-success" id="button-success3">
+                        <p>
                             <?= $fillin ?>
-                        </a>
+                        </p>
+                    </a>
                     <button class="button-close" id="button-close1">
                         <?= $closeorder ?>
                     </button>
@@ -750,26 +751,26 @@
 
 <script>
     $(document).ready(function() {
-        // $(".button-success-2").click(function() {
-            var type = "<?php echo $type ?>";
-            var name = "<?php echo $name_eng ?>";
-            var quantity = $("input[name='quantity']").val();
-            var price = <?php echo $price ?> * quantity;
+    $(".button-success-2").click(function() {
+    var type = "<?php echo $type ?>";
+    var name = "<?php echo $name_eng ?>";
+    var quantity = $("input[name='quantity']").val();
+    var price = <?php echo $price ?> * quantity;
 
-            $.ajax({
-                type: "POST",
-                url: "productdetail_insert.php",
-                data: {
-                    type: type,
-                    name: name,
-                    quantity: quantity,
-                    price: price
-                },
-                success: function(response) {
-                    // alert(response);
-                }
-            });
-        });
+    $.ajax({
+        type: "POST",
+        url: "productdetail_insert.php",
+        data: {
+            type: type,
+            name: name,
+            quantity: quantity,
+            price: price
+        },
+        success: function(response) {
+            // alert(response);
+        }
+    });
+    });
     });
 </script>
 

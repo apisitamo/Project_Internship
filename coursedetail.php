@@ -4,6 +4,8 @@
 <head>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <link href="calendar.css" rel="stylesheet">
     <?php
     include 'include/head.php';
     include 'include/langid.php';
@@ -625,12 +627,28 @@
 
         <!-- <div class="popup" id="popup3">
             <div class="popup-content">
-                <span class="close-popup" id="close-popup3">&times;</span>
                 <div class="container">
+                    <p>
+                        จำนวนวัน <?= $day ?>
+                    </p>
+                    <div class="left">
+                    <div id="calendar"></div>
 
+                    </div>
+                    <div class="right">
+                        <div>
+                            <?php
+                            for ($i = 1; $i <= $day; $i++) :
+                            ?>
+                                <input type="date" id="date' . $i . '" name="date' . $i . '">
+                            <?php endfor ?>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div> -->
+
+        <!-- เป็นส่วนของ popup ตอนเด้งขึ้นมา ขั้่น 4-->
 
         <div class="popup" id="popup3">
             <div class="popup-content">
@@ -643,11 +661,11 @@
                     <p style="text-align: center;font-size: 30px;">
                         <?= $wait ?>
                     </p>
-                    <button class="button-success" id="button-success3">
-                        <a href="history.php">
+                    <a href="history.php" class="button-success" id="button-success3">
+                        <p>
                             <?= $history ?>
-                        </a>
-                    </button>
+                        </p>
+                    </a>
                     <button class="button-close" id="button-close3">
                         <?= $close ?>
                     </button>
@@ -761,28 +779,28 @@
 
 <script>
     $(document).ready(function() {
-        // $(".button-success-2").click(function() {
-            var type = "<?php echo $type ?>";
-            var name = "<?php echo $name_eng ?>";
-            var day = "<?php echo $day ?>";
-            var quantity = 1;
-            var price = "<?php echo $price ?>";
+    $(".button-success-2").click(function() {
+    var type = "<?php echo $type ?>";
+    var name = "<?php echo $name_eng ?>";
+    var day = "<?php echo $day ?>";
+    var quantity = 1;
+    var price = "<?php echo $price ?>";
 
-            $.ajax({
-                type: "POST",
-                url: "coursedetail_insert.php",
-                data: {
-                    type: type,
-                    name: name,
-                    day: day,
-                    quantity: quantity,
-                    price: price
-                },
-                success: function(response) {
-                    // alert(response);
-                }
-            });
-        });
+    $.ajax({
+        type: "POST",
+        url: "coursedetail_insert.php",
+        data: {
+            type: type,
+            name: name,
+            day: day,
+            quantity: quantity,
+            price: price
+        },
+        success: function(response) {
+            // alert(response);
+        }
+    });
+    });
     });
 </script>
 
