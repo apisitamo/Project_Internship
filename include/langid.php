@@ -76,6 +76,7 @@ if($langId == 1){
     $ordernow = "สั่งซื้อตอนนี้";
     $pinput = "โปรดระบุจำนวน";
     $fillinformation = "กรอกข้อมูลของท่านก่อนทำการสั่งซื้อ";
+    $fillin = "กรอกข้อมูล";
     
 
 }else{
@@ -155,6 +156,7 @@ if($langId == 1){
     $ordernow = "Order Now";
     $pinput = "Please enter quantity";
     $fillinformation = "Fill in your information before placing an order.";
+    $fillin = "Fill In";
 
 }
 ?>

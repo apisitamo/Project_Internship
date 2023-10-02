@@ -573,8 +573,8 @@
                         <?= $fillinformation ?>
                     </p>
                 </div>
-                <a href="history.php" class="button-success" id="button-success3">
-                    <?= $history ?>
+                <a href="user.php" class="button-success" id="button-success3">
+                    <?= $fillin ?>
                 </a>
                 <button class="button-close" id="button-close-">
                     <?= $close2 ?>
