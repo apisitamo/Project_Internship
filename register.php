@@ -138,6 +138,15 @@ if ($langId == 1) {
         background-color: #905537;
         color: #fff !important;
     }
+
+    .iconeye1 img{
+        width: 25px;
+        height: 25px;
+    }
+    .iconeye2 img{
+        width: 25px;
+        height: 25px;
+    }
 </style>
 
 <body>
@@ -162,12 +171,18 @@ if ($langId == 1) {
                     <div class="input-box">
                         <i class="bi bi-lock-fill"></i>
                         <label for="password_1"><?= $password ?></label>
-                        <input type="password" name="password_1" placeholder="<?= $password ?>">
+                        <input type="password" id="passwordInput1" name="password_1" placeholder="<?= $password ?>">
+                        <button class="iconeye1" id="togglePassword1">
+                            <img src="assets/images/showpass.png" alt="">
+                        </button>
                     </div>
                     <div class="input-box">
                         <i class="bi bi-shield-lock-fill"></i>
                         <label for="password_2"><?= $confirm ?></label>
-                        <input type="password" name="password_2" placeholder="<?= $confirm ?>">
+                        <input type="password" id="passwordInput2" name="password_2" placeholder="<?= $confirm ?>">
+                        <button class="iconeye2" id="togglePassword2">
+                            <img src="assets/images/showpass.png" alt="">
+                        </button>
                     </div>
                     <div class="input-box">
                         <button type="submit" name="reg_user" class="btn"><?= $submit ?></button>
@@ -186,6 +201,34 @@ if ($langId == 1) {
 
 <script>
     AOS.init();
+</script>
+
+<script>
+    const passwordInput1 = document.getElementById('passwordInput1');
+    const togglePassword1 = document.getElementById('togglePassword1');
+
+    togglePassword1.addEventListener('click', function(e) {
+        e.preventDefault(); // ยกเลิกการส่งฟอร์มโดยอัตโนมัติ
+
+        if (passwordInput1.type === 'password') {
+            passwordInput1.type = 'text';
+        } else {
+            passwordInput1.type = 'password';
+        }
+    });
+
+    const passwordInput2 = document.getElementById('passwordInput2');
+    const togglePassword2 = document.getElementById('togglePassword2');
+
+    togglePassword2.addEventListener('click', function(e) {
+        e.preventDefault(); // ยกเลิกการส่งฟอร์มโดยอัตโนมัติ
+
+        if (passwordInput2.type === 'password') {
+            passwordInput2.type = 'text';
+        } else {
+            passwordInput2.type = 'password';
+        }
+    });
 </script>
 
 </html>

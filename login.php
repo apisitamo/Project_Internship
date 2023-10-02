@@ -104,8 +104,9 @@ if ($langId == 1) {
         color: #000;
     }
 
-    .wrapper .register-link {
-        width: 65%;
+    .wrapper .register-link a:link,
+    .a:visited {
+        width: 85%;
         height: 45px;
         background-color: #BD9A7A;
         color: white;
@@ -119,7 +120,7 @@ if ($langId == 1) {
         margin-top: 15px;
     }
 
-    .register-link:hover {
+    .register-link a:hover {
         background-color: #905537;
     }
 
@@ -148,11 +149,10 @@ if ($langId == 1) {
         background-color: #008000;
     }
 
-    .iconeye img{
+    .iconeye img {
         width: 25px;
         height: 25px;
     }
-
 </style>
 
 <body>
