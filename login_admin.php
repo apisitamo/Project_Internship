@@ -68,12 +68,12 @@ if ($langId == 1) {
         align-items: flex-start;
     }
 
-    .input-box i{
+    .input-box i {
         position: absolute;
         padding: 43.5px 15px;
-        color:#905537;
+        color: #905537;
         font-size: 20px;
-        right: 20px;
+        left: 0px;
     }
 
     .input-box input {
@@ -110,6 +110,23 @@ if ($langId == 1) {
     .btn:hover {
         background-color: #008000;
     }
+
+    .field-icon {
+        float: right;
+        margin-left: 375px;
+        margin-top: -35px;
+        position: relative;
+
+    }
+
+    .left-inner-addon {
+        position: relative;
+    }
+
+    .left-inner-addon input {
+        padding-left: 50px !important; 
+    }
+
 </style>
 
 
@@ -122,17 +139,18 @@ if ($langId == 1) {
         <div class="header-mid">
             <div class="wrapper">
             <form action="login_admin_db.php" method="post">
-                <div class="input-box">
+                <div class="left-inner-addon input-box">
                 <i class="bi bi-person-workspace"></i>
                     <label for="admin"><?= $admin ?></label>
                     <input type="text" name="admin" placeholder="<?= $admin_id ?>">
                 </div>
-                <div class="input-box">
+                <div class="left-inner-addon input-box">
                 <i class="bi bi-lock-fill"></i>
                     <label for="password"><?= $password ?></label>
-                    <input type="password" name="password" placeholder="<?= $password ?>">
+                    <input type="password" name="password" id="passwordInput" placeholder="<?= $password ?>">
+                    <span toggle="#passwordInput" class="fa fa-fw fa-eye field-icon toggle-password"></span>
                 </div>
-                <div class="input-box">
+                <div class="left-inner-addon input-box">
                 <i class="bi bi-person-badge"></i>
                     <label for="employee_code"><?= $employee_code ?></label>
                     <input type="password" name="employee_code" placeholder="<?= $employee_code ?>">
@@ -150,5 +168,17 @@ if ($langId == 1) {
 
 </body>
 
+<script>
+    $(".toggle-password").click(function() {
+
+    $(this).toggleClass("fa-eye fa-eye-slash");
+    var input = $($(this).attr("toggle"));
+    if (input.attr("type") == "password") {
+    input.attr("type", "text");
+    } else {
+    input.attr("type", "password");
+    }
+    });
+</script>
 
 </html>
