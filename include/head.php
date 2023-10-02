@@ -20,6 +20,7 @@ if (empty($_SESSION['lang']) || $_SESSION['lang'] == 1) {
     $register = 'สมัครสมาชิก';
     $user = 'ข้อมูลผู้ใช้งาน';
     $admin = 'แอดมินเท่านั้น';
+    $history = 'ประวัติ';
 } else {
     $_SESSION['lang'] = 2;
     $flag = 'enflag.png';
@@ -35,6 +36,7 @@ if (empty($_SESSION['lang']) || $_SESSION['lang'] == 1) {
     $register = 'Register';
     $user = 'User Detail';
     $admin = 'For Admin';
+    $history = 'History';
 }
 
 // if (!isset($_SESSION['username'])) {
@@ -119,6 +121,9 @@ if (isset($_GET['logout'])) {
                         <?php if (isset($_SESSION['username'])) { ?>
                             <li class="nav-item">
                                 <a class="nav-link" href="user.php"><?= $user ?></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="history.php"><?= $history ?></a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="index.php?logout='1'"><?= $logout ?></a>

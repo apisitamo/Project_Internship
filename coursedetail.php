@@ -60,8 +60,7 @@
 </head>
 
 <style>
-
-    #popup3{
+    #popup3 {
         width: 1500px;
         height: 700px;
     }
@@ -335,9 +334,9 @@
 
     <section class="course-detail">
         <div class="bu-back" data-aos="fade-up" data-aos-duration="2000">
-                <button id="backButton">
-                    <?= $back ?>
-                </button>
+            <button id="backButton">
+                <?= $back ?>
+            </button>
         </div>
         <div class="container">
             <div class="row">
@@ -444,15 +443,12 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="wrap-contact">
-                        <div class="item call" data-aos="fade-up" data-aos-duration="2000"><i
-                                class="fa-regular fa-phone"></i><span>086-322-1922</span></div>
+                        <div class="item call" data-aos="fade-up" data-aos-duration="2000"><i class="fa-regular fa-phone"></i><span>086-322-1922</span></div>
                         <a href="https://line.me/ti/p/~@108toots">
-                            <div class="item line" data-aos="fade-up" data-aos-duration="2000"><img class="line-img"
-                                    src="assets/images/line.png" alt=""><span>@bsathailand</span></div>
+                            <div class="item line" data-aos="fade-up" data-aos-duration="2000"><img class="line-img" src="assets/images/line.png" alt=""><span>@bsathailand</span></div>
                         </a>
                         <a href="https://th-th.facebook.com/BSABangkok/">
-                            <div class="item facebook" data-aos="fade-up" data-aos-duration="2000"><i
-                                    class="bi bi-facebook"></i><span>Bangkok Spa Academy</span></div>
+                            <div class="item facebook" data-aos="fade-up" data-aos-duration="2000"><i class="bi bi-facebook"></i><span>Bangkok Spa Academy</span></div>
                         </a>
                     </div>
                 </div>
@@ -471,7 +467,7 @@
             <div class="popup-content">
                 <span class="close-popup" id="close-popup1">&times;</span>
                 <div class="homecontent">
-                    <?php if (isset($_SESSION['username'])): ?>
+                    <?php if (isset($_SESSION['username'])) : ?>
                         <div class="box">
                             <div class="container">
                                 <div class="row">
@@ -487,7 +483,7 @@
                                 </button>
                             </div>
                         </div>
-                    <?php else: ?>
+                    <?php else : ?>
                         <div class="box">
                             <div class="container">
                                 <div class="row">
@@ -535,47 +531,79 @@
             </div>
         </div>
 
-        <!-- เป็นส่วนของ popup ตอนเด้งขึ้นมา ที่อยู่-->
-
-        <!-- <div class="popup" id="popupaddress">
-            <div class="popup-content">
-                <span class="close-popup" id="close-popupaddress">&times;</span>
-                <div>
-                    <p style="text-align: center;">กรุณากรอกข้อมูลของท่านก่อนการสั่งซื้อ</p>
-                    <button class="button-success" id="button-successaddress">ไปยังหน้ากรอกข้อมูล</button>
-                    <button class="button-close" id="button-closeaddress">ปิด</button>
-                </div>
-            </div>
-        </div> -->
-
         <!-- เป็นส่วนของ popup ตอนเด้งขึ้นมา ขั้่น 2-->
 
         <div class="popup" id="popup2">
             <div class="popup-content">
                 <span class="close-popup" id="close-popup2">&times;</span>
-                <div class="container">
-                    <?php if ($langId == 1) { ?>
-                        <p style="text-align: center;">
-                            <?php echo $name_th ?>
-                        </p>
-                    <?php } else { ?>
-                        <p style="text-align: center;">
-                            <?php echo $name_eng ?>
-                        </p>
-                    <?php } ?>
-                    <img src="assets/images/QR.svg" alt="" class="w-65">
-                    <p style="text-align: center;font-size: 30px;">
-                        <?php echo $price ?>
-                        <?= $baht ?>
-                    </p>
-                    <button class="button-success-2" id="button-success2"
-                        href="productdetail.php?product_id=<?php echo $row['id']; ?>&type=<?php echo $row['type']; ?>">
-                        <?= $confirm ?>
-                    </button>
-                    <button class="button-close-2" id="button-close2">
-                        <?= $back ?>
-                    </button>
-                </div>
+                <?php
+                if (isset($_SESSION['username'])) {
+                    $usernameToCheck = $_SESSION['username'];
+
+                    include('server.php');
+
+                    $sql = "SELECT fullname, phone, address FROM user WHERE username = '$usernameToCheck'";
+                    $result = $conn->query($sql);
+
+                    if ($result->num_rows == 1) {
+
+                        $row = $result->fetch_assoc();
+                        $fullname = $row['fullname'];
+                        $phone = $row['phone'];
+                        $address = $row['address'];
+
+                        if ($fullname && $phone && $address) { ?>
+                            <div class="container">
+                                <?php if ($langId == 1) { ?>
+                                    <p style="text-align: center;">
+                                        <?php echo $name_th ?>
+                                    </p>
+                                <?php } else { ?>
+                                    <p style="text-align: center;">
+                                        <?php echo $name_eng ?>
+                                    </p>
+                                <?php } ?>
+                                <img src="assets/images/QR.svg" alt="" class="w-65">
+                                <p style="text-align: center;font-size: 30px;">
+                                    <?php echo $price ?>
+                                    <?= $baht ?>
+                                </p>
+                                <button class="button-success-2" id="button-success2">
+                                    <?= $confirm ?>
+                                </button>
+                                <button class="button-close-2" id="button-close2">
+                                    <?= $back ?>
+                                </button>
+                            </div>
+                        <?php
+                        } else { ?>
+                            <div class="container">
+                                <div class="row">
+                                    <p style="text-align: center;">
+                                        กรอกข้อมูลของท่านก่อนทำการสั่งซื้อ
+                                    </p>
+                                </div>
+                                <a href="user.php">
+                                    กรอกข้อมูล
+                                </a>
+                                <button>
+                                    ปิด
+                                </button>
+                            </div>
+                <?php        }
+                    } else {
+                        // ไม่พบข้อมูลของ username นี้
+                        echo "ไม่พบข้อมูลของ username นี้";
+                    }
+
+                    $conn->close();
+                } else {
+                    // ถ้าไม่มีค่า $_SESSION['username'] ให้ทำอะไรตามที่คุณต้องการ
+                    echo "ไม่มีข้อมูล username ใน session";
+                }
+                ?>
+
+
             </div>
         </div>
 
@@ -585,7 +613,7 @@
             <div class="popup-content">
                 <span class="close-popup" id="close-popup3">&times;</span>
                 <div class="container">
-                    
+
                 </div>
             </div>
         </div>
@@ -602,7 +630,7 @@
                         <?= $wait ?>
                     </p>
                     <button class="button-success" id="button-success3">
-                        <a href="user.php">
+                        <a href="history.php">
                             <?= $history ?>
                         </a>
                     </button>
@@ -707,7 +735,6 @@
         clickOverlay1.style.display = 'none';
         // location.reload();
     });
-
 </script>
 
 <script>
@@ -719,8 +746,8 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script>
-    $(document).ready(function () {
-        $(".button-success-2").click(function () {
+    $(document).ready(function() {
+        $(".button-success-2").click(function() {
             var type = "<?php echo $type ?>";
             var name = "<?php echo $name_eng ?>";
             var day = "<?php echo $day ?>";
@@ -737,7 +764,7 @@
                     quantity: quantity,
                     price: price
                 },
-                success: function (response) {
+                success: function(response) {
                     // alert(response);
                 }
             });

@@ -32,29 +32,6 @@ if (isset($_GET['logout'])) {
 }
 ?>
 
-<?php
-
-$db = mysqli_connect($servername, $username, $password, $dbname);
-
-$page = isset($_GET['page']) ? $_GET['page'] : 1;
-
-$limit = 20;
-
-$offset = ($page - 1) * $limit;
-
-// คำนวณจำนวนสินค้าทั้งหมด
-$totalProductsQuery = "SELECT COUNT(*) AS total FROM product_order";
-$totalProductsResult = mysqli_query($db, $totalProductsQuery);
-
-if ($totalProductsResult) {
-    $totalProductsRow = mysqli_fetch_assoc($totalProductsResult);
-    $totalProducts = $totalProductsRow['total'];
-} else {
-    $totalProducts = 0;
-}
-
-?>
-
 <style>
     .user1 {
         margin-top: 30px;
@@ -418,121 +395,8 @@ if ($totalProductsResult) {
                     </form>
                 </div>
             </div>
-            <div class="bottom-box">
-                <table>
-                    <tr>
-                        <th>
-                            <?= $order ?>
-                        </th>
-                        <th>
-                            <?= $types2 ?>
-                        </th>
-                        <th>
-                            <?= $types ?>
-                        </th>
-                        <th>
-                            <?= $lists ?>
-                        </th>
-                        <th>
-                            <?= $quantityy ?>
-                        </th>
-                        <th>
-                            <?= $prices ?>
-                        </th>
-                        <th>
-                            <?= $timess ?>
-                        </th>
-                        <th>
-                            <?= $statuss ?>
-                        </th>
-                        <th>
-                            <?= $notess ?>
-                        </th>
-                    </tr>
-                    <?php
-                    $username = $_SESSION['username'];
-
-                    // Query สำหรับดึงข้อมูลจากตาราง "product_order" และ "course_order" และรวมผลลัพธ์
-                    $query = "SELECT 'Product' AS typee,type, id, name, quantity, price, order_time, status, note
-                    FROM product_order WHERE username='$username'
-                    UNION ALL
-                    SELECT 'Course' AS typee,type, id, name, quantity, price, order_time, status, note
-                    FROM course_order WHERE username='$username'
-                    ORDER BY order_time DESC
-                    LIMIT $limit OFFSET $offset";
-
-                    $result = mysqli_query($db, $query);
-
-                    $i = 1 + $offset;
-                    while ($row = mysqli_fetch_assoc($result)) :
-                    ?>
-                        <tr>
-                            <td>
-                                <?php echo $i++; ?>
-                            </td>
-                            <td>
-                                <?php echo $row['typee']; ?>
-                            </td>
-                            <td>
-                                <?php echo $row['type']; ?>
-                            </td>
-                            <td>
-                                <?php echo $row['name']; ?>
-                            </td>
-                            <td>
-                                <?php echo $row['quantity']; ?>
-                            </td>
-                            <td>
-                                <?php echo $row['price']; ?>
-                            </td>
-                            <td>
-                                <?php echo date('d/m/y H:i', strtotime($row['order_time'])); ?>
-                            </td>
-                            <td style="background-color:
-                        <?php
-                        if ($row['status'] == 'rejected') {
-                            echo 'red';
-                        } elseif ($row['status'] == 'completed') {
-                            echo 'green';
-                        } else {
-                            echo 'yellow';
-                        }
-                        ?>;
-                        ">
-                                <?php echo $row['status']; ?>
-                            </td>
-                            <td>
-                                <?php echo $row['note']; ?>
-                            </td>
-                        </tr>
-                    <?php endwhile; ?>
-                </table>
-            </div>
         </div>
-        <div class="pagination">
-            <?php
-            $totalPages = ceil($totalProducts / $limit); // คำนวณจำนวนหน้าทั้งหมด
-            $prevPage = ($page > 1) ? $page - 1 : 1;
-            $nextPage = ($page < $totalPages) ? $page + 1 : $totalPages;
 
-            // echo "<a href='user.php?page=1' class='pagination-link'>First</a>"; // ลิงก์ไปหน้าแรก
-
-            if ($page > 1) {
-                echo "<a href='user.php?page=$prevPage' class='pagination-link'><</a>"; // ลิงก์หน้าก่อนหน้า
-            }
-
-            for ($i = 1; $i <= $totalPages; $i++) {
-                $activeClass = ($i == $page) ? 'active' : '';
-                echo "<a href='user.php?page=$i' class='pagination-link $activeClass'>$i</a>";
-            }
-
-            if ($page < $totalPages) {
-                echo "<a href='user.php?page=$nextPage' class='pagination-link'>></a>"; // ลิงก์หน้าถัดไป
-            }
-
-            // echo "<a href='user.php?page=$totalPages' class='pagination-link'>Last</a>"; // ลิงก์ไปหน้าสุดท้าย
-            ?>
-        </div>
     </section>
 
     <?php include 'include/footer.php'; ?>

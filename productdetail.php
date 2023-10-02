@@ -325,9 +325,9 @@
 
     <section class="course-detail">
         <div class="bu-back" data-aos="fade-up" data-aos-duration="2000">
-                <button id="backButton">
-                    <?= $back ?>
-                </button>
+            <button id="backButton">
+                <?= $back ?>
+            </button>
         </div>
         <div class="container">
             <div class="row">
@@ -518,49 +518,80 @@
             </div>
         </div>
 
-        <!-- เป็นส่วนของ popup ตอนเด้งขึ้นมา ที่อยู่-->
-
-        <!-- <div class="popup" id="popupaddress">
-            <div class="popup-content">
-                <span class="close-popup" id="close-popupaddress">&times;</span>
-                <div>
-                    <p style="text-align: center;">กรุณากรอกข้อมูลของท่านก่อนการสั่งซื้อ</p>
-                    <button class="button-success" id="button-successaddress">ไปยังหน้ากรอกข้อมูล</button>
-                    <button class="button-close" id="button-closeaddress">ปิด</button>
-                </div>
-            </div>
-        </div> -->
-
         <!-- เป็นส่วนของ popup ตอนเด้งขึ้นมา ขั้่น 2-->
 
         <div class="popup" id="popup2">
             <div class="popup-content">
                 <span class="close-popup" id="close-popup2">&times;</span>
-                <div class="container">
-                    <?php if ($langId == 1) { ?>
-                        <p style="text-align: center;">
-                            <?php echo $name_th ?>
-                        </p>
-                    <?php } else { ?>
-                        <p style="text-align: center;">
-                            <?php echo $name_eng ?>
-                        </p>
-                    <?php } ?>
-                    <img src="assets/images/QR.svg" alt="" class="w-65">
-                    <p id="totalPrice" style="text-align: center;font-size: 30px;">
-                        <!-- <?= $prices ?>
+                <?php
+                if (isset($_SESSION['username'])) {
+                    $usernameToCheck = $_SESSION['username'];
+
+                    include('server.php');
+
+                    $sql = "SELECT fullname, phone, address FROM user WHERE username = '$usernameToCheck'";
+                    $result = $conn->query($sql);
+
+                    if ($result->num_rows == 1) {
+
+                        $row = $result->fetch_assoc();
+                        $fullname = $row['fullname'];
+                        $phone = $row['phone'];
+                        $address = $row['address'];
+
+                        if ($fullname && $phone && $address) { ?>
+                            <div class="container">
+                                <?php if ($langId == 1) { ?>
+                                    <p style="text-align: center;">
+                                        <?php echo $name_th ?>
+                                    </p>
+                                <?php } else { ?>
+                                    <p style="text-align: center;">
+                                        <?php echo $name_eng ?>
+                                    </p>
+                                <?php } ?>
+                                <img src="assets/images/QR.svg" alt="" class="w-65">
+                                <p id="totalPrice" style="text-align: center;font-size: 30px;">
+                                    <!-- <?= $prices ?>
                         <?php echo $price ?>
                         <?= $price2 ?> -->
-                        <span id="totalValue"></span>
-                    </p>
-                    <button class="button-success-2" id="button-success2" href="productdetail.php?product_id=<?php echo $row['id']; ?>&type=<?php echo $row['type']; ?>">
-                        <?= $confirm ?>
-                    </button>
-                    <button class="button-close-2" id="button-close2">
-                        <?= $back ?>
-                    </button>
-                </div>
+                                    <span id="totalValue"></span>
+                                </p>
+                                <button class="button-success-2" id="button-success2">
+                                    <?= $confirm ?>
+                                </button>
+                                <button class="button-close-2" id="button-close2">
+                                    <?= $back ?>
+                                </button>
+                            </div>
             </div>
+        <?php
+                        } else { ?>
+            <div class="container">
+                <div class="row">
+                    <p style="text-align: center;">
+                        กรอกข้อมูลของท่านก่อนทำการสั่งซื้อ
+                    </p>
+                </div>
+                <a href="user.php">
+                    กรอกข้อมูล
+                </a>
+                <button>
+                    ปิด
+                </button>
+            </div>
+<?php        }
+                    } else {
+                        // ไม่พบข้อมูลของ username นี้
+                        echo "ไม่พบข้อมูลของ username นี้";
+                    }
+
+                    $conn->close();
+                } else {
+                    // ถ้าไม่มีค่า $_SESSION['username'] ให้ทำอะไรตามที่คุณต้องการ
+                    echo "ไม่มีข้อมูล username ใน session";
+                }
+?>
         </div>
 
         <!-- เป็นส่วนของ popup ตอนเด้งขึ้นมา ขั้่น 3-->
@@ -577,7 +608,7 @@
                         <?= $wait ?>
                     </p>
                     <button class="button-success" id="button-success3">
-                        <a href="user.php">
+                        <a href="history.php">
                             <?= $history ?>
                         </a>
                     </button>
@@ -688,7 +719,6 @@
         clickOverlay1.style.display = 'none';
         location.reload();
     });
-
 </script>
 
 <script>
