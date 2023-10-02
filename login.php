@@ -53,7 +53,10 @@ if ($langId == 1) {
         background-color: #FFFFFFB9;
     }
 
-    .wrapper, .underline-forgot, .forgot-pw, .btn {
+    .wrapper,
+    .underline-forgot,
+    .forgot-pw,
+    .btn {
         width: 420px;
         text-align: center;
         margin-top: 15px;
@@ -144,6 +147,12 @@ if ($langId == 1) {
     .btn:hover {
         background-color: #008000;
     }
+
+    .iconeye img{
+        width: 25px;
+        height: 25px;
+    }
+
 </style>
 
 <body>
@@ -163,7 +172,10 @@ if ($langId == 1) {
                     <div class="input-box">
                         <i class="bi bi-lock-fill"></i>
                         <label for="password"><?= $password ?></label>
-                        <input type="password" name="password" placeholder="<?= $password ?>">
+                        <input type="password" id="passwordInput" name="password" placeholder="<?= $password ?>">
+                        <button class="iconeye" id="togglePassword">
+                            <img src="assets/images/showpass.png" alt="">
+                        </button>
                     </div>
                     <button type="submit" name="login_user" class="btn"><?= $login ?></button>
                 </form>
@@ -186,5 +198,21 @@ if ($langId == 1) {
 <script>
     AOS.init();
 </script>
+
+<script>
+    const passwordInput = document.getElementById('passwordInput');
+    const togglePassword = document.getElementById('togglePassword');
+
+    togglePassword.addEventListener('click', function(e) {
+        e.preventDefault(); // ยกเลิกการส่งฟอร์มโดยอัตโนมัติ
+
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+        } else {
+            passwordInput.type = 'password';
+        }
+    });
+</script>
+
 
 </html>
