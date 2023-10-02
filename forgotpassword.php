@@ -84,10 +84,10 @@ if ($langId == 1) {
 
     .input-box i {
         position: absolute;
-        padding: 46.5px 15px;
+        padding: 43.5px 15px;
         color: #905537;
         font-size: 20px;
-        right: 20px;
+        left: 0px;
     }
 
     .input-box input {
@@ -145,13 +145,23 @@ if ($langId == 1) {
         transition: 0.4s;
     }
 
-    .iconeye1 img{
-        width: 25px;
-        height: 25px;
+    .field-icon {
+        float: right;
+        margin-left: 375px;
+        margin-top: -35px;
+        position: relative;
+
     }
-    .iconeye2 img{
-        width: 25px;
-        height: 25px;
+
+    .left-inner-addon {
+        position: relative;
+    }
+
+    .left-inner-addon input {
+        padding-left: 50px !important; 
+    }
+    .wrapper .underline-forgotpw {
+        border-bottom: 0.5px solid #905537;
     }
 </style>
 
@@ -169,31 +179,27 @@ if ($langId == 1) {
         <div class="header-mid">
             <div class="wrapper">
                 <form action="forgotpassword_db.php" method="post">
-                    <div class="input-box">
-                        <i class="bi bi-envelope-fill"></i>
+                    <div class="left-inner-addon input-box">
+                        <i class="left-inner-addon bi bi-envelope-fill"></i>
                         <label for="email"><?= $mail ?></label>
                         <input type="text" name="email" placeholder="<?= $email ?>">
                     </div>
-                    <div class="input-box">
+                    <div class="left-inner-addon input-box">
                         <i class="bi bi-person-fill"></i>
                         <label for="username"><?= $username ?></label>
                         <input type="text" name="username" placeholder="<?= $username ?>">
                     </div>
-                    <div class="input-box">
+                    <div class="left-inner-addon input-box">
                         <i class="bi bi-lock-fill"></i>
                         <label for="password_1"><?= $newpassword ?></label>
                         <input type="password" id="passwordInput1" name="password_1" placeholder="<?= $password ?>">
-                        <button class="iconeye1" id="togglePassword1">
-                            <img src="assets/images/showpass.png" alt="">
-                        </button>
+                        <span toggle="#passwordInput1" class="fa fa-fw fa-eye field-icon toggle-password"></span>
                     </div>
-                    <div class="input-box">
+                    <div class="left-inner-addon input-box">
                         <i class="bi bi-shield-lock-fill"></i>
                         <label for="password_2"><?= $repassword ?></label>
                         <input type="password" id="passwordInput2" name="password_2" placeholder="<?= $password ?>">
-                        <button class="iconeye2" id="togglePassword2">
-                            <img src="assets/images/showpass.png" alt="">
-                        </button>
+                        <span toggle="#passwordInput2" class="fa fa-fw fa-eye field-icon toggle-password"></span>
                     </div>
                     <div class="confirm-password">
                         <button type="submit" name="forgot_pw" class="btn"><?= $confirmpassword ?></button>
@@ -243,6 +249,19 @@ if ($langId == 1) {
         } else {
             passwordInput2.type = 'password';
         }
+    });
+</script>
+
+<script>
+    $(".toggle-password").click(function() {
+
+    $(this).toggleClass("fa-eye fa-eye-slash");
+    var input = $($(this).attr("toggle"));
+    if (input.attr("type") == "password") {
+    input.attr("type", "text");
+    } else {
+    input.attr("type", "password");
+    }
     });
 </script>
 

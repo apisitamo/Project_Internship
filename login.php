@@ -85,7 +85,7 @@ if ($langId == 1) {
         padding: 43.5px 15px;
         color: #905537;
         font-size: 20px;
-        right: 20px;
+        left: 0px;
     }
 
     .input-box input {
@@ -103,12 +103,10 @@ if ($langId == 1) {
     .input-group input::placeholder {
         color: #000;
     }
-
-    .wrapper .register-link a:link,
-    .a:visited {
-        width: 85%;
+    .wrapper .btn2 {
+        width: 65%;
         height: 45px;
-        background-color: #BD9A7A;
+        background-color: #C4A484;
         color: white;
         padding: 10px;
         border: none;
@@ -116,12 +114,7 @@ if ($langId == 1) {
         outline: none;
         border-radius: 40px;
         box-shadow: 0 0 10px rgba(0, 0, 0, .1);
-        margin-left: 70px;
         margin-top: 15px;
-    }
-
-    .register-link a:hover {
-        background-color: #905537;
     }
 
     .wrapper .btn {
@@ -149,10 +142,26 @@ if ($langId == 1) {
         background-color: #008000;
     }
 
-    .iconeye img {
-        width: 25px;
-        height: 25px;
+    .btn2:hover {
+        background-color: #945834;
     }
+
+    .field-icon {
+        float: right;
+        margin-left: 375px;
+        margin-top: -35px;
+        position: relative;
+
+    }
+
+    .left-inner-addon {
+        position: relative;
+    }
+
+    .left-inner-addon input {
+        padding-left: 50px !important; 
+    }
+
 </style>
 
 <body>
@@ -164,18 +173,16 @@ if ($langId == 1) {
         <div class="header-mid">
             <div class="wrapper">
                 <form action="login_db.php" method="post">
-                    <div class="input-box">
+                    <div class="left-inner-addon input-box">
                         <i class="bi bi-person-fill"></i>
                         <label for="username"><?= $username ?></label>
                         <input type="text" name="username" placeholder="<?= $username ?>">
                     </div>
-                    <div class="input-box">
+                    <div class="left-inner-addon input-box">
                         <i class="bi bi-lock-fill"></i>
                         <label for="password"><?= $password ?></label>
                         <input type="password" id="passwordInput" name="password" placeholder="<?= $password ?>">
-                        <button class="iconeye" id="togglePassword">
-                            <img src="assets/images/showpass.png" alt="">
-                        </button>
+                        <span toggle="#passwordInput" class="fa fa-fw fa-eye field-icon toggle-password"></span>
                     </div>
                     <button type="submit" name="login_user" class="btn"><?= $login ?></button>
                 </form>
@@ -183,9 +190,7 @@ if ($langId == 1) {
                     <a href="forgotpassword.php"><?= $forgot ?></a>
                 </div>
                 <div class="underline-forgot"></div>
-                <div class="register-link">
-                    <a href="register.php"><?= $signup ?></a>
-                </div>
+                <button type="button" onclick="location.href='register.php'"class="btn2"><?= $signup ?></button>
             </div>
         </div>
     </section>
@@ -214,5 +219,17 @@ if ($langId == 1) {
     });
 </script>
 
+<script>
+    $(".toggle-password").click(function() {
+
+    $(this).toggleClass("fa-eye fa-eye-slash");
+    var input = $($(this).attr("toggle"));
+    if (input.attr("type") == "password") {
+    input.attr("type", "text");
+    } else {
+    input.attr("type", "password");
+    }
+    });
+</script>
 
 </html>
