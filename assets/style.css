@@ -1579,7 +1579,18 @@ a {
 }
 
 .navbar-light .navbar-nav .nav-item .dropdown-menu .dropdown-item {
-    padding: 4% 10% !important;
+    padding-left: 10% !important;
+    padding-right: 10% !important;
+}
+
+.navbar-light .navbar-nav .nav-item .dropdown-menu li:nth-child(1) .dropdown-item {
+    padding-top: 7% !important;
+    padding-bottom: 3% !important;
+}
+
+.navbar-light .navbar-nav .nav-item .dropdown-menu li:nth-child(2) .dropdown-item {
+    padding-bottom: 7% !important;
+    padding-top: 3% !important;
 }
 
 .navbar-light .navbar-nav .dropdown-menu .nav-link {
