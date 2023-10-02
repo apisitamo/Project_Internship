@@ -1574,23 +1574,22 @@ a {
     color:  #945834 !important ;
 }
 
+.navbar-light .navbar-nav .dropdown-menu {
+    padding: 0%;
+}
+
+.navbar-light .navbar-nav .dropdown-menu .nav-link {
+    color:  #945834 !important ;
+    background-color: white !important;
+}
+
+.navbar-light .navbar-nav .dropdown-menu .nav-item {
+    border-bottom-style: ridge !important;
+}
+
 .navbar-light .navbar-nav .dropdown-menu .nav-link:hover {
     color:  white !important ;
     background-color: #945834 !important;
-}
-
-.navbar-light .navbar-nav .dropdown-menu .nav-item:nth-child(3):hover {
-    color:  white !important ;
-    background-color: #945834 !important;
-    transition: 0.5s;
-}
-
-.navbar-light .navbar-nav .dropdown-menu .nav-item:nth-child(3) {
-    padding-left: 7px;
-    padding-bottom: 7px;
-    padding-top: 5px;
-    font-size: 18px;
-    color: #000 ;
 }
 
 .profile-icon{
