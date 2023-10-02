@@ -1574,8 +1574,12 @@ a {
     color:  #945834 !important ;
 }
 
-.navbar-light .navbar-nav .nav-item:nth-child(7) .dropdown-menu {
+.navbar-light .navbar-nav .nav-item .dropdown-menu {
     padding: 0%;
+}
+
+.navbar-light .navbar-nav .nav-item .dropdown-menu .dropdown-item {
+    padding: 4% 10% !important;
 }
 
 .navbar-light .navbar-nav .dropdown-menu .nav-link {
