@@ -34,8 +34,8 @@ if (isset($_GET['logout'])) {
 
 <style>
     .user1 {
-        margin-top: 30px;
-        margin-bottom: 120px;
+        margin-top: 60px;
+        margin-bottom: 60px;
     }
 
     .user1 .container {
@@ -83,17 +83,17 @@ if (isset($_GET['logout'])) {
     .user1 .left-box,
     .user1 .right-box {
         flex: 1;
-        padding: 25px;
+        padding-left: 25px;
+        padding-right: 25px;
         box-sizing: border-box;
-        padding-bottom: 15px;
+        padding-bottom: 38px;
+        padding-top: 38px;
     }
 
     .user1 .left-box {
         background-color: #f2f2f2;
         text-align: end;
-        padding-right: 30px;
         border-radius: 15px 0px 0px 15px;
-        padding-top: 29px;
     }
 
     .user1 .left-box .input-group {
@@ -288,7 +288,7 @@ if (isset($_GET['logout'])) {
             <div class="container-top">
                 <div class="left-box">
                     <div class="homecontent">
-                        <?php if (isset($_SESSION['username'])) : ?>
+                        <?php if (isset($_SESSION['username'])): ?>
                             <label for="username">
                                 <?= $usernames ?>
                             </label><label> : </label>
@@ -296,7 +296,7 @@ if (isset($_GET['logout'])) {
                         <?php endif ?>
                     </div>
                     <div class="homecontent">
-                        <?php if (isset($_SESSION['username'])) : ?>
+                        <?php if (isset($_SESSION['username'])): ?>
                             <label for="username">
                                 <?= $email ?>
                             </label><label> : </label>
@@ -323,13 +323,14 @@ if (isset($_GET['logout'])) {
                             $fullname = $row['fullname'];
                             ?>
                             <input type="text" id="fullname" name="fullname" value="<?php echo $fullname; ?>" <?php if (isset($_SESSION['edit_fullname']))
-                                                                                                                    echo '';
-                                                                                                                else
-                                                                                                                    echo 'disabled'; ?>>
+                                   echo '';
+                               else
+                                   echo 'disabled'; ?>>
                             <button type="button" id="editfullname" onclick="enableFullname()">
                                 <?= $edit ?>
                             </button>
-                            <button type="submit" id="submitfullname" <?php if (!isset($_SESSION['edit_fullname'])); ?>>
+                            <button type="submit" id="submitfullname" <?php if (!isset($_SESSION['edit_fullname']))
+                                ; ?>>
                                 <?= $save ?>
                             </button>
                             <button type="button" id="canclefullname" onclick="cancleFullname()">
@@ -348,14 +349,16 @@ if (isset($_GET['logout'])) {
                             $row = mysqli_fetch_assoc($result);
                             $phone = $row['phone'];
                             ?>
-                            <input type="text" id="phone" name="phone" pattern="[0-9]+" value="<?php echo $phone; ?>" <?php if (isset($_SESSION['edit_phone']))
-                                                                                                                            echo '';
-                                                                                                                        else
-                                                                                                                            echo 'disabled'; ?>>
+                            <input type="text" id="phone" name="phone" pattern="[0-9]+" value="<?php echo $phone; ?>"
+                                <?php if (isset($_SESSION['edit_phone']))
+                                    echo '';
+                                else
+                                    echo 'disabled'; ?>>
                             <button type="button" id="editphone" onclick="enablePhone()">
                                 <?= $edit ?>
                             </button>
-                            <button type="submit" id="submitphone" <?php if (!isset($_SESSION['edit_phone'])); ?>>
+                            <button type="submit" id="submitphone" <?php if (!isset($_SESSION['edit_phone']))
+                                ; ?>>
                                 <?= $save ?>
                             </button>
                             <button type="button" id="canclephone" onclick="canclePhone()">
@@ -377,15 +380,16 @@ if (isset($_GET['logout'])) {
                             $address = $row['address'];
                             ?>
                             <textarea id="address" name="address" <?php if (isset($_SESSION['edit_address']))
-                                                                        echo '';
-                                                                    else
-                                                                        echo 'disabled'; ?>><?php echo $address; ?></textarea>
+                                echo '';
+                            else
+                                echo 'disabled'; ?>><?php echo $address; ?></textarea>
                         </div>
                         <div class="button-address">
                             <button type="button" id="editaddress" onclick="enableAddress()">
                                 <?= $edit ?>
                             </button>
-                            <button type="submit" id="submitaddress" <?php if (!isset($_SESSION['edit_address'])); ?>>
+                            <button type="submit" id="submitaddress" <?php if (!isset($_SESSION['edit_address']))
+                                ; ?>>
                                 <?= $save ?>
                             </button>
                             <button type="button" id="cancleaddress" onclick="cancleAddress()">
