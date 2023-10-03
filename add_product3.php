@@ -249,6 +249,7 @@ if ($BMOOrdersResult) {
         border-radius: 20px;
         margin-bottom: 10px;
         font-size: 25px;
+        margin-left: 10%;
     }
 
     .deleteitem:hover {
@@ -307,8 +308,11 @@ if ($BMOOrdersResult) {
         border: none;
         background: gray;
         border-radius: 200px;
-        width: 33px;
-        height: 33px;
+        width: 37px;
+        height: 38px;
+        position: absolute;
+        left: 40%;
+        top: 2.35%;
     }
 
     .Fixicon img {
@@ -432,7 +436,7 @@ if ($BMOOrdersResult) {
 
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
-                ?>
+                        ?>
                         <div class="card">
                             <button class="deleteitem" data-product-id="<?php echo $row['id']; ?>">&times;</button>
                             <button class="Fixicon" data-course-id="<?php echo $row['id']; ?>">
@@ -465,7 +469,7 @@ if ($BMOOrdersResult) {
                                 </p>
                             </div>
                         </div>
-                <?php
+                        <?php
                     }
                 } else {
                     echo "The product was not found in the database.";
@@ -504,7 +508,8 @@ if ($BMOOrdersResult) {
                     <p style="text-align: center;">
                         <?= $wantdel ?>
                     </p>
-                    <button class="button-close-2" id="confirm-delete-button" href='add_product.php?delete_id=<?php echo $row['id']; ?>'>
+                    <button class="button-close-2" id="confirm-delete-button"
+                        href='add_product.php?delete_id=<?php echo $row['id']; ?>'>
                         <?= $condel ?>
                     </button>
                     <button class="button-close-2" id="button-close2">
@@ -641,8 +646,8 @@ if ($BMOOrdersResult) {
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script>
-    $(document).ready(function() {
-        $(".button-success-1").click(function() {
+    $(document).ready(function () {
+        $(".button-success-1").click(function () {
             var imageInput = $("input[name='img']")[0];
             var imageFile = imageInput.files[0];
             var type = $("select[name='type']").val();
@@ -668,11 +673,11 @@ if ($BMOOrdersResult) {
                     data: formData,
                     contentType: false,
                     processData: false,
-                    success: function(response) {
+                    success: function (response) {
                         window.location.href = 'add_product.php';
                         alert("Successfully added products.");
                     },
-                    error: function() {
+                    error: function () {
                         alert("There was an error adding a product.");
                     }
                 });

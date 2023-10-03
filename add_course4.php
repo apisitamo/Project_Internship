@@ -252,6 +252,7 @@ if ($ASOrdersResult) {
         border-radius: 20px;
         margin-bottom: 10px;
         font-size: 25px;
+        margin-left: 10%;
     }
 
     .deleteitem:hover {
@@ -310,8 +311,11 @@ if ($ASOrdersResult) {
         border: none;
         background: gray;
         border-radius: 200px;
-        width: 33px;
-        height: 33px;
+        width: 37px;
+        height: 38px;
+        position: absolute;
+        left: 40%;
+        top: 1.35%;
     }
 
     .Fixicon img {
