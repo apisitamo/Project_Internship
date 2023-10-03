@@ -263,9 +263,11 @@ if ($BMOOrdersResult) {
         border: none;
     }
 
-    .popup-add #popup2 {
-        width: 30%;
-        height: 20%;
+    .popup-add #popup2,
+    .popup-add #popup1 {
+        /* width: 30%;
+        height: 20%;*/
+        align-items: center;
     }
 
     .popup-add #popup2 #confirm-delete-button {
@@ -281,11 +283,6 @@ if ($BMOOrdersResult) {
 
     .popup-add #popup2 .popup-content .container {
         margin-top: 20px;
-    }
-
-    .popup-add #popup1 {
-        width: 30%;
-        height: 20%;
     }
 
     .popup-add #popup1 #button-success1 {
