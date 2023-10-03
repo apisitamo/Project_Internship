@@ -673,7 +673,7 @@ if ($ASOrdersResult) {
 
 <script>
     $(document).ready(function  () {
-        $(".button-success-1").click(functio n () {
+        $(".button-success-1").click(function () {
             var imageInput = $("input[name='img']")[0];
             var imageFile = imageInput.files[0];
             var type = $("select[name='type']").val();
@@ -703,11 +703,11 @@ if ($ASOrdersResult) {
                     data: formData,
                     contentType: false,
                     processData: false,
-                    success: functi on (response) {
+                    success: function (response) {
                         location.reload();
                         alert("Successfully added course");
                     },
-                    error: funct ion () {
+                    error: function () {
                         alert("There was an error adding a course.");
                     }
                 });
