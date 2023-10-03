@@ -260,7 +260,7 @@
     .addcourse1 #removeImageButton {
         position: absolute;
         top: 0%;
-        left: 62.2%;
+        left: 66%;
         background-color: red;
         color: white;
         border: none;
