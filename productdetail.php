@@ -591,9 +591,6 @@
                             <?= $fillin ?>
                         </p>
                     </a>
-                    <button class="button-close" id="button-close1">
-                        <?= $closeorder ?>
-                    </button>
                 </div>
             </div>
 <?php        }

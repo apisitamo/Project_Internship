@@ -65,8 +65,8 @@
 
 <style>
     #popup3 {
-        width: 1500px;
-        height: 700px;
+        width: 1400px;
+        height: 600px;
     }
 
     .popup {
@@ -601,9 +601,6 @@
                                             <?= $fillin ?>
                                         </p>
                                     </a>
-                                    <button class="button-close" id="button-close1">
-                                        <?= $closeorder ?>
-                                    </button>
                                 </div>
                             </div>
                 <?php        }
@@ -625,10 +622,10 @@
 
         <!-- เป็นส่วนของ popup ตอนเด้งขึ้นมา ขั้่น 3-->
 
-        <!-- <div class="popup" id="popup3">
+        <div class="popup" id="popup3">
             <div class="popup-content">
                 <div class="container">
-                    <p>
+                    <p class=""ssssss></p>
                         จำนวนวัน <?= $day ?>
                     </p>
                     <div class="left">
@@ -640,17 +637,17 @@
                             <?php
                             for ($i = 1; $i <= $day; $i++) :
                             ?>
-                                <input type="date" id="date' . $i . '" name="date' . $i . '">
+                                <input type="date">
                             <?php endfor ?>
                         </div>
                     </div>
                 </div>
             </div>
-        </div> -->
+        </div>
 
         <!-- เป็นส่วนของ popup ตอนเด้งขึ้นมา ขั้่น 4-->
 
-        <div class="popup" id="popup3">
+        <!-- <div class="popup" id="popup3">
             <div class="popup-content">
                 <span class="close-popup" id="close-popup3">&times;</span>
                 <div class="container">
@@ -671,7 +668,7 @@
                     </button>
                 </div>
             </div>
-        </div>
+        </div> -->
 
     </section>
 
