@@ -267,8 +267,9 @@ if (isset($_GET['delete_id'])) {
     }
 
     .popup-add #popup2 {
-        width: 30%;
-        height: 20%;
+        /* width: 30%;
+        height: 20%;*/
+        align-items: center;
     }
 
     .popup-add #popup2 #confirm-delete-button {
@@ -474,7 +475,7 @@ if (isset($_GET['delete_id'])) {
             $nextPage = ($page < $totalPages) ? $page + 1 : $totalPages;
 
             // echo "<a href='course_order.php?page=1' class='pagination-link'>First</a>"; // ลิงก์ไปหน้าแรก
-
+            
             if ($page > 1) {
                 echo "<a href='course_order.php?page=$prevPage' class='pagination-link'><</a>"; // ลิงก์หน้าก่อนหน้า
             }

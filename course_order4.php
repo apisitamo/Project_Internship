@@ -268,8 +268,9 @@ if (isset($_GET['delete_id'])) {
     }
 
     .popup-add #popup2 {
-        width: 30%;
-        height: 20%;
+        /* width: 30%;
+        height: 20%;*/
+        align-items: center;
     }
 
     .popup-add #popup2 #confirm-delete-button {
