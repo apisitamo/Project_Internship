@@ -238,6 +238,25 @@
     }
 </style>
 
+<style>
+    .sizeimg {
+        width: 380px;
+        height: 270px;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .sizeimg img {
+        width: auto;
+        height: auto;
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: cover;
+    }
+</style>
+
 <body>
     <div class="bu-back">
         <button id="backButton">
@@ -250,12 +269,15 @@
             <h2>
                 <?= $fixcourse ?>
             </h2>
-            <div class="mb-3">
-                <img src="<?php echo $img; ?>" alt="Course Image">
+            <div class="mb-3" style="position: relative;">
+                <div class="sizeimg">
+                    <img id="previewImage" src="<?php echo $img; ?>" alt="Course Image">
+                </div>
                 <label for="img" class="form-label">
                     <?= $picture ?>
                 </label>
-                <input type="file" class="form-control" name="img" required>
+                <input type="file" class="form-control" name="img" id="imageInput" required>
+                <button id="removeImageButton" style="position: absolute; top: 0; left: 0; background-color: red; color: white; border: none; padding: 5px; cursor: pointer; display: none;">&times;</button>
             </div>
             <div class="mb-3">
                 <label for="type" class="form-label">
@@ -347,6 +369,41 @@
 <script>
     document.getElementById('backButton').addEventListener('click', function() {
         window.history.back();
+    });
+</script>
+
+<script>
+    // เลือก DOM elements
+    const imageInput = document.getElementById('imageInput');
+    const previewImage = document.getElementById('previewImage');
+    const removeImageButton = document.getElementById('removeImageButton');
+
+    // เมื่อมีการเลือกไฟล์ใหม่
+    imageInput.addEventListener('change', function() {
+        const file = imageInput.files[0]; // เลือกไฟล์ที่เลือก
+
+        if (file) {
+            const reader = new FileReader();
+
+            // เมื่อไฟล์ถูกโหลด
+            reader.onload = function(e) {
+                previewImage.src = e.target.result; // แสดงรูปภาพใหม่ในภาพตัวอย่าง
+                removeImageButton.style.display = 'block'; // แสดงปุ่มลบ
+            };
+
+            // อ่านไฟล์เป็น URL
+            reader.readAsDataURL(file);
+        } else {
+            previewImage.src = '<?php echo $img; ?>'; // แสดงรูปเดิม
+            removeImageButton.style.display = 'none'; // ซ่อนปุ่มลบ
+        }
+    });
+
+    // เมื่อคลิกปุ่มลบ
+    removeImageButton.addEventListener('click', function() {
+        imageInput.value = ''; // ล้างค่า input file
+        previewImage.src = '<?php echo $img; ?>'; // แสดงรูปเดิม
+        removeImageButton.style.display = 'none'; // ซ่อนปุ่มลบ
     });
 </script>
 
