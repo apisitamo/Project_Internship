@@ -269,6 +269,7 @@ if ($BMOOrdersResult) {
         /* width: 30%;
         height: 20%;*/
         align-items: center;
+        background-image: url(assets/images/banner-page.png);
     }
 
     .popup-add #popup2 #confirm-delete-button {
