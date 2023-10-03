@@ -256,6 +256,17 @@
         max-height: 100%;
         object-fit: cover;
     }
+
+    .addcourse1 #removeImageButton {
+        position: absolute;
+        top: 0%;
+        left: 62.2%;
+        background-color: red;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        cursor: pointer;
+    }
 </style>
 
 <body>
@@ -278,8 +289,7 @@
                     <?= $picture ?>
                 </label>
                 <input type="file" class="form-control" name="img" id="imageInput" required>
-                <button id="removeImageButton"
-                    style="position: absolute; top: 0; left: 0; background-color: red; color: white; border: none; padding: 5px; cursor: pointer; display: none;">&times;</button>
+                <button id="removeImageButton" style="display: none;">&times;</button>
             </div>
             <div class="mb-3">
                 <label for="type" class="form-label">
