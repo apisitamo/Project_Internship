@@ -246,6 +246,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        margin: auto;
     }
 
     .sizeimg img {
@@ -277,7 +278,8 @@
                     <?= $picture ?>
                 </label>
                 <input type="file" class="form-control" name="img" id="imageInput" required>
-                <button id="removeImageButton" style="position: absolute; top: 0; left: 0; background-color: red; color: white; border: none; padding: 5px; cursor: pointer; display: none;">&times;</button>
+                <button id="removeImageButton"
+                    style="position: absolute; top: 0; left: 0; background-color: red; color: white; border: none; padding: 5px; cursor: pointer; display: none;">&times;</button>
             </div>
             <div class="mb-3">
                 <label for="type" class="form-label">
@@ -285,9 +287,15 @@
                 </label>
                 <select class="form-control-option" name="type">
                     <option value="null"></option>
-                    <option value="Health Spa Course" <?php if ($type == "Health Spa Course") echo "selected"; ?>>Health Spa Course</option>
-                    <option value="Beauty Spa Course" <?php if ($type == "Beauty Spa Course") echo "selected"; ?>>Beauty Spa Course</option>
-                    <option value="Advanced Spa" <?php if ($type == "Advanced Spa") echo "selected"; ?>>Advanced Spa</option>
+                    <option value="Health Spa Course" <?php if ($type == "Health Spa Course")
+                        echo "selected"; ?>>Health
+                        Spa Course</option>
+                    <option value="Beauty Spa Course" <?php if ($type == "Beauty Spa Course")
+                        echo "selected"; ?>>Beauty
+                        Spa Course</option>
+                    <option value="Advanced Spa" <?php if ($type == "Advanced Spa")
+                        echo "selected"; ?>>Advanced Spa
+                    </option>
                 </select>
             </div>
 
@@ -367,7 +375,7 @@
 </script>
 
 <script>
-    document.getElementById('backButton').addEventListener('click', function() {
+    document.getElementById('backButton').addEventListener('click', function () {
         window.history.back();
     });
 </script>
@@ -379,14 +387,14 @@
     const removeImageButton = document.getElementById('removeImageButton');
 
     // เมื่อมีการเลือกไฟล์ใหม่
-    imageInput.addEventListener('change', function() {
+    imageInput.addEventListener('change', function () {
         const file = imageInput.files[0]; // เลือกไฟล์ที่เลือก
 
         if (file) {
             const reader = new FileReader();
 
             // เมื่อไฟล์ถูกโหลด
-            reader.onload = function(e) {
+            reader.onload = function (e) {
                 previewImage.src = e.target.result; // แสดงรูปภาพใหม่ในภาพตัวอย่าง
                 removeImageButton.style.display = 'block'; // แสดงปุ่มลบ
             };
@@ -400,7 +408,7 @@
     });
 
     // เมื่อคลิกปุ่มลบ
-    removeImageButton.addEventListener('click', function() {
+    removeImageButton.addEventListener('click', function () {
         imageInput.value = ''; // ล้างค่า input file
         previewImage.src = '<?php echo $img; ?>'; // แสดงรูปเดิม
         removeImageButton.style.display = 'none'; // ซ่อนปุ่มลบ
