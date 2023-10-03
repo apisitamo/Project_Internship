@@ -438,7 +438,7 @@ if ($BMOOrdersResult) {
                     while ($row = $result->fetch_assoc()) {
                         ?>
                         <div class="card">
-                            <button class="deleteitem" data-product-id="<?php echo $row['id']; ?>">&times;</button>
+                            <button class="deleteitem" data-product-id="<?php echo $row['id']; ?>"><img src="assets/images/bin2.png" alt=""></button>
                             <button class="Fixicon" data-course-id="<?php echo $row['id']; ?>">
                                 <img src="assets/images/fix.png" alt="">
                             </button>

@@ -214,7 +214,7 @@ if (isset($_GET['delete_id'])) {
                             ?>
                             <div class="col-lg-3">
                                 <div class="card">
-                                    <button class="deleteitem" data-gallery-id="<?php echo $row['id']; ?>">&times;</button>
+                                    <button class="deleteitem" data-gallery-id="<?php echo $row['id']; ?>"><img src="assets/images/bin2.png" alt=""></button>
                                     <img src="<?php echo $row['img']; ?>" class="w-100" alt="gallery Image">
                                 </div>
                             </div>
