@@ -70,7 +70,7 @@ if ($langId == 1) {
                             while ($row = $result->fetch_assoc()) {
                         ?>
                                 <div class="col-lg-4 col-md-6 col-sm-12 mb-4" data-aos="flip-right" data-aos-duration="2000">
-                                    <a href="coursedetail.php?course_id=<?php echo $row['id']; ?>">
+                                    <a href="allcoursedetail.php?course_id=<?php echo $row['id']; ?>">
                                         <div class="card">
                                             <img src="<?php echo $row['img']; ?>" class="card-img-top">
                                             <div class="card-body">
