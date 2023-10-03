@@ -77,13 +77,13 @@ if (isset($_GET['delete_id'])) {
     }
 
     .deleteitem {
-        padding: 0px 11px;
+        padding: 6px 10px;
         margin-top: 5px;
         border: none;
         background: red;
         border-radius: 20px;
         margin-bottom: 10px;
-        font-size: 25px;
+        font-size: 17px;
     }
 
     .deleteitem:hover {
@@ -214,7 +214,9 @@ if (isset($_GET['delete_id'])) {
                             ?>
                             <div class="col-lg-3">
                                 <div class="card">
-                                    <button class="deleteitem" data-gallery-id="<?php echo $row['id']; ?>"><img src="assets/images/bin2.png" alt=""></button>
+                                    <button class="deleteitem" data-gallery-id="<?php echo $row['id']; ?>">
+                                        <i class="bi bi-trash3-fill"></i>
+                                    </button>
                                     <img src="<?php echo $row['img']; ?>" class="w-100" alt="gallery Image">
                                 </div>
                             </div>

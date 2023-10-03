@@ -242,13 +242,13 @@ if ($BMOOrdersResult) {
     }
 
     .deleteitem {
-        padding: 0px 11px;
+        padding: 6px 10px;
         margin-top: 5px;
         border: none;
         background: red;
         border-radius: 20px;
         margin-bottom: 10px;
-        font-size: 25px;
+        font-size: 17px;
         margin-left: 10%;
     }
 
@@ -438,7 +438,9 @@ if ($BMOOrdersResult) {
                     while ($row = $result->fetch_assoc()) {
                         ?>
                         <div class="card">
-                            <button class="deleteitem" data-product-id="<?php echo $row['id']; ?>"><img src="assets/images/bin2.png" alt=""></button>
+                            <button class="deleteitem" data-product-id="<?php echo $row['id']; ?>">
+                                <i class="bi bi-trash3-fill"></i>
+                            </button>
                             <button class="Fixicon" data-course-id="<?php echo $row['id']; ?>">
                                 <img src="assets/images/fix.png" alt="">
                             </button>
