@@ -77,6 +77,8 @@ if($langId == 1){
     $pinput = "โปรดระบุจำนวน";
     $fillinformation = "กรอกข้อมูลของท่านก่อนทำการสั่งซื้อ";
     $fillin = "กรอกข้อมูล";
+    $fixcourse = "แก้ไขข้อมูลหลักสูตร";
+    
     
 
 }else{
@@ -157,6 +159,7 @@ if($langId == 1){
     $pinput = "Please enter quantity";
     $fillinformation = "Fill in your information before placing an order.";
     $fillin = "Fill In";
+    $fixcourse = "Edit course information";
 
 }
 ?>
