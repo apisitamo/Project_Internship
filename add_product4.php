@@ -136,6 +136,12 @@ if ($BMOOrdersResult) {
         margin-top: 10px;
     }
 
+    .addpro2 .product-body p:nth-child(5),
+    .addpro2 .product-body p:nth-child(3) {
+        overflow: hidden;
+        height: 90px;
+    }
+
     .addpro2 .fa-sharp {
         margin-right: 6px;
         color: #71BD1F;

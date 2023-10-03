@@ -149,6 +149,16 @@ if ($ASOrdersResult) {
         margin-top: 10px;
     }
 
+    .addcourse2 .course-body p:nth-child(3) {
+        overflow: hidden;
+        height: 200px;
+    }
+
+    .addcourse2 .course-body p:nth-child(5) {
+        overflow: hidden;
+        height: 310px;
+    }
+
     .addcourse2 .fa-sharp {
         margin-right: 6px;
         color: #71BD1F;

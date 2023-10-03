@@ -149,6 +149,16 @@ if ($ASOrdersResult) {
         margin-top: 10px;
     }
 
+    .addcourse2 .course-body p:nth-child(3) {
+        overflow: hidden;
+        height: 200px;
+    }
+
+    .addcourse2 .course-body p:nth-child(5) {
+        overflow: hidden;
+        height: 310px;
+    }
+
     .addcourse2 .fa-sharp {
         margin-right: 6px;
         color: #71BD1F;
@@ -670,7 +680,7 @@ if ($ASOrdersResult) {
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script>
-    $(document).ready(function  () {
+    $(document).ready(function () {
         $(".button-success-1").click(function () {
             var imageInput = $("input[name='img']")[0];
             var imageFile = imageInput.files[0];
