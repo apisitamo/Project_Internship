@@ -317,6 +317,18 @@ if (isset($_GET['delete_id'])) {
     [data-status="rejected"] .status-dropdown {
         background: #ff1e1e !important;
     }
+
+    .greenText {
+        background: #00e700;
+    }
+
+    .yellowText {
+        background: yellow;
+    }
+
+    .redText {
+        background: #ff1e1e;
+    }
 </style>
 
 <body>
@@ -429,17 +441,20 @@ if (isset($_GET['delete_id'])) {
                                         <?php echo date('d/m/y H:i', strtotime($row['order_time'])); ?>
                                     </td>
                                     <td>
-                                        <select class="status-dropdown" data-row-id="<?php echo $row['id']; ?>" disabled>
-                                            <option value="pending" <?php if ($row['status'] === 'pending')
-                                                echo 'selected'; ?>><?= $check ?>
+                                        <select onchange="this.className=this.options[this.selectedIndex].className"
+                                            class="status-dropdown" data-row-id="<?php echo $row['id']; ?>" disabled>
+                                            <option value="pending" class="yellowText" <?php if ($row['status'] === 'pending')
+                                                echo 'selected'; ?>>
+                                                <?= $check ?>
                                             </option>
-                                            <option value="completed" <?php if ($row['status'] === 'completed')
+                                            <option value="completed" class="greenText" <?php if ($row['status'] === 'completed')
                                                 echo 'selected'; ?>>
                                                 <?= $complete ?>
                                             </option>
-                                            <option value="rejected" <?php if ($row['status'] === 'rejected')
+                                            <option value="rejected" class="redText" <?php if ($row['status'] === 'rejected')
                                                 echo 'selected'; ?>>
-                                          <?= $reject ?></option>
+                                                <?= $reject ?>
+                                            </option>
                                         </select>
                                         <button class="edit-button" data-row-id="<?php echo $row['id']; ?>">
                                             <?= $edit ?>
