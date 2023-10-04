@@ -173,6 +173,11 @@ if (isset($_GET['delete_id'])) {
         border: none;
         background: yellow;
         padding: 0px 5px;
+        color: black;
+    }
+
+    .pro-order .table_order .status-dropdown option:nth-child(1) {
+        background: yellow;
     }
 
     .pro-order .table_order .status-dropdown option:nth-child(2) {
@@ -302,6 +307,14 @@ if (isset($_GET['delete_id'])) {
     .cancle-button,
     .cancle-note-button {
         background-color: #ff1e1e;
+    }
+
+    [data-status="completed"] .status-dropdown {
+        background: #00e700 !important;
+    }
+
+    [data-status="rejected"] .status-dropdown {
+        background: #ff1e1e !important;
     }
 </style>
 

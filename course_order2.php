@@ -174,6 +174,11 @@ if (isset($_GET['delete_id'])) {
         border: none;
         background: yellow;
         padding: 0px 5px;
+        color: black;
+    }
+
+    .pro-order .table_order .status-dropdown option:nth-child(1) {
+        background: yellow;
     }
 
     .pro-order .table_order .status-dropdown option:nth-child(2) {
@@ -303,6 +308,14 @@ if (isset($_GET['delete_id'])) {
     .cancle-button,
     .cancle-note-button {
         background-color: #ff1e1e;
+    }
+
+    [data-status="completed"] .status-dropdown {
+        background: #00e700 !important;
+    }
+
+    [data-status="rejected"] .status-dropdown {
+        background: #ff1e1e !important;
     }
 </style>
 
@@ -477,7 +490,7 @@ if (isset($_GET['delete_id'])) {
             $nextPage = ($page < $totalPages) ? $page + 1 : $totalPages;
 
             // echo "<a href='course_order2.php?page=1' class='pagination-link'>First</a>"; // ลิงก์ไปหน้าแรก
-
+            
             if ($page > 1) {
                 echo "<a href='course_order2.php?page=$prevPage' class='pagination-link'><</a>"; // ลิงก์หน้าก่อนหน้า
             }
