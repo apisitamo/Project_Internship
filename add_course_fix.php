@@ -247,6 +247,7 @@
         justify-content: center;
         align-items: center;
         margin: auto;
+        border: 1.2px solid #D0D0D0;
     }
 
     .sizeimg img {
@@ -260,7 +261,7 @@
     .addcourse1 #removeImageButton {
         position: absolute;
         top: 0%;
-        left: 66%;
+        left: 64.4%;
         background-color: red;
         color: white;
         border: none;
@@ -298,13 +299,13 @@
                 <select class="form-control-option" name="type">
                     <option value="null"></option>
                     <option value="Health Spa Course" <?php if ($type == "Health Spa Course")
-                        echo "selected"; ?>>Health
+                                                            echo "selected"; ?>>Health
                         Spa Course</option>
                     <option value="Beauty Spa Course" <?php if ($type == "Beauty Spa Course")
-                        echo "selected"; ?>>Beauty
+                                                            echo "selected"; ?>>Beauty
                         Spa Course</option>
                     <option value="Advanced Spa" <?php if ($type == "Advanced Spa")
-                        echo "selected"; ?>>Advanced Spa
+                                                        echo "selected"; ?>>Advanced Spa
                     </option>
                 </select>
             </div>
@@ -351,7 +352,7 @@
                 </label>
                 <input type="number" class="form-control" name="price" value="<?php echo $price ?>" required>
             </div>
-            <button type="submit" class="additem btn btn-success">
+            <button type="submit" class="additem btn btn-success" id="saveButton">
                 <?= $save ?>
             </button>
         </div>
@@ -385,44 +386,85 @@
 </script>
 
 <script>
-    document.getElementById('backButton').addEventListener('click', function () {
+    document.getElementById('backButton').addEventListener('click', function() {
         window.history.back();
     });
 </script>
 
 <script>
-    // เลือก DOM elements
     const imageInput = document.getElementById('imageInput');
     const previewImage = document.getElementById('previewImage');
     const removeImageButton = document.getElementById('removeImageButton');
 
-    // เมื่อมีการเลือกไฟล์ใหม่
-    imageInput.addEventListener('change', function () {
-        const file = imageInput.files[0]; // เลือกไฟล์ที่เลือก
+    imageInput.addEventListener('change', function() {
+        const file = imageInput.files[0];
 
         if (file) {
             const reader = new FileReader();
-
-            // เมื่อไฟล์ถูกโหลด
-            reader.onload = function (e) {
-                previewImage.src = e.target.result; // แสดงรูปภาพใหม่ในภาพตัวอย่าง
-                removeImageButton.style.display = 'block'; // แสดงปุ่มลบ
+            reader.onload = function(e) {
+                previewImage.src = e.target.result;
+                removeImageButton.style.display = 'block';
             };
-
-            // อ่านไฟล์เป็น URL
             reader.readAsDataURL(file);
         } else {
-            previewImage.src = '<?php echo $img; ?>'; // แสดงรูปเดิม
-            removeImageButton.style.display = 'none'; // ซ่อนปุ่มลบ
+            previewImage.src = '<?php echo $img; ?>';
+            removeImageButton.style.display = 'none';
         }
     });
-
-    // เมื่อคลิกปุ่มลบ
-    removeImageButton.addEventListener('click', function () {
-        imageInput.value = ''; // ล้างค่า input file
-        previewImage.src = '<?php echo $img; ?>'; // แสดงรูปเดิม
-        removeImageButton.style.display = 'none'; // ซ่อนปุ่มลบ
+    removeImageButton.addEventListener('click', function() {
+        imageInput.value = '';
+        previewImage.src = '<?php echo $img; ?>';
+        removeImageButton.style.display = 'none';
     });
 </script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        $("#saveButton").click(function() {
+            var img = $("#previewImage").attr("src");
+            var type = $("select[name='type']").val();
+            var name_th = $("input[name='name_th']").val();
+            var name_eng = $("input[name='name_eng']").val();
+            var detail_th = $("textarea[name='detail_th']").val();
+            var detail_eng = $("textarea[name='detail_eng']").val();
+            var hour = $("input[name='hour']").val();
+            var day = $("input[name='day']").val();
+            var price = $("input[name='price']").val();
+
+            // ตรวจสอบเงื่อนไข
+            if (type == "null") {
+                alert("โปรดเลือกประเภท");
+                return;
+            }
+
+            $.ajax({
+                type: "POST",
+                url: "add_course_fix_process.php",
+                data: {
+                    fix_id: <?php echo $fix_id ?>,
+                    img: img,
+                    type: type,
+                    name_th: name_th,
+                    name_eng: name_eng,
+                    detail_th: detail_th,
+                    detail_eng: detail_eng,
+                    hour: hour,
+                    day: day,
+                    price: price
+
+                },
+                success: function(response) {
+                    alert(response);
+                    window.location.href = 'add_course.php';
+                    console.log(response);
+                }
+            });
+        });
+    });
+</script>
+
+
 
 </html>
