@@ -211,9 +211,10 @@ if ($ASOrdersResult) {
         transition: 0.4s;
     }
 
-    .w-100 {
-        width: 50% !important;
+    .containerbuttom .card .w-100 {
+        width: 60% !important;
         align-items: center;
+        height: 170px;
     }
 
     .popup {
@@ -454,7 +455,7 @@ if ($ASOrdersResult) {
 
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
-                ?>
+                        ?>
                         <div class="card">
                             <button class="deleteitem" data-course-id="<?php echo $row['id']; ?>">
                                 <i class="bi bi-trash3-fill"></i>
@@ -505,7 +506,7 @@ if ($ASOrdersResult) {
                                 </div>
                             </div>
                         </div>
-                <?php
+                        <?php
                     }
                 } else {
                     echo "Course not found in database";
@@ -544,7 +545,8 @@ if ($ASOrdersResult) {
                     <p style="text-align: center;">
                         <?= $wantdel ?>
                     </p>
-                    <button class="button-close-2" id="confirm-delete-button" href='add_course.php?delete_id=<?php echo $row['id']; ?>'>
+                    <button class="button-close-2" id="confirm-delete-button"
+                        href='add_course.php?delete_id=<?php echo $row['id']; ?>'>
                         <?= $condel ?>
                     </button>
                     <button class="button-close-2" id="button-close2">
@@ -625,14 +627,14 @@ if ($ASOrdersResult) {
             window.location.href = deleteLink;
         }
     });
-    
+
 </script>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script>
-    $(document).ready(function() {
-        $(".button-success-1").click(function() {
+    $(document).ready(function () {
+        $(".button-success-1").click(function () {
             var imageInput = $("input[name='img']")[0];
             var imageFile = imageInput.files[0];
             var type = $("select[name='type']").val();
@@ -662,11 +664,11 @@ if ($ASOrdersResult) {
                     data: formData,
                     contentType: false,
                     processData: false,
-                    success: function(response) {
+                    success: function (response) {
                         location.reload();
                         alert("Successfully added course");
                     },
-                    error: function() {
+                    error: function () {
                         alert("There was an error adding a course.");
                     }
                 });
