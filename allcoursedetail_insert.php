@@ -11,12 +11,17 @@ $username = $_SESSION['username'];
 $type = $_POST['type'];
 $name = $_POST['name'];
 $day = $_POST['day'];
-$quantity = $_POST['quantity'];
+$quantity = '1';
 $price = $_POST['price'];
 $status = 'pending';
 
-$sql = "INSERT INTO course_order (username, type, name, day, quantity, price, status)
-        VALUES ('$username', '$type', '$name', '$day', '$quantity', '$price', '$status')";
+$imgName = $_FILES['img']['name'];
+$imgTemp = $_FILES['img']['tmp_name'];
+$imgPath = "assets/add_course/transfer_slip/" . $imgName;
+move_uploaded_file($imgTemp, $imgPath);
+
+$sql = "INSERT INTO course_order (username, type, name, day, quantity, price, status , transfer_slip)
+        VALUES ('$username', '$type', '$name', '$day', '$quantity', '$price', '$status','$imgPath')";
 
 if ($conn->query($sql) === TRUE) {
     echo "successfully";

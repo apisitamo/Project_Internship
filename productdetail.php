@@ -748,26 +748,28 @@
 
 <script>
     $(document).ready(function() {
-    $(".button-success-2").click(function() {
-    var type = "<?php echo $type ?>";
-    var name = "<?php echo $name_eng ?>";
-    var quantity = $("input[name='quantity']").val();
-    var price = <?php echo $price ?> * quantity;
+        $(".button-success-2").click(function() {
+            var type = "<?php echo $type ?>";
+            var name = "<?php echo $name_eng ?>";
+            var quantity = $("input[name='quantity']").val();
+            var price = <?php echo $price ?> * quantity;
 
-    $.ajax({
-        type: "POST",
-        url: "productdetail_insert.php",
-        data: {
-            type: type,
-            name: name,
-            quantity: quantity,
-            price: price
-        },
-        success: function(response) {
-            // alert(response);
-        }
-    });
-    });
+            var formData = new FormData();
+            formData.append("name", name);
+            formData.append("type", type);
+            formData.append("quantity", quantity);
+            formData.append("price", price);
+            $.ajax({
+                type: "POST",
+                url: "productdetail_insert.php",
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function(response) {
+                    // alert(response);
+                }
+            });
+        });
     });
 </script>
 
