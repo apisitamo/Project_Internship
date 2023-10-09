@@ -171,7 +171,7 @@ if (isset($_GET['delete_id'])) {
     }
 
     .popup-add #popup1 .popup-content .container {
-        margin-top: 20px;
+        font-size: 20px;
     }
 </style>
 

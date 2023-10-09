@@ -312,7 +312,7 @@ if ($ASOrdersResult) {
     }
 
     .popup-add #popup1 .popup-content .container {
-        margin-top: 20px;
+        font-size: 20px;
     }
 
     .Fixicon {
