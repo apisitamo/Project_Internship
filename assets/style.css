@@ -986,7 +986,7 @@ a {
 }
 
 .gallery .row .card-img .rounded-3{
-    height: 205px;
+    height: 210px;
 }
 
 .gallery .row .card-img:hover {
@@ -1620,4 +1620,8 @@ a {
     border: none;
     border-radius: 20px;
     background: white;
+}
+
+.all-course .course .course-content .card .w-img .card-img-top{
+    height: 300px;
 }
