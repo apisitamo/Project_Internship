@@ -35,7 +35,9 @@ if ($langId == 1) {
     <section class="banner-page" data-aos="flip-down" data-aos-duration="2000">
         <div class="wrap">
             <img src="assets/images/banner-page.png" alt="">
-            <p><?= $course ?></p>
+            <p>
+                <?= $course ?>
+            </p>
         </div>
     </section>
 
@@ -45,16 +47,24 @@ if ($langId == 1) {
 
                 <ul class="nav nav-page" data-aos="fade-right" data-aos-duration="2000">
                     <li class="nav-item">
-                        <a class="nav-link " aria-current="page" href="allcourse.php"><?= $nav1 ?></a>
+                        <a class="nav-link " aria-current="page" href="allcourse.php">
+                            <?= $nav1 ?>
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="allcourse2.php"><?= $nav2 ?></a>
+                        <a class="nav-link active" href="allcourse2.php">
+                            <?= $nav2 ?>
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="allcourse3.php"><?= $nav3 ?></a>
+                        <a class="nav-link" href="allcourse3.php">
+                            <?= $nav3 ?>
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="allcourse4.php"> <?= $nav4 ?></a>
+                        <a class="nav-link" href="allcourse4.php">
+                            <?= $nav4 ?>
+                        </a>
                     </li>
                 </ul>
 
@@ -68,11 +78,13 @@ if ($langId == 1) {
 
                         if ($result->num_rows > 0) {
                             while ($row = $result->fetch_assoc()) {
-                        ?>
+                                ?>
                                 <div class="col-lg-4 col-md-6 col-sm-12 mb-4" data-aos="flip-right" data-aos-duration="2000">
                                     <a href="allcoursedetail.php?course_id=<?php echo $row['id']; ?>">
                                         <div class="card">
-                                            <img src="<?php echo $row['img']; ?>" class="card-img-top">
+                                            <div class="w-img">
+                                                <img src="<?php echo $row['img']; ?>" class="card-img-top">
+                                            </div>
                                             <div class="card-body">
                                                 <?php if ($langId == 1) { ?>
                                                     <span class="title">
@@ -84,14 +96,22 @@ if ($langId == 1) {
                                                     </span>
                                                 <?php } ?>
                                                 <div class="price">
-                                                    <span><i class="fa-regular fa-money-bill"></i> <?= $prices ?> <?php echo $row['price']; ?> <?= $baht ?> </span>
-                                                    <span><i class="fa-regular fa-clock"></i> <?= $duration ?> <?php echo $row['day']; ?> <?= $days ?> </span>
+                                                    <span><i class="fa-regular fa-money-bill"></i>
+                                                        <?= $prices ?>
+                                                        <?php echo $row['price']; ?>
+                                                        <?= $baht ?>
+                                                    </span>
+                                                    <span><i class="fa-regular fa-clock"></i>
+                                                        <?= $duration ?>
+                                                        <?php echo $row['day']; ?>
+                                                        <?= $days ?>
+                                                    </span>
                                                 </div>
                                             </div>
                                         </div>
                                     </a>
                                 </div>
-                        <?php
+                                <?php
                             }
                         } else {
                             echo "ไม่พบหลักสูตรในระบบ";
