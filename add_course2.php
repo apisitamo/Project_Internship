@@ -219,8 +219,8 @@ if ($ASOrdersResult) {
     .popup {
         display: none;
         z-index: 1000;
-        width: 900px;
-        height: 600px;
+        width: 800px;
+        height: 400px;
         padding: 20px;
         border-radius: 5px;
         position: fixed;
@@ -296,7 +296,7 @@ if ($ASOrdersResult) {
     }
 
     .popup-add #popup2 .popup-content .container {
-        margin-top: 20px;
+        font-size: 20px;
     }
 
     .popup-add #popup1 #button-success1 {
