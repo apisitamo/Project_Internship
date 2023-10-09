@@ -286,10 +286,6 @@
                 <div class="sizeimg">
                     <img id="previewImage" src="<?php echo $img; ?>" alt="Course Image">
                 </div>
-                <label for="img" class="form-label">
-                    <?= $picture ?>
-                </label>
-                <input type="file" class="form-control" name="img" id="imageInput" required>
                 <button id="removeImageButton" style="display: none;">&times;</button>
             </div>
             <div class="mb-3">
@@ -391,39 +387,11 @@
     });
 </script>
 
-<script>
-    const imageInput = document.getElementById('imageInput');
-    const previewImage = document.getElementById('previewImage');
-    const removeImageButton = document.getElementById('removeImageButton');
-
-    imageInput.addEventListener('change', function() {
-        const file = imageInput.files[0];
-
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                previewImage.src = e.target.result;
-                removeImageButton.style.display = 'block';
-            };
-            reader.readAsDataURL(file);
-        } else {
-            previewImage.src = '<?php echo $img; ?>';
-            removeImageButton.style.display = 'none';
-        }
-    });
-    removeImageButton.addEventListener('click', function() {
-        imageInput.value = '';
-        previewImage.src = '<?php echo $img; ?>';
-        removeImageButton.style.display = 'none';
-    });
-</script>
-
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script>
     $(document).ready(function() {
         $("#saveButton").click(function() {
-            var img = $("#previewImage").attr("src");
             var type = $("select[name='type']").val();
             var name_th = $("input[name='name_th']").val();
             var name_eng = $("input[name='name_eng']").val();
@@ -444,7 +412,6 @@
                 url: "add_course_fix_process.php",
                 data: {
                     fix_id: <?php echo $fix_id ?>,
-                    img: img,
                     type: type,
                     name_th: name_th,
                     name_eng: name_eng,
@@ -456,8 +423,8 @@
 
                 },
                 success: function(response) {
-                    alert(response);
-                    window.location.href = 'add_course.php';
+                    // alert(response);
+                    window.history.back();
                     console.log(response);
                 }
             });

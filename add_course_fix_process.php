@@ -9,7 +9,6 @@ if ($conn->connect_error) {
 }
 
 $fix_id = $_POST['fix_id'];
-$img = $_POST["img"];
 $type = $_POST["type"];
 $name_th = $_POST["name_th"];
 $name_eng = $_POST["name_eng"];
@@ -20,7 +19,6 @@ $day = $_POST["day"];
 $price = $_POST["price"];
 
 $sql = "UPDATE `add_course` SET 
-            img = '$img',
             type = '$type',
             name_th = '$name_th',
             name_eng = '$name_eng',
