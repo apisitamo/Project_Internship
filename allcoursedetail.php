@@ -622,7 +622,7 @@
 
         <!-- เป็นส่วนของ popup ตอนเด้งขึ้นมา ขั้่น 3-->
 
-        <div class="popup" id="popup3">
+        <!-- <div class="popup" id="popup3">
             <div class="popup-content">
                 <div class="container">
                     <p class=""ssssss></p>
@@ -643,11 +643,11 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
 
         <!-- เป็นส่วนของ popup ตอนเด้งขึ้นมา ขั้่น 4-->
 
-        <!-- <div class="popup" id="popup3">
+        <div class="popup" id="popup3">
             <div class="popup-content">
                 <span class="close-popup" id="close-popup3">&times;</span>
                 <div class="container">
@@ -658,7 +658,7 @@
                     <p style="text-align: center;font-size: 30px;">
                         <?= $wait ?>
                     </p>
-                    <a href="history.php" class="button-success" id="button-success3">
+                    <a href="history2.php" class="button-success" id="button-success3">
                         <p>
                             <?= $history ?>
                         </p>
@@ -668,7 +668,7 @@
                     </button>
                 </div>
             </div>
-        </div> -->
+        </div>
 
     </section>
 
@@ -785,7 +785,7 @@
 
     $.ajax({
         type: "POST",
-        url: "coursedetail_insert.php",
+        url: "allcoursedetail_insert.php",
         data: {
             type: type,
             name: name,
