@@ -192,7 +192,6 @@ if ($BMOOrdersResult) {
     }
 
     .containerbuttom .card .w-100 {
-        width: 60% !important;
         align-items: center;
         height: 170px;
     }
@@ -450,7 +449,9 @@ if ($BMOOrdersResult) {
                             <a class="Fixicon" href="add_product_fix.php?fix_id=<?php echo $row['id']; ?>">
                                 <img src="assets/images/fix.png" alt="">
                             </a>
-                            <img src="<?php echo $row['img']; ?>" class="w-100" alt="Product Image">
+                            <div class="w-img">
+                                <img src="<?php echo $row['img']; ?>" class="w-100" alt="Product Image">
+                            </div>
                             <div class="product-body">
                                 <p class="card-text">
                                     <?= $types ?> :
