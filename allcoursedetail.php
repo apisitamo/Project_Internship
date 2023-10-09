@@ -587,7 +587,7 @@
                                 <button class="button-close-2" id="button-close2">
                                     <?= $back ?>
                                 </button>
-                                <h5 class="alert" style="color:red; font-size:15px; display:none; text-align:end; padding-left:42px;">Please send the photo of your transfer receipt</h5>
+                                <h5 class="alert" style="color:red; font-size:15px; display:none;"><?= $slip ?></h5>
                             </div>
                         <?php
                         } else { ?>

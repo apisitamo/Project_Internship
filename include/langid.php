@@ -75,10 +75,11 @@ if($langId == 1){
     $Kg = "กิโลกรัม";
     $ordernow = "สั่งซื้อตอนนี้";
     $pinput = "โปรดระบุจำนวน";
-    $fillinformation = "กรอกข้อมูลของท่านก่อนทำการสั่งซื้อ";
+    $fillinformation = "กรอกข้อมูลของคุณก่อนทำการสั่งซื้อ";
     $fillin = "กรอกข้อมูล";
     $fixcourse = "แก้ไขข้อมูลหลักสูตร";
     $fixproduct = "แก้ไขข้อมูลผลิตภัณฑ์";
+    $slip = "กรุณาแนบรูปถ่ายใบเสร็จการโอนเงินของคุณ";
     
     
 
@@ -162,6 +163,7 @@ if($langId == 1){
     $fillin = "Fill In";
     $fixcourse = "Edit course information";
     $fixproduct = "Edit product information";
+    $slip = "Please include a photo of your transfer slip.";
 
 }
 ?>
