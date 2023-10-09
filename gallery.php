@@ -40,7 +40,9 @@ if ($langId == 1) {
                             data-bs-toggle="modal" data-bs-target="#exampleModal" data-aos="fade-up" data-aos-duration="2000">
                             <div class="w-100 h-100 card-img position-relative">
                                 <img class="search-hover" src="assets/images/hover-search.svg" alt="">
-                                <img class="w-100 rounded-3" src="<?php echo $row['img']; ?>" alt="">
+                                <div class="w-img">
+                                    <img class="w-100 rounded-3" src="<?php echo $row['img']; ?>" alt="">
+                                </div>
                             </div>
                         </div>
                         <?php
