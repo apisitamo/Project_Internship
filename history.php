@@ -305,16 +305,33 @@ if ($totalProductsResult) {
         background-color: #094195;
         color: white !important;
     }
+
+    .user1 .homeheader {
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    .user1 .homeheader div {
+        background: #ffc387;
+        padding: 5px 15px;
+        border-radius: 10px;
+        border: black;
+        border-style: groove;
+    }
 </style>
 
 <body>
     <section class="user1">
         <div class="homeheader">
             <div>
-                <a href="history.php"> product order</a>
+                <i class="bi bi-caret-right-fill">
+                    <a href="history.php"> product order</a>
+                </i>
             </div>
             <div>
-                <a href="history2.php"> course order</a>
+                <i class="bi bi-caret-right-fill">
+                    <a href="history2.php"> course order</a>
+                </i>
             </div>
         </div>
         <div class="container" id="user-con">
@@ -357,8 +374,8 @@ if ($totalProductsResult) {
                     $result = mysqli_query($db, $query);
 
                     $i = 1 + $offset;
-                    while ($row = mysqli_fetch_assoc($result)) :
-                    ?>
+                    while ($row = mysqli_fetch_assoc($result)):
+                        ?>
                         <tr>
                             <td>
                                 <?php echo $i++; ?>
