@@ -19,7 +19,7 @@
     <?php
     if (isset($_GET['fix_id'])) {
         $fix_id = $_GET['fix_id'];
-        $sql = "SELECT * FROM `add_course` WHERE id = $fix_id";
+        $sql = "SELECT * FROM `add_product` WHERE id = $fix_id";
         $result = $conn->query($sql);
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
@@ -29,8 +29,6 @@
                 $type = $row['type'];
                 $detail_th = $row['detail_th'];
                 $detail_eng = $row['detail_eng'];
-                $day = $row['day'];
-                $hour = $row['hour'];
                 $price = $row['price'];
             }
         } else {
@@ -280,11 +278,11 @@
     <section class="addcourse1">
         <div class="containertop mt-5">
             <h2>
-                <?= $fixcourse ?>
+                <?= $fixproduct ?>
             </h2>
             <div class="mb-3" style="position: relative;">
                 <div class="sizeimg">
-                    <img id="previewImage" src="<?php echo $img; ?>" alt="Course Image">
+                    <img id="previewImage" src="<?php echo $img; ?>" alt="product Image">
                 </div>
             </div>
             <div class="mb-3">
@@ -293,14 +291,12 @@
                 </label>
                 <select class="form-control-option" name="type">
                     <option value="null"></option>
-                    <option value="Health Spa Course" <?php if ($type == "Health Spa Course")
-                                                            echo "selected"; ?>>Health
-                        Spa Course</option>
-                    <option value="Beauty Spa Course" <?php if ($type == "Beauty Spa Course")
-                                                            echo "selected"; ?>>Beauty
-                        Spa Course</option>
-                    <option value="Advanced Spa" <?php if ($type == "Advanced Spa")
-                                                        echo "selected"; ?>>Advanced Spa
+                    <option value="Body Scrub" <?php if ($type == "Body Scrub")
+                                                    echo "selected"; ?>>Body Scrub</option>
+                    <option value="Body Mask" <?php if ($type == "Body Mask")
+                                                    echo "selected"; ?>>Body Mask</option>
+                    <option value="Body Massage Oil" <?php if ($type == "Body Massage Oil")
+                                                            echo "selected"; ?>>Body Massage Oil
                     </option>
                 </select>
             </div>
@@ -328,18 +324,6 @@
                     <?= $ENGdetail ?>
                 </label>
                 <textarea class="form-control" name="detail_eng" required><?php echo $detail_eng ?></textarea>
-            </div>
-            <div class="mb-3">
-                <label for="hour" class="form-label">
-                    <?= $hoursb ?>
-                </label>
-                <input type="number" class="form-control" name="hour" value="<?php echo $hour ?>" required>
-            </div>
-            <div class="mb-3">
-                <label for="day" class="form-label">
-                    <?= $trainingb ?>
-                </label>
-                <input type="number" class="form-control" name="day" value="<?php echo $day ?>" required>
             </div>
             <div class="mb-3">
                 <label for="price" class="form-label">
@@ -376,8 +360,6 @@
             var name_eng = $("input[name='name_eng']").val();
             var detail_th = $("textarea[name='detail_th']").val();
             var detail_eng = $("textarea[name='detail_eng']").val();
-            var hour = $("input[name='hour']").val();
-            var day = $("input[name='day']").val();
             var price = $("input[name='price']").val();
 
             // ตรวจสอบเงื่อนไข
@@ -388,7 +370,7 @@
 
             $.ajax({
                 type: "POST",
-                url: "add_course_fix_process.php",
+                url: "add_product_fix_process.php",
                 data: {
                     fix_id: <?php echo $fix_id ?>,
                     type: type,
@@ -396,8 +378,6 @@
                     name_eng: name_eng,
                     detail_th: detail_th,
                     detail_eng: detail_eng,
-                    hour: hour,
-                    day: day,
                     price: price
 
                 },

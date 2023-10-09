@@ -316,12 +316,13 @@ if ($BMOOrdersResult) {
         height: 38px;
         position: absolute;
         left: 40%;
-        top: 2.35%;
+        top: 2.3%;
     }
 
     .Fixicon img {
-        width: 15px;
-        height: 15px;
+        width: 16px;
+        height: 16px;
+        margin-top: 9px;
     }
 
     .Fixicon:hover {
@@ -445,9 +446,9 @@ if ($BMOOrdersResult) {
                             <button class="deleteitem" data-product-id="<?php echo $row['id']; ?>">
                                 <i class="bi bi-trash3-fill"></i>
                             </button>
-                            <button class="Fixicon" data-course-id="<?php echo $row['id']; ?>">
+                            <a class="Fixicon" href="add_product_fix.php?fix_id=<?php echo $row['id']; ?>">
                                 <img src="assets/images/fix.png" alt="">
-                            </button>
+                            </a>
                             <img src="<?php echo $row['img']; ?>" class="w-100" alt="Product Image">
                             <div class="product-body">
                                 <p class="card-text">
@@ -524,24 +525,6 @@ if ($BMOOrdersResult) {
                 </div>
             </div>
         </div>
-        <!-- fix product -->
-        <div class="popup" id="popup3">
-            <div class="popup-content">
-                <span class="close-popup" id="close-popup3">&times;</span>
-                <div class="container">
-
-
-
-
-                    <button class="button-success-1" id="button-success3">
-                        <?= $confirm ?>
-                    </button>
-                    <button class="button-close-1" id="button-close3">
-                        <?= $cancle ?>
-                    </button>
-                </div>
-            </div>
-        </div>
 
     </section>
 
@@ -550,7 +533,6 @@ if ($BMOOrdersResult) {
 <script>
     const Additem = document.querySelectorAll('.additem');
     const Deleteitem = document.querySelectorAll('.deleteitem');
-    const Fixicon = document.querySelectorAll('.Fixicon');
     const clickOverlay1 = document.querySelector('#click-overlay1');
 
     const popup1 = document.querySelector('#popup1');
@@ -562,11 +544,6 @@ if ($BMOOrdersResult) {
     const closesecondpopup = document.querySelector('#close-popup2');
     const buttonclosesecond = document.querySelector('#button-close2');
     const confirmDeleteButton = document.querySelector('#confirm-delete-button');
-
-    const popup3 = document.querySelector('#popup3');
-    const closethirdpopup = document.querySelector('#close-popup3');
-    const buttonclosethird = document.querySelector('#button-close3');
-    const buttonsuccessthird = document.querySelectorAll('#button-success3');
 
     Additem.forEach(button => {
         button.addEventListener('click', () => {
@@ -583,14 +560,6 @@ if ($BMOOrdersResult) {
             clickOverlay1.style.display = 'block';
             const deleteId = button.getAttribute('data-product-id');
             confirmDeleteButton.setAttribute('data-delete-id', deleteId);
-        });
-    });
-
-    Fixicon.forEach(button => {
-        button.addEventListener('click', () => {
-            console.log("Open additem popup");
-            popup3.style.display = 'flex';
-            clickOverlay1.style.display = 'block';
         });
     });
 
@@ -628,24 +597,6 @@ if ($BMOOrdersResult) {
             const deleteLink = `add_product.php?delete_id=${deleteId}`;
             window.location.href = deleteLink;
         }
-    });
-
-    closethirdpopup.addEventListener('click', () => {
-        console.log("X third popup ");
-        popup3.style.display = 'none';
-        clickOverlay1.style.display = 'none';
-    });
-    buttonclosethird.addEventListener('click', () => {
-        console.log("close BTN third POPUP");
-        popup3.style.display = 'none';
-        clickOverlay1.style.display = 'none';
-    });
-    buttonsuccessthird.forEach(button => {
-        button.addEventListener('click', () => {
-            console.log("success BTN to Open second popup");
-            popup3.style.display = 'none';
-            clickOverlay1.style.display = 'none';
-        });
     });
 </script>
 

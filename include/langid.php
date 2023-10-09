@@ -78,6 +78,7 @@ if($langId == 1){
     $fillinformation = "กรอกข้อมูลของท่านก่อนทำการสั่งซื้อ";
     $fillin = "กรอกข้อมูล";
     $fixcourse = "แก้ไขข้อมูลหลักสูตร";
+    $fixproduct = "แก้ไขข้อมูลผลิตภัณฑ์";
     
     
 
@@ -160,6 +161,7 @@ if($langId == 1){
     $fillinformation = "Fill in your information before placing an order.";
     $fillin = "Fill In";
     $fixcourse = "Edit course information";
+    $fixproduct = "Edit product information";
 
 }
 ?>
