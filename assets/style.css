@@ -1622,6 +1622,7 @@ a {
     background: white;
 }
 
-.all-course .course .course-content .card .w-img .card-img-top{
+.all-course .course .course-content .card .w-img .card-img-top,
+.product .w-img img{
     height: 300px;
 }

@@ -326,7 +326,9 @@ if ($langId == 1) {
                                 <div class="col-lg-12 mb-4" data-aos="flip-right" data-aos-duration="2000">
                                     <a class="open-popup" href="productdetail.php?product_id=<?php echo $row['id']; ?>">
                                         <div class="card">
-                                            <img src="<?php echo $row['img']; ?>" alt="" class="w-100">
+                                            <div class="w-img">
+                                              <img src="<?php echo $row['img']; ?>" alt="" class="w-100">
+                                            </div>
                                             <div class="card-body">
                                                 <?php if ($langId == 1) { ?>
                                                     <h5 class="card-title">
@@ -410,7 +412,9 @@ if ($langId == 1) {
                                 <div class="col-lg-12 mb-4" data-aos="flip-right" data-aos-duration="2000">
                                     <a class="open-popup" href="productdetail.php?product_id=<?php echo $row['id']; ?>">
                                         <div class="card">
-                                            <img src="<?php echo $row['img']; ?>" alt="" class="w-100">
+                                         <div class="w-img">
+                                             <img src="<?php echo $row['img']; ?>" alt="" class="w-100">
+                                         </div>
                                             <div class="card-body">
                                                 <?php if ($langId == 1) { ?>
                                                     <h5 class="card-title">
@@ -496,7 +500,9 @@ if ($langId == 1) {
                                 <div class="col-lg-12 mb-4" data-aos="flip-right" data-aos-duration="2000">
                                     <a class="open-popup" href="productdetail.php?product_id=<?php echo $row['id']; ?>">
                                         <div class="card">
-                                            <img src="<?php echo $row['img']; ?>" alt="" class="w-100">
+                                         <div class="w-img">
+                                             <img src="<?php echo $row['img']; ?>" alt="" class="w-100">
+                                         </div>
                                             <div class="card-body">
                                                 <?php if ($langId == 1) { ?>
                                                     <h5 class="card-title">
