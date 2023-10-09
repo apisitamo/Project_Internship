@@ -193,13 +193,13 @@ if ($langId == 1) {
                         <i class="bi bi-lock-fill"></i>
                         <label for="password_1"><?= $newpassword ?></label>
                         <input type="password" id="passwordInput1" name="password_1" placeholder="<?= $password ?>">
-                        <span toggle="#passwordInput1" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+                        <span toggle="#passwordInput1" class="fa fa-fw fa-eye field-icon toggle-password" style="cursor: pointer;"></span>
                     </div>
                     <div class="left-inner-addon input-box">
                         <i class="bi bi-shield-lock-fill"></i>
                         <label for="password_2"><?= $repassword ?></label>
                         <input type="password" id="passwordInput2" name="password_2" placeholder="<?= $password ?>">
-                        <span toggle="#passwordInput2" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+                        <span toggle="#passwordInput2" class="fa fa-fw fa-eye field-icon toggle-password" style="cursor: pointer;"></span>
                     </div>
                     <div class="confirm-password">
                         <button type="submit" name="forgot_pw" class="btn"><?= $confirmpassword ?></button>

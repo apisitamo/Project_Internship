@@ -182,7 +182,7 @@ if ($langId == 1) {
                         <i class="bi bi-lock-fill"></i>
                         <label for="password"><?= $password ?></label>
                         <input type="password" id="passwordInput" name="password" placeholder="<?= $password ?>">
-                        <span toggle="#passwordInput" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+                        <span toggle="#passwordInput" class="fa fa-fw fa-eye field-icon toggle-password" style="cursor: pointer;"></span>
                     </div>
                     <button type="submit" name="login_user" class="btn"><?= $login ?></button>
                 </form>
