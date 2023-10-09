@@ -985,6 +985,10 @@ a {
     border-radius: 5px;
 }
 
+.gallery .row .card-img .rounded-3{
+    height: 205px;
+}
+
 .gallery .row .card-img:hover {
     filter: opacity(0.5) drop-shadow(0 0 rgb(112, 76, 54));
     transform: scale(1.1);
