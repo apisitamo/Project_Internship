@@ -459,9 +459,6 @@ if ($ASOrdersResult) {
                             <button class="deleteitem" data-course-id="<?php echo $row['id']; ?>">
                                 <i class="bi bi-trash3-fill"></i>
                             </button>
-                            <!-- <button class="Fixicon" data-course-id="<?php echo $row['id']; ?>">
-                                <img src="assets/images/fix.png" alt="">
-                            </button> -->
                             <a class="Fixicon" href="add_course_fix.php?fix_id=<?php echo $row['id']; ?>">
                                 <img src="assets/images/fix.png" alt="">
                             </a>

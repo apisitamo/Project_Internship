@@ -327,8 +327,9 @@ if ($ASOrdersResult) {
     }
 
     .Fixicon img {
-        width: 15px;
-        height: 15px;
+        width: 16px;
+        height: 16px;
+        margin-top: 9px;
     }
 
     .Fixicon:hover {
@@ -458,9 +459,9 @@ if ($ASOrdersResult) {
                             <button class="deleteitem" data-course-id="<?php echo $row['id']; ?>"><i
                                     class="bi bi-trash3-fill"></i>
                             </button>
-                            <button class="Fixicon" data-course-id="<?php echo $row['id']; ?>">
+                            <a class="Fixicon" href="add_course_fix.php?fix_id=<?php echo $row['id']; ?>">
                                 <img src="assets/images/fix.png" alt="">
-                            </button>
+                            </a>
                             <img src="<?php echo $row['img']; ?>" class="w-100" alt="course image">
                             <div class="course-body">
                                 <p class="card-text">
@@ -553,24 +554,6 @@ if ($ASOrdersResult) {
                 </div>
             </div>
         </div>
-        <!-- fix product -->
-        <div class="popup" id="popup3">
-            <div class="popup-content">
-                <span class="close-popup" id="close-popup3">&times;</span>
-                <div class="container">
-
-
-
-
-                    <button class="button-success-1" id="button-success3">
-                        <?= $confirm ?>
-                    </button>
-                    <button class="button-close-1" id="button-close3">
-                        <?= $cancle ?>
-                    </button>
-                </div>
-            </div>
-        </div>
 
     </section>
 </body>
@@ -578,7 +561,6 @@ if ($ASOrdersResult) {
 <script>
     const Additem = document.querySelectorAll('.additem');
     const Deleteitem = document.querySelectorAll('.deleteitem');
-    const Fixicon = document.querySelectorAll('.Fixicon');
     const clickOverlay1 = document.querySelector('#click-overlay1');
 
     const popup1 = document.querySelector('#popup1');
@@ -590,11 +572,6 @@ if ($ASOrdersResult) {
     const closesecondpopup = document.querySelector('#close-popup2');
     const buttonclosesecond = document.querySelector('#button-close2');
     const confirmDeleteButton = document.querySelector('#confirm-delete-button');
-
-    const popup3 = document.querySelector('#popup3');
-    const closethirdpopup = document.querySelector('#close-popup3');
-    const buttonclosethird = document.querySelector('#button-close3');
-    const buttonsuccessthird = document.querySelectorAll('#button-success3');
 
     Additem.forEach(button => {
         button.addEventListener('click', () => {
@@ -611,14 +588,6 @@ if ($ASOrdersResult) {
             clickOverlay1.style.display = 'block';
             const deleteId = button.getAttribute('data-course-id');
             confirmDeleteButton.setAttribute('data-delete-id', deleteId);
-        });
-    });
-
-    Fixicon.forEach(button => {
-        button.addEventListener('click', () => {
-            console.log("Open additem popup");
-            popup3.style.display = 'flex';
-            clickOverlay1.style.display = 'block';
         });
     });
 
@@ -658,23 +627,6 @@ if ($ASOrdersResult) {
         }
     });
 
-    closethirdpopup.addEventListener('click', () => {
-        console.log("X third popup ");
-        popup3.style.display = 'none';
-        clickOverlay1.style.display = 'none';
-    });
-    buttonclosethird.addEventListener('click', () => {
-        console.log("close BTN third POPUP");
-        popup3.style.display = 'none';
-        clickOverlay1.style.display = 'none';
-    });
-    buttonsuccessthird.forEach(button => {
-        button.addEventListener('click', () => {
-            console.log("success BTN to Open second popup");
-            popup3.style.display = 'none';
-            clickOverlay1.style.display = 'none';
-        });
-    });
 </script>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
