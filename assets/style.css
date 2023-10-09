@@ -1622,7 +1622,14 @@ a {
     background: white;
 }
 
-.all-course .course .course-content .card .w-img .card-img-top,
+.all-course .course .course-content .card .w-img,
+.product .w-img{
+    text-align: -webkit-center;
+}
+
+.all-course .course .course-content .card .w-img img,
 .product .w-img img{
     height: 300px;
+    max-width: 100%;
+    width: auto;
 }

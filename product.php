@@ -327,7 +327,7 @@ if ($langId == 1) {
                                     <a class="open-popup" href="productdetail.php?product_id=<?php echo $row['id']; ?>">
                                         <div class="card">
                                             <div class="w-img">
-                                              <img src="<?php echo $row['img']; ?>" alt="" class="w-100">
+                                              <img src="<?php echo $row['img']; ?>">
                                             </div>
                                             <div class="card-body">
                                                 <?php if ($langId == 1) { ?>
@@ -413,7 +413,7 @@ if ($langId == 1) {
                                     <a class="open-popup" href="productdetail.php?product_id=<?php echo $row['id']; ?>">
                                         <div class="card">
                                          <div class="w-img">
-                                             <img src="<?php echo $row['img']; ?>" alt="" class="w-100">
+                                             <img src="<?php echo $row['img']; ?>">
                                          </div>
                                             <div class="card-body">
                                                 <?php if ($langId == 1) { ?>
@@ -501,7 +501,7 @@ if ($langId == 1) {
                                     <a class="open-popup" href="productdetail.php?product_id=<?php echo $row['id']; ?>">
                                         <div class="card">
                                          <div class="w-img">
-                                             <img src="<?php echo $row['img']; ?>" alt="" class="w-100">
+                                             <img src="<?php echo $row['img']; ?>">
                                          </div>
                                             <div class="card-body">
                                                 <?php if ($langId == 1) { ?>

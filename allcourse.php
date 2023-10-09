@@ -83,7 +83,7 @@ if ($langId == 1) {
                                     <a href="allcoursedetail.php?course_id=<?php echo $row['id']; ?>">
                                         <div class="card">
                                             <div class="w-img">
-                                                <img src="<?php echo $row['img']; ?>" class="card-img-top">
+                                                <img src="<?php echo $row['img']; ?>">
                                             </div>
                                             <div class="card-body">
                                                 <?php if ($langId == 1) { ?>
