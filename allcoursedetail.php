@@ -751,7 +751,7 @@
         button.addEventListener('click', () => {
             console.log("success BTN to Open second popup");
             if (fileInput.files.length === 0) {
-                alertMessage.style.display = 'flex';
+                alertMessage.style.display = 'block';
             } else {
                 popup2.style.display = 'none'; // ปิด popup สอง
                 popup3.style.display = 'flex';
