@@ -44,18 +44,16 @@ $offset = ($page - 1) * $limit;
 
 $username = $_SESSION['username'];
 
-// คำนวณจำนวนสินค้าทั้งหมดของ username ที่ล็อกอินอยู่
-$totalProductsQuery = "SELECT COUNT(*) AS total FROM product_order WHERE username = '$username' ";
-$totalProductsResult = mysqli_query($db, $totalProductsQuery);
+// คำนวณจำนวนสินค้าทั้งหมด
+$totalcoursesQuery = "SELECT COUNT(*) AS total FROM course_order where username = '$username' ";
+$totalcoursesResult = mysqli_query($db, $totalcoursesQuery);
 
-if ($totalProductsResult) {
-    $totalProductsRow = mysqli_fetch_assoc($totalProductsResult);
-    $totalProducts = $totalProductsRow['total'];
+if ($totalcoursesResult) {
+    $totalcoursesRow = mysqli_fetch_assoc($totalcoursesResult);
+    $totalcourses = $totalcoursesRow['total'];
 } else {
-    $totalProducts = 0;
+    $totalcourses = 0;
 }
-
-
 
 ?>
 
@@ -331,7 +329,7 @@ if ($totalProductsResult) {
                             <?= $lists ?>
                         </th>
                         <th>
-                            <?= $quantityy ?>
+                            <?= $dayss ?>
                         </th>
                         <th>
                             <?= $prices ?>
@@ -349,8 +347,8 @@ if ($totalProductsResult) {
                     <?php
                     $username = $_SESSION['username'];
 
-                    $query = "SELECT type, id, name, quantity, price, order_time, status, note
-                    FROM product_order WHERE username='$username'
+                    $query = " SELECT type, id, name, day, price, order_time, status, note
+                    FROM course_order WHERE username='$username'
                     ORDER BY order_time DESC
                     LIMIT $limit OFFSET $offset";
 
@@ -370,7 +368,7 @@ if ($totalProductsResult) {
                                 <?php echo $row['name']; ?>
                             </td>
                             <td>
-                                <?php echo $row['quantity']; ?>
+                                <?php echo $row['day']; ?>
                             </td>
                             <td>
                                 <?php echo $row['price']; ?>
@@ -401,21 +399,21 @@ if ($totalProductsResult) {
         </div>
         <div class="pagination">
             <?php
-            $totalPages = ceil($totalProducts / $limit); // คำนวณจำนวนหน้าทั้งหมด
+            $totalPages = ceil($totalcourses / $limit); // คำนวณจำนวนหน้าทั้งหมด
             $prevPage = ($page > 1) ? $page - 1 : 1;
             $nextPage = ($page < $totalPages) ? $page + 1 : $totalPages;
 
             if ($page > 1) {
-                echo "<a href='history.php?page=$prevPage' class='pagination-link'><</a>"; // ลิงก์หน้าก่อนหน้า
+                echo "<a href='history2.php?page=$prevPage' class='pagination-link'><</a>"; // ลิงก์หน้าก่อนหน้า
             }
 
             for ($i = 1; $i <= $totalPages; $i++) {
                 $activeClass = ($i == $page) ? 'active' : '';
-                echo "<a href='history.php?page=$i' class='pagination-link $activeClass'>$i</a>";
+                echo "<a href='history2.php?page=$i' class='pagination-link $activeClass'>$i</a>";
             }
 
             if ($page < $totalPages) {
-                echo "<a href='history.php?page=$nextPage' class='pagination-link'>></a>"; // ลิงก์หน้าถัดไป
+                echo "<a href='history2.php?page=$nextPage' class='pagination-link'>></a>"; // ลิงก์หน้าถัดไป
             }
             ?>
         </div>
