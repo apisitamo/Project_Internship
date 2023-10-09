@@ -70,6 +70,7 @@ if (isset($_GET['delete_id'])) {
 
     .add-gallery .show-gallery .card img {
         padding: 10px;
+        height: 215px;
     }
 
     .add-gallery .add-img .containertop .btn-primary {
