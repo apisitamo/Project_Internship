@@ -212,7 +212,6 @@ if ($ASOrdersResult) {
     }
 
     .containerbuttom .card .w-100 {
-        width: 60% !important;
         align-items: center;
         height: 170px;
     }
@@ -459,10 +458,12 @@ if ($ASOrdersResult) {
                         <div class="card">
                             <button class="deleteitem" data-course-id="<?php echo $row['id']; ?>">
                                 <i class="bi bi-trash3-fill"></i></button>
-                                <a class="Fixicon" href="add_course_fix.php?fix_id=<?php echo $row['id']; ?>">
+                            <a class="Fixicon" href="add_course_fix.php?fix_id=<?php echo $row['id']; ?>">
                                 <img src="assets/images/fix.png" alt="">
                             </a>
-                            <img src="<?php echo $row['img']; ?>" class="w-100" alt="course image">
+                            <div class="w-img">
+                                <img src="<?php echo $row['img']; ?>" class="w-100" alt="course image">
+                            </div>
                             <div class="course-body">
                                 <p class="card-text">
                                     <?= $types ?> :
