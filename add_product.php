@@ -192,9 +192,10 @@ if ($BMOOrdersResult) {
         transition: 0.4s;
     }
 
-    .w-100 {
-        width: 50% !important;
+    .containerbuttom .card .w-100 {
+        width: 60% !important;
         align-items: center;
+        height: 170px;
     }
 
     .addpro1 .containertop .mb-3:not(:nth-child(3)) {
