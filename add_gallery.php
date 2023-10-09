@@ -216,7 +216,9 @@ if (isset($_GET['delete_id'])) {
                                     <button class="deleteitem" data-gallery-id="<?php echo $row['id']; ?>">
                                         <i class="bi bi-trash3-fill"></i>
                                     </button>
-                                    <img src="<?php echo $row['img']; ?>" class="w-100" alt="gallery Image">
+                                    <div class="w-img">
+                                        <img src="<?php echo $row['img']; ?>" class="w-100" alt="gallery Image">
+                                    </div>
                                 </div>
                             </div>
                             <?php
