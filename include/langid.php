@@ -80,6 +80,8 @@ if($langId == 1){
     $fixcourse = "แก้ไขข้อมูลหลักสูตร";
     $fixproduct = "แก้ไขข้อมูลผลิตภัณฑ์";
     $slip = "กรุณาแนบรูปถ่ายใบเสร็จการโอนเงินของคุณ";
+    $PO ="คำสั่งซื้อผลิตภัณฑ์";
+    $CO ="คำสั่งหลักสูตร";
     
     
 
@@ -164,6 +166,8 @@ if($langId == 1){
     $fixcourse = "Edit course information";
     $fixproduct = "Edit product information";
     $slip = "Please include a photo of your transfer slip.";
+    $PO ="Product orders";
+    $CO ="Course orders";
 
 }
 ?>

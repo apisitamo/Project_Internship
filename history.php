@@ -335,11 +335,11 @@ if ($totalProductsResult) {
         <div class="homeheader">
             <div class="PO">
                 <i class="bi bi-caret-right-fill">
-                    <a href="history.php"> product order</a>
+                    <a href="history.php"><?= $PO ?></a>
                 </i>
             </div>
             <div class="CO">
-                    <a href="history2.php"> course order</a>
+                    <a href="history2.php"><?= $CO ?></a>
             </div>
         </div>
         <div class="container" id="user-con">

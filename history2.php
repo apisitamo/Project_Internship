@@ -331,11 +331,11 @@ if ($totalcoursesResult) {
     <section class="user1">
         <div class="homeheader">
             <div class="PO">
-                    <a href="history.php"> product order</a>
+                    <a href="history.php"><?= $PO ?></a>
             </div>
             <div class="CO">
                 <i class="bi bi-caret-right-fill">
-                    <a href="history2.php"> course order</a>
+                    <a href="history2.php"><?= $CO ?></a>
                 </i>
             </div>
         </div>
