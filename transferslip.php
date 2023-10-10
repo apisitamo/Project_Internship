@@ -26,8 +26,14 @@
     ?>
 </head>
 
+<style>
+    .img-card {
+        text-align: center;
+    }
+</style>
+
 <body style="background-color:black;">
-    <div>
+    <div class="img-card">
         <img style="height: 750px;" src="<?php echo $transfer_slip ?>">
     </div>
 </body>
