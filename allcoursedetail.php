@@ -4,10 +4,7 @@
 <head>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.css' rel='stylesheet' />
-    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.js'></script>
-
-    <link href="calendar.css" rel="stylesheet">
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.9/index.global.min.js'></script>
     <?php
     include 'include/head.php';
     include 'include/langid.php';
@@ -327,10 +324,11 @@
 
 <!-- ปฏิทิน -->
 <style>
-    #popup3{
+    #popup3 {
         width: 1450px;
         height: 680px;
     }
+
     #popup3 .fc-direction-ltr {
         height: 600px;
         width: 725px;
@@ -346,6 +344,19 @@
     .booked {
         background-color: red;
         color: white;
+    }
+
+    #popup3 .fc-col-header {
+        width: 700px !important;
+    }
+
+    #popup3 .fc-scrollgrid-sync-table {
+        width: 723px !important;
+        height: 600px !important;
+    }
+
+    #popup3 .fc-scroller {
+        overflow: hidden !important;
     }
 </style>
 
