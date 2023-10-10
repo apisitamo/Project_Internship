@@ -671,7 +671,6 @@
         <!-- เป็นส่วนของ popup ตอนเด้งขึ้นมา ขั้่น 3-->
 
         <div class="popup" id="popup3">
-            <span class="close-popup" id="close-popup3">&times;</span>
             <div class="left-calendar">
                 <div id="calendar"></div>
             </div>
@@ -699,7 +698,7 @@
 
         <!-- เป็นส่วนของ popup ตอนเด้งขึ้นมา ขั้่น 4-->
 
-        <!-- <div class="popup" id="popup3">
+        <div class="popup" id="popup4">
             <div class="popup-content">
                 <span class="close-popup" id="close-popup3">&times;</span>
                 <div class="container">
@@ -720,7 +719,7 @@
                     </button>
                 </div>
             </div>
-        </div> -->
+        </div>
 
     </section>
 
@@ -748,6 +747,8 @@
     const buttonsuccesssecond = document.querySelectorAll('#button-success2');
 
     const popup3 = document.querySelector('#popup3');
+
+    const popup4 = document.querySelector('#popup4');
     const closethirdpopup = document.querySelector('#close-popup3');
     const buttonclosethird = document.querySelector('#button-close3');
 
@@ -814,13 +815,13 @@
 
     closethirdpopup.addEventListener('click', () => {
         console.log("X third popup ");
-        popup3.style.display = 'none';
+        popup4.style.display = 'none';
         clickOverlay1.style.display = 'none';
         location.reload();
     });
     buttonclosethird.addEventListener('click', () => {
         console.log("close BTN third POPUP");
-        popup3.style.display = 'none';
+        popup4.style.display = 'none';
         clickOverlay1.style.display = 'none';
         // location.reload();
     });
@@ -834,7 +835,7 @@
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-<script>
+<!-- <script>
     $(document).ready(function() {
     $(".button-success-2").click(function () {
     var type = "<?php echo $type ?>";
@@ -868,7 +869,7 @@
     });
     });
     });
-</script>
+</script> -->
 
 <!-- <script>
     $(document).ready(function() {
@@ -1019,7 +1020,39 @@
                             },
                             success: function(response) {
                                 // กระทำหลังจากสำเร็จ
-                                alert("บันทึกข้อมูลเรียบร้อยแล้ว");
+                                $("#popup3").css("display", "none");
+                                $("#popup4").css("display", "flex");
+                                // alert("บันทึกข้อมูลเรียบร้อยแล้ว");
+                                
+                                var type = "<?php echo $type ?>";
+                                var name = "<?php echo $name_eng ?>";
+                                var day = "<?php echo $day ?>";
+                                var price = "<?php echo $price ?>";
+                                var imageInput = $("input[name='img']")[0];
+
+                                if (imageInput.files.length === 0) {
+                                    // Display an alert or handle the case where no file is selected
+                                    return;
+                                }
+                                var imageFile = imageInput.files[0];
+
+                                var formData = new FormData();
+                                formData.append("type", type);
+                                formData.append("name", name);
+                                formData.append("day", day);
+                                formData.append("price", price);
+                                formData.append("img", imageFile);
+
+                                $.ajax({
+                                    type: "POST",
+                                    url: "allcoursedetail_insert.php",
+                                    data: formData,
+                                    contentType: false,
+                                    processData: false,
+                                    success: function(response) {
+                                        // alert(response);
+                                    }
+                                });
                             },
                             error: function(xhr, status, error) {
                                 // กระทำหลังจากเกิดข้อผิดพลาด
