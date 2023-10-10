@@ -3,7 +3,7 @@
 <?php include 'include/head.php';
 
 
-if($langId == 1){
+if ($langId == 1) {
     $about = "เกี่ยวกับเรา";
     $about1 = "“สถาบันวิชาชีพสปา กรุงเทพ”";
     $about2 = "ก่อตั้งขึ้นเมื่อเดือนมิถุนายน 2550 โดยบริษัท ออเร็นทัล สปา จำกัด ";
@@ -71,7 +71,7 @@ if($langId == 1){
     $about57 = "ใบรับรองผู้ดำเนินการสปา กระทรวงสาธารณะสุข";
     $about58 = "อดีต Trainer “THE KLINIQUE (เดอะคลีนิกค์) ”";
     $about59 = "อดีตผู้จัดการ “MAJIA Acupuncture Clinic มาเจียฝังเข็มบางนา”";
-}else{
+} else {
     $about = "About";
     $about1 = "Bangkok Spa Academy";
     $about2 = "was founded in June 2007 by Oriental Spa CO., LTD.";
@@ -148,10 +148,12 @@ if($langId == 1){
 ?>
 
 <body>
-    <section class="banner-page"data-aos="flip-down" data-aos-duration="2000">
+    <section class="banner-page" data-aos="flip-down" data-aos-duration="2000">
         <div class="wrap">
             <img src="assets/images/banner-page.png" alt="">
-            <p><?= $about ?></p>
+            <p>
+                <?= $about ?>
+            </p>
         </div>
     </section>
 
@@ -159,40 +161,61 @@ if($langId == 1){
         <div class="container ">
             <div class="spa">
                 <div class="row">
-                    <div class="col-lg-6"data-aos="zoom-out-right" data-aos-duration="2000">
-                        <span class="text-second"><?= $about1 ?></span> <span class="text2"><?= $about2 ?> <span class=text-main><?= $about3 ?></span> <?= $about4 ?> <span class=text-main><?= $about5 ?> </span>
-                        <?= $about6 ?></span>
+                    <div class="col-lg-6" data-aos="zoom-out-right" data-aos-duration="2000">
+                        <span class="text-second">
+                            <?= $about1 ?>
+                        </span> <span class="text2">
+                            <?= $about2 ?> <span class=text-main><?= $about3 ?></span> <?= $about4 ?> <span
+                                class=text-main><?= $about5 ?> </span>
+                            <?= $about6 ?>
+                        </span>
 
                     </div>
-                    <div class="col-lg-6"data-aos="zoom-out-left" data-aos-duration="2000">
+                    <div class="col-lg-6" data-aos="zoom-out-left" data-aos-duration="2000">
                         <img src="assets/images/pic6.png" alt="" class="w-100">
                     </div>
                 </div>
             </div>
             <div class="spa consultant">
                 <div class="row">
-                    <div class="col-lg-6"data-aos="zoom-out-right" data-aos-duration="2000">
+                    <div class="col-lg-6" data-aos="zoom-out-right" data-aos-duration="2000">
                         <img src="assets/images/pic7.png" alt="" class="w-100">
                     </div>
-                    <div class="col-lg-6"data-aos="zoom-out-left" data-aos-duration="2000">
-                        <p class="head-since1"> <?= $about7 ?></p>
-                        <span class="text-main"><?= $about8 ?></span><br>
-                        <span class="text2"><?= $about9 ?></span>
+                    <div class="col-lg-6" data-aos="zoom-out-left" data-aos-duration="2000">
+                        <p class="head-since1">
+                            <?= $about7 ?>
+                        </p>
+                        <span class="text-main">
+                            <?= $about8 ?>
+                        </span><br>
+                        <span class="text2">
+                            <?= $about9 ?>
+                        </span>
                     </div>
                 </div>
             </div>
             <div class="spa">
                 <div class="row">
-                    <div class="col-lg-6"data-aos="zoom-out-right" data-aos-duration="2000">
-                        <p class="head-since"><?= $about10 ?></p>
+                    <div class="col-lg-6" data-aos="zoom-out-right" data-aos-duration="2000">
+                        <p class="head-since">
+                            <?= $about10 ?>
+                        </p>
                         <div class="text2">
-                            <li><?= $about11 ?><span class=text-main><?= $about12 ?></span><?= $about13 ?></li>
-                            <li><?= $about14 ?></li>
-                            <li><?= $about15 ?></li>
-                            <li><?= $about16 ?></li>
+                            <li>
+                                <?= $about11 ?><span class=text-main><?= $about12 ?></span><?= $about13 ?>
+                            </li>
+                            <li>
+                                <?= $about14 ?>
+                            </li>
+                            <li>
+                                <?= $about15 ?>
+                            </li>
+                            <li>
+                                <?= $about16 ?>
+                            </li>
                         </div>
                     </div>
-                    <div class="col-lg-6"data-aos="zoom-out-left" data-aos-duration="2000">
+                    <div class="col-lg-6" data-aos="zoom-out-left" data-aos-duration="2000">
                         <img src="assets/images/pic8.png" alt="" class="w-100">
                     </div>
                 </div>
@@ -219,196 +242,283 @@ if($langId == 1){
                 </ul>
             </div>
             -->
-            <div class="title-sec"data-aos="fade-down" data-aos-duration="2000">
+            <div class="title-sec" data-aos="fade-down" data-aos-duration="2000">
                 <div class=text-line-vertical>
-                    <h2><span><?= $about17 ?></span></h2>
+                    <h2><span>
+                            <?= $about17 ?>
+                        </span></h2>
                 </div>
             </div>
             <div class="lacturer">
                 <div class="row">
-                    <div class="col-lg-3"data-aos="fade-right" data-aos-duration="2000">
+                    <div class="col-lg-3" data-aos="fade-right" data-aos-duration="2000">
                         <img src="assets/images/member1.png" alt="" class="w-100">
                     </div>
-                    <div class="col-lg-9"data-aos="fade-left" data-aos-duration="2000">
+                    <div class="col-lg-9" data-aos="fade-left" data-aos-duration="2000">
                         <div class="name">
                             <img src="assets/images/spa.png" alt="">
-                            <span class="head1"><?= $about18 ?> <span class="custom"><?= $about19 ?></span> </span>
+                            <span class="head1">
+                                <?= $about18 ?> <span class="custom">
+                                    <?= $about19 ?>
+                                </span>
+                            </span>
                         </div>
                         <div class="timeline">
                             <img src="assets/images/icon.png" alt="">
-                            <span><?= $about20 ?></span>
+                            <span>
+                                <?= $about20 ?>
+                            </span>
                         </div>
                         <ul class="timeline">
                             </li>
                             <li class="timeline-item">
                                 <div class="timeline-marker"></div>
                                 <div class="timeline-content">
-                                    <p><?= $about21 ?></p>
+                                    <p>
+                                        <?= $about21 ?>
+                                    </p>
                                 </div>
                             </li>
                             <li class="timeline-item">
                                 <div class="timeline-marker"></div>
                                 <div class="timeline-content">
-                                    <p><?= $about22 ?></p>
+                                    <p>
+                                        <?= $about22 ?>
+                                    </p>
                                 </div>
                             </li>
                             <li class="timeline-item">
                                 <div class="timeline-marker"></div>
                                 <div class="timeline-content">
-                                    <p><?= $about23 ?></p>
+                                    <p>
+                                        <?= $about23 ?>
+                                    </p>
                                 </div>
                             </li>
                             <li class="timeline-item">
                                 <div class="timeline-marker"></div>
                                 <div class="timeline-content">
-                                    <p><?= $about24 ?></p>
+                                    <p>
+                                        <?= $about24 ?>
+                                    </p>
                                 </div>
                             </li>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-9"data-aos="fade-right" data-aos-duration="2000">
+                    <div class="col-lg-9" data-aos="fade-right" data-aos-duration="2000">
                         <div class="name">
                             <img src="assets/images/icon1.png" alt="">
-                            <span class="head1"><?= $about25 ?> <span class="custom"><?= $about26 ?></span> </span>
+                            <span class="head1">
+                                <?= $about25 ?> <span class="custom">
+                                    <?= $about26 ?>
+                                </span>
+                            </span>
                         </div>
                         <div class="timeline">
                             <img src="assets/images/icon.png" alt="">
-                            <span><?= $about27 ?></span>
+                            <span>
+                                <?= $about27 ?>
+                            </span>
                         </div>
                         <ul class="timeline">
                             <li class="timeline-item">
                                 <div class="timeline-marker"></div>
                                 <div class="timeline-content">
-                                    <p><?= $about28 ?></p>
+                                    <p>
+                                        <?= $about28 ?>
+                                    </p>
                                 </div>
                             </li>
                             <li class="timeline-item">
                                 <div class="timeline-marker"></div>
                                 <div class="timeline-content">
-                                    <p><?= $about29 ?></p>
+                                    <p>
+                                        <?= $about29 ?>
+                                    </p>
                                 </div>
                             </li>
                             <li class="timeline-item">
                                 <div class="timeline-marker"></div>
                                 <div class="timeline-content">
-                                    <p><?= $about30 ?></p>
+                                    <p>
+                                        <?= $about30 ?>
+                                    </p>
                                 </div>
                             </li>
                             <li class="timeline-item">
                                 <div class="timeline-marker"></div>
                                 <div class="timeline-content">
-                                    <p><?= $about31 ?></p>
+                                    <p>
+                                        <?= $about31 ?>
+                                    </p>
                                 </div>
                             </li>
                             <li class="timeline-item">
                                 <div class="timeline-marker"></div>
                                 <div class="timeline-content">
-                                    <p><?= $about32 ?></p>
+                                    <p>
+                                        <?= $about32 ?>
+                                    </p>
                                 </div>
                             </li>
                             <li class="timeline-item">
                                 <div class="timeline-marker"></div>
                                 <div class="timeline-content">
-                                    <p><?= $about33 ?></p>
+                                    <p>
+                                        <?= $about33 ?>
+                                    </p>
                                 </div>
                             </li>
                     </div>
-                    <div class="col-lg-3"data-aos="fade-left" data-aos-duration="2000">
+                    <div class="col-lg-3" data-aos="fade-left" data-aos-duration="2000">
                         <img src="assets/images/member-2.png" alt="" class="w-100">
                     </div>
                 </div>
-                <div class="title-sec"data-aos="fade-down" data-aos-duration="2000">
+                <div class="title-sec" data-aos="fade-down" data-aos-duration="2000">
                     <div class=text-line-vertical>
-                        <h2><span> <?= $about34 ?> </span></h2>
+                        <h2><span>
+                                <?= $about34 ?>
+                            </span></h2>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-3"data-aos="fade-right" data-aos-duration="2000">
+                    <div class="col-lg-3" data-aos="fade-right" data-aos-duration="2000">
                         <img src="assets/images/member2.png" alt="" class="w-100 imgmobile">
                     </div>
-                    <div class="col-lg-9"data-aos="fade-left" data-aos-duration="2000">
+                    <div class="col-lg-9" data-aos="fade-left" data-aos-duration="2000">
                         <div class="name">
                             <img src="assets/images/icon2.png" alt="">
-                            <span class="head1"><?= $about35 ?><span class="custom"> <?= $about36 ?></span> </span>
+                            <span class="head1">
+                                <?= $about35 ?><span class="custom">
+                                    <?= $about36 ?>
+                                </span>
+                            </span>
                         </div>
-                        <p class="head2"> <?= $about37 ?> </p>
+                        <p class="head2">
+                            <?= $about37 ?>
+                        </p>
                         <ul class="timeline timeline-custom1">
                             <li class="timeline-item">
                                 <div class="timeline-marker"></div>
                                 <div class="timeline-content">
-                                    <p><?= $about38 ?></p>
+                                    <p>
+                                        <?= $about38 ?>
+                                    </p>
                                 </div>
                             </li>
                             <li class="timeline-item">
                                 <div class="timeline-marker"></div>
                                 <div class="timeline-content">
-                                    <p> <?= $about39 ?> </p>
-                                    <p> <?= $about40 ?> </p>
-                                    <p> <?= $about41 ?> </p>
-                                    <p> <?= $about42 ?> </p>
-                                    <p> <?= $about43 ?> </p>
+                                    <p>
+                                        <?= $about39 ?>
+                                    </p>
+                                    <p>
+                                        <?= $about40 ?>
+                                    </p>
+                                    <p>
+                                        <?= $about41 ?>
+                                    </p>
+                                    <p>
+                                        <?= $about42 ?>
+                                    </p>
+                                    <p>
+                                        <?= $about43 ?>
+                                    </p>
                                 </div>
                             </li>
                             <li class="timeline-item">
                                 <div class="timeline-marker"></div>
                                 <div class="timeline-content">
-                                    <p><?= $about44 ?></p>
-                                    <p><?= $about45 ?></p>
-                                    <p><?= $about46 ?></p>
-                                    <p><?= $about47 ?></p>
+                                    <p>
+                                        <?= $about44 ?>
+                                    </p>
+                                    <p>
+                                        <?= $about45 ?>
+                                    </p>
+                                    <p>
+                                        <?= $about46 ?>
+                                    </p>
+                                    <p>
+                                        <?= $about47 ?>
+                                    </p>
                                 </div>
                             </li>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-9"data-aos="fade-right" data-aos-duration="2000">
+                    <div class="col-lg-9" data-aos="fade-right" data-aos-duration="2000">
                         <div class="name">
                             <img src="assets/images/icon2.png" alt="">
-                            <span class="head1"><?= $about48 ?><span class="custom"> <?= $about49 ?></span> </span>
+                            <span class="head1">
+                                <?= $about48 ?><span class="custom">
+                                    <?= $about49 ?>
+                                </span>
+                            </span>
                         </div>
-                        <p class="head2"><?= $about50 ?></p>
+                        <p class="head2">
+                            <?= $about50 ?>
+                        </p>
                         <ul class="timeline timeline-custom2">
                             <li class="timeline-item">
                                 <div class="timeline-marker"></div>
                                 <div class="timeline-content">
-                                    <p><?= $about51 ?></p>
-                                    <p><?= $about52 ?></p>
-                                    <p><?= $about53 ?></p>
-                                    <p><?= $about54 ?></p>
-                                    <p><?= $about55 ?></p>
-                                    <p><?= $about56 ?></p>
+                                    <p>
+                                        <?= $about51 ?>
+                                    </p>
+                                    <p>
+                                        <?= $about52 ?>
+                                    </p>
+                                    <p>
+                                        <?= $about53 ?>
+                                    </p>
+                                    <p>
+                                        <?= $about54 ?>
+                                    </p>
+                                    <p>
+                                        <?= $about55 ?>
+                                    </p>
+                                    <p>
+                                        <?= $about56 ?>
+                                    </p>
                                 </div>
                             </li>
                             <li class="timeline-item">
                                 <div class="timeline-marker"></div>
                                 <div class="timeline-content">
-                                    <p><?= $about57 ?></p>
+                                    <p>
+                                        <?= $about57 ?>
+                                    </p>
                                 </div>
                             </li>
                             <li class="timeline-item">
                                 <div class="timeline-marker"></div>
                                 <div class="timeline-content">
-                                    <p><?= $about58 ?></p>
+                                    <p>
+                                        <?= $about58 ?>
+                                    </p>
                                 </div>
                             </li>
                             <li class="timeline-item">
                                 <div class="timeline-marker"></div>
                                 <div class="timeline-content">
-                                    <p><?= $about59 ?></p>
+                                    <p>
+                                        <?= $about59 ?>
+                                    </p>
                                 </div>
                             </li>
                     </div>
-                    <div class="col-lg-3"data-aos="fade-left" data-aos-duration="2000">
+                    <div class="col-lg-3" data-aos="fade-left" data-aos-duration="2000">
                         <img src="assets/images/member-4.png" alt="" class="w-100">
                     </div>
                 </div>
             </div>
     </section>
 
-    <?php include 'include/footer.php';?>
+    <?php include 'include/footer.php'; ?>
 </body>
 <script>
-  AOS.init();
+    AOS.init();
 </script>
+
 </html>
