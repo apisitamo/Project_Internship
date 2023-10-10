@@ -309,24 +309,31 @@ if ($totalcoursesResult) {
         justify-content: space-evenly;
     }
 
-    .user1 .homeheader div {
+    .user1 .homeheader .PO a {
         background: #ffc387;
         padding: 5px 15px;
         border-radius: 10px;
         border: black;
         border-style: groove;
+        font-size: 25px;
+    }
+    .user1 .homeheader .CO a {
+        background: #E88B2E;
+        padding: 5px 15px;
+        border-radius: 10px;
+        border: black;
+        border-style: groove;
+        font-size: 25px;
     }
 </style>
 
 <body>
     <section class="user1">
         <div class="homeheader">
-            <div>
-                <i class="bi bi-caret-right-fill">
+            <div class="PO">
                     <a href="history.php"> product order</a>
-                </i>
             </div>
-            <div>
+            <div class="CO">
                 <i class="bi bi-caret-right-fill">
                     <a href="history2.php"> course order</a>
                 </i>

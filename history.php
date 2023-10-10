@@ -311,27 +311,35 @@ if ($totalProductsResult) {
         justify-content: space-evenly;
     }
 
-    .user1 .homeheader div {
+    .user1 .homeheader .PO a {
+        background: #E88B2E;
+        padding: 5px 15px;
+        border-radius: 10px;
+        border: black;
+        border-style: groove;
+        font-size: 25px;
+    }
+    .user1 .homeheader .CO a {
         background: #ffc387;
         padding: 5px 15px;
         border-radius: 10px;
         border: black;
         border-style: groove;
+        font-size: 25px;
     }
+    
 </style>
 
 <body>
     <section class="user1">
         <div class="homeheader">
-            <div>
+            <div class="PO">
                 <i class="bi bi-caret-right-fill">
                     <a href="history.php"> product order</a>
                 </i>
             </div>
-            <div>
-                <i class="bi bi-caret-right-fill">
+            <div class="CO">
                     <a href="history2.php"> course order</a>
-                </i>
             </div>
         </div>
         <div class="container" id="user-con">
