@@ -332,8 +332,8 @@
         height: 680px;
     }
     #popup3 .fc-direction-ltr {
-        height: 500px;
-        width: 500px;
+        height: 600px;
+        width: 725px;
     }
 
     td {
