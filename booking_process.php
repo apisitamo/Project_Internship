@@ -2,7 +2,6 @@
 session_start();
 include('server.php');
 
-// คำสั่ง SQL เพื่อดึงข้อมูลจากฐานข้อมูล
 $sql = "SELECT date FROM booking";
 
 $result = $conn->query($sql);
@@ -19,8 +18,6 @@ if ($result->num_rows > 0) {
     }
 }
 
-// ส่งข้อมูลในรูปแบบ JSON
 echo json_encode($data);
 
 $conn->close();
-?>

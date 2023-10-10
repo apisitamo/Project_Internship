@@ -329,6 +329,10 @@ if (isset($_GET['delete_id'])) {
     .redText {
         background: #ff1e1e;
     }
+
+    .pro-order .table_order td:nth-child(9) {
+        width: 0%;
+    }
 </style>
 
 <body>
@@ -444,8 +448,15 @@ if (isset($_GET['delete_id'])) {
                                         <?php echo date('d/m/y H:i', strtotime($row['order_time'])); ?>
                                     </td>
                                     <td>
-                                        <img src="<?php echo $row['transfer_slip']; ?>">
+                                        <?php
+                                        $hasTransferSlip = $row['transfer_slip'];
+
+                                        if ($hasTransferSlip) {
+                                            echo '<a class="" href="transferslip.php?trans_id=' . $row['id'] . '" target="_blank" >กด</a>';
+                                        }
+                                        ?>
                                     </td>
+
                                     <td>
                                         <select onchange="this.className=this.options[this.selectedIndex].className" class="status-dropdown" data-row-id="<?php echo $row['id']; ?>" disabled>
                                             <option value="pending" class="yellowText" <?php if ($row['status'] === 'pending')
@@ -527,6 +538,15 @@ if (isset($_GET['delete_id'])) {
     </section>
 
     <section class="popup-add">
+
+        <div class="popup" id="popup1">
+            <div class="popup-content">
+                <span class="close-popup" id="close-popup1">&times;</span>
+                <div class="container">
+                    <img src="<?php echo $row['quantity']; ?>" alt="">
+                </div>
+            </div>
+        </div>
 
         <div class="popup" id="popup2">
             <div class="popup-content">
@@ -706,6 +726,7 @@ if (isset($_GET['delete_id'])) {
 
     clickOverlay1.addEventListener('click', () => {
         console.log("Clicked on overlay");
+        popup1.style.display = 'none';
         popup2.style.display = 'none';
         clickOverlay1.style.display = 'none';
     });
@@ -727,6 +748,26 @@ if (isset($_GET['delete_id'])) {
             const deleteLink = `course_order.php?delete_id=${deleteId}`;
             window.location.href = deleteLink;
         }
+    });
+</script>
+
+<script>
+    const slips = document.querySelectorAll('.slips');
+    const popup1 = document.querySelector('#popup1');
+    const closefirstpopup = document.querySelector('#close-popup1');
+
+    slips.forEach(button => {
+        button.addEventListener('click', () => {
+            console.log("Open slips popup");
+            popup1.style.display = 'flex';
+            clickOverlay1.style.display = 'block';
+        });
+    });
+
+    closefirstpopup.addEventListener('click', () => {
+        console.log("X first popup ");
+        popup1.style.display = 'none';
+        clickOverlay1.style.display = 'none';
     });
 </script>
 

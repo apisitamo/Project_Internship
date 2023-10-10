@@ -23,19 +23,26 @@
     } */
 
     #calendar {
-        width: 700px;
-        height: 700px;
+        width: 650px;
+        height: 650px;
     }
 
-    .left {
+    .top {
         display: flex;
         justify-content: center;
     }
+
+    
 </style>
 
 <body>
-    <div class="left">
-        <div id="calendar"></div>
+    <div class="top">
+        <div class="left">
+            <div id="calendar"></div>
+        </div>
+        <div class="right">
+            <input type="date">
+        </div>
     </div>
     <script src="calendar.js"></script>
 </body>
