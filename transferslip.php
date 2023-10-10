@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 
 <head>
+    <title>Transfer Slip</title>
+    <link rel="icon" href="assets/images/BSA.png">
     <?php
     include('server.php');
     ?>
