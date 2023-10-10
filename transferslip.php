@@ -28,7 +28,7 @@
 
 <body style="background-color:black;">
     <div>
-        <img style="height: 700px;" src="<?php echo $transfer_slip ?>">
+        <img style="height: 750px;" src="<?php echo $transfer_slip ?>">
     </div>
 </body>
 
