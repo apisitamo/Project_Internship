@@ -996,6 +996,7 @@
             }
 
             // ส่งค่าด้วย AJAX เพื่อตรวจสอบวันที่ซ้ำกันในฐานข้อมูล
+            var name = "<?php echo $name_eng ?>";
             $.ajax({
                 url: "check_dates.php", // เปลี่ยนเป็น URL ของไฟล์ PHP สำหรับการตรวจสอบวันที่
                 method: "POST",
@@ -1016,14 +1017,15 @@
                             url: "booking_insert.php", // เปลี่ยนเป็น URL ของไฟล์ PHP สำหรับการแทรกข้อมูล
                             method: "POST",
                             data: {
-                                dates: dates
+                                dates: dates,
+                                name: name
                             },
                             success: function(response) {
                                 // กระทำหลังจากสำเร็จ
                                 $("#popup3").css("display", "none");
                                 $("#popup4").css("display", "flex");
                                 // alert("บันทึกข้อมูลเรียบร้อยแล้ว");
-                                
+
                                 var type = "<?php echo $type ?>";
                                 var name = "<?php echo $name_eng ?>";
                                 var day = "<?php echo $day ?>";
