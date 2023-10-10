@@ -358,6 +358,17 @@
     #popup3 .fc-scroller {
         overflow: hidden !important;
     }
+
+    #popup3 .right-calendar {
+        position: absolute;
+        top: 15%;
+        right: 20%;
+    }
+
+    #popup3 .right-calinput {
+        display: grid;
+        grid-gap: 60px;
+    }
 </style>
 
 <body>
@@ -488,12 +499,15 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="wrap-contact">
-                        <div class="item call" data-aos="fade-up" data-aos-duration="2000"><i class="fa-regular fa-phone"></i><span>086-322-1922</span></div>
+                        <div class="item call" data-aos="fade-up" data-aos-duration="2000"><i
+                                class="fa-regular fa-phone"></i><span>086-322-1922</span></div>
                         <a href="https://line.me/ti/p/~@108toots">
-                            <div class="item line" data-aos="fade-up" data-aos-duration="2000"><img class="line-img" src="assets/images/line.png" alt=""><span>@bsathailand</span></div>
+                            <div class="item line" data-aos="fade-up" data-aos-duration="2000"><img class="line-img"
+                                    src="assets/images/line.png" alt=""><span>@bsathailand</span></div>
                         </a>
                         <a href="https://th-th.facebook.com/BSABangkok/">
-                            <div class="item facebook" data-aos="fade-up" data-aos-duration="2000"><i class="bi bi-facebook"></i><span>Bangkok Spa Academy</span></div>
+                            <div class="item facebook" data-aos="fade-up" data-aos-duration="2000"><i
+                                    class="bi bi-facebook"></i><span>Bangkok Spa Academy</span></div>
                         </a>
                     </div>
                 </div>
@@ -512,7 +526,7 @@
             <div class="popup-content">
                 <span class="close-popup" id="close-popup1">&times;</span>
                 <div class="homecontent">
-                    <?php if (isset($_SESSION['username'])) : ?>
+                    <?php if (isset($_SESSION['username'])): ?>
                         <div class="box">
                             <div class="container">
                                 <div class="row">
@@ -528,7 +542,7 @@
                                 </button>
                             </div>
                         </div>
-                    <?php else : ?>
+                    <?php else: ?>
                         <div class="box">
                             <div class="container">
                                 <div class="row">
@@ -624,7 +638,7 @@
                                     <?= $slip ?>
                                 </h5>
                             </div>
-                        <?php
+                            <?php
                         } else { ?>
                             <div class="homecontent">
                                 <div class="container">
@@ -640,7 +654,7 @@
                                     </a>
                                 </div>
                             </div>
-                <?php }
+                        <?php }
                     } else {
                         // ไม่พบข้อมูลของ username นี้
                         echo "ไม่พบข้อมูลของ username นี้";
@@ -665,11 +679,13 @@
                 <div id="calendar"></div>
             </div>
             <div class="right-calendar">
-                <p> จำนวน<?= $day ?> วัน </p>
-                <div>
+                <p> จำนวน
+                    <?= $day ?> วัน
+                </p>
+                <div class="right-calinput">
                     <?php
-                    for ($i = 1; $i <= $day; $i++) :
-                    ?>
+                    for ($i = 1; $i <= $day; $i++):
+                        ?>
                         <input type="date">
                     <?php endfor ?>
                 </div>
@@ -807,7 +823,7 @@
 </script>
 
 <script>
-    document.getElementById('backButton').addEventListener('click', function() {
+    document.getElementById('backButton').addEventListener('click', function () {
         window.history.back();
     });
 </script>
@@ -815,38 +831,38 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script>
-    $(document).ready(function() {
-    $(".button-success-2").click(function() {
-    var type = "<?php echo $type ?>";
-    var name = "<?php echo $name_eng ?>";
-    var day = "<?php echo $day ?>";
-    var price = "<?php echo $price ?>";
-    var imageInput = $("input[name='img']")[0];
+    $(document).ready(function () {
+        $(".button-success-2").click(function () {
+            var type = "<?php echo $type ?>";
+            var name = "<?php echo $name_eng ?>";
+            var day = "<?php echo $day ?>";
+            var price = "<?php echo $price ?>";
+            var imageInput = $("input[name='img']")[0];
 
-    if (imageInput.files.length === 0) {
-        // Display an alert or handle the case where no file is selected
-        return;
-    }
-    var imageFile = imageInput.files[0];
+            if (imageInput.files.length === 0) {
+                // Display an alert or handle the case where no file is selected
+                return;
+            }
+            var imageFile = imageInput.files[0];
 
-    var formData = new FormData();
-    formData.append("type", type);
-    formData.append("name", name);
-    formData.append("day", day);
-    formData.append("price", price);
-    formData.append("img", imageFile);
+            var formData = new FormData();
+            formData.append("type", type);
+            formData.append("name", name);
+            formData.append("day", day);
+            formData.append("price", price);
+            formData.append("img", imageFile);
 
-    $.ajax({
-        type: "POST",
-        url: "allcoursedetail_insert.php",
-        data: formData,
-        contentType: false,
-        processData: false,
-        success: function(response) {
-            // alert(response);
-        }
-    });
-    });
+            $.ajax({
+                type: "POST",
+                url: "allcoursedetail_insert.php",
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function (response) {
+                    // alert(response);
+                }
+            });
+        });
     });
 </script>
 
