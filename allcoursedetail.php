@@ -327,6 +327,10 @@
 
 <!-- ปฏิทิน -->
 <style>
+    #popup3{
+        width: 1450px;
+        height: 680px;
+    }
     #popup3 .fc-direction-ltr {
         height: 500px;
         width: 500px;
@@ -341,16 +345,6 @@
     .booked {
         background-color: red;
         color: white;
-    }
-
-    .top-calendar {
-        width: 300px;
-        height: 300px;
-    }
-
-    .top-calendar #calendar {
-        width: 300px;
-        height: 300px;
     }
 </style>
 
