@@ -80,6 +80,7 @@
         /* background-image: url("assets\images\Frame 7961.png");*/
         background: #FFFAF5;
         border-radius: 10px;
+        background-image: url(assets/images/banner-page.png);
     }
 
     .click-overlay {
@@ -325,20 +326,20 @@
 <!-- ปฏิทิน -->
 <style>
     #popup3 {
-        width: 1450px;
+        width: 1250px;
         height: 680px;
     }
 
     #popup3 .fc-direction-ltr {
         height: 600px;
         width: 725px;
-        background-color: #a1bbc9;
+        background-color: rgba(188, 111, 67, 0.3);
+        margin: 20px;
     }
 
-    td {
+    #popup3 .fc-theme-standard td {
         background-color: white;
-        border: 1px solid #ddd;
-        padding: 5px;
+        border: 1px solid #945834;
     }
 
     .booked {
@@ -347,7 +348,7 @@
     }
 
     #popup3 .fc-col-header {
-        width: 700px !important;
+        width: 723px !important;
     }
 
     #popup3 .fc-scrollgrid-sync-table {
@@ -355,19 +356,53 @@
         height: 600px !important;
     }
 
+    #popup3 .fc-theme-standard th {
+        border: 1px solid #945834 !important;
+    }
     #popup3 .fc-scroller {
         overflow: hidden !important;
     }
 
-    #popup3 .right-calendar {
-        position: absolute;
-        top: 15%;
-        right: 20%;
+    #popup3 .fc-button-group {
+        background-color: #945834 !important;
+        border-color: white;
     }
 
+    #popup3 .fc-button-primary {
+        background-color: #945834!important;
+        border-color: white;
+        border-radius: 0px;
+    }
+
+    #popup3 .right-calendar {
+        position: absolute;
+        top: 12.5%;
+        right: 10%;
+        text-align: center;
+    }
+
+    #popup3 .right-calendar p {
+        font-size: 30px;
+        font-weight: 700;
+        color: #905537;
+    }
     #popup3 .right-calinput {
         display: grid;
-        grid-gap: 60px;
+        grid-gap: 30px;
+        width: 250px;
+    }
+
+    #popup3 .SBdate {
+        background-color: green;
+        margin: 15px 0px 15px 0px;
+    }
+    #popup3 .right-calinput .form-control{
+        width: 100%;
+        height: 50px;
+        background: #FFFFFFB9;
+        position: relative;
+        font-size: 15px;
+        border-radius: 25px;
     }
 </style>
 
@@ -683,14 +718,14 @@
                         <input type="date" class="form-control" name="dd" required>
                     <?php endfor ?>
                 </div>
-                <button class="SBdate" style="background-color:green;">submit</button>
-                <h5 class="alert1" style="color:red; font-size:15px; display:none;">
+                <button class="SBdate"><?= $confirm ?></button>
+                <h5 class="alert1" style="color:red; font-size:20px; display:none;font-weight: bold;">
                     เลือกวันที่ให้ครบก่อนกดยืนยัน
                 </h5>
-                <h5 class="alert2" style="color:red; font-size:15px; display:none;">
+                <h5 class="alert2" style="color:red; font-size:20px; display:none;font-weight: bold;">
                     กรุณาห้ามเลือกวันซ้ำกับปฏิทิน
                 </h5>
-                <h5 class="alert3" style="color:red; font-size:15px; display:none;">
+                <h5 class="alert3" style="color:red; font-size:20px; display:none;font-weight: bold;">
                     กรุณาห้ามเลือกวันซ้ำกันในช่อง อินพุท
                 </h5>
             </div>

@@ -74,6 +74,7 @@
         /* background-image: url("assets\images\Frame 7961.png");*/
         background: #FFFAF5;
         border-radius: 10px;
+        background-image: url(assets/images/banner-page.png);
     }
 
     .click-overlay {
