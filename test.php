@@ -10,24 +10,26 @@
 </head>
 
 <style>
-    /* สีเริ่มต้นของตารางปฏิทิน */
     td {
         background-color: white;
         border: 1px solid #fff;
         padding: 5px;
     }
 
-    /* สีของวันที่ในฐานข้อมูล */
+    /* สีของวันที่ในฐานข้อมูล
     .booked {
         background-color: red;
         color: white;
-    }
+    } */
 
     #calendar {
-        width: 600px;
-        /* กำหนดความกว้าง */
-        height: 600px;
-        /* กำหนดความสูง */
+        width: 700px;
+        height: 700px;
+    }
+
+    .left {
+        display: flex;
+        justify-content: center;
     }
 </style>
 

@@ -334,6 +334,7 @@
     #popup3 .fc-direction-ltr {
         height: 600px;
         width: 725px;
+        background-color: #a1bbc9;
     }
 
     td {
