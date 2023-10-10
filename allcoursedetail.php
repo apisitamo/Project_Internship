@@ -4,6 +4,8 @@
 <head>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.css' rel='stylesheet' />
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.js'></script>
 
     <link href="calendar.css" rel="stylesheet">
     <?php
@@ -64,11 +66,6 @@
 </head>
 
 <style>
-    #popup3 {
-        width: 1400px;
-        height: 600px;
-    }
-
     .popup {
         display: none;
         z-index: 1000;
@@ -324,6 +321,36 @@
     .course-detail .col-lg-6 .error {
         text-align: center;
         color: red;
+    }
+</style>
+
+
+<!-- ปฏิทิน -->
+<style>
+    #popup3 {
+        width: 1450px;
+        height: 680px;
+    }
+
+    td {
+        background-color: white;
+        border: 1px solid #ddd;
+        padding: 5px;
+    }
+
+    .booked {
+        background-color: red;
+        color: white;
+    }
+
+    .top-calendar {
+        width: 300px;
+        height: 300px;
+    }
+
+    .top-calendar #calendar {
+        width: 300px;
+        height: 300px;
     }
 </style>
 
@@ -624,17 +651,13 @@
 
         <!-- เป็นส่วนของ popup ตอนเด้งขึ้นมา ขั้่น 3-->
 
-        <!-- <div class="popup" id="popup3">
-            <div class="popup-content">
-                <div class="container">
-                    <p class="" ssssss></p>
-                    จำนวนวัน <?= $day ?>
-                    </p>
-                    <div class="left">
-                        <div id="calendar"></div>
-
-                    </div>
-                    <div class="right">
+        <div class="popup" id="popup3">
+            <span class="close-popup" id="close-popup3">&times;</span>
+            <p>จำนวน <?= $day ?> วัน</p>
+            <div class="left-calendar">
+                <div id="calendar"></div>
+            </div>
+            <!-- <div class="right">
                         <div>
                             <?php
                             for ($i = 1; $i <= $day; $i++) :
@@ -642,14 +665,12 @@
                                 <input type="date">
                             <?php endfor ?>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div> -->
+            </div> -->
+        </div>
 
         <!-- เป็นส่วนของ popup ตอนเด้งขึ้นมา ขั้่น 4-->
 
-        <div class="popup" id="popup3">
+        <!-- <div class="popup" id="popup3">
             <div class="popup-content">
                 <span class="close-popup" id="close-popup3">&times;</span>
                 <div class="container">
@@ -670,7 +691,7 @@
                     </button>
                 </div>
             </div>
-        </div>
+        </div> -->
 
     </section>
 
@@ -678,6 +699,7 @@
         AOS.init();
     </script>
 
+    <script src="calendar.js"></script>
 
 
 </body>
@@ -754,7 +776,7 @@
                 alertMessage.style.display = 'block';
             } else {
                 popup2.style.display = 'none'; // ปิด popup สอง
-                popup3.style.display = 'flex';
+                popup3.style.display = 'block';
                 clickOverlay1.style.display = 'block';
             }
         });
@@ -785,37 +807,37 @@
 
 <script>
     $(document).ready(function() {
-        $(".button-success-2").click(function() {
-            var type = "<?php echo $type ?>";
-            var name = "<?php echo $name_eng ?>";
-            var day = "<?php echo $day ?>";
-            var price = "<?php echo $price ?>";
-            var imageInput = $("input[name='img']")[0];
-            
-            if (imageInput.files.length === 0) {
-                // Display an alert or handle the case where no file is selected
-                return;
-            }
-            var imageFile = imageInput.files[0];
+    // $(".button-success-2").click(function() {
+    var type = "<?php echo $type ?>";
+    var name = "<?php echo $name_eng ?>";
+    var day = "<?php echo $day ?>";
+    var price = "<?php echo $price ?>";
+    var imageInput = $("input[name='img']")[0];
 
-            var formData = new FormData();
-            formData.append("type", type);
-            formData.append("name", name);
-            formData.append("day", day);
-            formData.append("price", price);
-            formData.append("img", imageFile);
+    if (imageInput.files.length === 0) {
+        // Display an alert or handle the case where no file is selected
+        return;
+    }
+    var imageFile = imageInput.files[0];
 
-            $.ajax({
-                type: "POST",
-                url: "allcoursedetail_insert.php",
-                data: formData,
-                contentType: false,
-                processData: false,
-                success: function(response) {
-                    // alert(response);
-                }
-            });
-        });
+    var formData = new FormData();
+    formData.append("type", type);
+    formData.append("name", name);
+    formData.append("day", day);
+    formData.append("price", price);
+    formData.append("img", imageFile);
+
+    $.ajax({
+        type: "POST",
+        url: "allcoursedetail_insert.php",
+        data: formData,
+        contentType: false,
+        processData: false,
+        success: function(response) {
+            // alert(response);
+        }
+    });
+    });
     });
 </script>
 
