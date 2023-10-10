@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var calendar = new FullCalendar.Calendar(calendarEl, {
         initialView: 'dayGridMonth', // เลือกวิวที่แสดงเป็นเดือน
         events: {
-            url: 'booking_process.php', // ระบุ URL ของ API
+            url: 'course_date.php', // ระบุ URL ของ API
             method: 'GET', // ระบุวิธี HTTP ที่ใช้เรียก API (GET)
         },
         eventRender: function (info) {

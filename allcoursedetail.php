@@ -499,15 +499,12 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="wrap-contact">
-                        <div class="item call" data-aos="fade-up" data-aos-duration="2000"><i
-                                class="fa-regular fa-phone"></i><span>086-322-1922</span></div>
+                        <div class="item call" data-aos="fade-up" data-aos-duration="2000"><i class="fa-regular fa-phone"></i><span>086-322-1922</span></div>
                         <a href="https://line.me/ti/p/~@108toots">
-                            <div class="item line" data-aos="fade-up" data-aos-duration="2000"><img class="line-img"
-                                    src="assets/images/line.png" alt=""><span>@bsathailand</span></div>
+                            <div class="item line" data-aos="fade-up" data-aos-duration="2000"><img class="line-img" src="assets/images/line.png" alt=""><span>@bsathailand</span></div>
                         </a>
                         <a href="https://th-th.facebook.com/BSABangkok/">
-                            <div class="item facebook" data-aos="fade-up" data-aos-duration="2000"><i
-                                    class="bi bi-facebook"></i><span>Bangkok Spa Academy</span></div>
+                            <div class="item facebook" data-aos="fade-up" data-aos-duration="2000"><i class="bi bi-facebook"></i><span>Bangkok Spa Academy</span></div>
                         </a>
                     </div>
                 </div>
@@ -526,7 +523,7 @@
             <div class="popup-content">
                 <span class="close-popup" id="close-popup1">&times;</span>
                 <div class="homecontent">
-                    <?php if (isset($_SESSION['username'])): ?>
+                    <?php if (isset($_SESSION['username'])) : ?>
                         <div class="box">
                             <div class="container">
                                 <div class="row">
@@ -542,7 +539,7 @@
                                 </button>
                             </div>
                         </div>
-                    <?php else: ?>
+                    <?php else : ?>
                         <div class="box">
                             <div class="container">
                                 <div class="row">
@@ -638,7 +635,7 @@
                                     <?= $slip ?>
                                 </h5>
                             </div>
-                            <?php
+                        <?php
                         } else { ?>
                             <div class="homecontent">
                                 <div class="container">
@@ -654,7 +651,7 @@
                                     </a>
                                 </div>
                             </div>
-                        <?php }
+                <?php }
                     } else {
                         // ไม่พบข้อมูลของ username นี้
                         echo "ไม่พบข้อมูลของ username นี้";
@@ -683,13 +680,20 @@
                     <?= $day ?> วัน
                 </p>
                 <div class="right-calinput">
-                    <?php
-                    for ($i = 1; $i <= $day; $i++):
-                        ?>
-                        <input type="date">
+                    <?php for ($i = 1; $i <= $day; $i++) : ?>
+                        <input type="date" class="form-control" name="dd" required>
                     <?php endfor ?>
                 </div>
-                <button>submit</button>
+                <button class="SBdate" style="background-color:green;">submit</button>
+                <h5 class="alert1" style="color:red; font-size:15px; display:none;">
+                    เลือกวันที่ให้ครบก่อนกดยืนยัน
+                </h5>
+                <h5 class="alert2" style="color:red; font-size:15px; display:none;">
+                    กรุณาห้ามเลือกวันซ้ำกับปฏิทิน
+                </h5>
+                <h5 class="alert3" style="color:red; font-size:15px; display:none;">
+                    กรุณาห้ามเลือกวันซ้ำกันในช่อง อินพุท
+                </h5>
             </div>
         </div>
 
@@ -823,7 +827,7 @@
 </script>
 
 <script>
-    document.getElementById('backButton').addEventListener('click', function () {
+    document.getElementById('backButton').addEventListener('click', function() {
         window.history.back();
     });
 </script>
@@ -831,35 +835,202 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script>
-    $(document).ready(function () {
-        $(".button-success-2").click(function () {
-            var type = "<?php echo $type ?>";
-            var name = "<?php echo $name_eng ?>";
-            var day = "<?php echo $day ?>";
-            var price = "<?php echo $price ?>";
-            var imageInput = $("input[name='img']")[0];
+    $(document).ready(function() {
+    $(".button-success-2").click(function () {
+    var type = "<?php echo $type ?>";
+    var name = "<?php echo $name_eng ?>";
+    var day = "<?php echo $day ?>";
+    var price = "<?php echo $price ?>";
+    var imageInput = $("input[name='img']")[0];
 
-            if (imageInput.files.length === 0) {
-                // Display an alert or handle the case where no file is selected
-                return;
+    if (imageInput.files.length === 0) {
+        // Display an alert or handle the case where no file is selected
+        return;
+    }
+    var imageFile = imageInput.files[0];
+
+    var formData = new FormData();
+    formData.append("type", type);
+    formData.append("name", name);
+    formData.append("day", day);
+    formData.append("price", price);
+    formData.append("img", imageFile);
+
+    $.ajax({
+        type: "POST",
+        url: "allcoursedetail_insert.php",
+        data: formData,
+        contentType: false,
+        processData: false,
+        success: function(response) {
+            // alert(response);
+        }
+    });
+    });
+    });
+</script>
+
+<!-- <script>
+    $(document).ready(function() {
+        $(".SBdate").click(function() {
+            var dates = [];
+            $("input[name='dd']").each(function() {
+                dates.push($(this).val());
+            });
+
+            // ตรวจสอบว่ามีค่าว่างใน input type="date"
+            if (dates.includes("")) {
+                $(".alert1").css("display", "block");
+                $(".alert2").css("display", "none");
+                $(".alert3").css("display", "none");
+                return; // ไม่ดำเนินการต่อ
             }
-            var imageFile = imageInput.files[0];
 
-            var formData = new FormData();
-            formData.append("type", type);
-            formData.append("name", name);
-            formData.append("day", day);
-            formData.append("price", price);
-            formData.append("img", imageFile);
+            // ตรวจสอบว่าทุก input type="date" มีค่าเป็นวันที่เดียวกันและซ้ำกันแม้แต่วันเดียวกัน
+            if (dates.every(function(date) {
+                    return date === dates[0];
+                })) {
+                $(".alert1").css("display", "none");
+                $(".alert2").css("display", "none");
+                $(".alert3").css("display", "block"); // เปิด alert3 ถ้ามีวันที่เดียวกัน
+                return; // ไม่ดำเนินการต่อ
+            }
 
+            // ส่งค่าด้วย AJAX เพื่อตรวจสอบวันที่ซ้ำกันในฐานข้อมูล
             $.ajax({
-                type: "POST",
-                url: "allcoursedetail_insert.php",
-                data: formData,
-                contentType: false,
-                processData: false,
-                success: function (response) {
-                    // alert(response);
+                url: "check_dates.php", // เปลี่ยนเป็น URL ของไฟล์ PHP สำหรับการตรวจสอบวันที่
+                method: "POST",
+                data: {
+                    dates: dates
+                },
+                success: function(response) {
+                    if (response == "duplicate") {
+                        $(".alert1").css("display", "none");
+                        $(".alert2").css("display", "block");
+                    } else {
+                        $(".alert1").css("display", "none");
+                        $(".alert2").css("display", "none");
+                        $(".alert3").css("display", "none");
+
+                        // ส่งข้อมูลไปยังฐานข้อมูลตรงนี้
+                        $.ajax({
+                            url: "booking_insert.php", // เปลี่ยนเป็น URL ของไฟล์ PHP สำหรับการแทรกข้อมูล
+                            method: "POST",
+                            data: {
+                                dates: dates
+                            },
+                            success: function(response) {
+                                // กระทำหลังจากสำเร็จ
+                                alert("บันทึกข้อมูลเรียบร้อยแล้ว");
+                            },
+                            error: function(xhr, status, error) {
+                                // กระทำหลังจากเกิดข้อผิดพลาด
+                                alert("เกิดข้อผิดพลาดในการบันทึกข้อมูล");
+                            }
+                        });
+                    }
+                },
+                error: function(xhr, status, error) {
+                    // กระทำหลังจากเกิดข้อผิดพลาดในการตรวจสอบวันที่
+                    alert("เกิดข้อผิดพลาดในการตรวจสอบวันที่");
+                }
+            });
+        });
+    });
+</script> -->
+
+
+<script>
+    $(document).ready(function() {
+
+        $(".SBdate").click(function() {
+
+            $(".alert1").css("display", "none");
+            $(".alert2").css("display", "none");
+            $(".alert3").css("display", "none");
+
+            var dates = [];
+            $("input[name='dd']").each(function() {
+                dates.push($(this).val());
+            });
+
+            // ตรวจสอบว่ามีค่าว่างใน input type="date"
+            if (dates.includes("")) {
+                $(".alert1").css("display", "block");
+                $(".alert2").css("display", "none");
+                $(".alert3").css("display", "none");
+                return; // ไม่ดำเนินการต่อ
+            }
+
+            // ตรวจสอบว่าทุก input type="date" มีค่าเป็นวันที่เดียวกันและซ้ำกันแม้แต่วันเดียวกัน
+            if (dates.every(function(date) {
+                    return date === dates[0];
+                })) {
+                $(".alert1").css("display", "none");
+                $(".alert2").css("display", "none");
+                $(".alert3").css("display", "block"); // เปิด alert3 ถ้ามีวันที่เดียวกัน
+                return; // ไม่ดำเนินการต่อ
+            }
+
+            // ตรวจสอบว่ามีอย่างน้อย 2 ช่องอินพุทที่มีวันที่เหมือนกัน
+            var dateCounts = {};
+            for (var i = 0; i < dates.length; i++) {
+                var date = dates[i];
+                if (dateCounts[date]) {
+                    dateCounts[date]++;
+                } else {
+                    dateCounts[date] = 1;
+                }
+            }
+
+            var hasDuplicateDates = Object.values(dateCounts).some(function(count) {
+                return count >= 2;
+            });
+
+            if (hasDuplicateDates) {
+                $(".alert1").css("display", "none");
+                $(".alert2").css("display", "none");
+                $(".alert3").css("display", "block"); // เปิด alert3 ถ้ามีวันที่เหมือนกัน
+                return; // ไม่ดำเนินการต่อ
+            }
+
+            // ส่งค่าด้วย AJAX เพื่อตรวจสอบวันที่ซ้ำกันในฐานข้อมูล
+            $.ajax({
+                url: "check_dates.php", // เปลี่ยนเป็น URL ของไฟล์ PHP สำหรับการตรวจสอบวันที่
+                method: "POST",
+                data: {
+                    dates: dates
+                },
+                success: function(response) {
+                    if (response == "duplicate") {
+                        $(".alert1").css("display", "none");
+                        $(".alert2").css("display", "block");
+                    } else {
+                        $(".alert1").css("display", "none");
+                        $(".alert2").css("display", "none");
+                        $(".alert3").css("display", "none");
+
+                        // ส่งข้อมูลไปยังฐานข้อมูลตรงนี้
+                        $.ajax({
+                            url: "booking_insert.php", // เปลี่ยนเป็น URL ของไฟล์ PHP สำหรับการแทรกข้อมูล
+                            method: "POST",
+                            data: {
+                                dates: dates
+                            },
+                            success: function(response) {
+                                // กระทำหลังจากสำเร็จ
+                                alert("บันทึกข้อมูลเรียบร้อยแล้ว");
+                            },
+                            error: function(xhr, status, error) {
+                                // กระทำหลังจากเกิดข้อผิดพลาด
+                                alert("เกิดข้อผิดพลาดในการบันทึกข้อมูล");
+                            }
+                        });
+                    }
+                },
+                error: function(xhr, status, error) {
+                    // กระทำหลังจากเกิดข้อผิดพลาดในการตรวจสอบวันที่
+                    alert("เกิดข้อผิดพลาดในการตรวจสอบวันที่");
                 }
             });
         });
