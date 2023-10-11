@@ -735,7 +735,7 @@
 
         <div class="popup" id="popup4">
             <div class="popup-content">
-                <span class="close-popup" id="close-popup3">&times;</span>
+                <!-- <span class="close-popup" id="close-popup3">&times;</span> -->
                 <div class="container">
                     <p style="text-align: center;">
                         <?= $thx ?>
@@ -804,7 +804,7 @@
         console.log("X first popup ");
         popup1.style.display = 'none';
         clickOverlay1.style.display = 'none';
-        location.reload();
+        // location.reload();
     });
     buttonclosefirst.addEventListener('click', () => {
         console.log("close BTN first POPUP");
@@ -826,7 +826,7 @@
         console.log("X second popup");
         popup2.style.display = 'none';
         clickOverlay1.style.display = 'none';
-        location.reload();
+        // location.reload();
     });
     buttonclosesecond.addEventListener('click', () => {
         console.log("back BTN second POPUP");
@@ -852,13 +852,13 @@
         console.log("X third popup ");
         popup4.style.display = 'none';
         clickOverlay1.style.display = 'none';
-        location.reload();
+        // location.reload();
     });
     buttonclosethird.addEventListener('click', () => {
         console.log("close BTN third POPUP");
         popup4.style.display = 'none';
         clickOverlay1.style.display = 'none';
-        // location.reload();
+        location.reload();
     });
 </script>
 

@@ -612,7 +612,7 @@
 
         <div class="popup" id="popup3">
             <div class="popup-content">
-                <span class="close-popup" id="close-popup3">&times;</span>
+                <!-- <span class="close-popup" id="close-popup3">&times;</span> -->
                 <div class="container">
                     <p style="text-align: center;">
                         <?= $thx ?>
