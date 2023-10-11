@@ -112,30 +112,38 @@ if (isset($_GET['delete_id'])) {
         text-align: center;
     }
 
-    .pro-order .table_order td:nth-child(9) {
-        width: 15%;
-    }
-
     .pro-order th {
         background-color: #FFF6E7;
         padding: 15px;
     }
 
     .pro-order .table_order th:nth-child(2),
-    .pro-order .table_order td:nth-child(11) {
+    .pro-order .table_order td:nth-child(12) {
         padding: 0px;
+    }
+
+    .pro-order .table_order td:nth-child(12) {
+        width: 9%;
     }
 
     .pro-order button img {
         width: 35%;
     }
 
+    .pro-order td:nth-child(11) {
+        padding: 20px 23px;
+    }
+
     .pro-order td:nth-child(10) {
-        padding: 12px;
+        width: 15%;
     }
 
     .pro-order td:nth-child(3) {
-        width: 12%;
+        width: 9%;
+    }
+
+    .pro-order td:nth-child(4) {
+        width: 10%;
     }
 
     .pro-order .deleteitem {
@@ -333,6 +341,13 @@ if (isset($_GET['delete_id'])) {
     .pro-order .table_order td:nth-child(9) {
         width: 0%;
     }
+
+    .pro-order td .save-button,
+    .pro-order td .cancle-button,
+    .pro-order td .save-note-button,
+    .pro-order td .cancle-note-button {
+        padding: 3px 15px;
+    }
 </style>
 
 <body>
@@ -421,7 +436,7 @@ if (isset($_GET['delete_id'])) {
                         $i = 1 + $offset;
                         if ($result->num_rows > 0) {
                             while ($row = $result->fetch_assoc()) {
-                        ?>
+                                ?>
                                 <tr data-status="<?php echo $row['status']; ?>">
                                     <td>
                                         <?php echo $i++; ?>
@@ -452,23 +467,24 @@ if (isset($_GET['delete_id'])) {
                                         $hasTransferSlip = $row['transfer_slip'];
 
                                         if ($hasTransferSlip) {
-                                            echo '<a class="" href="transferslip.php?trans_id=' . $row['id'] . '" target="_blank" >กด</a>';
+                                            echo '<a class="" href="transferslip.php?trans_id=' . $row['id'] . '" target="_blank" ><i class="bi bi-receipt-cutoff"></i></a>';
                                         }
                                         ?>
                                     </td>
 
                                     <td>
-                                        <select onchange="this.className=this.options[this.selectedIndex].className" class="status-dropdown" data-row-id="<?php echo $row['id']; ?>" disabled>
+                                        <select onchange="this.className=this.options[this.selectedIndex].className"
+                                            class="status-dropdown" data-row-id="<?php echo $row['id']; ?>" disabled>
                                             <option value="pending" class="yellowText" <?php if ($row['status'] === 'pending')
-                                                                                            echo 'selected'; ?>>
+                                                echo 'selected'; ?>>
                                                 <?= $check ?>
                                             </option>
                                             <option value="completed" class="greenText" <?php if ($row['status'] === 'completed')
-                                                                                            echo 'selected'; ?>>
+                                                echo 'selected'; ?>>
                                                 <?= $complete ?>
                                             </option>
                                             <option value="rejected" class="redText" <?php if ($row['status'] === 'rejected')
-                                                                                            echo 'selected'; ?>>
+                                                echo 'selected'; ?>>
                                                 <?= $reject ?>
                                             </option>
                                         </select>
@@ -478,27 +494,31 @@ if (isset($_GET['delete_id'])) {
                                         <button class="save-button" data-row-id="<?php echo $row['id']; ?>">
                                             <?= $save ?>
                                         </button>
-                                        <button class="cancle-button" id="canclestatus" data-row-id="<?php echo $row['id']; ?>" style="display: none;">
+                                        <button class="cancle-button" id="canclestatus" data-row-id="<?php echo $row['id']; ?>"
+                                            style="display: none;">
                                             <?= $cancle ?>
                                         </button>
                                     </td>
                                     <td>
-                                        <input type="text" class="note-input" data-row-id="<?php echo $row['id']; ?>" value="<?php echo $row['note']; ?>" disabled>
+                                        <input type="text" class="note-input" data-row-id="<?php echo $row['id']; ?>"
+                                            value="<?php echo $row['note']; ?>" disabled>
                                         <button class="edit-note-button" data-row-id="<?php echo $row['id']; ?>">
                                             <?= $edit ?>
                                         </button>
                                         <button class="save-note-button" data-row-id="<?php echo $row['id']; ?>">
                                             <?= $save ?>
                                         </button>
-                                        <button class="cancle-note-button" data-row-id="<?php echo $row['id']; ?>" style="display: none;">
+                                        <button class="cancle-note-button" data-row-id="<?php echo $row['id']; ?>"
+                                            style="display: none;">
                                             <?= $cancle ?>
                                         </button>
                                     </td>
                                     <td>
-                                        <button class="deleteitem" data-row-id="<?php echo $row['id']; ?>"><img src="assets/images/bin.png" alt=""></button>
+                                        <button class="deleteitem" data-row-id="<?php echo $row['id']; ?>"><img
+                                                src="assets/images/bin.png" alt=""></button>
                                     </td>
                                 </tr>
-                        <?php
+                                <?php
                             }
                         } else {
                             echo "ไม่พบสินค้าในระบบ";
@@ -517,7 +537,7 @@ if (isset($_GET['delete_id'])) {
             $nextPage = ($page < $totalPages) ? $page + 1 : $totalPages;
 
             // echo "<a href='course_order.php?page=1' class='pagination-link'>First</a>"; // ลิงก์ไปหน้าแรก
-
+            
             if ($page > 1) {
                 echo "<a href='course_order.php?page=$prevPage' class='pagination-link'><</a>"; // ลิงก์หน้าก่อนหน้า
             }
@@ -555,7 +575,8 @@ if (isset($_GET['delete_id'])) {
                     <p style="text-align: center;">
                         <?= $wantdel ?>
                     </p>
-                    <button class="button-close-2" id="confirm-delete-button" href='course_order.php?delete_id=<?php echo $row['id']; ?>'>
+                    <button class="button-close-2" id="confirm-delete-button"
+                        href='course_order.php?delete_id=<?php echo $row['id']; ?>'>
                         <?= $confirm ?>
                     </button>
                     <button class="button-close-2" id="button-close2">
@@ -576,7 +597,7 @@ if (isset($_GET['delete_id'])) {
     const cancle = document.querySelectorAll('.cancle-button');
     cancle.forEach(button => {
         const rowId = button.getAttribute('data-row-id');
-        button.addEventListener('click', function() {
+        button.addEventListener('click', function () {
             location.reload();
         });
     });
@@ -584,7 +605,7 @@ if (isset($_GET['delete_id'])) {
 
     editButtons.forEach(button => {
         const rowId = button.getAttribute('data-row-id');
-        button.addEventListener('click', function() {
+        button.addEventListener('click', function () {
             const row = button.closest('tr');
             const statusDropdown = row.querySelector(`select[data-row-id="${rowId}"]`);
             const cancelButton = row.querySelector(`button.cancle-button[data-row-id="${rowId}"]`);
@@ -600,7 +621,7 @@ if (isset($_GET['delete_id'])) {
 
     saveButtons.forEach(button => {
         const rowId = button.getAttribute('data-row-id');
-        button.addEventListener('click', async function() {
+        button.addEventListener('click', async function () {
             const row = button.closest('tr');
             const statusDropdown = row.querySelector(`select[data-row-id="${rowId}"]`);
             const selectedStatus = statusDropdown.value;
@@ -632,14 +653,14 @@ if (isset($_GET['delete_id'])) {
     const canclenote = document.querySelectorAll('.cancle-note-button');
     canclenote.forEach(button => {
         const rowId = button.getAttribute('data-row-id');
-        button.addEventListener('click', function() {
+        button.addEventListener('click', function () {
             location.reload();
         });
     });
 
     editNoteButtons.forEach(button => {
         const rowId = button.getAttribute('data-row-id');
-        button.addEventListener('click', function() {
+        button.addEventListener('click', function () {
             const row = button.closest('tr');
             const noteInput = row.querySelector(`input.note-input[data-row-id="${rowId}"]`);
             const cancelButton = row.querySelector(`button.cancle-note-button[data-row-id="${rowId}"]`);
@@ -656,7 +677,7 @@ if (isset($_GET['delete_id'])) {
     noteInputs.forEach(input => {
         const rowId = input.getAttribute('data-row-id');
 
-        input.addEventListener('input', function() {
+        input.addEventListener('input', function () {
             const noteValue = input.value.trim();
             const saveNoteButton = input.parentElement.querySelector(`button.save-note-button[data-row-id="${rowId}"]`);
 
@@ -672,7 +693,7 @@ if (isset($_GET['delete_id'])) {
 
     saveNoteButtons.forEach(button => {
         const rowId = button.getAttribute('data-row-id');
-        button.addEventListener('click', async function() {
+        button.addEventListener('click', async function () {
             const row = button.closest('tr');
             const noteInput = row.querySelector(`input.note-input[data-row-id="${rowId}"]`);
             const noteValue = noteInput.value.trim();
