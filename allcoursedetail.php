@@ -332,14 +332,13 @@
 
     #popup3 .fc-direction-ltr {
         height: 600px;
-        width: 725px;
-        background-color: rgba(188, 111, 67, 0.3);
+        width: 730px;
         margin: 20px;
+        border: double #945834;
     }
 
     #popup3 .fc-theme-standard td {
-        background-color: white;
-        border: 1px solid #945834;
+        border: 0.5px solid #945834;
     }
 
     .booked {
@@ -365,12 +364,11 @@
 
     #popup3 .fc-button-group {
         background-color: #945834 !important;
-        border-color: white;
     }
 
     #popup3 .fc-button-primary {
         background-color: #945834!important;
-        border-color: white;
+        border-color: #FFC28D;
         border-radius: 0px;
     }
 
@@ -404,6 +402,7 @@
         font-size: 15px;
         border-radius: 25px;
     }
+
 </style>
 
 <body>
@@ -719,13 +718,13 @@
                     <?php endfor ?>
                 </div>
                 <button class="SBdate"><?= $confirm ?></button>
-                <h5 class="alert1" style="color:red; font-size:20px; display:none;font-weight: bold;">
+                <h5 class="alert1" style="color:red; font-size:16px; display:none;font-weight: bold;">
                     เลือกวันที่ให้ครบก่อนกดยืนยัน
                 </h5>
-                <h5 class="alert2" style="color:red; font-size:20px; display:none;font-weight: bold;">
+                <h5 class="alert2" style="color:red; font-size:16px; display:none;font-weight: bold;">
                     กรุณาห้ามเลือกวันซ้ำกับปฏิทิน
                 </h5>
-                <h5 class="alert3" style="color:red; font-size:20px; display:none;font-weight: bold;">
+                <h5 class="alert3" style="color:red; font-size:16px; display:none;font-weight: bold;">
                     กรุณาห้ามเลือกวันซ้ำกันในช่อง อินพุท
                 </h5>
             </div>
