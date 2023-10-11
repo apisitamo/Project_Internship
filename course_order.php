@@ -135,7 +135,7 @@ if (isset($_GET['delete_id'])) {
     }
 
     .pro-order td:nth-child(10) {
-        width: 15%;
+        width: 14%;
     }
 
     .pro-order td:nth-child(3) {
