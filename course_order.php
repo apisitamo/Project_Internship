@@ -348,6 +348,10 @@ if (isset($_GET['delete_id'])) {
     .pro-order td .cancle-note-button {
         padding: 3px 15px;
     }
+
+    .pro-order td .bi-receipt-cutoff {
+        font-size: 22px;
+    }
 </style>
 
 <body>
