@@ -78,8 +78,6 @@ if (isset($_GET['logout'])) {
     <script src="assets/splide-4/dist/js/splide.min.js"></script>
     <script src="assets/bootstrap5.0.2/js/bootstrap.bundle.min.js"></script>
     <!-- <script src="assets/bootstrap5.0.2/js/bootstrap.min.js"></script> -->
-    
-    <link rel="stylesheet" href="calendar.css">
 
 </head>
 

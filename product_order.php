@@ -391,6 +391,9 @@ if (isset($_GET['delete_id'])) {
                                 <?= $timess ?>
                             </th>
                             <th>
+                                <?= $slip1 ?>
+                            </th>
+                            <th>
                                 <?= $statuss ?>
                             </th>
                             <th>
@@ -428,6 +431,15 @@ if (isset($_GET['delete_id'])) {
                                     </td>
                                     <td>
                                         <?php echo date('d/m/y H:i', strtotime($row['order_time'])); ?>
+                                    </td>
+                                    <td>
+                                        <?php
+                                        $hasTransferSlip = $row['transfer_slip'];
+
+                                        if ($hasTransferSlip) {
+                                            echo '<a class="" href="transferslipproduct.php?trans_id=' . $row['id'] . '" target="_blank" ><i class="bi bi-receipt-cutoff"></i></a>';
+                                        }
+                                        ?>
                                     </td>
                                     <td>
                                         <select onchange="this.className=this.options[this.selectedIndex].className" class="status-dropdown" data-row-id="<?php echo $row['id']; ?>" disabled>

@@ -471,7 +471,7 @@ if (isset($_GET['delete_id'])) {
                                         $hasTransferSlip = $row['transfer_slip'];
 
                                         if ($hasTransferSlip) {
-                                            echo '<a class="" href="transferslip.php?trans_id=' . $row['id'] . '" target="_blank" ><i class="bi bi-receipt-cutoff"></i></a>';
+                                            echo '<a class="" href="transferslipcourse.php?trans_id=' . $row['id'] . '" target="_blank" ><i class="bi bi-receipt-cutoff"></i></a>';
                                         }
                                         ?>
                                     </td>

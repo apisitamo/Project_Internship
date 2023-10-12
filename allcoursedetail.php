@@ -722,13 +722,13 @@
                     <?= $alet1 ?>
                 </h5>
                 <h5 class="alert2" style="color:red; font-size:16px; display:none;font-weight: bold;">
-                <?= $alet2 ?>
+                    <?= $alet2 ?>
                 </h5>
                 <h5 class="alert3" style="color:red; font-size:16px; display:none;font-weight: bold;">
-                <?= $alet3 ?>
+                    <?= $alet3 ?>
                 </h5>
                 <h5 class="alert4" style="color:red; font-size:16px; display:none;font-weight: bold;">
-                <?= $alet4 ?>
+                    <?= $alet4 ?>
                 </h5>
             </div>
         </div>
@@ -751,8 +751,8 @@
                             <?= $history ?>
                         </p>
                     </a>
-                    <button class="button-close" id="button-close3">
-                        <?= $close ?>
+                    <button class="button-close" id="button-close4">
+                        <?= $cancle ?>
                     </button>
                 </div>
             </div>
@@ -787,7 +787,7 @@
 
     const popup4 = document.querySelector('#popup4');
     const closethirdpopup = document.querySelector('#close-popup3');
-    const buttonclosethird = document.querySelector('#button-close3');
+    const buttonclosethird = document.querySelector('#button-close4');
 
     const clickOverlay1 = document.querySelector('#click-overlay1');
 

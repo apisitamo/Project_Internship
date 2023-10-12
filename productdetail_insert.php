@@ -16,7 +16,7 @@ $status = 'pending';
 
 $imgName = $_FILES['img']['name'];
 $imgTemp = $_FILES['img']['tmp_name'];
-$imgPath = "assets/transfer_slip/" . $imgName;
+$imgPath = "assets/transfer_slip_product/" . $imgName;
 move_uploaded_file($imgTemp, $imgPath);
 
 $sql = "INSERT INTO product_order (username, type, name,  quantity, price, status, transfer_slip)
