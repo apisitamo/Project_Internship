@@ -597,13 +597,13 @@
 <?php        }
                     } else {
                         // ไม่พบข้อมูลของ username นี้
-                        echo "ไม่พบข้อมูลของ username นี้";
+                        echo "No information found for this username.";
                     }
 
                     $conn->close();
                 } else {
                     // ถ้าไม่มีค่า $_SESSION['username'] ให้ทำอะไรตามที่คุณต้องการ
-                    echo "ไม่มีข้อมูล username ใน session";
+                    echo "There is no username information in the session.";
                 }
 ?>
         </div>

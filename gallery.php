@@ -48,7 +48,7 @@ if ($langId == 1) {
                         <?php
                     }
                 } else {
-                    echo "ไม่พบสินค้าในระบบ";
+                    echo "Gallery not found in database";
                 }
 
                 $conn->close();

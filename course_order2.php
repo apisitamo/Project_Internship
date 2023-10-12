@@ -489,7 +489,7 @@ if (isset($_GET['delete_id'])) {
                                 <?php
                             }
                         } else {
-                            echo "ไม่พบสินค้าในระบบ";
+                            echo "Course not found in database";
                         }
                         $conn->close();
                         ?>

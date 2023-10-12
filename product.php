@@ -379,7 +379,7 @@ if ($langId == 1) {
                         <?php
                             }
                         } else {
-                            echo "ไม่พบสินค้าในระบบ";
+                            echo "Product not found in database";
                         }
                         $conn->close();
                         ?>
@@ -466,7 +466,7 @@ if ($langId == 1) {
                         <?php
                             }
                         } else {
-                            echo "ไม่พบสินค้าในระบบ";
+                            echo "Product not found in database";
                         }
                         $conn->close();
                         ?>

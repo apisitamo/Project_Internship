@@ -3,7 +3,7 @@ session_start();
 include('server.php');
 
 if (!isset($_SESSION['username'])) {
-    echo "คุณไม่ได้ล็อกอิน";
+    echo "You are not logged in.";
     exit;
 }
 

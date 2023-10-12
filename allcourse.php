@@ -114,7 +114,7 @@ if ($langId == 1) {
                                 <?php
                             }
                         } else {
-                            echo "ไม่พบหลักสูตรในระบบ";
+                            echo "Course not found in database";
                         }
                         $conn->close();
                         ?>
