@@ -358,6 +358,7 @@
     #popup3 .fc-theme-standard th {
         border: 1px solid #945834 !important;
     }
+
     #popup3 .fc-scroller {
         overflow: hidden !important;
     }
@@ -367,7 +368,7 @@
     }
 
     #popup3 .fc-button-primary {
-        background-color: #945834!important;
+        background-color: #945834 !important;
         border-color: #FFC28D;
         border-radius: 0px;
     }
@@ -384,6 +385,7 @@
         font-weight: 700;
         color: #905537;
     }
+
     #popup3 .right-calinput {
         display: grid;
         grid-gap: 30px;
@@ -394,7 +396,8 @@
         background-color: green;
         margin: 15px 0px 15px 0px;
     }
-    #popup3 .right-calinput .form-control{
+
+    #popup3 .right-calinput .form-control {
         width: 100%;
         height: 50px;
         background: #FFFFFFB9;
@@ -402,7 +405,6 @@
         font-size: 15px;
         border-radius: 25px;
     }
-
 </style>
 
 <body>
@@ -727,6 +729,9 @@
                 <h5 class="alert3" style="color:red; font-size:16px; display:none;font-weight: bold;">
                     กรุณาห้ามเลือกวันซ้ำกันในช่อง อินพุท
                 </h5>
+                <h5 class="alert4" style="color:red; font-size:16px; display:none;font-weight: bold;">
+                    กรุณาจองหลังวันปัจจุบัน
+                </h5>
             </div>
         </div>
 
@@ -983,6 +988,7 @@
             $(".alert1").css("display", "none");
             $(".alert2").css("display", "none");
             $(".alert3").css("display", "none");
+            $(".alert4").css("display", "none");
 
             var dates = [];
             $("input[name='dd']").each(function() {
@@ -1026,6 +1032,22 @@
                 $(".alert1").css("display", "none");
                 $(".alert2").css("display", "none");
                 $(".alert3").css("display", "block"); // เปิด alert3 ถ้ามีวันที่เหมือนกัน
+                return; // ไม่ดำเนินการต่อ
+            }
+
+            // ตรวจสอบว่าวันที่ที่ผู้ใช้เลือกหลังวันปัจจุบันหรือไม่
+            var today = new Date();
+            var selectedDates = dates.map(function(date) {
+                return new Date(date);
+            });
+
+            if (selectedDates.some(function(selectedDate) {
+                    return selectedDate < today;
+                })) {
+                $(".alert1").css("display", "none");
+                $(".alert2").css("display", "none");
+                $(".alert3").css("display", "none");
+                $(".alert4").css("display", "block"); // แสดง alert4 ถ้ามีวันที่เลือกก่อนวันปัจจุบัน
                 return; // ไม่ดำเนินการต่อ
             }
 
@@ -1104,6 +1126,10 @@
             });
         });
     });
+</script>
+
+<script>
+
 </script>
 
 </html>
