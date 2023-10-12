@@ -108,7 +108,7 @@ if (isset($_GET['delete_id'])) {
     .pro-order th,
     .pro-order td {
         border: 1px solid #ccc;
-        padding: 20px 20px;
+        padding: 20px 15px;
         text-align: center;
     }
 
@@ -122,7 +122,7 @@ if (isset($_GET['delete_id'])) {
     }
 
     .pro-order .table_order td:nth-child(9) {
-        width: 15%;
+        width: 13%;
     }
 
     .pro-order .table_order th:nth-child(2),
@@ -131,6 +131,10 @@ if (isset($_GET['delete_id'])) {
     }
 
     .pro-order td:nth-child(3) {
+        width: 12%;
+    }
+
+    .pro-order td:nth-child(4) {
         width: 12%;
     }
 
@@ -327,6 +331,13 @@ if (isset($_GET['delete_id'])) {
 
     .pro-order .bi-receipt-cutoff {
         font-size: 22px;
+    }
+
+    .pro-order td .save-button,
+    .pro-order td .cancle-button,
+    .pro-order td .save-note-button,
+    .pro-order td .cancle-note-button {
+        padding: 3px 15px;
     }
 </style>
 

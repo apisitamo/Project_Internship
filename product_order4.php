@@ -112,7 +112,7 @@ if (isset($_GET['delete_id'])) {
     .pro-order th,
     .pro-order td {
         border: 1px solid #ccc;
-        padding: 20px 20px;
+        padding: 20px 15px;
         text-align: center;
     }
 
@@ -126,7 +126,7 @@ if (isset($_GET['delete_id'])) {
     }
 
     .pro-order .table_order td:nth-child(9) {
-        width: 15%;
+        width: 13%;
     }
 
     .pro-order .table_order th:nth-child(2),
@@ -135,6 +135,10 @@ if (isset($_GET['delete_id'])) {
     }
 
     .pro-order td:nth-child(3) {
+        width: 12%;
+    }
+
+    .pro-order td:nth-child(4) {
         width: 12%;
     }
 
@@ -332,6 +336,13 @@ if (isset($_GET['delete_id'])) {
     .pro-order .bi-receipt-cutoff {
         font-size: 22px;
     }
+
+    .pro-order td .save-button,
+    .pro-order td .cancle-button,
+    .pro-order td .save-note-button,
+    .pro-order td .cancle-note-button {
+        padding: 3px 15px;
+    }
 </style>
 
 <body>
@@ -450,9 +461,11 @@ if (isset($_GET['delete_id'])) {
                                         ?>
                                     </td>
                                     <td>
-                                        <select onchange="this.className=this.options[this.selectedIndex].className" class="status-dropdown" data-row-id="<?php echo $row['id']; ?>" disabled>
+                                        <select onchange="this.className=this.options[this.selectedIndex].className"
+                                            class="status-dropdown" data-row-id="<?php echo $row['id']; ?>" disabled>
                                             <option value="pending" class="yellowText" <?php if ($row['status'] === 'pending')
-                                                echo 'selected'; ?>><?= $check ?>
+                                                echo 'selected'; ?>>
+                                                <?= $check ?>
                                             </option>
                                             <option value="completed" class="greenText" <?php if ($row['status'] === 'completed')
                                                 echo 'selected'; ?>>
@@ -460,7 +473,8 @@ if (isset($_GET['delete_id'])) {
                                             </option>
                                             <option value="rejected" class="redText" <?php if ($row['status'] === 'rejected')
                                                 echo 'selected'; ?>>
-                                          <?= $reject ?></option>
+                                                <?= $reject ?>
+                                            </option>
                                         </select>
                                         <button class="edit-button" data-row-id="<?php echo $row['id']; ?>">
                                             <?= $edit ?>
@@ -511,7 +525,7 @@ if (isset($_GET['delete_id'])) {
             $nextPage = ($page < $totalPages) ? $page + 1 : $totalPages;
 
             // echo "<a href='product_order4.php?page=1' class='pagination-link'>First</a>"; // ลิงก์ไปหน้าแรก
-
+            
             if ($page > 1) {
                 echo "<a href='product_order4.php?page=$prevPage' class='pagination-link'><</a>"; // ลิงก์หน้าก่อนหน้า
             }
