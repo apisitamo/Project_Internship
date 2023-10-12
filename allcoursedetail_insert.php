@@ -17,7 +17,7 @@ $status = 'pending';
 
 $imgName = $_FILES['img']['name'];
 $imgTemp = $_FILES['img']['tmp_name'];
-$imgPath = "assets/add_course/transfer_slip/" . $imgName;
+$imgPath = "assets/transfer_slip/" . $imgName;
 move_uploaded_file($imgTemp, $imgPath);
 
 $sql = "INSERT INTO course_order (username, type, name, day, quantity, price, status , transfer_slip)

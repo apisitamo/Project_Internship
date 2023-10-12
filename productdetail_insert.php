@@ -14,8 +14,13 @@ $quantity = $_POST['quantity'];
 $price = $_POST['price'];
 $status = 'pending';
 
-$sql = "INSERT INTO product_order (username, type, name,  quantity, price, status)
-        VALUES ('$username', '$type', '$name',  '$quantity', '$price', '$status')";
+$imgName = $_FILES['img']['name'];
+$imgTemp = $_FILES['img']['tmp_name'];
+$imgPath = "assets/transfer_slip/" . $imgName;
+move_uploaded_file($imgTemp, $imgPath);
+
+$sql = "INSERT INTO product_order (username, type, name,  quantity, price, status, transfer_slip)
+        VALUES ('$username', '$type', '$name',  '$quantity', '$price', '$status','$imgPath')";
 
 if ($conn->query($sql) === TRUE) {
     echo "successfully";

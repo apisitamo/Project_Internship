@@ -563,19 +563,22 @@
                                         <?php echo $name_eng ?>
                                     </p>
                                 <?php } ?>
-                                <img src="assets/images/QR.svg" alt="" class="w-65">
+                                <img style="width:300px;" src="assets/images/QR.svg" alt="" class="w-65">
                                 <p id="totalPrice" style="text-align: center;font-size: 30px;">
-                                    <!-- <?= $prices ?>
-                        <?php echo $price ?>
-                        <?= $price2 ?> -->
-                                    <span id="totalValue"></span>
+                                    <?= $prices ?>
+                                    <?php echo $price ?>
+                                    <?= $price2 ?>
                                 </p>
+                                <input type="file" class="form-control" name="img" style="margin-bottom:2px " required>
                                 <button class="button-success-2" id="button-success2">
                                     <?= $confirm ?>
                                 </button>
                                 <button class="button-close-2" id="button-close2">
                                     <?= $back ?>
                                 </button>
+                                <h5 class="alert" style="color:red; font-size:15px; display:none;">
+                                    <?= $slip ?>
+                                </h5>
                             </div>
             </div>
         <?php
@@ -657,6 +660,9 @@
 
     const clickOverlay1 = document.querySelector('#click-overlay1');
 
+    const fileInput = document.querySelector('input[name="img"]');
+    const alertMessage = document.querySelector('.alert');
+
     openpopup.forEach(button => {
         button.addEventListener('click', () => {
             if (inputQuantity.value.trim() <= '0') {
@@ -714,9 +720,13 @@
     buttonsuccesssecond.forEach(button => {
         button.addEventListener('click', () => {
             console.log("success BTN to Open second popup");
-            popup2.style.display = 'none'; // ปิด popup สอง
-            popup3.style.display = 'flex';
-            clickOverlay1.style.display = 'block';
+            if (fileInput.files.length === 0) {
+                alertMessage.style.display = 'block';
+            } else {
+                popup2.style.display = 'none'; // ปิด popup สอง
+                popup3.style.display = 'block';
+                clickOverlay1.style.display = 'block';
+            }
         });
     });
 
@@ -754,12 +764,20 @@
             var name = "<?php echo $name_eng ?>";
             var quantity = $("input[name='quantity']").val();
             var price = <?php echo $price ?> * quantity;
+            var imageInput = $("input[name='img']")[0];
+
+            if (imageInput.files.length === 0) {
+                // Display an alert or handle the case where no file is selected
+                return;
+            }
+            var imageFile = imageInput.files[0];
 
             var formData = new FormData();
             formData.append("name", name);
             formData.append("type", type);
             formData.append("quantity", quantity);
             formData.append("price", price);
+            formData.append("img", imageFile);
             $.ajax({
                 type: "POST",
                 url: "productdetail_insert.php",
