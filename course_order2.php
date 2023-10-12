@@ -85,7 +85,7 @@ if (isset($_GET['delete_id'])) {
 ?>
 
 <style>
-     .pro-order .homeheader {
+    .pro-order .homeheader {
         margin-top: 75px;
     }
 
