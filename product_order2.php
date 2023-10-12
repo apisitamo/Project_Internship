@@ -125,12 +125,12 @@ if (isset($_GET['delete_id'])) {
         width: 34%;
     }
 
-    .pro-order .table_order td:nth-child(8) {
+    .pro-order .table_order td:nth-child(9) {
         width: 15%;
     }
 
     .pro-order .table_order th:nth-child(2),
-    .pro-order td:nth-child(10) {
+    .pro-order td:nth-child(11) {
         padding: 0px;
     }
 
@@ -327,6 +327,10 @@ if (isset($_GET['delete_id'])) {
 
     .redText {
         background: #ff1e1e;
+    }
+
+    .pro-order .bi-receipt-cutoff {
+        font-size: 22px;
     }
 </style>
 

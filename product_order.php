@@ -121,12 +121,12 @@ if (isset($_GET['delete_id'])) {
         width: 34%;
     }
 
-    .pro-order .table_order td:nth-child(8) {
+    .pro-order .table_order td:nth-child(9) {
         width: 15%;
     }
 
     .pro-order .table_order th:nth-child(2),
-    .pro-order td:nth-child(10) {
+    .pro-order td:nth-child(11) {
         padding: 0px;
     }
 
@@ -324,6 +324,10 @@ if (isset($_GET['delete_id'])) {
     .redText {
         background: #ff1e1e;
     }
+
+    .pro-order .bi-receipt-cutoff {
+        font-size: 22px;
+    }
 </style>
 
 <body>
@@ -442,9 +446,11 @@ if (isset($_GET['delete_id'])) {
                                         ?>
                                     </td>
                                     <td>
-                                        <select onchange="this.className=this.options[this.selectedIndex].className" class="status-dropdown" data-row-id="<?php echo $row['id']; ?>" disabled>
+                                        <select onchange="this.className=this.options[this.selectedIndex].className"
+                                            class="status-dropdown" data-row-id="<?php echo $row['id']; ?>" disabled>
                                             <option value="pending" class="yellowText" <?php if ($row['status'] === 'pending')
-                                                echo 'selected'; ?>><?= $check ?>
+                                                echo 'selected'; ?>>
+                                                <?= $check ?>
                                             </option>
                                             <option value="completed" class="greenText" <?php if ($row['status'] === 'completed')
                                                 echo 'selected'; ?>>
@@ -452,7 +458,8 @@ if (isset($_GET['delete_id'])) {
                                             </option>
                                             <option value="rejected" class="redText" <?php if ($row['status'] === 'rejected')
                                                 echo 'selected'; ?>>
-                                          <?= $reject ?></option>
+                                                <?= $reject ?>
+                                            </option>
                                         </select>
                                         <button class="edit-button" data-row-id="<?php echo $row['id']; ?>">
                                             <?= $edit ?>
