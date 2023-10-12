@@ -711,9 +711,7 @@
                 <div id="calendar"></div>
             </div>
             <div class="right-calendar">
-                <p> จำนวน
-                    <?= $day ?> วัน
-                </p>
+                <p> <?= $Select ?> <?= $day ?> <?= $dayss ?> </p>
                 <div class="right-calinput">
                     <?php for ($i = 1; $i <= $day; $i++) : ?>
                         <input type="date" class="form-control" name="dd" required>
@@ -721,16 +719,16 @@
                 </div>
                 <button class="SBdate"><?= $confirm ?></button>
                 <h5 class="alert1" style="color:red; font-size:16px; display:none;font-weight: bold;">
-                    เลือกวันที่ให้ครบก่อนกดยืนยัน
+                    <?= $alet1 ?>
                 </h5>
                 <h5 class="alert2" style="color:red; font-size:16px; display:none;font-weight: bold;">
-                    กรุณาห้ามเลือกวันซ้ำกับปฏิทิน
+                <?= $alet2 ?>
                 </h5>
                 <h5 class="alert3" style="color:red; font-size:16px; display:none;font-weight: bold;">
-                    กรุณาห้ามเลือกวันซ้ำกันในช่อง อินพุท
+                <?= $alet3 ?>
                 </h5>
                 <h5 class="alert4" style="color:red; font-size:16px; display:none;font-weight: bold;">
-                    กรุณาจองหลังวันปัจจุบัน
+                <?= $alet4 ?>
                 </h5>
             </div>
         </div>

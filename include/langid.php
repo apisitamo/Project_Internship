@@ -82,7 +82,11 @@ if($langId == 1){
     $slip = "กรุณาแนบรูปถ่ายใบเสร็จการโอนเงินของคุณ";
     $PO ="คำสั่งซื้อผลิตภัณฑ์";
     $CO ="คำสั่งหลักสูตร";
-    
+    $Select ="เลือก";
+    $alet1 = "เลือกวันที่ให้ครบก่อนกดยืนยัน";
+    $alet2 = "ห้ามเลือกวันเดียวกันกับปฏิทิน";
+    $alet3 = "ห้ามเลือกวันเดียวกัน";
+    $alet4 = "โปรดเลือกวันหลังจากวันที่ปัจจุบัน";
     
 
 }else{
@@ -136,7 +140,7 @@ if($langId == 1){
     $types2 = "Type";
     $lists = "List";
     $quantityy = "Quantity";
-    $dayss = 'Day';
+    $dayss = 'Days';
     $pricess = 'Price';
     $timess = "Time";
     $statuss = "Status";
@@ -168,6 +172,11 @@ if($langId == 1){
     $slip = "Please include a photo of your transfer slip.";
     $PO ="Product orders";
     $CO ="Course orders";
+    $Select ="Select";
+    $alet1 = "Select the complete date before pressing confirm.";
+    $alet2 = "Do not select the same day as the calendar.";
+    $alet3 = "Do not select the same day.";
+    $alet4 = "Please select a day after the current date.";
 
 }
 ?>
