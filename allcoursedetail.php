@@ -797,7 +797,7 @@
     openpopup.forEach(button => {
         button.addEventListener('click', () => {
             console.log("Open first popup");
-            popup4.style.display = 'flex';
+            popup1.style.display = 'flex';
             clickOverlay1.style.display = 'block';
         });
     });
@@ -854,14 +854,14 @@
         console.log("X third popup ");
         popup4.style.display = 'none';
         clickOverlay1.style.display = 'none';
-        // location.reload();
-    });
-    buttonclosethird.addEventListener('click', () => {
-        console.log("close BTN third POPUP");
-        popup4.style.display = 'none';
-        clickOverlay1.style.display = 'none';
         location.reload();
     });
+    // buttonclosethird.addEventListener('click', () => {
+    //     console.log("close BTN third POPUP");
+    //     popup4.style.display = 'none';
+    //     clickOverlay1.style.display = 'none';
+    //     location.reload();
+    // });
 </script>
 
 <script>

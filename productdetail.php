@@ -737,12 +737,12 @@
         clickOverlay1.style.display = 'none';
         location.reload();
     });
-    buttonclosethird.addEventListener('click', () => {
-        console.log("close BTN third POPUP");
-        popup3.style.display = 'none';
-        clickOverlay1.style.display = 'none';
-        location.reload();
-    });
+    // buttonclosethird.addEventListener('click', () => {
+    //     console.log("close BTN third POPUP");
+    //     popup3.style.display = 'none';
+    //     clickOverlay1.style.display = 'none';
+    //     location.reload();
+    // });
 </script>
 
 <script>
