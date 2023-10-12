@@ -378,6 +378,7 @@
         top: 12.5%;
         right: 10%;
         text-align: center;
+        width: 250px;
     }
 
     #popup3 .right-calendar p {
