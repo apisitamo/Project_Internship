@@ -87,6 +87,7 @@ if($langId == 1){
     $alet2 = "ห้ามเลือกวันเดียวกันกับปฏิทิน";
     $alet3 = "ห้ามเลือกวันเดียวกัน";
     $alet4 = "โปรดเลือกวันหลังจากวันที่ปัจจุบัน";
+    $slip1 = "สลิปโอนเงิน";
     
 
 }else{
@@ -177,6 +178,7 @@ if($langId == 1){
     $alet2 = "Do not select the same day as the calendar.";
     $alet3 = "Do not select the same day.";
     $alet4 = "Please select a day after the current date.";
+    $slip1 = "Transfer slip";
 
 }
 ?>
