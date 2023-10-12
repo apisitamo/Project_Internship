@@ -737,7 +737,7 @@
 
         <div class="popup" id="popup4">
             <div class="popup-content">
-                <!-- <span class="close-popup" id="close-popup3">&times;</span> -->
+                <span class="close-popup" id="close-popup3">&times;</span>
                 <div class="container">
                     <p style="text-align: center;">
                         <?= $thx ?>
@@ -751,9 +751,9 @@
                             <?= $history ?>
                         </p>
                     </a>
-                    <button class="button-close" id="button-close4">
+                    <!-- <button class="button-close" id="button-close4">
                         <?= $cancle ?>
-                    </button>
+                    </button> -->
                 </div>
             </div>
         </div>
@@ -797,7 +797,7 @@
     openpopup.forEach(button => {
         button.addEventListener('click', () => {
             console.log("Open first popup");
-            popup1.style.display = 'flex';
+            popup4.style.display = 'flex';
             clickOverlay1.style.display = 'block';
         });
     });
