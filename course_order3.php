@@ -85,7 +85,7 @@ if (isset($_GET['delete_id'])) {
 ?>
 
 <style>
-    .pro-order .homeheader {
+     .pro-order .homeheader {
         margin-top: 75px;
     }
 
@@ -113,30 +113,38 @@ if (isset($_GET['delete_id'])) {
         text-align: center;
     }
 
-    .pro-order .table_order td:nth-child(9) {
-        width: 15%;
-    }
-
     .pro-order th {
         background-color: #FFF6E7;
         padding: 15px;
     }
 
     .pro-order .table_order th:nth-child(2),
-    .pro-order .table_order td:nth-child(11) {
+    .pro-order .table_order td:nth-child(12) {
         padding: 0px;
+    }
+
+    .pro-order .table_order td:nth-child(12) {
+        width: 9%;
     }
 
     .pro-order button img {
         width: 35%;
     }
 
+    .pro-order td:nth-child(11) {
+        padding: 20px 23px;
+    }
+
     .pro-order td:nth-child(10) {
-        padding: 12px;
+        width: 14%;
     }
 
     .pro-order td:nth-child(3) {
-        width: 12%;
+        width: 9%;
+    }
+
+    .pro-order td:nth-child(4) {
+        width: 10%;
     }
 
     .pro-order .deleteitem {
@@ -310,6 +318,7 @@ if (isset($_GET['delete_id'])) {
         background-color: #ff1e1e;
     }
 
+
     [data-status="completed"] .status-dropdown {
         background: #00e700 !important;
     }
@@ -328,6 +337,21 @@ if (isset($_GET['delete_id'])) {
 
     .redText {
         background: #ff1e1e;
+    }
+
+    .pro-order .table_order td:nth-child(9) {
+        width: 0%;
+    }
+
+    .pro-order td .save-button,
+    .pro-order td .cancle-button,
+    .pro-order td .save-note-button,
+    .pro-order td .cancle-note-button {
+        padding: 3px 15px;
+    }
+
+    .pro-order td .bi-receipt-cutoff {
+        font-size: 22px;
     }
 </style>
 
