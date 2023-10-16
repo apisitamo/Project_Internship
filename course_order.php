@@ -409,9 +409,7 @@ if (isset($_GET['delete_id'])) {
                             <th>
                                 <?= $lists ?>
                             </th>
-                            <th>
-                                <?= $quantityy ?>
-                            </th>
+                            
                             <th>
                                 <?= $dayss ?>
                             </th>
@@ -454,9 +452,7 @@ if (isset($_GET['delete_id'])) {
                                     <td>
                                         <?php echo $row['name']; ?>
                                     </td>
-                                    <td>
-                                        <?php echo $row['quantity']; ?>
-                                    </td>
+                                    
                                     <td>
                                         <?php echo $row['day']; ?>
                                     </td>

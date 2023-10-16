@@ -437,7 +437,7 @@ if ($totalcoursesResult) {
                                 <?php echo $row['name']; ?>
                             </td>
                             <td>
-                                <button class="showcalen" style="background-color:lightblue; border-radius:15px;" dataID=>
+                                <button class="showcalen" style="background-color:lightblue; border-radius:15px;" dataOT="<?php echo $row['order_time']; ?>">
                                     <?php echo $row['day']; ?>
                                 </button>
                             </td>
@@ -491,6 +491,27 @@ if ($totalcoursesResult) {
 
         <div class="calen">
             <span class="close-popup" id="close-popup1">&times;</span>
+            <?php
+            if (isset($_GET['dataOT'])) {
+                $dataOT = $_GET['dataOT'];
+                $sql = "SELECT * FROM `booking` WHERE order_time = '$dataOT' ";
+                $result = $conn->query($sql);
+                if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                        $order_time = $row['order_time'];
+                        $username = $row['username'];
+                        $course_name = $row['course_name'];
+                        $date = $row['date'];
+                    }
+                } else {
+                    echo "Product not found in database";
+                }
+
+                $conn->close();
+            } else {
+                echo "The specified product code was not found.";
+            }
+            ?>
         </div>
 
     </section>
