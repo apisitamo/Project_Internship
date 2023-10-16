@@ -140,11 +140,15 @@ if (isset($_GET['delete_id'])) {
     }
 
     .pro-order td:nth-child(3) {
-        width: 9%;
+        width: 11%;
     }
 
     .pro-order td:nth-child(4) {
-        width: 10%;
+        width: 11%;
+    }
+
+    .pro-order td:nth-child(2) {
+        width: 8%;
     }
 
     .pro-order .deleteitem {
@@ -339,7 +343,7 @@ if (isset($_GET['delete_id'])) {
         background: #ff1e1e;
     }
 
-    .pro-order .table_order td:nth-child(9) {
+    .pro-order .table_order td:nth-child(8) {
         width: 0%;
     }
 
@@ -410,7 +414,7 @@ if (isset($_GET['delete_id'])) {
                             <th>
                                 <?= $lists ?>
                             </th>
-                            
+
                             <th>
                                 <?= $dayss ?>
                             </th>
@@ -453,7 +457,7 @@ if (isset($_GET['delete_id'])) {
                                     <td>
                                         <?php echo $row['name']; ?>
                                     </td>
-                                   
+
                                     <td>
                                         <?php echo $row['day']; ?>
                                     </td>
