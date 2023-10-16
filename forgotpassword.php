@@ -136,13 +136,16 @@ if ($langId == 1) {
     .bu-back button {
         padding: 7px 10px;
         border: none;
-        background: #ff0000cf;
+        background: #d17742;
         border-radius: 10px;
+        border-bottom-style: revert;
     }
 
     .bu-back button:hover {
-        background: #BB0707;
+        background: #945834;
+        color: white;
         transition: 0.4s;
+        border-bottom-style: revert;
     }
 
     .field-icon {
@@ -158,8 +161,9 @@ if ($langId == 1) {
     }
 
     .left-inner-addon input {
-        padding-left: 50px !important; 
+        padding-left: 50px !important;
     }
+
     .wrapper .underline-forgotpw {
         border-bottom: 0.5px solid #905537;
     }
@@ -169,40 +173,55 @@ if ($langId == 1) {
     <section class="page-forgot_pw">
         <div class="wrap">
             <img src="assets/images/banner-page.png" alt="">
-            <p><?= $reset ?></p>
+            <p>
+                <?= $reset ?>
+            </p>
         </div>
         <div class="bu-back">
-                <button id="backButton">
-                    <?= $back ?>
-                </button>
+            <button id="backButton">
+                <i class="bi bi-caret-left-fill"></i>
+                <?= $back ?>
+            </button>
         </div>
         <div class="header-mid">
             <div class="wrapper">
                 <form action="forgotpassword_db.php" method="post">
                     <div class="left-inner-addon input-box">
                         <i class="left-inner-addon bi bi-envelope-fill"></i>
-                        <label for="email"><?= $mail ?></label>
+                        <label for="email">
+                            <?= $mail ?>
+                        </label>
                         <input type="text" name="email" placeholder="<?= $email ?>">
                     </div>
                     <div class="left-inner-addon input-box">
                         <i class="bi bi-person-fill"></i>
-                        <label for="username"><?= $username ?></label>
+                        <label for="username">
+                            <?= $username ?>
+                        </label>
                         <input type="text" name="username" placeholder="<?= $username ?>">
                     </div>
                     <div class="left-inner-addon input-box">
                         <i class="bi bi-lock-fill"></i>
-                        <label for="password_1"><?= $newpassword ?></label>
+                        <label for="password_1">
+                            <?= $newpassword ?>
+                        </label>
                         <input type="password" id="passwordInput1" name="password_1" placeholder="<?= $password ?>">
-                        <span toggle="#passwordInput1" class="fa fa-fw fa-eye field-icon toggle-password" style="cursor: pointer;"></span>
+                        <span toggle="#passwordInput1" class="fa fa-fw fa-eye field-icon toggle-password"
+                            style="cursor: pointer;"></span>
                     </div>
                     <div class="left-inner-addon input-box">
                         <i class="bi bi-shield-lock-fill"></i>
-                        <label for="password_2"><?= $repassword ?></label>
+                        <label for="password_2">
+                            <?= $repassword ?>
+                        </label>
                         <input type="password" id="passwordInput2" name="password_2" placeholder="<?= $password ?>">
-                        <span toggle="#passwordInput2" class="fa fa-fw fa-eye field-icon toggle-password" style="cursor: pointer;"></span>
+                        <span toggle="#passwordInput2" class="fa fa-fw fa-eye field-icon toggle-password"
+                            style="cursor: pointer;"></span>
                     </div>
                     <div class="confirm-password">
-                        <button type="submit" name="forgot_pw" class="btn"><?= $confirmpassword ?></button>
+                        <button type="submit" name="forgot_pw" class="btn">
+                            <?= $confirmpassword ?>
+                        </button>
                     </div>
                 </form>
             </div>
@@ -219,7 +238,7 @@ if ($langId == 1) {
 </script>
 
 <script>
-    document.getElementById('backButton').addEventListener('click', function() {
+    document.getElementById('backButton').addEventListener('click', function () {
         window.location.href = 'login.php';
     });
 </script>
@@ -228,7 +247,7 @@ if ($langId == 1) {
     const passwordInput1 = document.getElementById('passwordInput1');
     const togglePassword1 = document.getElementById('togglePassword1');
 
-    togglePassword1.addEventListener('click', function(e) {
+    togglePassword1.addEventListener('click', function (e) {
         e.preventDefault(); // ยกเลิกการส่งฟอร์มโดยอัตโนมัติ
 
         if (passwordInput1.type === 'password') {
@@ -241,7 +260,7 @@ if ($langId == 1) {
     const passwordInput2 = document.getElementById('passwordInput2');
     const togglePassword2 = document.getElementById('togglePassword2');
 
-    togglePassword2.addEventListener('click', function(e) {
+    togglePassword2.addEventListener('click', function (e) {
         e.preventDefault(); // ยกเลิกการส่งฟอร์มโดยอัตโนมัติ
 
         if (passwordInput2.type === 'password') {
@@ -253,15 +272,15 @@ if ($langId == 1) {
 </script>
 
 <script>
-    $(".toggle-password").click(function() {
+    $(".toggle-password").click(function () {
 
-    $(this).toggleClass("fa-eye fa-eye-slash");
-    var input = $($(this).attr("toggle"));
-    if (input.attr("type") == "password") {
-    input.attr("type", "text");
-    } else {
-    input.attr("type", "password");
-    }
+        $(this).toggleClass("fa-eye fa-eye-slash");
+        var input = $($(this).attr("toggle"));
+        if (input.attr("type") == "password") {
+            input.attr("type", "text");
+        } else {
+            input.attr("type", "password");
+        }
     });
 </script>
 

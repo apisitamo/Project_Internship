@@ -226,13 +226,16 @@
     .bu-back button {
         padding: 7px 10px;
         border: none;
-        background: #ff0000cf;
+        background: #d17742;
         border-radius: 10px;
+        border-bottom-style: revert;
     }
 
     .bu-back button:hover {
-        background: #BB0707;
+        background: #945834;
+        color: white;
         transition: 0.4s;
+        border-bottom-style: revert;
     }
 </style>
 
@@ -271,6 +274,7 @@
 <body>
     <div class="bu-back">
         <button id="backButton">
+            <i class="bi bi-caret-left-fill"></i>
             <?= $back ?>
         </button>
     </div>
@@ -292,11 +296,11 @@
                 <select class="form-control-option" name="type">
                     <option value="null"></option>
                     <option value="Body Scrub" <?php if ($type == "Body Scrub")
-                                                    echo "selected"; ?>>Body Scrub</option>
+                        echo "selected"; ?>>Body Scrub</option>
                     <option value="Body Mask" <?php if ($type == "Body Mask")
-                                                    echo "selected"; ?>>Body Mask</option>
+                        echo "selected"; ?>>Body Mask</option>
                     <option value="Body Massage Oil" <?php if ($type == "Body Massage Oil")
-                                                            echo "selected"; ?>>Body Massage Oil
+                        echo "selected"; ?>>Body Massage Oil
                     </option>
                 </select>
             </div>
@@ -345,7 +349,7 @@
 </script>
 
 <script>
-    document.getElementById('backButton').addEventListener('click', function() {
+    document.getElementById('backButton').addEventListener('click', function () {
         window.history.back();
     });
 </script>
@@ -353,8 +357,8 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script>
-    $(document).ready(function() {
-        $("#saveButton").click(function() {
+    $(document).ready(function () {
+        $("#saveButton").click(function () {
             var type = $("select[name='type']").val();
             var name_th = $("input[name='name_th']").val();
             var name_eng = $("input[name='name_eng']").val();
@@ -381,7 +385,7 @@
                     price: price
 
                 },
-                success: function(response) {
+                success: function (response) {
                     // alert(response);
                     window.history.back();
                     console.log(response);
