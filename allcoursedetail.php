@@ -291,6 +291,7 @@
     .course-detail .bu-back button {
         padding: 7px 10px;
         border: none;
+        background: #d17742;
         border-radius: 10px;
         border-bottom-style: revert;
     }
