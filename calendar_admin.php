@@ -14,11 +14,17 @@ include 'include/headadmin.php';
 </head>
 
 <style>
+    body {
+        background-image: url(assets/images/pic4.png);
+        background-size: 100%;
+    }
 
     #calendar {
         margin-top: 10px;
         width: 800px;
         height: 600px;
+        background-image: url(assets/images/comment1.png);
+        background-size: 100% 100%;
     }
 
     .top .left {
@@ -26,7 +32,18 @@ include 'include/headadmin.php';
         justify-content: center;
         /* margin-left: 50px; */
     }
-    
+
+    /*#calendar td,
+    #calendar th {
+        border: none;
+    }*/
+
+    #calendar .fc-toolbar.fc-header-toolbar {
+        margin-bottom: 1em !important;
+        margin-top: 0.5em !important;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
 </style>
 
 <body>
