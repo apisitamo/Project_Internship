@@ -291,12 +291,12 @@
     .course-detail .bu-back button {
         padding: 7px 10px;
         border: none;
-        background: #ff0000cf;
         border-radius: 10px;
     }
 
     .course-detail .bu-back button:hover {
-        background: #BB0707;
+        background: #945834;
+        color: white;
         transition: 0.4s;
     }
 
@@ -446,6 +446,7 @@
     <section class="course-detail">
         <div class="bu-back" data-aos="fade-up" data-aos-duration="2000">
             <button id="backButton">
+                <i class="bi bi-caret-left-fill"></i>
                 <?= $back ?>
             </button>
         </div>
