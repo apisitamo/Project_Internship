@@ -519,6 +519,8 @@
                                 <?= $ordernow ?>
                             </p>
                         </button>
+                        <button class="calen"
+                        style="margin-top: 5px;">ดูวันว่างได้ที่นี่</button>
                     </div>
                 </div>
             </div>
@@ -762,6 +764,13 @@
             </div>
         </div>
 
+        <div class="popup" id="popup5">
+            <div class="popup-content">
+                <span class="close-popup" id="close-popup5">&times;</span>
+                <div id="calendar"></div>
+            </div>
+        </div>
+
     </section>
 
     <script>
@@ -797,6 +806,9 @@
 
     const fileInput = document.querySelector('input[name="img"]');
     const alertMessage = document.querySelector('.alert');
+
+    const calen = document.querySelectorAll('.calen');
+    const closecalenpopup = document.querySelector('#close-popup5');
 
     openpopup.forEach(button => {
         button.addEventListener('click', () => {
@@ -866,6 +878,20 @@
     //     clickOverlay1.style.display = 'none';
     //     location.reload();
     // });
+
+    calen.forEach(button => {
+        button.addEventListener('click', () => {
+            console.log("Open calen popup");
+            popup5.style.display = 'flex';
+            clickOverlay1.style.display = 'block';
+        });
+    });
+    closecalenpopup.addEventListener('click', () => {
+        console.log("X calen popup ");
+        popup5.style.display = 'none';
+        clickOverlay1.style.display = 'none';
+        // location.reload();
+    });
 </script>
 
 <script>
