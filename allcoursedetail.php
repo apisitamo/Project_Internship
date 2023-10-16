@@ -524,8 +524,7 @@
                                 <?= $ordernow ?>
                             </p>
                         </button>
-                        <button class="calen"
-                        style="margin-top: 5px;">ดูวันว่างได้ที่นี่</button>
+                        <button class="calen" style="margin-top: 5px;" data-aos="fade-up" data-aos-duration="2000">ดูวันว่างได้ที่นี่</button>
                     </div>
                 </div>
             </div>
