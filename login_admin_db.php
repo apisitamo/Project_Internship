@@ -27,7 +27,7 @@ if (isset($_POST['login_admin'])) {
         if (mysqli_num_rows($result) == 1) {
             $_SESSION['admin'] = $admin;
             $_SESSION['success'] = "You are now logged in";
-            header("location: product_order.php");
+            header("location: calendar_admin.php");
             exit();
         } else {
             array_push($errors, "Wrong data");

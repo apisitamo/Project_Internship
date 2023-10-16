@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<?php
+include 'include/headadmin.php';
+?>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,28 +14,18 @@
 </head>
 
 <style>
-    td {
-        background-color: white;
-        border: 1px solid #fff;
-        padding: 5px;
-    }
-
-    /* สีของวันที่ในฐานข้อมูล
-    .booked {
-        background-color: red;
-        color: white;
-    } */
 
     #calendar {
-        width: 650px;
-        height: 650px;
+        margin-top: 10px;
+        width: 800px;
+        height: 600px;
     }
 
-    .top {
+    .top .left {
         display: flex;
         justify-content: center;
+        /* margin-left: 50px; */
     }
-
     
 </style>
 
@@ -40,11 +34,8 @@
         <div class="left">
             <div id="calendar"></div>
         </div>
-        <div class="right">
-            <input type="date">
-        </div>
     </div>
-    <script src="calendar.js"></script>
+    <script src="calendar_admin.js"></script>
 </body>
 
 </html>

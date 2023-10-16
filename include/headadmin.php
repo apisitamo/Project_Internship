@@ -18,6 +18,7 @@ if (empty($_SESSION['lang']) || $_SESSION['lang'] == 1) {
     $add_gallery = 'เพิ่มแกลลอรี่';
     $product_order = 'คำสั่งซื้อผลิตภัณฑ์';
     $course_order = 'คำสั่งซื้อหลักสูตร';
+    $calendar = 'ปฏิทิน';
 } else {
     $_SESSION['lang'] = 2;
     $flag = 'enflag.png';
@@ -30,6 +31,7 @@ if (empty($_SESSION['lang']) || $_SESSION['lang'] == 1) {
     $add_gallery = 'Add gallery';
     $product_order = 'Product Order';
     $course_order = 'Course Order';
+    $calendar = 'Calendar';
 }
 
 // if (!isset($_SESSION['admin'])) {
@@ -83,6 +85,9 @@ if (isset($_GET['logout'])) {
         </button> -->
         <div class="navbar-collapse collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="calendar_admin.php"><?= $calendar  ?></a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="add_course.php"><?= $add_course  ?></a>
                 </li>

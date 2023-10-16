@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var calendar = new FullCalendar.Calendar(calendarEl, {
         initialView: 'dayGridMonth',
         events: {
-            url: 'course_date.php',
+            url: 'course_date_admin.php',
             method: 'GET',
         },
     });
