@@ -20,7 +20,7 @@ if (empty($_SESSION['lang']) || $_SESSION['lang'] == 1) {
     $register = 'สมัครสมาชิก';
     $user = 'ข้อมูลผู้ใช้งาน';
     $admin = 'แอดมินเท่านั้น';
-    $history = 'ประวัติ';
+    $history = 'ประวัติการสั่งซื้อ';
 } else {
     $_SESSION['lang'] = 2;
     $flag = 'enflag.png';
@@ -36,7 +36,7 @@ if (empty($_SESSION['lang']) || $_SESSION['lang'] == 1) {
     $register = 'Register';
     $user = 'User Detail';
     $admin = 'For Admin';
-    $history = 'History';
+    $history = 'Order History';
 }
 
 // if (!isset($_SESSION['username'])) {

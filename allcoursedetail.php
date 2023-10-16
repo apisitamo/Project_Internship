@@ -731,6 +731,9 @@
                 <h5 class="alert4" style="color:red; font-size:16px; display:none;font-weight: bold;">
                     <?= $alet4 ?>
                 </h5>
+                <h5 class="alert5" style="color:red; font-size:16px; display:none;font-weight: bold;">
+                    <?= $alet5 ?>
+                </h5>
             </div>
         </div>
 
@@ -988,6 +991,7 @@
             $(".alert2").css("display", "none");
             $(".alert3").css("display", "none");
             $(".alert4").css("display", "none");
+            $(".alert5").css("display", "none");
 
             var dates = [];
             $("input[name='dd']").each(function() {
@@ -999,6 +1003,8 @@
                 $(".alert1").css("display", "block");
                 $(".alert2").css("display", "none");
                 $(".alert3").css("display", "none");
+                $(".alert4").css("display", "none");
+                $(".alert5").css("display", "none");
                 return; // ไม่ดำเนินการต่อ
             }
 
@@ -1009,6 +1015,8 @@
                 $(".alert1").css("display", "none");
                 $(".alert2").css("display", "none");
                 $(".alert3").css("display", "block"); // เปิด alert3 ถ้ามีวันที่เดียวกัน
+                $(".alert4").css("display", "none");
+                $(".alert5").css("display", "none");
                 return; // ไม่ดำเนินการต่อ
             }
 
@@ -1031,6 +1039,8 @@
                 $(".alert1").css("display", "none");
                 $(".alert2").css("display", "none");
                 $(".alert3").css("display", "block"); // เปิด alert3 ถ้ามีวันที่เหมือนกัน
+                $(".alert4").css("display", "none");
+                $(".alert5").css("display", "none");
                 return; // ไม่ดำเนินการต่อ
             }
 
@@ -1040,6 +1050,18 @@
                 return new Date(date);
             });
 
+            // ตรวจสอบว่ามีวันเสาร์หรืออาทิตย์ในรายการวันที่ที่ผู้ใช้เลือก
+            if (selectedDates.some(function(selectedDate) {
+                    return selectedDate.getDay() === 0 || selectedDate.getDay() === 6; // 0 คือวันอาทิตย์ และ 6 คือวันเสาร์
+                })) {
+                $(".alert1").css("display", "none");
+                $(".alert2").css("display", "none");
+                $(".alert3").css("display", "none");
+                $(".alert4").css("display", "none");
+                $(".alert5").css("display", "block");
+                return; // ไม่ดำเนินการต่อ
+            }
+
             if (selectedDates.some(function(selectedDate) {
                     return selectedDate < today;
                 })) {
@@ -1047,6 +1069,7 @@
                 $(".alert2").css("display", "none");
                 $(".alert3").css("display", "none");
                 $(".alert4").css("display", "block"); // แสดง alert4 ถ้ามีวันที่เลือกก่อนวันปัจจุบัน
+                $(".alert5").css("display", "none");
                 return; // ไม่ดำเนินการต่อ
             }
 
@@ -1125,10 +1148,6 @@
             });
         });
     });
-</script>
-
-<script>
-
 </script>
 
 </html>
