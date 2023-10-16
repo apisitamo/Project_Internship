@@ -539,14 +539,11 @@
                             </div>
                         </div>
                         <button class="open-popup">
-                            <p class="price" data-aos="fade-up" data-aos-duration="2000">
-                                <!-- <?= $prices ?>
-                                <?php echo $price ?>
-                                <?= $price2 ?> -->
+                            <p class="price" data-aos="fade-up" data-aos-duration="2000" style="font-size: 30px;">
                                 <?= $ordernow ?>
                             </p>
                         </button>
-                            <button class="calen" style="margin-top: 5px;" data-aos="fade-up" data-aos-duration="2000">ดูวันว่างได้ที่นี่</button>
+                            <button class="calen" style="margin-top: 5px;background-color:#FBDFCF;color:#5F6368;" data-aos="fade-up" data-aos-duration="2000" > <?= $free ?> </button>
                     </div>
                 </div>
             </div>
@@ -852,15 +849,15 @@
         });
     });
 
-    clickOverlay1.addEventListener('click', () => {
-        console.log("Clicked on overlay");
-        popup1.style.display = 'none';
-        popup2.style.display = 'none';
-        popup3.style.display = 'none';
-        popup4.style.display = 'none';
-        popup5.style.display = 'none';
-        clickOverlay1.style.display = 'none';
-    });
+    // clickOverlay1.addEventListener('click', () => {
+    //     console.log("Clicked on overlay");
+    //     popup1.style.display = 'none';
+    //     popup2.style.display = 'none';
+    //     popup3.style.display = 'none';
+    //     popup4.style.display = 'none';
+    //     popup5.style.display = 'none';
+    //     clickOverlay1.style.display = 'none';
+    // });
 
     closefirstpopup.addEventListener('click', () => {
         console.log("X first popup ");

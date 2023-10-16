@@ -89,6 +89,7 @@ if($langId == 1){
     $alet4 = "โปรดเลือกวันหลังจากวันที่ปัจจุบัน";
     $alet5 = "ห้ามเลือกวันเสาร์หรือวันอาทิตย์";
     $slip1 = "สลิปโอนเงิน";
+    $free = "----> คุณสามารถดูตารางวันว่างได้ที่นี่ <----";
     
 
 }else{
@@ -181,6 +182,7 @@ if($langId == 1){
     $alet4 = "Please select a day after the current date.";
     $alet5 = "Do not choose Saturday or Sunday.";
     $slip1 = "Transfer slip";
+    $free = "----> You can view the free day schedule here. <----";
 
 }
 ?>
