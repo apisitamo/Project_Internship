@@ -417,10 +417,15 @@
         border-radius: 25px;
     }
 
+    .popup .fc-theme-standard td {
+        background: #fffbf4;
+        color: black;
+    }
+
     .popup .fc-theme-standard td:nth-last-child(7),
     .popup .fc-theme-standard td:nth-child(7) {
-        background: red;
-        color: white;
+        background: #fa000024;
+        color: black;
     }
 </style>
 
