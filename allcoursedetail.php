@@ -323,7 +323,7 @@
 </style>
 
 
-<!-- ปฏิทิน -->
+<!-- ปฏิทินตอนจอง -->
 <style>
     #popup3 {
         width: 1250px;
@@ -406,6 +406,11 @@
         font-size: 15px;
         border-radius: 25px;
     }
+</style>
+
+<!-- ปฏิทินดูวันว่าง -->
+<style>
+
 </style>
 
 <body>
