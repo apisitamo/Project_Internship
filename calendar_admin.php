@@ -23,7 +23,7 @@ include 'include/headadmin.php';
         margin-top: 10px;
         width: 800px;
         height: 600px;
-        background-image: url(assets/images/comment1.png);
+        background-image: url(assets/images/banner-page.png);
         background-size: 100% 100%;
     }
 
