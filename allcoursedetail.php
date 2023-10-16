@@ -337,7 +337,14 @@
         border: double #945834;
     }
 
-    #popup3 .fc-theme-standard td {
+    #popup5 .fc-direction-ltr {
+        height: 500px;
+        width: 730px;
+        margin: 20px;
+        border: double #945834;
+    }
+
+    .popup .fc-theme-standard td {
         border: 0.5px solid #945834;
     }
 
@@ -346,28 +353,28 @@
         color: white;
     }
 
-    #popup3 .fc-col-header {
+    .popup .fc-col-header {
         width: 723px !important;
     }
 
-    #popup3 .fc-scrollgrid-sync-table {
+    .popup .fc-scrollgrid-sync-table {
         width: 723px !important;
         height: 600px !important;
     }
 
-    #popup3 .fc-theme-standard th {
+    .popup .fc-theme-standard th {
         border: 1px solid #945834 !important;
     }
 
-    #popup3 .fc-scroller {
+    .popup .fc-scroller {
         overflow: hidden !important;
     }
 
-    #popup3 .fc-button-group {
+    .popup .fc-button-group {
         background-color: #945834 !important;
     }
 
-    #popup3 .fc-button-primary {
+    .popup .fc-button-primary {
         background-color: #945834 !important;
         border-color: #FFC28D;
         border-radius: 0px;
@@ -771,7 +778,7 @@
         <div class="popup" id="popup5">
             <div class="popup-content">
                 <span class="close-popup" id="close-popup5">&times;</span>
-                <div id="calendar"></div>
+                <div id="calendar1"></div>
             </div>
         </div>
 
@@ -782,6 +789,7 @@
     </script>
 
     <script src="calendar.js"></script>
+    <script src="calendar1.js"></script>
 
 
 </body>
@@ -886,7 +894,7 @@
     calen.forEach(button => {
         button.addEventListener('click', () => {
             console.log("Open calen popup");
-            popup5.style.display = 'flex';
+            popup5.style.display = 'block';
             clickOverlay1.style.display = 'block';
         });
     });
