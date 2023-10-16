@@ -685,6 +685,14 @@
         });
     });
 
+    clickOverlay1.addEventListener('click', () => {
+        console.log("Clicked on overlay");
+        popup1.style.display = 'none';
+        popup2.style.display = 'none';
+        popup3.style.display = 'none';
+        clickOverlay1.style.display = 'none';
+    });
+
     openpopupout.forEach(button => {
         button.addEventListener('click', () => {
             console.log("Open first popup");

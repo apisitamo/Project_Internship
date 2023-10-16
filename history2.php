@@ -317,6 +317,7 @@ if ($totalcoursesResult) {
         border-style: groove;
         font-size: 25px;
     }
+
     .user1 .homeheader .CO a {
         background: #E88B2E;
         padding: 5px 15px;
@@ -327,11 +328,55 @@ if ($totalcoursesResult) {
     }
 </style>
 
+<style>
+    .calen {
+        display: none;
+        z-index: 1000;
+        width: 900px;
+        height: 600px;
+        /* background-color: #fff; */
+        padding: 20px;
+        border-radius: 5px;
+        /* max-width: 80%;*/
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        justify-content: center;
+        /* background-image: url("assets\images\Frame 7961.png");*/
+        background: #FFFAF5;
+        border-radius: 10px;
+        background-image: url(assets/images/banner-page.png);
+    }
+
+    .click-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        justify-content: center;
+        align-items: center;
+        z-index: 900;
+    }
+
+    .close-popup {
+        position: absolute;
+        top: 1px;
+        right: 20px;
+        cursor: pointer;
+        font-size: 50px;
+    }
+</style>
+
 <body>
+    <div class="click-overlay" id="click-overlay1"></div>
     <section class="user1">
         <div class="homeheader">
             <div class="PO">
-                    <a href="history.php"><?= $PO ?></a>
+                <a href="history.php"><?= $PO ?></a>
             </div>
             <div class="CO">
                 <i class="bi bi-caret-right-fill">
@@ -379,8 +424,8 @@ if ($totalcoursesResult) {
                     $result = mysqli_query($db, $query);
 
                     $i = 1 + $offset;
-                    while ($row = mysqli_fetch_assoc($result)):
-                        ?>
+                    while ($row = mysqli_fetch_assoc($result)) :
+                    ?>
                         <tr>
                             <td>
                                 <?php echo $i++; ?>
@@ -392,7 +437,9 @@ if ($totalcoursesResult) {
                                 <?php echo $row['name']; ?>
                             </td>
                             <td>
-                                <?php echo $row['day']; ?>
+                                <button class="showcalen" style="background-color:lightblue; border-radius:15px;" dataID=>
+                                    <?php echo $row['day']; ?>
+                                </button>
                             </td>
                             <td>
                                 <?php echo $row['price']; ?>
@@ -441,6 +488,11 @@ if ($totalcoursesResult) {
             }
             ?>
         </div>
+
+        <div class="calen">
+            <span class="close-popup" id="close-popup1">&times;</span>
+        </div>
+
     </section>
 
     <?php include 'include/footer.php'; ?>
@@ -449,6 +501,33 @@ if ($totalcoursesResult) {
 
 <script>
     AOS.init();
+</script>
+
+<script>
+    const showcalen = document.querySelectorAll('.showcalen');
+    const calen = document.querySelector('.calen');
+    const closepopup = document.querySelector('#close-popup1');
+    const clickOverlay1 = document.querySelector('#click-overlay1');
+
+    showcalen.forEach(button => {
+        button.addEventListener('click', () => {
+            console.log("Open first popup");
+            calen.style.display = 'flex';
+            clickOverlay1.style.display = 'block';
+        });
+    });
+
+    closepopup.addEventListener('click', () => {
+        console.log("X first popup ");
+        calen.style.display = 'none';
+        clickOverlay1.style.display = 'none';
+        // location.reload();
+    });
+    clickOverlay1.addEventListener('click', () => {
+        console.log("Clicked on overlay");
+        calen.style.display = 'none';
+        clickOverlay1.style.display = 'none';
+    });
 </script>
 
 
