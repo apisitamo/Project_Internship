@@ -44,6 +44,17 @@ include 'include/headadmin.php';
         margin-left: 10px;
         margin-right: 10px;
     }
+
+    .left .fc-theme-standard td {
+        background: #fffbf4;
+        color: black;
+    }
+
+    .left .fc-theme-standard td:nth-last-child(7),
+    .left .fc-theme-standard td:nth-child(7) {
+        background: #fa000024;
+        color: black;
+    }
 </style>
 
 <body>
