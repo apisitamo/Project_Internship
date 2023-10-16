@@ -292,12 +292,14 @@
         padding: 7px 10px;
         border: none;
         border-radius: 10px;
+        border-bottom-style: revert;
     }
 
     .course-detail .bu-back button:hover {
         background: #945834;
         color: white;
         transition: 0.4s;
+        border-bottom-style: revert;
     }
 
     .course-detail .col-lg-6 .wrap .item:nth-child(4) img {
