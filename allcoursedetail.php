@@ -427,6 +427,14 @@
         background: #FFE1E179;
         color: black;
     }
+
+    .popup .fc-theme-standard td .fc-day-today {
+        background: wheat;
+    }
+
+    .popup #calendar1 thead {
+        background: aqua;
+    }
 </style>
 
 <!-- ปฏิทินดูวันว่าง -->
