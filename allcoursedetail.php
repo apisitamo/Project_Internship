@@ -333,18 +333,19 @@
         height: 680px;
     }
 
-    #popup3 .fc-direction-ltr {
+    .popup .fc-direction-ltr {
         height: 600px;
         width: 730px;
         margin: 20px;
         border: double #945834;
     }
 
-    #popup5 .fc-direction-ltr {
-        height: 500px;
-        width: 730px;
-        margin: 20px;
-        border: double #945834;
+    #popup5 {
+        height: 680px;
+    }
+
+    #popup5 .popup-content {
+        text-align: -webkit-center;
     }
 
     .popup .fc-theme-standard td {
