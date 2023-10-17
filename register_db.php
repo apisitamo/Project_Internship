@@ -50,7 +50,7 @@ if (isset($_POST['reg_user'])) {
         $_SESSION['success'] = "You are now logged in";
 
         echo "<script>
-                alert('Successful registration');
+                alert('Successfully registered');
                 window.location.href = 'index.php';
               </script>";
         exit();
