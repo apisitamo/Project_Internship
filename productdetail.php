@@ -443,12 +443,13 @@
                                 </div>
                             </div>
                         </div>
-                        <?php if (isset($_SESSION['username'])) : ?>
+                        <?php if (isset($_SESSION['username'])): ?>
                             <div class="input-quantity" data-aos="zoom-in" data-aos-duration="2000">
                                 <span>
                                     <?= $quantityy ?>
                                 </span>
-                                <input style="width:70px; background-color:#F5EBEB;" type="number" class="form-control" name="quantity" id="quantityInput" oninput="calculateTotal()" required>
+                                <input style="width:70px; background-color:#F5EBEB;" type="number" class="form-control"
+                                    name="quantity" id="quantityInput" oninput="calculateTotal()" required>
                                 <span>
                                     <?= $Kg ?>
                                 </span>
@@ -464,7 +465,7 @@
                             <div class="error" style="display: none;">
                                 <?= $pinput ?>
                             </div>
-                        <?php else : ?>
+                        <?php else: ?>
                             <button class="open-popup-out">
                                 <p class="price" data-aos="fade-up" data-aos-duration="2000">
                                     <!-- <?= $prices ?>
@@ -491,12 +492,15 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="wrap-contact">
-                        <div class="item call" data-aos="fade-up" data-aos-duration="2000"><i class="fa-regular fa-phone"></i><span>086-322-1922</span></div>
+                        <div class="item call" data-aos="fade-up" data-aos-duration="2000"><i
+                                class="fa-regular fa-phone"></i><span>086-322-1922</span></div>
                         <a href="https://line.me/ti/p/~@108toots">
-                            <div class="item line" data-aos="fade-up" data-aos-duration="2000"><img class="line-img" src="assets/images/line.png" alt=""><span>@bsathailand</span></div>
+                            <div class="item line" data-aos="fade-up" data-aos-duration="2000"><img class="line-img"
+                                    src="assets/images/line.png" alt=""><span>@bsathailand</span></div>
                         </a>
                         <a href="https://th-th.facebook.com/BSABangkok/">
-                            <div class="item facebook" data-aos="fade-up" data-aos-duration="2000"><i class="bi bi-facebook"></i><span>Bangkok Spa Academy</span></div>
+                            <div class="item facebook" data-aos="fade-up" data-aos-duration="2000"><i
+                                    class="bi bi-facebook"></i><span>Bangkok Spa Academy</span></div>
                         </a>
                     </div>
                 </div>
@@ -515,7 +519,7 @@
             <div class="popup-content">
                 <span class="close-popup" id="close-popup1">&times;</span>
                 <div class="homecontent">
-                    <?php if (isset($_SESSION['username'])) : ?>
+                    <?php if (isset($_SESSION['username'])): ?>
                         <div class="box" id="box1">
                             <div class="container">
                                 <div class="row">
@@ -541,7 +545,8 @@
                                 <div class="text01">
                                     <p style="color:black;">ชำระเงินด้วย QR code</p>
                                     <p style="color:black;">ทางร้านตรวจสอบการชำระเงิน
-                                        และจัดส่งให้ลูกค้า</p>
+                                        <br>และจัดส่งให้ลูกค้า
+                                    </p>
                                     <!-- <p style="color:black;"></p> -->
                                 </div>
                             </div>
@@ -555,7 +560,7 @@
                                 </button>
                             </div>
                         </div>
-                    <?php else : ?>
+                    <?php else: ?>
                         <div class="box">
                             <div class="container">
                                 <div class="row">
@@ -652,24 +657,24 @@
                                     <?= $slip ?>
                                 </h5>
                             </div>
-            </div>
-        <?php
+                        </div>
+                        <?php
                         } else { ?>
-            <div class="homecontent">
-                <div class="container">
-                    <div class="row">
-                        <p style="text-align: center;">
-                            <?= $fillinformation ?>
-                        </p>
-                    </div>
-                    <a href="user.php" class="button-success" id="button-success3">
-                        <p>
-                            <?= $fillin ?>
-                        </p>
-                    </a>
-                </div>
-            </div>
-<?php }
+                        <div class="homecontent">
+                            <div class="container">
+                                <div class="row">
+                                    <p style="text-align: center;">
+                                        <?= $fillinformation ?>
+                                    </p>
+                                </div>
+                                <a href="user.php" class="button-success" id="button-success3">
+                                    <p>
+                                        <?= $fillin ?>
+                                    </p>
+                                </a>
+                            </div>
+                        </div>
+                    <?php }
                     } else {
                         // ไม่พบข้อมูลของ username นี้
                         echo "No information found for this username.";
@@ -680,7 +685,7 @@
                     // ถ้าไม่มีค่า $_SESSION['username'] ให้ทำอะไรตามที่คุณต้องการ
                     echo "There is no username information in the session.";
                 }
-?>
+                ?>
         </div>
 
         <!-- เป็นส่วนของ popup ตอนเด้งขึ้นมา ขั้่น 3-->
@@ -830,7 +835,7 @@
 </script>
 
 <script>
-    document.getElementById('backButton').addEventListener('click', function() {
+    document.getElementById('backButton').addEventListener('click', function () {
         window.history.back();
     });
 </script>
@@ -838,8 +843,8 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script>
-    $(document).ready(function() {
-        $(".button-success-2").click(function() {
+    $(document).ready(function () {
+        $(".button-success-2").click(function () {
             var type = "<?php echo $type ?>";
             var name = "<?php echo $name_eng ?>";
             var quantity = $("input[name='quantity']").val();
@@ -864,7 +869,7 @@
                 data: formData,
                 contentType: false,
                 processData: false,
-                success: function(response) {
+                success: function (response) {
                     // alert(response);
                 }
             });
@@ -875,7 +880,7 @@
 <script>
     var quantityInput = document.getElementById("quantityInput");
 
-    quantityInput.addEventListener("change", function() {
+    quantityInput.addEventListener("change", function () {
         var inputValue = parseFloat(quantityInput.value);
         if (inputValue < 0) {
             quantityInput.value = 0;
