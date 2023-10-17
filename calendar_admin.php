@@ -55,6 +55,14 @@ include 'include/headadmin.php';
         background: #fa000024;
         color: black;
     }
+
+    .left .fc-theme-standard td .fc-day-today {
+        background: wheat;
+    }
+
+    .left #calendar thead {
+        background: aqua;
+    }
 </style>
 
 <body>
