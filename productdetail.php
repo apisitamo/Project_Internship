@@ -481,9 +481,15 @@
                         <div class="box">
                             <div class="container">
                                 <div class="row">
-                                    <p style="text-align: center;">
+                                    <!-- <p style="text-align: center;">
                                         <?= $confirmorder ?>
-                                    </p>
+                                    </p> -->
+                                    <img src="assets/images/step1.png">
+                                    <img src="assets/images/step2.png">
+                                    <img src="assets/images/step4.png">
+                                    <img src="assets/images/num1.png">
+                                    <img src="assets/images/num2.png">
+                                    <img src="assets/images/num3.png">
                                 </div>
                                 <button class="button-success" id="button-success1">
                                     <?= $confirm ?>
