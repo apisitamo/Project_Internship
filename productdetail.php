@@ -315,6 +315,48 @@
         text-align: center;
         color: red;
     }
+
+    #popup1 #box1 .step .num {
+        position: absolute;
+        width: 40% !important;
+        left: -40%;
+        top: -20%;
+    }
+
+    #popup1 #box1 .step .step0 {
+        position: relative;
+    }
+
+    #popup1 #box1 .step .step0 img {
+        width: 165px;
+    }
+
+    #popup1 #box1 .text01,
+    #popup1 #box1 .step {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    #popup1 #box1 .text01 p {
+        font-size: 20px;
+        margin-top: 10px;
+    }
+
+    #popup1 #box1 .bt1 {
+        display: flex;
+        justify-content: center;
+        margin-top: 4%;
+    }
+
+    #popup1 #box1 .bt1 #button-close1 {
+        margin-left: 50px !important;
+    }
+
+    #popup1 #box1 .title-box1 {
+        text-align: center;
+        margin-bottom: 70px;
+        margin-top: -100px;
+    }
 </style>
 
 <body>
@@ -478,21 +520,37 @@
                 <span class="close-popup" id="close-popup1">&times;</span>
                 <div class="homecontent">
                     <?php if (isset($_SESSION['username'])): ?>
-                        <div class="box">
+                        <div class="box" id="box1">
                             <div class="container">
                                 <div class="row">
-                                    <!-- <p style="text-align: center;">
+                                    <p class="title-box1">
                                         <?= $confirmorder ?>
-                                    </p> -->
-                                    <img src="assets/images/step1.png">
-                                    <img src="assets/images/step2.png">
-                                    <img src="assets/images/step4.png">
-                                    <img src="assets/images/num1.png">
-                                    <img src="assets/images/num2.png">
-                                    <img src="assets/images/num3.png">
+                                    </p>
+                                    <div class="step">
+                                        <div class="step0">
+                                            <img src="assets/images/step1.png">
+                                            <img class="num" src="assets/images/num1.png">
+                                        </div>
+                                        <div class="step0">
+                                            <img src="assets/images/step2.png">
+                                            <img class="num" src="assets/images/num2.png">
+                                        </div>
+                                        <div class="step0">
+                                            <img src="assets/images/step3.png">
+                                            <img class="num" src="assets/images/num3.png">
+                                        </div>
+                                    </div>
                                 </div>
+                                <div class="text01">
+                                    <p>ชำระเงินด้วย QR code</p>
+                                    <p>เลือกวันที่ต้องการเรียนหลักสูตร</p>
+                                    <p>เข้ารับการเรียนหลักสูตร</p>
+                                </div>
+                            </div>
+                            <div class="bt1">
                                 <button class="button-success" id="button-success1">
-                                    <?= $confirm ?>
+                                    <!-- <?= $confirm ?> -->
+                                    ถัดไป
                                 </button>
                                 <button class="button-close" id="button-close1">
                                     <?= $cancle ?>
