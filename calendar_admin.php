@@ -57,11 +57,11 @@ include 'include/headadmin.php';
     }
 
     .left .fc-theme-standard td .fc-day-today {
-        background: wheat;
+        background: wheat !important;
     }
 
     .left #calendar thead {
-        background: aqua;
+        background: aqua !important;
     }
 </style>
 
