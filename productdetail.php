@@ -760,7 +760,7 @@
     openpopupout.forEach(button => {
         button.addEventListener('click', () => {
             console.log("Open first popup");
-            popup1.style.display = 'flex';
+            popup1.style.display = 'block';
             clickOverlay1.style.display = 'block';
         });
     });
@@ -796,7 +796,7 @@
     buttonclosesecond.addEventListener('click', () => {
         console.log("back BTN second POPUP");
         popup2.style.display = 'none';
-        popup1.style.display = 'flex';
+        popup1.style.display = 'block';
         clickOverlay1.style.display = 'flex';
     });
     buttonsuccesssecond.forEach(button => {
