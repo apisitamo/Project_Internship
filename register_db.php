@@ -13,16 +13,16 @@ if (isset($_POST['reg_user'])) {
     if (empty($username) && empty($password_2) && empty($email) && empty($password_1)) {
         array_push($errors, "Please fill input.");
     }
-    if (empty($username)) {
+    elseif (empty($username)) {
         array_push($errors, "Username is required");
     }
-    if (empty($email)) {
+    elseif (empty($email)) {
         array_push($errors, "Email is required");
     }
-    if (empty($password_1)) {
+    elseif (empty($password_1)) {
         array_push($errors, "Password is required");
     }
-    if ($password_1 != $password_2) {
+    elseif ($password_1 != $password_2) {
         array_push($errors, "Passwords do not match");
     }
 
@@ -61,4 +61,3 @@ if (isset($_POST['reg_user'])) {
         exit();
     }
 }
-?>
