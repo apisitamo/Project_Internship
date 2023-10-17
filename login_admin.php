@@ -126,7 +126,18 @@ if ($langId == 1) {
     .left-inner-addon input {
         padding-left: 50px !important; 
     }
+    
+    .error {
+        width: 92%;
+        margin: 0 auto;
+        padding: 10px;
+        border: 1px solid rgb(96, 116, 48);
+        color: brown;
+        background: rgb(223, 236, 193);
+        border-radius: 5px;
+        text-align: left;
 
+    }
 </style>
 
 
@@ -138,6 +149,17 @@ if ($langId == 1) {
         </div>
         <div class="header-mid">
             <div class="wrapper">
+            <?php include('errors.php'); ?>
+                <?php if (isset($_SESSION['error'])) : ?>
+                    <div class="error">
+                        <h3>
+                            <?php
+                            echo $_SESSION['error'];
+                            unset($_SESSION['error']);
+                            ?>
+                        </h3>
+                    </div>
+                <?php endif ?>
             <form action="login_admin_db.php" method="post">
                 <div class="left-inner-addon input-box">
                 <i class="bi bi-person-workspace"></i>
