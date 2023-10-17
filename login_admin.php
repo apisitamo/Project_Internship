@@ -49,6 +49,7 @@ if ($langId == 1) {
 
     .wrapper {
         width: 420px;
+        margin-top: 15px;
     }
 
     .wrapper .input-box {
@@ -128,16 +129,16 @@ if ($langId == 1) {
     }
     
     .error {
-        width: 92%;
+        width: 95%;
         margin: 0 auto;
-        padding: 10px;
-        border: 1px solid rgb(96, 116, 48);
-        color: brown;
-        background: rgb(223, 236, 193);
-        border-radius: 5px;
-        text-align: left;
-
+        padding: 5px;
+        border: 5px solid #945834;
+        color: red;
+        background: #FFF6E7;
+        border-radius: 40px;
+        text-align: center;
     }
+    
 </style>
 
 
@@ -152,7 +153,7 @@ if ($langId == 1) {
             <?php include('errors.php'); ?>
                 <?php if (isset($_SESSION['error'])) : ?>
                     <div class="error">
-                        <h3>
+                        <h3 style="font-size: 25px;font-weight: bold;">
                             <?php
                             echo $_SESSION['error'];
                             unset($_SESSION['error']);
@@ -170,13 +171,13 @@ if ($langId == 1) {
                 <i class="bi bi-lock-fill"></i>
                     <label for="password"><?= $password ?></label>
                     <input type="password" name="password" id="passwordInput" placeholder="<?= $password ?>">
-                    <span toggle="#passwordInput" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+                    <span toggle="#passwordInput" class="fa fa-fw fa-eye-slash field-icon toggle-password"></span>
                 </div>
                 <div class="left-inner-addon input-box">
                 <i class="bi bi-person-badge"></i>
                     <label for="employee_code"><?= $employee_code ?></label>
                     <input type="password" name="employee_code" id="employId" placeholder="<?= $employee_code ?>">
-                    <span toggle="#employId" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+                    <span toggle="#employId" class="fa fa-fw fa-eye-slash field-icon toggle-password"></span>
                 </div>
                 <div class="input-box">
                     <button type="submit" name="login_admin" class="btn"><?= $login ?></button>

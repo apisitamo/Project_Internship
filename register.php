@@ -51,7 +51,7 @@ if ($langId == 1) {
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 85vh;
+        height: 100vh;
         margin: 0;
         background-color: #FFFFFFB9;
     }
@@ -59,6 +59,7 @@ if ($langId == 1) {
     .wrapper {
         width: 420px;
         text-align: center;
+        margin-top: 15px;
     }
 
     .wrapper .input-box {
@@ -161,16 +162,16 @@ if ($langId == 1) {
     }
 
     .error {
-        width: 92%;
+        width: 95%;
         margin: 0 auto;
-        padding: 10px;
-        border: 1px solid rgb(96, 116, 48);
-        color: brown;
-        background: rgb(223, 236, 193);
-        border-radius: 5px;
-        text-align: left;
-
+        padding: 5px;
+        border: 5px solid #945834;
+        color: red;
+        background: #FFF6E7;
+        border-radius: 40px;
+        text-align: center;
     }
+
 </style>
 
 <body>
@@ -184,7 +185,7 @@ if ($langId == 1) {
                 <?php include('errors.php'); ?>
                 <?php if (isset($_SESSION['error'])) : ?>
                     <div class="error">
-                        <h3>
+                        <h3 style="font-size: 25px;font-weight: bold;">
                             <?php
                             echo $_SESSION['error'];
                             unset($_SESSION['error']);
@@ -207,13 +208,13 @@ if ($langId == 1) {
                         <i class="bi bi-lock-fill"></i>
                         <label for="password_1"><?= $password ?></label>
                         <input type="password" id="passwordInput1" name="password_1" placeholder="<?= $password ?>">
-                        <span toggle="#passwordInput1" class="fa fa-fw fa-eye field-icon toggle-password" style="cursor: pointer;"></span>
+                        <span toggle="#passwordInput1" class="fa fa-fw fa-eye-slash field-icon toggle-password" style="cursor: pointer;"></span>
                     </div>
                     <div class="left-inner-addon input-box">
                         <i class="bi bi-shield-lock-fill"></i>
                         <label for="password_2"><?= $confirm ?></label>
                         <input type="password" id="passwordInput2" name="password_2" placeholder="<?= $confirm ?>">
-                        <span toggle="#passwordInput2" class="fa fa-fw fa-eye field-icon toggle-password" style="cursor: pointer;"></span>
+                        <span toggle="#passwordInput2" class="fa fa-fw fa-eye-slash field-icon toggle-password" style="cursor: pointer;"></span>
                     </div>
                     <div class="input-box">
                         <button type="submit" name="reg_user" class="btn"><?= $submit ?></button>

@@ -164,16 +164,16 @@ if ($langId == 1) {
     }
 
     .error {
-        width: 92%;
+        width: 95%;
         margin: 0 auto;
         padding: 10px;
-        border: 1px solid rgb(96, 116, 48);
-        color: brown;
-        background: rgb(223, 236, 193);
-        border-radius: 5px;
-        text-align: left;
-
+        border: 5px solid #945834;
+        color: red;
+        background: #FFF6E7;
+        border-radius: 60px;
+        text-align: center;
     }
+
 </style>
 
 <body>
@@ -187,7 +187,7 @@ if ($langId == 1) {
                 <?php include('errors.php'); ?>
                 <?php if (isset($_SESSION['error'])) : ?>
                     <div class="error">
-                        <h3>
+                        <h3 style="font-size: 25px;font-weight: bold;">
                             <?php
                             echo $_SESSION['error'];
                             unset($_SESSION['error']);
@@ -205,7 +205,7 @@ if ($langId == 1) {
                         <i class="bi bi-lock-fill"></i>
                         <label for="password"><?= $password ?></label>
                         <input type="password" id="passwordInput" name="password" placeholder="<?= $password ?>">
-                        <span toggle="#passwordInput" class="fa fa-fw fa-eye field-icon toggle-password" style="cursor: pointer;"></span>
+                        <span toggle="#passwordInput" class="fa fa-fw fa-eye-slash field-icon toggle-password" style="cursor: pointer;"></span>
                     </div>
                     <button type="submit" name="login_user" class="btn"><?= $login ?></button>
                 </form>
