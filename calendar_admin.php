@@ -46,18 +46,18 @@ include 'include/headadmin.php';
     }
 
     .left .fc-theme-standard td {
-        background: #fffbf4;
+        background: #FFFFFF;
         color: black;
     }
 
     .left .fc-theme-standard td:nth-last-child(7),
     .left .fc-theme-standard td:nth-child(7) {
-        background: #fa000024;
+        background: #FF7B1D31;
         color: black;
     }
 
     .left .fc-theme-standard td .fc-day-today {
-        background: wheat !important;
+        background: #80FF774E!important;
     }
 
     .left #calendar thead {

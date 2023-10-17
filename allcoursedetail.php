@@ -418,29 +418,24 @@
     }
 
     .popup .fc-theme-standard td {
-        background: #fffbf4;
+        background: #FFFFFF;
         color: black;
     }
 
     .popup .fc-theme-standard td:nth-last-child(7),
     .popup .fc-theme-standard td:nth-child(7) {
-        background: #FFE1E179;
+        background: #FF7B1D31;
         color: black;
     }
 
     .popup .fc-theme-standard td .fc-day-today {
-        background: wheat !important;
+        background: #80FF774E !important;
     }
 
     .popup #calendar thead,
     .popup #calendar1 thead {
         background: aqua !important;
     }
-</style>
-
-<!-- ปฏิทินดูวันว่าง -->
-<style>
-
 </style>
 
 <body>
