@@ -386,7 +386,7 @@
 
             // ตรวจสอบเงื่อนไข
             if (type == "null") {
-                alert("โปรดเลือกประเภท");
+                alert("Please select type");
                 return;
             }
 

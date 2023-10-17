@@ -702,13 +702,13 @@ if (isset($_GET['delete_id'])) {
             const noteValue = noteInput.value.trim();
 
             if (noteValue === "") {
-                alert('กรุณากรอกข้อมูล');
+                alert('Please fill in information');
                 location.reload();
                 return;
             }
 
             await updateNoteInDatabase(rowId, noteValue);
-            alert('บันทึกข้อมูลเรียบร้อยแล้ว');
+            alert('Note saved successfully');
             location.reload();
         });
     });
