@@ -152,13 +152,25 @@ if ($langId == 1) {
     }
 
     .left-inner-addon input {
-        padding-left: 50px !important; 
+        padding-left: 50px !important;
     }
+
     .wrapper .underline-regis {
         border-bottom: 0.5px solid #905537;
         margin-top: -25px;
     }
 
+    .error {
+        width: 92%;
+        margin: 0 auto;
+        padding: 10px;
+        border: 1px solid rgb(96, 116, 48);
+        color: brown;
+        background: rgb(223, 236, 193);
+        border-radius: 5px;
+        text-align: left;
+
+    }
 </style>
 
 <body>
@@ -169,6 +181,17 @@ if ($langId == 1) {
         </div>
         <div class="header-mid">
             <div class="wrapper">
+                <?php include('errors.php'); ?>
+                <?php if (isset($_SESSION['error'])) : ?>
+                    <div class="error">
+                        <h3>
+                            <?php
+                            echo $_SESSION['error'];
+                            unset($_SESSION['error']);
+                            ?>
+                        </h3>
+                    </div>
+                <?php endif ?>
                 <form action="register_db.php" method="post">
                     <div class="left-inner-addon input-box">
                         <i class="bi bi-person-fill"></i>
@@ -183,7 +206,7 @@ if ($langId == 1) {
                     <div class="left-inner-addon input-box">
                         <i class="bi bi-lock-fill"></i>
                         <label for="password_1"><?= $password ?></label>
-                        <input type="password" id="passwordInput1" name="password_1" placeholder="<?= $password ?>"> 
+                        <input type="password" id="passwordInput1" name="password_1" placeholder="<?= $password ?>">
                         <span toggle="#passwordInput1" class="fa fa-fw fa-eye field-icon toggle-password" style="cursor: pointer;"></span>
                     </div>
                     <div class="left-inner-addon input-box">
@@ -197,7 +220,7 @@ if ($langId == 1) {
                     </div>
                 </form>
                 <div class="underline-regis"></div>
-                <button type="button" onclick="location.href='login.php'"class="btn2"><?= $login ?></button>
+                <button type="button" onclick="location.href='login.php'" class="btn2"><?= $login ?></button>
             </div>
         </div>
     </section>
@@ -241,13 +264,13 @@ if ($langId == 1) {
 <script>
     $(".toggle-password").click(function() {
 
-    $(this).toggleClass("fa-eye fa-eye-slash");
-    var input = $($(this).attr("toggle"));
-    if (input.attr("type") == "password") {
-    input.attr("type", "text");
-    } else {
-    input.attr("type", "password");
-    }
+        $(this).toggleClass("fa-eye fa-eye-slash");
+        var input = $($(this).attr("toggle"));
+        if (input.attr("type") == "password") {
+            input.attr("type", "text");
+        } else {
+            input.attr("type", "password");
+        }
     });
 </script>
 

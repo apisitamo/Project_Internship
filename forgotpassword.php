@@ -167,6 +167,18 @@ if ($langId == 1) {
     .wrapper .underline-forgotpw {
         border-bottom: 0.5px solid #905537;
     }
+
+    .error {
+        width: 92%;
+        margin: 0 auto;
+        padding: 10px;
+        border: 1px solid rgb(96, 116, 48);
+        color: brown;
+        background: rgb(223, 236, 193);
+        border-radius: 5px;
+        text-align: left;
+
+    }
 </style>
 
 <body>
@@ -185,6 +197,17 @@ if ($langId == 1) {
         </div>
         <div class="header-mid">
             <div class="wrapper">
+                <?php include('errors.php'); ?>
+                <?php if (isset($_SESSION['error'])) : ?>
+                    <div class="error">
+                        <h3>
+                            <?php
+                            echo $_SESSION['error'];
+                            unset($_SESSION['error']);
+                            ?>
+                        </h3>
+                    </div>
+                <?php endif ?>
                 <form action="forgotpassword_db.php" method="post">
                     <div class="left-inner-addon input-box">
                         <i class="left-inner-addon bi bi-envelope-fill"></i>
@@ -206,8 +229,7 @@ if ($langId == 1) {
                             <?= $newpassword ?>
                         </label>
                         <input type="password" id="passwordInput1" name="password_1" placeholder="<?= $password ?>">
-                        <span toggle="#passwordInput1" class="fa fa-fw fa-eye field-icon toggle-password"
-                            style="cursor: pointer;"></span>
+                        <span toggle="#passwordInput1" class="fa fa-fw fa-eye field-icon toggle-password" style="cursor: pointer;"></span>
                     </div>
                     <div class="left-inner-addon input-box">
                         <i class="bi bi-shield-lock-fill"></i>
@@ -215,8 +237,7 @@ if ($langId == 1) {
                             <?= $repassword ?>
                         </label>
                         <input type="password" id="passwordInput2" name="password_2" placeholder="<?= $password ?>">
-                        <span toggle="#passwordInput2" class="fa fa-fw fa-eye field-icon toggle-password"
-                            style="cursor: pointer;"></span>
+                        <span toggle="#passwordInput2" class="fa fa-fw fa-eye field-icon toggle-password" style="cursor: pointer;"></span>
                     </div>
                     <div class="confirm-password">
                         <button type="submit" name="forgot_pw" class="btn">
@@ -238,7 +259,7 @@ if ($langId == 1) {
 </script>
 
 <script>
-    document.getElementById('backButton').addEventListener('click', function () {
+    document.getElementById('backButton').addEventListener('click', function() {
         window.location.href = 'login.php';
     });
 </script>
@@ -247,7 +268,7 @@ if ($langId == 1) {
     const passwordInput1 = document.getElementById('passwordInput1');
     const togglePassword1 = document.getElementById('togglePassword1');
 
-    togglePassword1.addEventListener('click', function (e) {
+    togglePassword1.addEventListener('click', function(e) {
         e.preventDefault(); // ยกเลิกการส่งฟอร์มโดยอัตโนมัติ
 
         if (passwordInput1.type === 'password') {
@@ -260,7 +281,7 @@ if ($langId == 1) {
     const passwordInput2 = document.getElementById('passwordInput2');
     const togglePassword2 = document.getElementById('togglePassword2');
 
-    togglePassword2.addEventListener('click', function (e) {
+    togglePassword2.addEventListener('click', function(e) {
         e.preventDefault(); // ยกเลิกการส่งฟอร์มโดยอัตโนมัติ
 
         if (passwordInput2.type === 'password') {
@@ -272,7 +293,7 @@ if ($langId == 1) {
 </script>
 
 <script>
-    $(".toggle-password").click(function () {
+    $(".toggle-password").click(function() {
 
         $(this).toggleClass("fa-eye fa-eye-slash");
         var input = $($(this).attr("toggle"));
@@ -283,5 +304,6 @@ if ($langId == 1) {
         }
     });
 </script>
+
 
 </html>

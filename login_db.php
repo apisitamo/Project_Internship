@@ -50,7 +50,6 @@ if (isset($_POST['login_user'])) {
         $_SESSION['error'] = implode("\n", $errors);
         $errorMessages = implode("\\n", $errors);
         echo "<script>
-                alert('$errorMessages');
                 window.location.href = 'login.php';
               </script>";
         exit();

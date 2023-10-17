@@ -22,6 +22,9 @@ if (isset($_POST['reg_user'])) {
     elseif (empty($password_1)) {
         array_push($errors, "Password is required");
     }
+    elseif (empty($password_2)) {
+        array_push($errors, "Confirm Password is required");
+    }
     elseif ($password_1 != $password_2) {
         array_push($errors, "Passwords do not match");
     }
@@ -55,7 +58,6 @@ if (isset($_POST['reg_user'])) {
         $_SESSION['error'] = implode("<br>", $errors);
         $errorMessages = implode("\\n", $errors);
         echo "<script>
-                alert('$errorMessages');
                 window.location.href = 'register.php';
               </script>";
         exit();

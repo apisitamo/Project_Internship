@@ -103,6 +103,7 @@ if ($langId == 1) {
     .input-group input::placeholder {
         color: #000;
     }
+
     .wrapper .btn2 {
         width: 65%;
         height: 45px;
@@ -159,9 +160,20 @@ if ($langId == 1) {
     }
 
     .left-inner-addon input {
-        padding-left: 50px !important; 
+        padding-left: 50px !important;
     }
 
+    .error {
+        width: 92%;
+        margin: 0 auto;
+        padding: 10px;
+        border: 1px solid rgb(96, 116, 48);
+        color: brown;
+        background: rgb(223, 236, 193);
+        border-radius: 5px;
+        text-align: left;
+
+    }
 </style>
 
 <body>
@@ -172,6 +184,17 @@ if ($langId == 1) {
         </div>
         <div class="header-mid">
             <div class="wrapper">
+                <?php include('errors.php'); ?>
+                <?php if (isset($_SESSION['error'])) : ?>
+                    <div class="error">
+                        <h3>
+                            <?php
+                            echo $_SESSION['error'];
+                            unset($_SESSION['error']);
+                            ?>
+                        </h3>
+                    </div>
+                <?php endif ?>
                 <form action="login_db.php" method="post">
                     <div class="left-inner-addon input-box">
                         <i class="bi bi-person-fill"></i>
@@ -190,7 +213,7 @@ if ($langId == 1) {
                     <a href="forgotpassword.php"><?= $forgot ?></a>
                 </div>
                 <div class="underline-forgot"></div>
-                <button type="button" onclick="location.href='register.php'"class="btn2"><?= $signup ?></button>
+                <button type="button" onclick="location.href='register.php'" class="btn2"><?= $signup ?></button>
             </div>
         </div>
     </section>
@@ -222,13 +245,13 @@ if ($langId == 1) {
 <script>
     $(".toggle-password").click(function() {
 
-    $(this).toggleClass("fa-eye fa-eye-slash");
-    var input = $($(this).attr("toggle"));
-    if (input.attr("type") == "password") {
-    input.attr("type", "text");
-    } else {
-    input.attr("type", "password");
-    }
+        $(this).toggleClass("fa-eye fa-eye-slash");
+        var input = $($(this).attr("toggle"));
+        if (input.attr("type") == "password") {
+            input.attr("type", "text");
+        } else {
+            input.attr("type", "password");
+        }
     });
 </script>
 
