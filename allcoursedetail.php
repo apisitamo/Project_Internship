@@ -820,7 +820,7 @@
                 <!-- <span class="close-popup" id="close-popup5">&times;</span> -->
                 <div id="calendar1"></div>
                 <button class="button-close" id="button-close5">
-                    <?= $cancle ?>
+                    ปิด
                 </button>
             </div>
         </div>
