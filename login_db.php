@@ -32,7 +32,6 @@ if (isset($_POST['login_user'])) {
                 array_push($errors, "Invalid password.");
                 $_SESSION['error'] = "Invalid username or password.";
                 echo "<script>
-                        alert('Invalid username or password. Please try again.');
                         window.location.href = 'login.php';
                       </script>";
                 exit();
@@ -41,7 +40,6 @@ if (isset($_POST['login_user'])) {
             array_push($errors, "User not found.");
             $_SESSION['error'] = "User not found. Please try again.";
             echo "<script>
-                    alert('User not found. Please try again.');
                     window.location.href = 'login.php';
                   </script>";
             exit();
