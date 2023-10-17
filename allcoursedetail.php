@@ -418,6 +418,21 @@
         border-radius: 25px;
     }
 
+    #popup5 {
+        width: 800px;
+        height: 675px;
+    }
+
+    .close-popup #close-popup5 {
+        position: absolute;
+        top: -11px;
+        right: 8px;
+        cursor: pointer;
+        font-size: 50px;
+        width: 20px;
+        height: 20px;
+    }
+
     .popup .fc-theme-standard td {
         background: #FFFFFF;
         color: black;

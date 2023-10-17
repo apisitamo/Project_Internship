@@ -10,8 +10,8 @@ $data = array();
 
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
-        $eventColor = "#003278";
-        $eventBackgroundColor = "#003278";
+        $eventColor = "#FF5733";
+        $eventBackgroundColor = "#FF5733";
 
         $data[] = array(
             'title' => $row['username'],
