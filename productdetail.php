@@ -203,7 +203,7 @@
     }
 
     .popup .popup-content .container {
-        width: auto;
+        width: 500px;
         display: inherit;
         position: relative;
         text-align: center;
