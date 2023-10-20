@@ -47,7 +47,7 @@ if (isset($_POST['login_user'])) {
             exit();
         }
     } else {
-        $_SESSION['error'] = implode("\n", $errors);
+        // $_SESSION['error'] = implode("\n", $errors);
         $errorMessages = implode("\\n", $errors);
         echo "<script>
                 alert('$errorMessages');
