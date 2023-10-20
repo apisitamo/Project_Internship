@@ -203,7 +203,7 @@
     }
 
     .popup .popup-content .container {
-        width: 500px;
+        width: 650px;
         display: inherit;
         position: relative;
         text-align: center;
@@ -338,8 +338,9 @@
     }
 
     #popup1 #box1 .text01 p {
-        font-size: 20px;
+        font-size: 18px;
         margin-top: 10px;
+        margin: 10px 15px 0px 55px;
     }
 
     #popup1 #box1 .bt1 {
@@ -349,7 +350,7 @@
     }
 
     #popup1 #box1 .bt1 #button-close1 {
-        margin-left: 50px !important;
+        margin-left: 80px !important;
     }
 
     #popup1 #box1 .title-box1 {
