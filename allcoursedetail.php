@@ -650,8 +650,7 @@
                             <div class="container">
                                 <div class="row">
                                     <p class="title-box1">
-                                        <!-- <?= $confirmorder ?> -->
-                                        วิธีการจองหลักสูตร
+                                        <?= $howto1 ?>
                                     </p>
                                     <div class="step">
                                         <div class="step0">
@@ -669,15 +668,14 @@
                                     </div>
                                 </div>
                                 <div class="text01">
-                                    <p style="color:black;">ชำระเงินด้วย QR code</p>
-                                    <p style="color:black;">เลือกวันที่ต้องการเรียนหลักสูตร</p>
-                                    <p style="color:black;">เข้ารับการเรียนหลักสูตร</p>
+                                    <p style="color:black;"><?= $QR ?></p>
+                                    <p style="color:black;"><?= $chooseday ?></p>
+                                    <p style="color:black;"><?= $takecourse ?></p>
                                 </div>
                             </div>
                             <div class="bt1">
                                 <button class="button-success" id="button-success1">
-                                    <!-- <?= $confirm ?> -->
-                                    ถัดไป
+                                    <?= $next ?>
                                 </button>
                                 <button class="button-close" id="button-close1">
                                     <?= $cancle ?>

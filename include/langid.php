@@ -90,6 +90,15 @@ if($langId == 1){
     $alet5 = "ห้ามเลือกวันเสาร์หรือวันอาทิตย์";
     $slip1 = "สลิปโอนเงิน";
     $free = "----> คุณสามารถดูตารางวันว่างได้ที่นี่ <----";
+    $next = "ถัดไป";
+    $howto1 = "วิธีการสั่งซื้อหลักสูตร";
+    $howto2 = "วิธีการสั่งซื้อผลิตภัณฑ์สปา";
+    $QR = "ชำระเงินด้วย QR code";
+    $verify = "ทางร้านจะตรวจสอบการชำระเงิน";
+    $deliver = "และส่งมอบให้กับลูกค้า";
+    $chooseday = "เลือกวันที่ต้องการเรียนหลักสูตร";
+    $takecourse = "เข้ารับการเรียนหลักสูตร";
+
     
 
 }else{
@@ -167,7 +176,7 @@ if($langId == 1){
     $totalprice = "Total price";
     $Kg = "kilogram";
     $ordernow = "Order Now";
-    $pinput = "Please enter quantity";
+    $pinput = "Please enter quantity.";
     $fillinformation = "Fill in your information before placing an order.";
     $fillin = "Fill In";
     $fixcourse = "Edit course information";
@@ -183,6 +192,14 @@ if($langId == 1){
     $alet5 = "Do not choose Saturday or Sunday.";
     $slip1 = "Transfer slip";
     $free = "----> You can view the free day schedule here. <----";
+    $next = "Next";
+    $howto1 = "How to order a course.";
+    $howto2 = "How to order spa products.";
+    $QR = "Pay with QR code.";
+    $verify = "The store will verify the payment.";
+    $deliver = "and deliver to customers.";
+    $chooseday = "Choose the day you want to study the course.";
+    $takecourse = "Take the course.";
 
 }
 ?>
