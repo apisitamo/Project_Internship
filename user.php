@@ -195,13 +195,25 @@ if (isset($_GET['logout'])) {
     #canclefullname {
         border-radius: 10px;
         display: none;
-        background: red;
+        background: #FF3333;
+    }
+
+    #canclefullname:hover {
+        background: #cd0808;
+        color: white;
+        transition: 0.5s;
     }
 
     #submitfullname {
         border-radius: 10px;
         display: none;
+        background: #5CE600;
+    }
+
+    #submitfullname:hover {
+        transition: 0.5s;
         background: green;
+        color: white;
     }
 
 
@@ -214,16 +226,26 @@ if (isset($_GET['logout'])) {
     .user1 #submitphone {
         border-radius: 10px;
         display: none;
+        background: #5CE600;
+    }
+
+    .user1 #submitphone:hover {
+        transition: 0.5s;
         background: green;
+        color: white;
     }
 
     .user1 #canclephone {
         border-radius: 10px;
         display: none;
-        background: red;
+        background: #FF3333;
     }
 
-
+    .user1 #canclephone:hover {
+        background: #cd0808;
+        color: white;
+        transition: 0.5s;
+    }
 
     .user1 .button-address #editaddress {
         border-radius: 10px;
@@ -233,13 +255,25 @@ if (isset($_GET['logout'])) {
     .user1 #submitaddress {
         border-radius: 10px;
         display: none;
+        background: #5CE600;
+    }
+
+    .user1 #submitaddress:hover {
+        transition: 0.5s;
         background: green;
+        color: white;
     }
 
     .user1 #cancleaddress {
         border-radius: 10px;
         display: none;
-        background: red;
+        background: #FF3333;
+    }
+
+    .user1 #cancleaddress:hover {
+        background: #cd0808;
+        color: white;
+        transition: 0.5s;
     }
 
     .user1 #addressuser {
