@@ -517,10 +517,15 @@ a {
     color: #fff;
     background-color: #71BD1F;
     padding: 16px;
-    font-size: 20px;
+    font-size: 20px !important;
     font-weight: bold;
     margin: 0 0 0 0;
     border-radius: 20px;
+}
+
+.course-detail .price:hover{
+    background: green;
+    transition: 0.5s;
 }
 
 .regiscourse .wrap {
