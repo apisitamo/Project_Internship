@@ -429,6 +429,9 @@ if ($totalcoursesResult) {
                     ?>
                         <div class="calen" id="calen_<?php echo $row['id']; ?>">
                             <span class="close-popup" id="close-popup1" data-target="calen_<?php echo $row['id']; ?>">&times;</span>
+                            <div>
+                                จำนวน <?php echo $row['day']; ?> วัน
+                            </div>
                             <?php
                             if (isset($row['order_time'])) {
                                 $dataOT = htmlspecialchars($row['order_time']);
@@ -562,14 +565,14 @@ if ($totalcoursesResult) {
 
 <script>
     const showcalen = document.querySelectorAll('.showcalen');
-    
+
     const closepopup = document.querySelector('#close-popup1');
     const clickOverlay1 = document.querySelector('#click-overlay1');
 
     showcalen.forEach(button => {
-        
+
         button.addEventListener('click', (event) => {
-            const calen = document.querySelector('#'+event.target.getAttribute('data-target'));
+            const calen = document.querySelector('#' + event.target.getAttribute('data-target'));
             // console.log("Open first popup");
             calen.style.display = 'flex';
             clickOverlay1.style.display = 'block';
