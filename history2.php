@@ -428,7 +428,7 @@ if ($totalcoursesResult) {
                     while ($row = mysqli_fetch_assoc($result)) :
                     ?>
                         <div class="calen" id="calen_<?php echo $row['id']; ?>">
-                            <span class="close-popup" id="close-popup1" data-target="calen_<?php echo $row['id']; ?>"></span>&times;</span>
+                            <span class="close-popup" id="close-popup1" data-target="calen_<?php echo $row['id']; ?>">&times;</span>
                             <?php
                             if (isset($row['order_time'])) {
                                 $dataOT = htmlspecialchars($row['order_time']);
@@ -442,9 +442,7 @@ if ($totalcoursesResult) {
                                         $dates = $row1['date'];
                             ?>
                                         <div>
-                                            
                                             <input type="date" class="form-control" name="dd" value="<?php echo $dates; ?>" disabled>
-                                            
                                         </div>
                             <?php
 
@@ -580,17 +578,20 @@ if ($totalcoursesResult) {
     });
 
     closepopup.addEventListener('click', () => {
-        const calen = document.querySelector('.calen');
-        console.log("X first popup ");
-        calen.style.display = 'none';
-        clickOverlay1.style.display = 'none';
+        const calen = document.querySelectorAll('.calen').forEach((el) => {
+            console.log("X first popup ");
+            el.style.display = 'none';
+            clickOverlay1.style.display = 'none';
+        });
+
         // location.reload();
     });
     clickOverlay1.addEventListener('click', () => {
-        const calen = document.querySelector('.calen');
-        console.log("Clicked on overlay");
-        calen.style.display = 'none';
-        clickOverlay1.style.display = 'none';
+        const calen = document.querySelectorAll('.calen').forEach((el) => {
+            console.log("X first popup ");
+            el.style.display = 'none';
+            clickOverlay1.style.display = 'none';
+        });
     });
 </script>
 

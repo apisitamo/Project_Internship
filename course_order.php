@@ -487,7 +487,7 @@ if (isset($_GET['delete_id'])) {
                             while ($row = $result->fetch_assoc()) {
                         ?>
                                 <div class="calen" id="calen_<?php echo $row['id']; ?>">
-                                    <span class="close-popup" id="close-popup1" data-target="calen_<?php echo $row['id']; ?>"></span>&times;</span>
+                                    <span class="close-popup" id="close-popup1" data-target="calen_<?php echo $row['id']; ?>">&times;</span>
                                     <?php
                                     if (isset($row['order_time'])) {
                                         $dataOT = htmlspecialchars($row['order_time']);
@@ -865,6 +865,7 @@ if (isset($_GET['delete_id'])) {
         clickOverlay1.style.display = 'none';
     });
 </script>
+
 <script>
     const showcalen = document.querySelectorAll('.showcalen');
 

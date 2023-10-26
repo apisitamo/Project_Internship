@@ -19,13 +19,14 @@ $limit = 10;
 $offset = ($page - 1) * $limit;
 
 $query = "SELECT * FROM product_order
+LEFT JOIN `user` ON user.username = product_order.username
 WHERE `status` = 'rejected'
           ORDER BY CASE
             WHEN status = 'pending' THEN 0
             WHEN status = 'completed' THEN 1
             WHEN status = 'rejected' THEN 2
             ELSE 3
-          END, id DESC
+          END, product_order.id DESC
           LIMIT $limit OFFSET $offset";
 
 $result = mysqli_query($db, $query);
@@ -345,6 +346,49 @@ if (isset($_GET['delete_id'])) {
     }
 </style>
 
+<style>
+    .calen {
+        display: none;
+        z-index: 1000;
+        width: 900px;
+        height: 600px;
+        /* background-color: #fff; */
+        padding: 20px;
+        border-radius: 5px;
+        /* max-width: 80%;*/
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        justify-content: center;
+        /* background-image: url("assets\images\Frame 7961.png");*/
+        background: #FFFAF5;
+        border-radius: 10px;
+        background-image: url(assets/images/banner-page.png);
+    }
+
+    .click-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        justify-content: center;
+        align-items: center;
+        z-index: 900;
+    }
+
+    .close-popup {
+        position: absolute;
+        top: 1px;
+        right: 20px;
+        cursor: pointer;
+        font-size: 50px;
+    }
+</style>
+
 <body>
     <section class="pro-order">
         <div class="click-overlay" id="click-overlay1"></div>
@@ -429,12 +473,24 @@ if (isset($_GET['delete_id'])) {
                         if ($result->num_rows > 0) {
                             while ($row = $result->fetch_assoc()) {
                                 ?>
+                                <div class="calen" id="modal_<?php echo $row['id']; ?>">
+                                    <span class="close-popup" id="close-popup1" data-target="#modal_<?php echo $row['id'] ?>">&times;</span>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <?php echo $row['fullname']?>
+                                            <?php echo $row['phone']?>
+                                            <?php echo $row['address']?>
+                                        </div>
+                                    </div>
+                                </div>
                                 <tr data-status="<?php echo $row['status']; ?>">
                                     <td>
                                         <?php echo $i++; ?>
                                     </td>
                                     <td>
-                                        <?php echo $row['username']; ?>
+                                    <button class="open_modal btn btn-primary rounded" data-target="#modal_<?php echo $row['id'] ?>">
+                                            <?php echo $row['username']; ?>
+                                        </button>
                                     </td>
                                     <td>
                                         <?php echo $row['type']; ?>
@@ -747,6 +803,40 @@ if (isset($_GET['delete_id'])) {
             const deleteLink = `product_order.php?delete_id=${deleteId}`;
             window.location.href = deleteLink;
         }
+    });
+</script>
+
+<script>
+    const showcalen = document.querySelectorAll('.open_modal');
+    
+    const closepopup = document.querySelector('#close-popup1');
+
+    showcalen.forEach(button => {
+        
+        button.addEventListener('click', (event) => {
+            const calen = document.querySelector(event.target.getAttribute('data-target'));
+            // console.log("Open first popup");
+            calen.style.display = 'flex';
+            clickOverlay1.style.display = 'block';
+            console.log(calen);
+        });
+    });
+
+    closepopup.addEventListener('click', () => {
+        const calen = document.querySelectorAll('.calen').forEach((el) => {
+            console.log("X first popup ");
+            el.style.display = 'none';
+            clickOverlay1.style.display = 'none';
+        });
+
+        // location.reload();
+    });
+    clickOverlay1.addEventListener('click', () => {
+        const calen = document.querySelectorAll('.calen').forEach((el) => {
+            console.log("X first popup ");
+            el.style.display = 'none';
+            clickOverlay1.style.display = 'none';
+        });
     });
 </script>
 

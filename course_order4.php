@@ -359,6 +359,49 @@ if (isset($_GET['delete_id'])) {
     }
 </style>
 
+<style>
+    .calen {
+        display: none;
+        z-index: 1000;
+        width: 900px;
+        height: 600px;
+        /* background-color: #fff; */
+        padding: 20px;
+        border-radius: 5px;
+        /* max-width: 80%;*/
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        justify-content: center;
+        /* background-image: url("assets\images\Frame 7961.png");*/
+        background: #FFFAF5;
+        border-radius: 10px;
+        background-image: url(assets/images/banner-page.png);
+    }
+
+    .click-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        justify-content: center;
+        align-items: center;
+        z-index: 900;
+    }
+
+    .close-popup {
+        position: absolute;
+        top: 1px;
+        right: 20px;
+        cursor: pointer;
+        font-size: 50px;
+    }
+</style>
+
 <body>
     <section class="pro-order">
         <div class="click-overlay" id="click-overlay1"></div>
@@ -444,6 +487,38 @@ if (isset($_GET['delete_id'])) {
                         if ($result->num_rows > 0) {
                             while ($row = $result->fetch_assoc()) {
                                 ?>
+                                <div class="calen" id="calen_<?php echo $row['id']; ?>">
+                                    <span class="close-popup" id="close-popup1" data-target="calen_<?php echo $row['id']; ?>">&times;</span>
+                                    <?php
+                                    if (isset($row['order_time'])) {
+                                        $dataOT = htmlspecialchars($row['order_time']);
+                                        $sql = "SELECT * FROM `booking` WHERE order_time = '$dataOT' ";
+                                        $result1 = $conn->query($sql);
+                                        if ($result1->num_rows > 0) {
+                                            while ($row1 = $result1->fetch_assoc()) {
+                                                // $order_time = $row1['order_time'];
+                                                // $username = $row1['username'];
+                                                // $course_name = $row1['course_name'];
+                                                $dates = $row1['date'];
+                                    ?>
+                                                <div>
+
+                                                    <input type="date" class="form-control" name="dd" value="<?php echo $dates; ?>" disabled>
+
+                                                </div>
+                                    <?php
+
+                                            }
+                                        } else {
+                                            echo "Product not found in database";
+                                        }
+
+                                        // $conn->close();
+                                    } else {
+                                        echo "The specified product code was not found.";
+                                    }
+                                    ?>
+                                </div>
                                 <tr data-status="<?php echo $row['status']; ?>">
                                     <td>
                                         <?php echo $i++; ?>
@@ -459,7 +534,9 @@ if (isset($_GET['delete_id'])) {
                                     </td>
 
                                     <td>
-                                        <?php echo $row['day']; ?>
+                                    <button class="showcalen" style="background-color:lightblue; border-radius:15px;" data-target="calen_<?php echo $row['id']; ?>">
+                                            <?php echo $row['day']; ?>
+                                        </button>
                                     </td>
                                     <td>
                                         <?php echo $row['price']; ?>
@@ -763,6 +840,40 @@ if (isset($_GET['delete_id'])) {
             const deleteLink = `course_order.php?delete_id=${deleteId}`;
             window.location.href = deleteLink;
         }
+    });
+</script>
+
+<script>
+    const showcalen = document.querySelectorAll('.showcalen');
+
+    const closepopup = document.querySelector('#close-popup1');
+
+    showcalen.forEach(button => {
+
+        button.addEventListener('click', (event) => {
+            const calen = document.querySelector('#' + event.target.getAttribute('data-target'));
+            // console.log("Open first popup");
+            calen.style.display = 'flex';
+            clickOverlay1.style.display = 'block';
+            console.log(calen);
+        });
+    });
+
+    closepopup.addEventListener('click', () => {
+        const calen = document.querySelectorAll('.calen').forEach((el) => {
+            console.log("X first popup ");
+            el.style.display = 'none';
+            clickOverlay1.style.display = 'none';
+        });
+
+        // location.reload();
+    });
+    clickOverlay1.addEventListener('click', () => {
+        const calen = document.querySelectorAll('.calen').forEach((el) => {
+            console.log("X first popup ");
+            el.style.display = 'none';
+            clickOverlay1.style.display = 'none';
+        });
     });
 </script>
 

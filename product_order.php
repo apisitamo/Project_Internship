@@ -25,7 +25,7 @@ $query = "SELECT * FROM product_order
             WHEN status = 'completed' THEN 1
             WHEN status = 'rejected' THEN 2
             ELSE 3
-          END, user.id DESC
+          END, product_order.id DESC
           LIMIT $limit OFFSET $offset";
 
 $result = mysqli_query($db, $query);
@@ -384,6 +384,7 @@ if (isset($_GET['delete_id'])) {
         font-size: 50px;
     }
 </style>
+
 <body>
     <section class="pro-order">
         <div class="click-overlay" id="click-overlay1"></div>
@@ -469,7 +470,7 @@ if (isset($_GET['delete_id'])) {
                             while ($row = $result->fetch_assoc()) {
                         ?>
                                 <div class="calen" id="modal_<?php echo $row['id']; ?>">
-                                    <span class="close-popup" id="close-popup1" data-target="#modal_<?php echo $row['id'] ?>"></span>&times;</span>
+                                    <span class="close-popup" id="close-popup1" data-target="#modal_<?php echo $row['id'] ?>">&times;</span>
                                     <div class="row">
                                         <div class="col-12">
                                             <?php echo $row['fullname']?>

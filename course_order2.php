@@ -85,7 +85,7 @@ if (isset($_GET['delete_id'])) {
 ?>
 
 <style>
-   .pro-order .homeheader {
+    .pro-order .homeheader {
         margin-top: 75px;
     }
 
@@ -359,6 +359,49 @@ if (isset($_GET['delete_id'])) {
     }
 </style>
 
+<style>
+    .calen {
+        display: none;
+        z-index: 1000;
+        width: 900px;
+        height: 600px;
+        /* background-color: #fff; */
+        padding: 20px;
+        border-radius: 5px;
+        /* max-width: 80%;*/
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        justify-content: center;
+        /* background-image: url("assets\images\Frame 7961.png");*/
+        background: #FFFAF5;
+        border-radius: 10px;
+        background-image: url(assets/images/banner-page.png);
+    }
+
+    .click-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        justify-content: center;
+        align-items: center;
+        z-index: 900;
+    }
+
+    .close-popup {
+        position: absolute;
+        top: 1px;
+        right: 20px;
+        cursor: pointer;
+        font-size: 50px;
+    }
+</style>
+
 <body>
     <section class="pro-order">
         <div class="click-overlay" id="click-overlay1"></div>
@@ -414,7 +457,7 @@ if (isset($_GET['delete_id'])) {
                             <th>
                                 <?= $lists ?>
                             </th>
-                            
+
                             <th>
                                 <?= $dayss ?>
                             </th>
@@ -443,7 +486,39 @@ if (isset($_GET['delete_id'])) {
                         $i = 1 + $offset;
                         if ($result->num_rows > 0) {
                             while ($row = $result->fetch_assoc()) {
-                                ?>
+                        ?>
+                                <div class="calen" id="calen_<?php echo $row['id']; ?>">
+                                    <span class="close-popup" id="close-popup1" data-target="calen_<?php echo $row['id']; ?>">&times;</span>
+                                    <?php
+                                    if (isset($row['order_time'])) {
+                                        $dataOT = htmlspecialchars($row['order_time']);
+                                        $sql = "SELECT * FROM `booking` WHERE order_time = '$dataOT' ";
+                                        $result1 = $conn->query($sql);
+                                        if ($result1->num_rows > 0) {
+                                            while ($row1 = $result1->fetch_assoc()) {
+                                                // $order_time = $row1['order_time'];
+                                                // $username = $row1['username'];
+                                                // $course_name = $row1['course_name'];
+                                                $dates = $row1['date'];
+                                    ?>
+                                                <div>
+
+                                                    <input type="date" class="form-control" name="dd" value="<?php echo $dates; ?>" disabled>
+
+                                                </div>
+                                    <?php
+
+                                            }
+                                        } else {
+                                            echo "Product not found in database";
+                                        }
+
+                                        // $conn->close();
+                                    } else {
+                                        echo "The specified product code was not found.";
+                                    }
+                                    ?>
+                                </div>
                                 <tr data-status="<?php echo $row['status']; ?>">
                                     <td>
                                         <?php echo $i++; ?>
@@ -457,9 +532,11 @@ if (isset($_GET['delete_id'])) {
                                     <td>
                                         <?php echo $row['name']; ?>
                                     </td>
-                                    
+
                                     <td>
-                                        <?php echo $row['day']; ?>
+                                        <button class="showcalen" style="background-color:lightblue; border-radius:15px;" data-target="calen_<?php echo $row['id']; ?>">
+                                            <?php echo $row['day']; ?>
+                                        </button>
                                     </td>
                                     <td>
                                         <?php echo $row['price']; ?>
@@ -477,18 +554,17 @@ if (isset($_GET['delete_id'])) {
                                         ?>
                                     </td>
                                     <td>
-                                        <select onchange="this.className=this.options[this.selectedIndex].className"
-                                            class="status-dropdown" data-row-id="<?php echo $row['id']; ?>" disabled>
+                                        <select onchange="this.className=this.options[this.selectedIndex].className" class="status-dropdown" data-row-id="<?php echo $row['id']; ?>" disabled>
                                             <option value="pending" class="yellowText" <?php if ($row['status'] === 'pending')
-                                                echo 'selected'; ?>>
+                                                                                            echo 'selected'; ?>>
                                                 <?= $check ?>
                                             </option>
                                             <option value="completed" class="greenText" <?php if ($row['status'] === 'completed')
-                                                echo 'selected'; ?>>
+                                                                                            echo 'selected'; ?>>
                                                 <?= $complete ?>
                                             </option>
                                             <option value="rejected" class="redText" <?php if ($row['status'] === 'rejected')
-                                                echo 'selected'; ?>>
+                                                                                            echo 'selected'; ?>>
                                                 <?= $reject ?>
                                             </option>
                                         </select>
@@ -498,31 +574,27 @@ if (isset($_GET['delete_id'])) {
                                         <button class="save-button" data-row-id="<?php echo $row['id']; ?>">
                                             <?= $save ?>
                                         </button>
-                                        <button class="cancle-button" id="canclestatus" data-row-id="<?php echo $row['id']; ?>"
-                                            style="display: none;">
+                                        <button class="cancle-button" id="canclestatus" data-row-id="<?php echo $row['id']; ?>" style="display: none;">
                                             <?= $cancle ?>
                                         </button>
                                     </td>
                                     <td>
-                                        <input type="text" class="note-input" data-row-id="<?php echo $row['id']; ?>"
-                                            value="<?php echo $row['note']; ?>" disabled>
+                                        <input type="text" class="note-input" data-row-id="<?php echo $row['id']; ?>" value="<?php echo $row['note']; ?>" disabled>
                                         <button class="edit-note-button" data-row-id="<?php echo $row['id']; ?>">
                                             <?= $edit ?>
                                         </button>
                                         <button class="save-note-button" data-row-id="<?php echo $row['id']; ?>">
                                             <?= $save ?>
                                         </button>
-                                        <button class="cancle-note-button" data-row-id="<?php echo $row['id']; ?>"
-                                            style="display: none;">
+                                        <button class="cancle-note-button" data-row-id="<?php echo $row['id']; ?>" style="display: none;">
                                             <?= $cancle ?>
                                         </button>
                                     </td>
                                     <td>
-                                        <button class="deleteitem" data-row-id="<?php echo $row['id']; ?>"><img
-                                                src="assets/images/bin.png" alt=""></button>
+                                        <button class="deleteitem" data-row-id="<?php echo $row['id']; ?>"><img src="assets/images/bin.png" alt=""></button>
                                     </td>
                                 </tr>
-                                <?php
+                        <?php
                             }
                         } else {
                             echo "Course not found in database";
@@ -541,7 +613,7 @@ if (isset($_GET['delete_id'])) {
             $nextPage = ($page < $totalPages) ? $page + 1 : $totalPages;
 
             // echo "<a href='course_order2.php?page=1' class='pagination-link'>First</a>"; // ลิงก์ไปหน้าแรก
-            
+
             if ($page > 1) {
                 echo "<a href='course_order2.php?page=$prevPage' class='pagination-link'><</a>"; // ลิงก์หน้าก่อนหน้า
             }
@@ -570,8 +642,7 @@ if (isset($_GET['delete_id'])) {
                     <p style="text-align: center;">
                         <?= $wantdel ?>
                     </p>
-                    <button class="button-close-2" id="confirm-delete-button"
-                        href='course_order.php?delete_id=<?php echo $row['id']; ?>'>
+                    <button class="button-close-2" id="confirm-delete-button" href='course_order.php?delete_id=<?php echo $row['id']; ?>'>
                         <?= $confirm ?>
                     </button>
                     <button class="button-close-2" id="button-close2">
@@ -592,7 +663,7 @@ if (isset($_GET['delete_id'])) {
     const cancle = document.querySelectorAll('.cancle-button');
     cancle.forEach(button => {
         const rowId = button.getAttribute('data-row-id');
-        button.addEventListener('click', function () {
+        button.addEventListener('click', function() {
             location.reload();
         });
     });
@@ -600,7 +671,7 @@ if (isset($_GET['delete_id'])) {
 
     editButtons.forEach(button => {
         const rowId = button.getAttribute('data-row-id');
-        button.addEventListener('click', function () {
+        button.addEventListener('click', function() {
             const row = button.closest('tr');
             const statusDropdown = row.querySelector(`select[data-row-id="${rowId}"]`);
             const cancelButton = row.querySelector(`button.cancle-button[data-row-id="${rowId}"]`);
@@ -616,7 +687,7 @@ if (isset($_GET['delete_id'])) {
 
     saveButtons.forEach(button => {
         const rowId = button.getAttribute('data-row-id');
-        button.addEventListener('click', async function () {
+        button.addEventListener('click', async function() {
             const row = button.closest('tr');
             const statusDropdown = row.querySelector(`select[data-row-id="${rowId}"]`);
             const selectedStatus = statusDropdown.value;
@@ -648,14 +719,14 @@ if (isset($_GET['delete_id'])) {
     const canclenote = document.querySelectorAll('.cancle-note-button');
     canclenote.forEach(button => {
         const rowId = button.getAttribute('data-row-id');
-        button.addEventListener('click', function () {
+        button.addEventListener('click', function() {
             location.reload();
         });
     });
 
     editNoteButtons.forEach(button => {
         const rowId = button.getAttribute('data-row-id');
-        button.addEventListener('click', function () {
+        button.addEventListener('click', function() {
             const row = button.closest('tr');
             const noteInput = row.querySelector(`input.note-input[data-row-id="${rowId}"]`);
             const cancelButton = row.querySelector(`button.cancle-note-button[data-row-id="${rowId}"]`);
@@ -672,7 +743,7 @@ if (isset($_GET['delete_id'])) {
     noteInputs.forEach(input => {
         const rowId = input.getAttribute('data-row-id');
 
-        input.addEventListener('input', function () {
+        input.addEventListener('input', function() {
             const noteValue = input.value.trim();
             const saveNoteButton = input.parentElement.querySelector(`button.save-note-button[data-row-id="${rowId}"]`);
 
@@ -688,7 +759,7 @@ if (isset($_GET['delete_id'])) {
 
     saveNoteButtons.forEach(button => {
         const rowId = button.getAttribute('data-row-id');
-        button.addEventListener('click', async function () {
+        button.addEventListener('click', async function() {
             const row = button.closest('tr');
             const noteInput = row.querySelector(`input.note-input[data-row-id="${rowId}"]`);
             const noteValue = noteInput.value.trim();
@@ -763,6 +834,40 @@ if (isset($_GET['delete_id'])) {
             const deleteLink = `course_order.php?delete_id=${deleteId}`;
             window.location.href = deleteLink;
         }
+    });
+</script>
+
+<script>
+    const showcalen = document.querySelectorAll('.showcalen');
+
+    const closepopup = document.querySelector('#close-popup1');
+
+    showcalen.forEach(button => {
+
+        button.addEventListener('click', (event) => {
+            const calen = document.querySelector('#' + event.target.getAttribute('data-target'));
+            // console.log("Open first popup");
+            calen.style.display = 'flex';
+            clickOverlay1.style.display = 'block';
+            console.log(calen);
+        });
+    });
+
+    closepopup.addEventListener('click', () => {
+        const calen = document.querySelectorAll('.calen').forEach((el) => {
+            console.log("X first popup ");
+            el.style.display = 'none';
+            clickOverlay1.style.display = 'none';
+        });
+
+        // location.reload();
+    });
+    clickOverlay1.addEventListener('click', () => {
+        const calen = document.querySelectorAll('.calen').forEach((el) => {
+            console.log("X first popup ");
+            el.style.display = 'none';
+            clickOverlay1.style.display = 'none';
+        });
     });
 </script>
 
