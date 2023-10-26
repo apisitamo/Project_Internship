@@ -19,12 +19,7 @@ $limit = 10;
 $offset = ($page - 1) * $limit;
 
 $query = "SELECT * FROM course_order
-          ORDER BY CASE
-            WHEN status = 'pending' THEN 0
-            WHEN status = 'completed' THEN 1
-            WHEN status = 'rejected' THEN 2
-            ELSE 3
-          END, id DESC
+          ORDER BY id DESC
           LIMIT $limit OFFSET $offset";
 
 $result = mysqli_query($db, $query);

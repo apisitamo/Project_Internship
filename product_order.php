@@ -19,14 +19,8 @@ $limit = 10;
 $offset = ($page - 1) * $limit;
 
 $query = "SELECT * FROM product_order
-        LEFT JOIN `user` ON user.username = product_order.username
-          ORDER BY CASE
-            WHEN status = 'pending' THEN 0
-            WHEN status = 'completed' THEN 1
-            WHEN status = 'rejected' THEN 2
-            ELSE 3
-          END, product_order.id DESC
-          LIMIT $limit OFFSET $offset";
+ORDER BY id DESC
+LIMIT $limit OFFSET $offset;";
 
 $result = mysqli_query($db, $query);
 
@@ -471,13 +465,40 @@ if (isset($_GET['delete_id'])) {
                         ?>
                                 <div class="calen" id="modal_<?php echo $row['id']; ?>">
                                     <span class="close-popup" id="close-popup1" data-target="#modal_<?php echo $row['id'] ?>">&times;</span>
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <?php echo $row['fullname']?>
-                                            <?php echo $row['phone']?>
-                                            <?php echo $row['address']?>
-                                        </div>
-                                    </div>
+                                    <?php
+                                    if (isset($row['username'])) {
+                                        $dataOT = htmlspecialchars($row['username']);
+                                        $sql = "SELECT * FROM `user` WHERE username = '$dataOT' ";
+                                        $result1 = $conn->query($sql);
+                                        if ($result1->num_rows > 0) {
+                                            while ($row1 = $result1->fetch_assoc()) {
+                                                // $order_time = $row1['order_time'];
+                                                // $username = $row1['username'];
+                                                // $course_name = $row1['course_name'];
+                                                $phones = $row1['phone'];
+                                                $fullnames = $row1['fullname'];
+                                                $addresss = $row1['address'];
+                                    ?>
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <?php echo $fullnames; ?>
+                                                        <?php echo $phones; ?>
+                                                        <?php echo $addresss; ?>
+                                                    </div>
+                                                </div>
+                                    <?php
+
+                                            }
+                                        } else {
+                                            echo "Product not found in database";
+                                        }
+
+                                        // $conn->close();
+                                    } else {
+                                        echo "The specified product code was not found.";
+                                    }
+                                    ?>
+
                                 </div>
                                 <tr data-status="<?php echo $row['status']; ?>">
                                     <td>
@@ -798,11 +819,11 @@ if (isset($_GET['delete_id'])) {
 
 <script>
     const showcalen = document.querySelectorAll('.open_modal');
-    
+
     const closepopup = document.querySelector('#close-popup1');
 
     showcalen.forEach(button => {
-        
+
         button.addEventListener('click', (event) => {
             const calen = document.querySelector(event.target.getAttribute('data-target'));
             // console.log("Open first popup");
