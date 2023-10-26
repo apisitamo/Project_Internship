@@ -422,10 +422,43 @@ if ($totalcoursesResult) {
                     LIMIT $limit OFFSET $offset";
 
                     $result = mysqli_query($db, $query);
+                    // echo $result->num_rows;
 
                     $i = 1 + $offset;
                     while ($row = mysqli_fetch_assoc($result)) :
                     ?>
+                        <div class="calen" id="calen_<?php echo $row['id']; ?>">
+                            <span class="close-popup" id="close-popup1" data-target="calen_<?php echo $row['id']; ?>"></span>&times;</span>
+                            <?php
+                            if (isset($row['order_time'])) {
+                                $dataOT = htmlspecialchars($row['order_time']);
+                                $sql = "SELECT * FROM `booking` WHERE order_time = '$dataOT' ";
+                                $result1 = $conn->query($sql);
+                                if ($result1->num_rows > 0) {
+                                    while ($row1 = $result1->fetch_assoc()) {
+                                        // $order_time = $row1['order_time'];
+                                        // $username = $row1['username'];
+                                        // $course_name = $row1['course_name'];
+                                        $dates = $row1['date'];
+                            ?>
+                                        <div>
+                                            
+                                            <input type="date" class="form-control" name="dd" value="<?php echo $dates; ?>" disabled>
+                                            
+                                        </div>
+                            <?php
+
+                                    }
+                                } else {
+                                    echo "Product not found in database";
+                                }
+
+                                // $conn->close();
+                            } else {
+                                echo "The specified product code was not found.";
+                            }
+                            ?>
+                        </div>
                         <tr>
                             <td>
                                 <?php echo $i++; ?>
@@ -437,7 +470,7 @@ if ($totalcoursesResult) {
                                 <?php echo $row['name']; ?>
                             </td>
                             <td>
-                                <button class="showcalen" style="background-color:lightblue; border-radius:15px;" dataOT="<?php echo $row['order_time']; ?>">
+                                <button class="showcalen" style="background-color:lightblue; border-radius:15px;" data-target="calen_<?php echo $row['id']; ?>">
                                     <?php echo $row['day']; ?>
                                 </button>
                             </td>
@@ -489,11 +522,11 @@ if ($totalcoursesResult) {
             ?>
         </div>
 
-        <div class="calen">
+        <!-- <div class="calen">
             <span class="close-popup" id="close-popup1">&times;</span>
             <?php
-            if (isset($_GET['dataOT'])) {
-                $dataOT = $_GET['dataOT'];
+            if (isset($_GET['data-OT'])) {
+                $dataOT = $_GET['data-OT'];
                 $sql = "SELECT * FROM `booking` WHERE order_time = '$dataOT' ";
                 $result = $conn->query($sql);
                 if ($result->num_rows > 0) {
@@ -512,7 +545,12 @@ if ($totalcoursesResult) {
                 echo "The specified product code was not found.";
             }
             ?>
-        </div>
+            <div>
+                <?php for ($i = 1; $i <= 3; $i++) : ?>
+                    <input type="date" class="form-control" name="dd" value="<?php echo $date; ?>">
+                <?php endfor ?>
+            </div>
+        </div> -->
 
     </section>
 
@@ -526,25 +564,30 @@ if ($totalcoursesResult) {
 
 <script>
     const showcalen = document.querySelectorAll('.showcalen');
-    const calen = document.querySelector('.calen');
+    
     const closepopup = document.querySelector('#close-popup1');
     const clickOverlay1 = document.querySelector('#click-overlay1');
 
     showcalen.forEach(button => {
-        button.addEventListener('click', () => {
-            console.log("Open first popup");
+        
+        button.addEventListener('click', (event) => {
+            const calen = document.querySelector('#'+event.target.getAttribute('data-target'));
+            // console.log("Open first popup");
             calen.style.display = 'flex';
             clickOverlay1.style.display = 'block';
+            console.log(calen);
         });
     });
 
     closepopup.addEventListener('click', () => {
+        const calen = document.querySelector('.calen');
         console.log("X first popup ");
         calen.style.display = 'none';
         clickOverlay1.style.display = 'none';
         // location.reload();
     });
     clickOverlay1.addEventListener('click', () => {
+        const calen = document.querySelector('.calen');
         console.log("Clicked on overlay");
         calen.style.display = 'none';
         clickOverlay1.style.display = 'none';
