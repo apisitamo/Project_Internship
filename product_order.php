@@ -478,11 +478,13 @@ if (isset($_GET['delete_id'])) {
                                                 $phones = $row1['phone'];
                                                 $fullnames = $row1['fullname'];
                                                 $addresss = $row1['address'];
+                                                $emails = $row1['email'];
                                     ?>
                                                 <div class="row">
                                                     <div class="col-12">
-                                                        <?php echo $fullnames; ?>
+                                                        <?php echo $emails; ?>
                                                         <?php echo $phones; ?>
+                                                        <?php echo $fullnames; ?>
                                                         <?php echo $addresss; ?>
                                                     </div>
                                                 </div>
