@@ -486,16 +486,16 @@ if (isset($_GET['delete_id'])) {
                                     ?>
                                                 <div class="row">
                                                     <div class="col-12">
-                                                        อีเมล : <?php echo $emails; ?>
+                                                    <?= $email ?> : <input type="text" value="<?php echo $emails; ?>" disabled>
                                                     </div>
                                                     <div class="col-12">
-                                                        เบอร์โทร : <?php echo $phones; ?>
+                                                    <?= $fullname ?> : <input type="text" value="<?php echo $fullnames; ?>" disabled>
                                                     </div>
                                                     <div class="col-12">
-                                                        ชื่อ : <?php echo $fullnames; ?>
+                                                    <?= $tell ?> : <input type="text" value="<?php echo $phones; ?>" disabled>
                                                     </div>
                                                     <div class="col-12">
-                                                        ที่อยู่ : <?php echo $addresss; ?>
+                                                    <?= $home ?> : <input type="text" value="<?php echo $addresss; ?>" disabled>
                                                     </div>
                                                 </div>
                                     <?php

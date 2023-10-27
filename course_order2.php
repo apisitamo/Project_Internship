@@ -497,13 +497,13 @@ if (isset($_GET['delete_id'])) {
                                     ?>
                                                 <div class="row">
                                                     <div class="col-12">
-                                                        อีเมล : <?php echo $emails; ?>
+                                                    <?= $email ?> : <input type="text" value="<?php echo $emails; ?>" disabled>
                                                     </div>
                                                     <div class="col-12">
-                                                        ชื่อ : <?php echo $fullnames; ?>
+                                                    <?= $fullname ?> : <input type="text" value="<?php echo $fullnames; ?>" disabled>
                                                     </div>
                                                     <div class="col-12">
-                                                        เบอร์โทร : <?php echo $phones; ?>
+                                                    <?= $tell ?> : <input type="text" value="<?php echo $phones; ?>" disabled>
                                                     </div>
                                                 </div>
                                     <?php

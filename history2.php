@@ -20,8 +20,7 @@ if (isset($_SESSION['save_error'])) {
 
 <?php
 if (!isset($_SESSION['username'])) {
-    $_SESSION['msg'] = "you must login first";
-    header('location:login.php');
+    echo "<script>alert('please login'); window.location.href = 'login.php';</script>";
     session_destroy();
 }
 

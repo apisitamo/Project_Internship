@@ -106,7 +106,7 @@ if($langId == 1){
 }else{
     $login = "Login";
     $usernames = "Username";
-    $fullname = "Fullname";
+    $fullname = "Full Name";
     $tell = "Phone Number";
     $home = "Address";
     $passwords = "Password";
