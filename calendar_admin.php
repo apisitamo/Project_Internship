@@ -3,7 +3,7 @@
 
 <?php
 include 'include/headadmin.php';
-include 'include/auth_check.php';
+// include 'include/auth_check.php';
 ?>
 
 <head>

@@ -5,7 +5,7 @@ if (!isset($_SESSION['admin'])) {
 }
 ?>
 <script>
-    window.location.href = '/login.php';
+    window.location.href = '/login_admin.php';
     alert('Please login by admin id');
 </script>
 <?php
