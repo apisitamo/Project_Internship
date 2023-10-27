@@ -482,7 +482,7 @@ if (isset($_GET['delete_id'])) {
                             while ($row = $result->fetch_assoc()) {
                         ?>
                                 <div class="calen" id="calen_<?php echo $row['id']; ?>">
-                                    <span class="close-popup" id="close-popup1" data-target="calen_<?php echo $row['id']; ?>">&times;</span>
+                                    <span class="close-popup" data-target="calen_<?php echo $row['id']; ?>">&times;</span>
                                     <?php
                                     if (isset($row['order_time'])) {
                                         $dataOT = htmlspecialchars($row['order_time']);
@@ -864,7 +864,7 @@ if (isset($_GET['delete_id'])) {
 <script>
     const showcalen = document.querySelectorAll('.showcalen');
 
-    const closepopup = document.querySelector('#close-popup1');
+    const closepopup = document.querySelectorAll('.close-popup');
 
     showcalen.forEach(button => {
 
@@ -877,18 +877,20 @@ if (isset($_GET['delete_id'])) {
         });
     });
 
-    closepopup.addEventListener('click', () => {
-        const calen = document.querySelectorAll('.calen').forEach((el) => {
-            console.log("X first popup ");
-            el.style.display = 'none';
-            clickOverlay1.style.display = 'none';
-        });
+    closepopup.forEach((cl) => {
+        cl.addEventListener('click', () => {
+            const calen = document.querySelectorAll('.calen').forEach((el) => {
+                console.log("X first popup ");
+                el.style.display = 'none';
+                clickOverlay1.style.display = 'none';
+            });
 
-        // location.reload();
-    });
+            // location.reload();
+        });
+    })
     clickOverlay1.addEventListener('click', () => {
         const calen = document.querySelectorAll('.calen').forEach((el) => {
-            console.log("X first popup ");
+            console.log("clickOverlay popup ");
             el.style.display = 'none';
             clickOverlay1.style.display = 'none';
         });

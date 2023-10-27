@@ -5,6 +5,7 @@
 
 <?php include 'include/head.php';
 
+
 if ($langId == 1) {
     $course = "หลักสูตรที่เปิดสอน";
     $detail1 = "สปาเพื่อสุขภาพ";

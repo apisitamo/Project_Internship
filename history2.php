@@ -428,7 +428,7 @@ if ($totalcoursesResult) {
                     while ($row = mysqli_fetch_assoc($result)) :
                     ?>
                         <div class="calen" id="calen_<?php echo $row['id']; ?>">
-                            <span class="close-popup" id="close-popup1" data-target="calen_<?php echo $row['id']; ?>">&times;</span>
+                            <span class="close-popup" data-target="calen_<?php echo $row['id']; ?>">&times;</span>
                             <div>
                                 จำนวน <?php echo $row['day']; ?> วัน
                             </div>
@@ -566,7 +566,7 @@ if ($totalcoursesResult) {
 <script>
     const showcalen = document.querySelectorAll('.showcalen');
 
-    const closepopup = document.querySelector('#close-popup1');
+    const closepopup = document.querySelectorAll('.close-popup');
     const clickOverlay1 = document.querySelector('#click-overlay1');
 
     showcalen.forEach(button => {
@@ -580,7 +580,8 @@ if ($totalcoursesResult) {
         });
     });
 
-    closepopup.addEventListener('click', () => {
+    closepopup.forEach((cl)=>{
+        cl.addEventListener('click', () => {
         const calen = document.querySelectorAll('.calen').forEach((el) => {
             console.log("X first popup ");
             el.style.display = 'none';
@@ -589,9 +590,19 @@ if ($totalcoursesResult) {
 
         // location.reload();
     });
+    })
+    // closepopup.addEventListener('click', () => {
+    //     const calen = document.querySelectorAll('.calen').forEach((el) => {
+    //         console.log("X first popup ");
+    //         el.style.display = 'none';
+    //         clickOverlay1.style.display = 'none';
+    //     });
+
+    //     // location.reload();
+    // });
     clickOverlay1.addEventListener('click', () => {
         const calen = document.querySelectorAll('.calen').forEach((el) => {
-            console.log("X first popup ");
+            console.log("clickOverlay popup ");
             el.style.display = 'none';
             clickOverlay1.style.display = 'none';
         });
