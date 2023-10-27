@@ -69,14 +69,34 @@ if ($rejectedCourseResult) {
 <?php
 if (isset($_GET['delete_id'])) {
     $deleteId = $_GET['delete_id'];
-    $deleteQuery = "DELETE FROM course_order WHERE id = '$deleteId'";
-    if ($conn->query($deleteQuery) === TRUE) {
-        echo "<script>alert('Successfully deleted'); window.location.href = 'course_order.php';</script>";
+
+    // เรียก order_time จากตาราง course_order
+    $sqlGetOrderTime = "SELECT order_time FROM course_order WHERE id = '$deleteId'";
+    $resultGetOrderTime = mysqli_query($db, $sqlGetOrderTime);
+
+    if ($resultGetOrderTime) {
+        $rowGetOrderTime = mysqli_fetch_assoc($resultGetOrderTime);
+        $orderTime = $rowGetOrderTime['order_time'];
+
+        // ลบข้อมูลจากตาราง booking ที่มี order_time ตรงกับค่าจากตาราง course_order
+        $deleteBookingQuery = "DELETE FROM booking WHERE order_time = '$orderTime'";
+        if (mysqli_query($db, $deleteBookingQuery)) {
+            // ลบข้อมูลจากตาราง course_order
+            $deleteCourseOrderQuery = "DELETE FROM course_order WHERE id = '$deleteId'";
+            if (mysqli_query($db, $deleteCourseOrderQuery)) {
+                echo "<script>alert('Successfully deleted'); window.location.href = 'course_order.php';</script>";
+            } else {
+                echo "<script>alert('Error deleting course_order: " . mysqli_error($db) . "'); window.location.href = 'course_order.php';</script>";
+            }
+        } else {
+            echo "<script>alert('Error deleting booking: " . mysqli_error($db) . "'); window.location.href = 'course_order.php';</script>";
+        }
     } else {
-        echo "<script>alert('Error: " . $conn->error . "'); window.location.href = 'course_order.php';</script>";
+        echo "<script>alert('Error fetching order_time: " . mysqli_error($db) . "'); window.location.href = 'course_order.php';</script>";
     }
 }
 ?>
+
 
 <style>
     .pro-order .homeheader {
