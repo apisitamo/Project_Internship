@@ -472,9 +472,6 @@ if (isset($_GET['delete_id'])) {
                                         $result1 = $conn->query($sql);
                                         if ($result1->num_rows > 0) {
                                             while ($row1 = $result1->fetch_assoc()) {
-                                                // $order_time = $row1['order_time'];
-                                                // $username = $row1['username'];
-                                                // $course_name = $row1['course_name'];
                                                 $phones = $row1['phone'];
                                                 $fullnames = $row1['fullname'];
                                                 $addresss = $row1['address'];
@@ -482,10 +479,16 @@ if (isset($_GET['delete_id'])) {
                                     ?>
                                                 <div class="row">
                                                     <div class="col-12">
-                                                        <?php echo $emails; ?>
-                                                        <?php echo $phones; ?>
-                                                        <?php echo $fullnames; ?>
-                                                        <?php echo $addresss; ?>
+                                                        อีเมล : <?php echo $emails; ?>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        เบอร์โทร : <?php echo $phones; ?>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        ชื่อ : <?php echo $fullnames; ?>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        ที่อยู่ : <?php echo $addresss; ?>
                                                     </div>
                                                 </div>
                                     <?php

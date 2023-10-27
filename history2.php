@@ -430,7 +430,10 @@ if ($totalcoursesResult) {
                         <div class="calen" id="calen_<?php echo $row['id']; ?>">
                             <span class="close-popup" data-target="calen_<?php echo $row['id']; ?>">&times;</span>
                             <div>
-                                จำนวน <?php echo $row['day']; ?> วัน
+                                <?php echo $row['name']; ?>
+                            </div>
+                            <div>
+                                <?= $course ?> <?php echo $row['day']; ?> <?= $dayss ?>
                             </div>
                             <?php
                             if (isset($row['order_time'])) {
@@ -439,16 +442,12 @@ if ($totalcoursesResult) {
                                 $result1 = $conn->query($sql);
                                 if ($result1->num_rows > 0) {
                                     while ($row1 = $result1->fetch_assoc()) {
-                                        // $order_time = $row1['order_time'];
-                                        // $username = $row1['username'];
-                                        // $course_name = $row1['course_name'];
                                         $dates = $row1['date'];
                             ?>
                                         <div>
                                             <input type="date" class="form-control" name="dd" value="<?php echo $dates; ?>" disabled>
                                         </div>
                             <?php
-
                                     }
                                 } else {
                                     echo "Product not found in database";
@@ -580,16 +579,16 @@ if ($totalcoursesResult) {
         });
     });
 
-    closepopup.forEach((cl)=>{
+    closepopup.forEach((cl) => {
         cl.addEventListener('click', () => {
-        const calen = document.querySelectorAll('.calen').forEach((el) => {
-            console.log("X first popup ");
-            el.style.display = 'none';
-            clickOverlay1.style.display = 'none';
-        });
+            const calen = document.querySelectorAll('.calen').forEach((el) => {
+                console.log("X first popup ");
+                el.style.display = 'none';
+                clickOverlay1.style.display = 'none';
+            });
 
-        // location.reload();
-    });
+            // location.reload();
+        });
     })
     // closepopup.addEventListener('click', () => {
     //     const calen = document.querySelectorAll('.calen').forEach((el) => {

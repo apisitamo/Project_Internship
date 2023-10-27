@@ -484,21 +484,50 @@ if (isset($_GET['delete_id'])) {
                                 <div class="calen" id="calen_<?php echo $row['id']; ?>">
                                     <span class="close-popup" data-target="calen_<?php echo $row['id']; ?>">&times;</span>
                                     <?php
+                                    if (isset($row['username'])) {
+                                        $dataOT = htmlspecialchars($row['username']);
+                                        $sql = "SELECT * FROM `user` WHERE username = '$dataOT' ";
+                                        $result1 = $conn->query($sql);
+                                        if ($result1->num_rows > 0) {
+                                            while ($row1 = $result1->fetch_assoc()) {
+                                                $phones = $row1['phone'];
+                                                $fullnames = $row1['fullname'];
+                                                $emails = $row1['email'];
+                                    ?>
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        อีเมล : <?php echo $emails; ?>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        ชื่อ : <?php echo $fullnames; ?>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        เบอร์โทร : <?php echo $phones; ?>
+                                                    </div>
+                                                </div>
+                                    <?php
+
+                                            }
+                                        } else {
+                                            echo "Product not found in database";
+                                        }
+
+                                        // $conn->close();
+                                    } else {
+                                        echo "The specified product code was not found.";
+                                    }
+                                    ?>
+                                    <?php
                                     if (isset($row['order_time'])) {
                                         $dataOT = htmlspecialchars($row['order_time']);
                                         $sql = "SELECT * FROM `booking` WHERE order_time = '$dataOT' ";
                                         $result1 = $conn->query($sql);
                                         if ($result1->num_rows > 0) {
                                             while ($row1 = $result1->fetch_assoc()) {
-                                                // $order_time = $row1['order_time'];
-                                                // $username = $row1['username'];
-                                                // $course_name = $row1['course_name'];
                                                 $dates = $row1['date'];
                                     ?>
                                                 <div>
-
                                                     <input type="date" class="form-control" name="dd" value="<?php echo $dates; ?>" disabled>
-
                                                 </div>
                                     <?php
 
@@ -518,7 +547,9 @@ if (isset($_GET['delete_id'])) {
                                         <?php echo $i++; ?>
                                     </td>
                                     <td>
-                                        <?php echo $row['username']; ?>
+                                        <button class="showcalen btn btn-primary rounded" data-target="calen_<?php echo $row['id']; ?>">
+                                            <?php echo $row['username']; ?>
+                                        </button>
                                     </td>
                                     <td>
                                         <?php echo $row['type']; ?>
@@ -526,11 +557,8 @@ if (isset($_GET['delete_id'])) {
                                     <td>
                                         <?php echo $row['name']; ?>
                                     </td>
-
                                     <td>
-                                        <button class="showcalen" style="background-color:lightblue; border-radius:15px;" data-target="calen_<?php echo $row['id']; ?>">
-                                            <?php echo $row['day']; ?>
-                                        </button>
+                                        <?php echo $row['day']; ?>
                                     </td>
                                     <td>
                                         <?php echo $row['price']; ?>

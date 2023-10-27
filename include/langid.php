@@ -98,6 +98,8 @@ if($langId == 1){
     $deliver = "และส่งมอบให้กับลูกค้า";
     $chooseday = "เลือกวันที่ต้องการเรียนหลักสูตร";
     $takecourse = "เข้ารับการเรียนหลักสูตร";
+    $course = "หลักสูตร";
+    
 
     
 
@@ -200,6 +202,7 @@ if($langId == 1){
     $deliver = "and deliver to customers.";
     $chooseday = "Choose the day you want to study the course.";
     $takecourse = "Take the course.";
+    $course = "Course";
 
 }
 ?>
