@@ -180,6 +180,11 @@ if ($totalcoursesResult) {
         border: none;
     }
 
+    .user1 button:hover {
+        background-color: #094195 !important;
+        color: white;
+    }
+
     .user1 .input-group #fullname {
         padding-right: 50px;
         border-radius: 10px;
@@ -330,9 +335,10 @@ if ($totalcoursesResult) {
 <style>
     .calen {
         display: none;
+        flex-direction: column;
         z-index: 1000;
-        width: 900px;
-        height: 600px;
+        width: 550px;
+        height: 550px;
         /* background-color: #fff; */
         padding: 20px;
         border-radius: 5px;
@@ -346,6 +352,7 @@ if ($totalcoursesResult) {
         background: #FFFAF5;
         border-radius: 10px;
         background-image: url(assets/images/banner-page.png);
+        text-align: center;
     }
 
     .click-overlay {
@@ -367,6 +374,26 @@ if ($totalcoursesResult) {
         right: 20px;
         cursor: pointer;
         font-size: 50px;
+    }
+    .calen  #text {
+        width: 75%;
+        padding: 10px;
+        margin-top: 10px;
+        background: transparent;
+        border: none;
+        outline: none;
+        border: 3px solid #905537;
+        border-radius: 40px;
+        text-align: center;
+        font-size: 18px;
+        margin-left: 75px;
+    }
+    .calen .Topic {
+        font-size: 25px;
+        margin-bottom: 15px;
+    }
+    .calen .Topic1 {
+        font-size: 25px;
     }
 </style>
 
@@ -428,10 +455,10 @@ if ($totalcoursesResult) {
                     ?>
                         <div class="calen" id="calen_<?php echo $row['id']; ?>">
                             <span class="close-popup" data-target="calen_<?php echo $row['id']; ?>">&times;</span>
-                            <div>
+                            <div class="Topic">
                                 <?php echo $row['name']; ?>
                             </div>
-                            <div>
+                            <div class="Topic1">
                                 <?= $course ?> <?php echo $row['day']; ?> <?= $dayss ?>
                             </div>
                             <?php
@@ -444,7 +471,7 @@ if ($totalcoursesResult) {
                                         $dates = $row1['date'];
                             ?>
                                         <div>
-                                            <input type="date" class="form-control" name="dd" value="<?php echo $dates; ?>" disabled>
+                                            <input type="date" class="form-control" name="dd"  id="text" value="<?php echo $dates; ?>" disabled>
                                         </div>
                             <?php
                                     }
@@ -469,7 +496,7 @@ if ($totalcoursesResult) {
                                 <?php echo $row['name']; ?>
                             </td>
                             <td>
-                                <button class="showcalen" style="background-color:lightblue; border-radius:15px;" data-target="calen_<?php echo $row['id']; ?>">
+                                <button class="showcalen" style="background-color:lightblue; border-radius:10px;" data-target="calen_<?php echo $row['id']; ?>">
                                     <?php echo $row['day']; ?>
                                 </button>
                             </td>

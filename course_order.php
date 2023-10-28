@@ -371,16 +371,21 @@ if (isset($_GET['delete_id'])) {
     .pro-order td .bi-receipt-cutoff {
         font-size: 22px;
     }
+
+    .pro-order .table_order td:nth-child(9) {
+        width: 13%;
+    }
+    
 </style>
 
 <style>
     .calen {
         display: none;
         z-index: 1000;
-        width: 900px;
-        height: 600px;
+        width: 550px;
+        height: 575px;
         /* background-color: #fff; */
-        padding: 20px;
+        padding: 40px;
         border-radius: 5px;
         /* max-width: 80%;*/
         position: fixed;
@@ -413,6 +418,20 @@ if (isset($_GET['delete_id'])) {
         right: 20px;
         cursor: pointer;
         font-size: 50px;
+    }
+    .calen  #text {
+        width: 95%;
+        padding: 10px;
+        margin-top: 10px;
+        background: transparent;
+        border: none;
+        outline: none;
+        border: 3px solid #905537;
+        border-radius: 40px;
+    }
+    .calen .Date {
+        font-size: 20px;
+        margin: 10px 115px;
     }
 </style>
 
@@ -501,7 +520,7 @@ if (isset($_GET['delete_id'])) {
                         if ($result->num_rows > 0) {
                             while ($row = $result->fetch_assoc()) {
                         ?>
-                                <div class="calen" id="calen_<?php echo $row['id']; ?>">
+                                <div class="calen" id="calen_<?php echo $row['id']; ?>"style="flex-wrap:wrap;">
                                     <span class="close-popup" data-target="calen_<?php echo $row['id']; ?>">&times;</span>
                                     <?php
                                     if (isset($row['username'])) {
@@ -514,17 +533,18 @@ if (isset($_GET['delete_id'])) {
                                                 $fullnames = $row1['fullname'];
                                                 $emails = $row1['email'];
                                     ?>
-                                                <div class="row">
+                                                <div class="row"style="font-size:18px;margin: 0px 20px 0px 0px;">
                                                     <div class="col-12">
-                                                    <?= $email ?> : <input type="text" value="<?php echo $emails; ?>" disabled>
+                                                    <?= $email ?> : <input type="text" id="text" value="<?php echo $emails; ?>" disabled>
                                                     </div>
                                                     <div class="col-12">
-                                                    <?= $fullname ?> : <input type="text" value="<?php echo $fullnames; ?>" disabled>
+                                                    <?= $fullname ?> : <input type="text" id="text" value="<?php echo $fullnames; ?>" disabled>
                                                     </div>
                                                     <div class="col-12">
-                                                    <?= $tell ?> : <input type="text" value="<?php echo $phones; ?>" disabled>
+                                                    <?= $tell ?> : <input type="text" id="text" value="<?php echo $phones; ?>" disabled>
                                                     </div>
                                                 </div>
+                                                <div class="Date"><?= $date ?></div>
                                     <?php
 
                                             }
@@ -547,7 +567,7 @@ if (isset($_GET['delete_id'])) {
                                                 $dates = $row1['date'];
                                     ?>
                                                 <div>
-                                                    <input type="date" class="form-control" name="dd" value="<?php echo $dates; ?>" disabled>
+                                                    <input type="date" class="form-control" name="dd" id="text" value="<?php echo $dates; ?>" disabled>
                                                 </div>
                                     <?php
 

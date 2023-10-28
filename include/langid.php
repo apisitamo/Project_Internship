@@ -99,6 +99,7 @@ if($langId == 1){
     $chooseday = "เลือกวันที่ต้องการเรียนหลักสูตร";
     $takecourse = "เข้ารับการเรียนหลักสูตร";
     $course = "หลักสูตร";
+    $date = "วันที่ลงทะเบียนเรียนคอร์ส";
     
 
     
@@ -203,6 +204,6 @@ if($langId == 1){
     $chooseday = "Choose the day you want to study the course.";
     $takecourse = "Take the course.";
     $course = "Course";
-
+    $date = "Course registration date";
 }
 ?>

@@ -113,8 +113,9 @@ if (isset($_GET['delete_id'])) {
     }
 
     .pro-order button img {
-        width: 34%;
-    }
+        height: 50px;
+        padding: 0px 20px;
+    } 
 
     .pro-order .table_order td:nth-child(9) {
         width: 13%;
@@ -334,16 +335,23 @@ if (isset($_GET['delete_id'])) {
     .pro-order td .cancle-note-button {
         padding: 3px 15px;
     }
+    .pro-order .table_order td:nth-child(8) {
+        width: 0%;
+    }
+
+    .pro-order .table_order td:nth-child(10) {
+        width: 0%;
+    }
 </style>
 
 <style>
     .calen {
         display: none;
         z-index: 1000;
-        width: 900px;
-        height: 600px;
+        width: 550px;
+        height: 550px;
         /* background-color: #fff; */
-        padding: 20px;
+        padding: 40px;
         border-radius: 5px;
         /* max-width: 80%;*/
         position: fixed;
@@ -376,6 +384,16 @@ if (isset($_GET['delete_id'])) {
         right: 20px;
         cursor: pointer;
         font-size: 50px;
+    }
+    .calen  #text {
+        width: 95%;
+        padding: 10px;
+        margin-top: 10px;
+        background: transparent;
+        border: none;
+        outline: none;
+        border: 3px solid #905537;
+        border-radius: 40px;
     }
 </style>
 
@@ -477,18 +495,18 @@ if (isset($_GET['delete_id'])) {
                                                 $addresss = $row1['address'];
                                                 $emails = $row1['email'];
                                     ?>
-                                                <div class="row">
+                                                <div class="row"style="margin: 25px 20px 20px 0px;font-size: 18px;">
                                                     <div class="col-12">
-                                                        <?= $email ?> : <input type="text" value="<?php echo $emails; ?>" disabled>
+                                                        <?= $email ?> : <input type="text" id="text" value="<?php echo $emails; ?>" disabled>
                                                     </div>
                                                     <div class="col-12">
-                                                        <?= $fullname ?> : <input type="text" value="<?php echo $fullnames; ?>" disabled>
+                                                        <?= $fullname ?> : <input type="text" id="text" value="<?php echo $fullnames; ?>" disabled>
                                                     </div>
                                                     <div class="col-12">
-                                                        <?= $tell ?> : <input type="text" value="<?php echo $phones; ?>" disabled>
+                                                        <?= $tell ?> : <input type="text" id="text" value="<?php echo $phones; ?>" disabled>
                                                     </div>
                                                     <div class="col-12">
-                                                        <?= $home ?> : <input type="text" value="<?php echo $addresss; ?>" disabled>
+                                                        <?= $home ?> : <input type="text" id="text" value="<?php echo $addresss; ?>" disabled>
                                                     </div>
                                                 </div>
                                     <?php
