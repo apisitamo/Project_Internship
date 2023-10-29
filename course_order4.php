@@ -412,7 +412,7 @@ if (isset($_GET['delete_id'])) {
     }
     .calen .Date {
         font-size: 20px;
-        margin: 10px 150px;
+        margin: 10px 115px;
     }
 </style>
 

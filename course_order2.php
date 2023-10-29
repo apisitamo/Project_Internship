@@ -378,7 +378,6 @@ if (isset($_GET['delete_id'])) {
         background: #FFFAF5;
         border-radius: 10px;
         background-image: url(assets/images/banner-page.png);
-        flex-direction: column;
     }
 
     .click-overlay {
