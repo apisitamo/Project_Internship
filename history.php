@@ -318,6 +318,7 @@ if ($totalProductsResult) {
         border-style: groove;
         font-size: 25px;
     }
+
     .user1 .homeheader .CO a {
         background: #ffc387;
         padding: 5px 15px;
@@ -326,7 +327,11 @@ if ($totalProductsResult) {
         border-style: groove;
         font-size: 25px;
     }
-    
+
+    .user1 .homeheader .CO a:hover {
+        background: #E88B2E;
+        transition: 0.4s;
+    }
 </style>
 
 <body>
@@ -334,11 +339,15 @@ if ($totalProductsResult) {
         <div class="homeheader">
             <div class="PO">
                 <i class="bi bi-caret-right-fill">
-                    <a href="history.php"><?= $PO ?></a>
+                    <a href="history.php">
+                        <?= $PO ?>
+                    </a>
                 </i>
             </div>
             <div class="CO">
-                    <a href="history2.php"><?= $CO ?></a>
+                <a href="history2.php">
+                    <?= $CO ?>
+                </a>
             </div>
         </div>
         <div class="container" id="user-con">
@@ -405,9 +414,9 @@ if ($totalProductsResult) {
                             <td style="background-color:
                         <?php
                         if ($row['status'] == 'rejected') {
-                            echo 'red';
+                            echo '#ff1e1e';
                         } elseif ($row['status'] == 'completed') {
-                            echo 'green';
+                            echo '#00e700';
                         } else {
                             echo 'yellow';
                         }

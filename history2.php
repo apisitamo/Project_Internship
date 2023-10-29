@@ -183,6 +183,7 @@ if ($totalcoursesResult) {
     .user1 button:hover {
         background-color: #094195 !important;
         color: white;
+        transition: 0.4s;
     }
 
     .user1 .input-group #fullname {
@@ -322,6 +323,11 @@ if ($totalcoursesResult) {
         font-size: 25px;
     }
 
+    .user1 .homeheader .PO a:hover {
+        background: #E88B2E;
+        transition: 0.4s;
+    }
+
     .user1 .homeheader .CO a {
         background: #E88B2E;
         padding: 5px 15px;
@@ -375,7 +381,8 @@ if ($totalcoursesResult) {
         cursor: pointer;
         font-size: 50px;
     }
-    .calen  #text {
+
+    .calen #text {
         width: 75%;
         padding: 10px;
         margin-top: 10px;
@@ -388,10 +395,12 @@ if ($totalcoursesResult) {
         font-size: 18px;
         margin-left: 75px;
     }
+
     .calen .Topic {
         font-size: 25px;
         margin-bottom: 15px;
     }
+
     .calen .Topic1 {
         font-size: 25px;
     }
@@ -402,11 +411,15 @@ if ($totalcoursesResult) {
     <section class="user1">
         <div class="homeheader">
             <div class="PO">
-                <a href="history.php"><?= $PO ?></a>
+                <a href="history.php">
+                    <?= $PO ?>
+                </a>
             </div>
             <div class="CO">
                 <i class="bi bi-caret-right-fill">
-                    <a href="history2.php"><?= $CO ?></a>
+                    <a href="history2.php">
+                        <?= $CO ?>
+                    </a>
                 </i>
             </div>
         </div>
@@ -449,17 +462,19 @@ if ($totalcoursesResult) {
 
                     $result = mysqli_query($db, $query);
                     // echo $result->num_rows;
-
+                    
                     $i = 1 + $offset;
-                    while ($row = mysqli_fetch_assoc($result)) :
-                    ?>
+                    while ($row = mysqli_fetch_assoc($result)):
+                        ?>
                         <div class="calen" id="calen_<?php echo $row['id']; ?>">
                             <span class="close-popup" data-target="calen_<?php echo $row['id']; ?>">&times;</span>
                             <div class="Topic">
                                 <?php echo $row['name']; ?>
                             </div>
                             <div class="Topic1">
-                                <?= $course ?> <?php echo $row['day']; ?> <?= $dayss ?>
+                                <?= $course ?>
+                                <?php echo $row['day']; ?>
+                                <?= $dayss ?>
                             </div>
                             <?php
                             if (isset($row['order_time'])) {
@@ -469,11 +484,12 @@ if ($totalcoursesResult) {
                                 if ($result1->num_rows > 0) {
                                     while ($row1 = $result1->fetch_assoc()) {
                                         $dates = $row1['date'];
-                            ?>
+                                        ?>
                                         <div>
-                                            <input type="date" class="form-control" name="dd"  id="text" value="<?php echo $dates; ?>" disabled>
+                                            <input type="date" class="form-control" name="dd" id="text" value="<?php echo $dates; ?>"
+                                                disabled>
                                         </div>
-                            <?php
+                                        <?php
                                     }
                                 } else {
                                     echo "Product not found in database";
@@ -496,7 +512,8 @@ if ($totalcoursesResult) {
                                 <?php echo $row['name']; ?>
                             </td>
                             <td>
-                                <button class="showcalen" style="background-color:lightblue; border-radius:10px;" data-target="calen_<?php echo $row['id']; ?>">
+                                <button class="showcalen" style="background-color:lightblue; border-radius:10px;"
+                                    data-target="calen_<?php echo $row['id']; ?>">
                                     <?php echo $row['day']; ?>
                                 </button>
                             </td>
@@ -509,9 +526,9 @@ if ($totalcoursesResult) {
                             <td style="background-color:
                         <?php
                         if ($row['status'] == 'rejected') {
-                            echo 'red';
+                            echo '#ff1e1e';
                         } elseif ($row['status'] == 'completed') {
-                            echo 'green';
+                            echo '#00e700';
                         } else {
                             echo 'yellow';
                         }
@@ -572,7 +589,7 @@ if ($totalcoursesResult) {
             }
             ?>
             <div>
-                <?php for ($i = 1; $i <= 3; $i++) : ?>
+                <?php for ($i = 1; $i <= 3; $i++): ?>
                     <input type="date" class="form-control" name="dd" value="<?php echo $date; ?>">
                 <?php endfor ?>
             </div>
