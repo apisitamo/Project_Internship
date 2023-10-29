@@ -502,7 +502,6 @@ if (isset($_GET['delete_id'])) {
                             while ($row = $result->fetch_assoc()) {
                         ?>
                                 <div class="calen" id="calen_<?php echo $row['id']; ?>"style="flex-wrap:wrap;">
-                                <div class="calen" id="calen_<?php echo $row['id']; ?>" >
                                     <span class="close-popup" data-target="calen_<?php echo $row['id']; ?>">&times;</span>
                                     <?php
                                     if (isset($row['username'])) {
