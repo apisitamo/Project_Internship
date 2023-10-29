@@ -378,6 +378,7 @@ if (isset($_GET['delete_id'])) {
         background: #FFFAF5;
         border-radius: 10px;
         background-image: url(assets/images/banner-page.png);
+        flex-direction: column;
     }
 
     .click-overlay {
@@ -501,7 +502,7 @@ if (isset($_GET['delete_id'])) {
                         if ($result->num_rows > 0) {
                             while ($row = $result->fetch_assoc()) {
                         ?>
-                                <div class="calen" id="calen_<?php echo $row['id']; ?>">
+                                <div class="calen" id="calen_<?php echo $row['id']; ?>"style="flex-wrap:wrap;">
                                     <span class="close-popup" data-target="calen_<?php echo $row['id']; ?>">&times;</span>
                                     <?php
                                     if (isset($row['username'])) {
