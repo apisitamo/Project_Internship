@@ -203,7 +203,7 @@
     }
 
     .popup .popup-content .container {
-        width: 650px;
+        width: auto;
         display: inherit;
         position: relative;
         text-align: center;
@@ -716,7 +716,7 @@
         <div class="popup" id="popup3">
             <div class="popup-content">
                 <span class="close-popup" id="close-popup3">&times;</span>
-                <div class="container">
+                <div class="container"style="width: 750px;">
                     <p style="text-align: center;">
                         <?= $thx ?>
                     </p>

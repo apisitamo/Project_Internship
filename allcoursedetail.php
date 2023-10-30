@@ -216,7 +216,7 @@
     }
 
     .homecontent {
-        margin-top: 150px
+        margin-top: 150px;
     }
 
     .popup .container p {
