@@ -113,6 +113,10 @@ if (isset($_GET['delete_id'])) {
         padding: 15px;
     }
 
+    .pro-order th:nth-child(8){
+       min-width: 110px;
+    }
+
     .pro-order .table_order th:nth-child(2),
     .pro-order .table_order td:nth-child(12) {
         padding: 0px;

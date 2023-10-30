@@ -116,6 +116,10 @@ if (isset($_GET['delete_id'])) {
         padding: 15px;
     }
 
+    .pro-order th:nth-child(8){
+       min-width: 110px;
+    }
+
     .pro-order button img {
         height: 50px;
         padding: 0px 20px;

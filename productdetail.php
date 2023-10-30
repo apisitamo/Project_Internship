@@ -477,7 +477,7 @@
                                 <span>
                                     <?= $quantityy ?>
                                 </span>
-                                <input style="width:70px; background-color:#F5EBEB;" type="number" class="form-control" name="quantity" id="quantityInput" oninput="calculateTotal()" required>
+                                <input style="width:70px; background-color:#F5EBEB;" type="number" class="form-control" name="quantity" id="quantityInput" oninput="calculateTotal()" required placeholder="0">
                                 <span>
                                     <?= $Kg ?>
                                 </span>
