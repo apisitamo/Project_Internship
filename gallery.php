@@ -1,7 +1,7 @@
 <?php include 'include/head.php';
 
 if ($langId == 1) {
-    $gallery = "แกลเลอรี";
+    $gallery = "แกลลอรี";
 } else {
     $gallery = "Gallery";
 }
