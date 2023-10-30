@@ -231,34 +231,63 @@
         margin-top: 10px;
         padding: 15px 50px;
         display: inline-block;
+        color: white !important;
     }
 
     .button-success {
-        background-color: green;
+        background-color: #5CE600;
         border-radius: 25px;
         border: none;
         margin-top: 10px;
         padding: 15px 50px 0px;
         display: inline-block;
     }
+    
+    #button-success1:hover {
+        background-color: #009900;
+        transition: 0.5s;
+    }
 
     .button-success p {
         font-size: 18px !important;
-        color: black !important;
     }
 
     .button-close {
-        background-color: red;
+        background-color: #FF3333;
         margin-left: 100px;
     }
 
+    #button-close1:hover {
+        background-color: #CC0000;
+        transition: 0.5s;
+    }
+
     .button-success-2 {
-        background-color: green;
+        background-color: #5CE600;
+    }
+
+    #button-success2:hover {
+        background-color: #009900;
+        transition: 0.5s;
     }
 
     .button-close-2 {
-        background-color: red;
+        background-color: #FF3333;
         margin-left: 110px;
+    }
+
+    #button-close2:hover {
+        background-color: #CC0000;
+        transition: 0.5s;
+    }
+
+    #button-success3 p{
+        color: white !important;
+    }
+
+    #button-success3:hover{
+        background-color: #009900;
+        transition: 0.5s;
     }
 
     .product .card {
@@ -449,8 +478,14 @@
     }
 
     #popup3 .SBdate {
-        background-color: green;
+        background-color: #5CE600;
         margin: 15px 0px 15px 0px;
+        color: white !important;
+    }
+
+    #popup3 .SBdate:hover {
+        background-color: #009900;
+        transition: 0.5s;
     }
 
     #popup3 .right-calinput .form-control {
