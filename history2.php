@@ -443,6 +443,9 @@ if ($totalcoursesResult) {
                             <?= $prices ?>
                         </th>
                         <th>
+                            <?= $slip1 ?>
+                        </th>
+                        <th>
                             <?= $timess ?>
                         </th>
                         <th>
@@ -455,7 +458,7 @@ if ($totalcoursesResult) {
                     <?php
                     $username = $_SESSION['username'];
 
-                    $query = " SELECT type, id, name, day, price, order_time, status, note
+                    $query = " SELECT type, id, name, day, price,transfer_slip, order_time, status, note
                     FROM course_order WHERE username='$username'
                     ORDER BY order_time DESC
                     LIMIT $limit OFFSET $offset";
@@ -479,7 +482,7 @@ if ($totalcoursesResult) {
                             <?php
                             if (isset($row['order_time'])) {
                                 $dataOT = htmlspecialchars($row['order_time']);
-                                $sql = "SELECT * FROM `booking` WHERE order_time = '$dataOT' ";
+                                $sql = "SELECT * FROM `booking` WHERE order_time = '$dataOT' ORDER BY `date` ASC ";
                                 $result1 = $conn->query($sql);
                                 if ($result1->num_rows > 0) {
                                     while ($row1 = $result1->fetch_assoc()) {
@@ -519,6 +522,15 @@ if ($totalcoursesResult) {
                             </td>
                             <td>
                                 <?php echo $row['price']; ?>
+                            </td>
+                            <td>
+                                <?php
+                                $hasTransferSlip = $row['transfer_slip'];
+
+                                if ($hasTransferSlip) {
+                                    echo '<a class="" href="transferslipcourse.php?trans_id=' . $row['id'] . '" target="_blank" ><i class="bi bi-receipt-cutoff"></i></a>';
+                                }
+                                ?>
                             </td>
                             <td>
                                 <?php echo date('d/m/y H:i', strtotime($row['order_time'])); ?>

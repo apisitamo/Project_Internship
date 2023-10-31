@@ -8,7 +8,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // ตรวจสอบว่ามีวันที่ซ้ำกันในฐานข้อมูล
     foreach ($dates as $date) {
-        $sql = "SELECT COUNT(*) as count FROM booking WHERE date = '$date'";
+        $sql = "SELECT COUNT(*) as count FROM booking WHERE date = '$date' AND (status = 'pending' OR status = 'completed')";
         $result = $conn->query($sql);
 
         if ($result->num_rows > 0) {
@@ -24,4 +24,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $conn->close();
     echo "not_duplicate";
 }
-?>

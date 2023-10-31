@@ -100,6 +100,11 @@ if($langId == 1){
     $takecourse = "เข้ารับการเรียนหลักสูตร";
     $course = "หลักสูตร";
     $date = "วันที่ลงทะเบียนเรียนคอร์ส";
+    $fullnamePH = "นายกอไก่ พิเศษไข่";
+    $phonePH = "09xxxxxxxx";
+    $addressPH = "1/1 ลาดพร้าว 99 กทม. 00000";
+    $pleasecheck1 = "กรุณาตรวจสอบวันที่จองของคุณ";
+    $pleasecheck2 = "เนื่องจากไม่สามารถเปลี่ยนแปลงวันจองได้";
     
 
     
@@ -205,5 +210,11 @@ if($langId == 1){
     $takecourse = "Take the course.";
     $course = "Course";
     $date = "Course registration date";
+    $fullnamePH = "Mr.Brown Carter";
+    $phonePH = "09xxxxxxxx";
+    $addressPH = "1/1 Ladprao 99 , Bangkok 00000";
+    $pleasecheck1 = "Please check your booking date.";
+    $pleasecheck2 = "Because the booking date cannot be changed.";
+
 }
 ?>

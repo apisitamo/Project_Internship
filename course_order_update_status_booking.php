@@ -6,7 +6,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $selectedStatus = $_POST['selectedStatus'];
 
     $db = mysqli_connect($servername, $username, $password, $dbname);
-    $updateQuery = "UPDATE course_order SET status='$selectedStatus' WHERE order_time ='$rowId'";
+    $updateQuery = "UPDATE booking SET status='$selectedStatus' WHERE order_time ='$rowId'";
 
     if (mysqli_query($db, $updateQuery)) {
         echo 'Status updated successfully';

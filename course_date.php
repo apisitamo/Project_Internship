@@ -2,7 +2,7 @@
 session_start();
 include('server.php');
 
-$sql = "SELECT date FROM booking";
+$sql = "SELECT date FROM booking WHERE status = 'pending' OR status = 'completed'; ";
 
 $result = $conn->query($sql);
 

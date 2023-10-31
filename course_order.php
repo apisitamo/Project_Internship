@@ -620,7 +620,7 @@ if (isset($_GET['delete_id'])) {
                                         ?>
                                     </td>
                                     <td>
-                                        <select onchange="this.className=this.options[this.selectedIndex].className" class="status-dropdown" data-row-id="<?php echo $row['id']; ?>" disabled>
+                                        <select onchange="this.className=this.options[this.selectedIndex].className" class="status-dropdown" data-row-id="<?php echo $row['order_time']; ?>" disabled>
                                             <option value="pending" class="yellowText" <?php if ($row['status'] === 'pending')
                                                                                             echo 'selected'; ?>>
                                                 <?= $check ?>
@@ -634,13 +634,13 @@ if (isset($_GET['delete_id'])) {
                                                 <?= $reject ?>
                                             </option>
                                         </select>
-                                        <button class="edit-button" data-row-id="<?php echo $row['id']; ?>">
+                                        <button class="edit-button" data-row-id="<?php echo $row['order_time']; ?>">
                                             <?= $edit ?>
                                         </button>
-                                        <button class="save-button" data-row-id="<?php echo $row['id']; ?>">
+                                        <button class="save-button" data-row-id="<?php echo $row['order_time']; ?>">
                                             <?= $save ?>
                                         </button>
-                                        <button class="cancle-button" id="canclestatus" data-row-id="<?php echo $row['id']; ?>" style="display: none;">
+                                        <button class="cancle-button" id="canclestatus" data-row-id="<?php echo $row['order_time']; ?>" style="display: none;">
                                             <?= $cancle ?>
                                         </button>
                                     </td>
@@ -768,6 +768,7 @@ if (isset($_GET['delete_id'])) {
             const selectedStatus = statusDropdown.value;
 
             await updateStatusInDatabase(rowId, selectedStatus);
+            await updateStatusInDatabase2(rowId, selectedStatus);
             location.reload();
             alert('Status saved successfully');
         });
@@ -775,6 +776,19 @@ if (isset($_GET['delete_id'])) {
 
     async function updateStatusInDatabase(rowId, selectedStatus) {
         const response = await fetch('course_order_update_status.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: `rowId=${encodeURIComponent(rowId)}&selectedStatus=${encodeURIComponent(selectedStatus)}`,
+        });
+
+        const result = await response.text();
+        console.log('Status updated successfully:', result);
+    }
+
+    async function updateStatusInDatabase2(rowId, selectedStatus) {
+        const response = await fetch('course_order_update_status_booking.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',

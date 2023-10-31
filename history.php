@@ -370,6 +370,9 @@ if ($totalProductsResult) {
                             <?= $prices ?>
                         </th>
                         <th>
+                            <?= $slip1 ?>
+                        </th>
+                        <th>
                             <?= $timess ?>
                         </th>
                         <th>
@@ -382,7 +385,7 @@ if ($totalProductsResult) {
                     <?php
                     $username = $_SESSION['username'];
 
-                    $query = "SELECT type, id, name, quantity, price, order_time, status, note
+                    $query = "SELECT type, id, name, quantity, price, transfer_slip, order_time, status, note
                     FROM product_order WHERE username='$username'
                     ORDER BY order_time DESC
                     LIMIT $limit OFFSET $offset";
@@ -390,8 +393,8 @@ if ($totalProductsResult) {
                     $result = mysqli_query($db, $query);
 
                     $i = 1 + $offset;
-                    while ($row = mysqli_fetch_assoc($result)):
-                        ?>
+                    while ($row = mysqli_fetch_assoc($result)) :
+                    ?>
                         <tr>
                             <td>
                                 <?php echo $i++; ?>
@@ -407,6 +410,15 @@ if ($totalProductsResult) {
                             </td>
                             <td>
                                 <?php echo $row['price']; ?>
+                            </td>
+                            <td>
+                                <?php
+                                $hasTransferSlip = $row['transfer_slip'];
+
+                                if ($hasTransferSlip) {
+                                    echo '<a class="" href="transferslipproduct.php?trans_id=' . $row['id'] . '" target="_blank" ><i class="bi bi-receipt-cutoff"></i></a>';
+                                }
+                                ?>
                             </td>
                             <td>
                                 <?php echo date('d/m/y H:i', strtotime($row['order_time'])); ?>

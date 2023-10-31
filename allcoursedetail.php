@@ -242,7 +242,7 @@
         padding: 15px 50px 0px;
         display: inline-block;
     }
-    
+
     #button-success1:hover {
         background-color: #009900;
         transition: 0.5s;
@@ -281,11 +281,11 @@
         transition: 0.5s;
     }
 
-    #button-success3 p{
+    #button-success3 p {
         color: white !important;
     }
 
-    #button-success3:hover{
+    #button-success3:hover {
         background-color: #009900;
         transition: 0.5s;
     }
@@ -403,6 +403,25 @@
     #popup3 {
         width: 1250px;
         height: 680px;
+    }
+
+    #popup6 {
+        z-index: 1200;
+        width: 600px;
+        height: 400px;
+    }
+
+    .click-overlay2 {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        justify-content: center;
+        align-items: center;
+        z-index: 1100;
     }
 
     .popup .fc-direction-ltr {
@@ -638,9 +657,9 @@
                             </p>
                         </button>
                         <?php if (isset($_SESSION['username'])) : ?>
-                        <button class="calen" style="margin-top: 5px;background-color:#FBDFCF;color:#5F6368;" data-aos="fade-up" data-aos-duration="2000">
-                            <?= $free ?>
-                        </button>
+                            <button class="calen" style="margin-top: 5px;background-color:#FBDFCF;color:#5F6368;" data-aos="fade-up" data-aos-duration="2000">
+                                <?= $free ?>
+                            </button>
                         <?php endif ?>
                     </div>
                 </div>
@@ -922,6 +941,22 @@
             </div>
         </div>
 
+        <div class="click-overlay2" id="click-overlay2"></div>
+        <div class="popup" id="popup6">
+            <div class="popup-content">
+                <div class="container">
+                    <p><?= $pleasecheck1 ?></p>
+                    <p><?= $pleasecheck2 ?></p>
+                    <button class="button-success" id="button-success6">
+                    <?= $confirm ?>
+                    </button>
+                    <button class="button-close" id="button-close6">
+                    <?= $back ?>
+                    </button>
+                </div>
+            </div>
+        </div>
+
     </section>
 
     <script>
@@ -955,6 +990,7 @@
     const buttonclosethird = document.querySelector('#button-close4');
 
     const clickOverlay1 = document.querySelector('#click-overlay1');
+    const clickOverlay2 = document.querySelector('#click-overlay2');
 
     const fileInput = document.querySelector('input[name="img"]');
     const alertMessage = document.querySelector('.alert');
@@ -963,6 +999,10 @@
     const popup5 = document.querySelector('#popup5');
     const buttonclosecalen = document.querySelector('#button-close5');
     const closecalenpopup = document.querySelector('#close-popup5');
+
+    const popup6 = document.querySelector('#popup6');
+    const buttonclosesix = document.querySelector('#button-close6');
+    const buttonsuccesssix = document.querySelectorAll('#button-success6');
 
     openpopup.forEach(button => {
         button.addEventListener('click', () => {
@@ -1062,6 +1102,24 @@
     //     clickOverlay1.style.display = 'none';
     //     // location.reload();
     // });
+
+    buttonclosesix.addEventListener('click', () => {
+        console.log("close BTN six POPUP");
+        popup6.style.display = 'none';
+        clickOverlay2.style.display = 'none';
+        // clickOverlay1.style.display = 'none';
+        // location.reload();
+    });
+    buttonsuccesssix.forEach(button => {
+        button.addEventListener('click', () => {
+            console.log("success BTN to Open second popup");
+            popup6.style.display = 'none'; // ปิด popup
+            popup3.style.display = 'none'; // ปิด popup
+            popup4.style.display = 'flex';
+            clickOverlay2.style.display = 'none';
+            clickOverlay1.style.display = 'block';
+        });
+    });
 </script>
 
 <script>
@@ -1286,55 +1344,8 @@
                         $(".alert2").css("display", "none");
                         $(".alert3").css("display", "none");
 
-                        // ส่งข้อมูลไปยังฐานข้อมูลตรงนี้
-                        $.ajax({
-                            url: "booking_insert.php", // เปลี่ยนเป็น URL ของไฟล์ PHP สำหรับการแทรกข้อมูล
-                            method: "POST",
-                            data: {
-                                dates: dates,
-                                name: name
-                            },
-                            success: function(response) {
-                                // กระทำหลังจากสำเร็จ
-                                $("#popup3").css("display", "none");
-                                $("#popup4").css("display", "flex");
-                                // alert("บันทึกข้อมูลเรียบร้อยแล้ว");
-
-                                var type = "<?php echo $type ?>";
-                                var name = "<?php echo $name_eng ?>";
-                                var day = "<?php echo $day ?>";
-                                var price = "<?php echo $price ?>";
-                                var imageInput = $("input[name='img']")[0];
-
-                                if (imageInput.files.length === 0) {
-                                    // Display an alert or handle the case where no file is selected
-                                    return;
-                                }
-                                var imageFile = imageInput.files[0];
-
-                                var formData = new FormData();
-                                formData.append("type", type);
-                                formData.append("name", name);
-                                formData.append("day", day);
-                                formData.append("price", price);
-                                formData.append("img", imageFile);
-
-                                $.ajax({
-                                    type: "POST",
-                                    url: "allcoursedetail_insert.php",
-                                    data: formData,
-                                    contentType: false,
-                                    processData: false,
-                                    success: function(response) {
-                                        // alert(response);
-                                    }
-                                });
-                            },
-                            error: function(xhr, status, error) {
-                                // กระทำหลังจากเกิดข้อผิดพลาด
-                                alert("เกิดข้อผิดพลาดในการบันทึกข้อมูล");
-                            }
-                        });
+                        $("#popup6").css("display", "flex");
+                        $("#click-overlay2").css("display", "flex");
                     }
                 },
                 error: function(xhr, status, error) {
@@ -1342,6 +1353,71 @@
                     alert("เกิดข้อผิดพลาดในการตรวจสอบวันที่");
                 }
             });
+        });
+    });
+</script>
+
+<script>
+    function insertDataToDatabase(dates, name) {
+        // ส่งข้อมูลไปยังฐานข้อมูลตรงนี้
+        $.ajax({
+            url: "booking_insert.php", // เปลี่ยนเป็น URL ของไฟล์ PHP สำหรับการแทรกข้อมูล
+            method: "POST",
+            data: {
+                dates: dates,
+                name: name
+            }
+        });
+    }
+</script>
+
+<script>
+    function insertDataToDatabase2(formData) {
+        // ส่งข้อมูลไปยังฐานข้อมูลตรงนี้
+        $.ajax({
+            type: "POST",
+            url: "allcoursedetail_insert.php",
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function(response) {
+                // alert(response);
+            }
+        });
+    }
+</script>
+
+
+<script>
+    $(document).ready(function() {
+        $("#button-success6").click(function() {
+            var dates = [];
+            $("input[name='dd']").each(function() {
+                dates.push($(this).val());
+            }); // ระบุค่า dates จากข้อมูลที่คุณต้องการ
+            var name = "<?php echo $name_eng ?>"; // ระบุค่า name จากข้อมูลที่คุณต้องการ
+            insertDataToDatabase(dates, name);
+
+
+            var type = "<?php echo $type ?>";
+            var name = "<?php echo $name_eng ?>";
+            var day = "<?php echo $day ?>";
+            var price = "<?php echo $price ?>";
+            var imageInput = $("input[name='img']")[0];
+
+            if (imageInput.files.length === 0) {
+                // Display an alert or handle the case where no file is selected
+                return;
+            }
+            var imageFile = imageInput.files[0];
+
+            var formData = new FormData();
+            formData.append("type", type);
+            formData.append("name", name);
+            formData.append("day", day);
+            formData.append("price", price);
+            formData.append("img", imageFile);
+            insertDataToDatabase2(formData);
         });
     });
 </script>
