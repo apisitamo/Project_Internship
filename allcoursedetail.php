@@ -95,6 +95,18 @@
         align-items: center;
         z-index: 900;
     }
+    .click-overlay3 {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        justify-content: center;
+        align-items: center;
+        z-index: 950;
+    }
 
     .close-popup {
         position: absolute;
@@ -663,12 +675,12 @@
                                 <?= $ordernow ?>
                             </p>
                         </button>
-                        <?php if (isset($_SESSION['username'])): ?>
+                        
                             <button class="calen" style="margin-top: 5px;background-color:#FBDFCF;color:#5F6368;"
                                 data-aos="fade-up" data-aos-duration="2000" data-aos-offset="50">
                                 <?= $free ?>
                             </button>
-                        <?php endif ?>
+                        
                     </div>
                 </div>
             </div>
@@ -706,6 +718,7 @@
 
     <section class="course-product">
         <div class="click-overlay" id="click-overlay1"></div>
+        <div class="click-overlay3" id="click-overlay3"></div>
 
         <!-- เป็นส่วนของ popup ตอนเด้งขึ้นมา ขั้่น 1-->
 
@@ -1012,6 +1025,7 @@
 
     const clickOverlay1 = document.querySelector('#click-overlay1');
     const clickOverlay2 = document.querySelector('#click-overlay2');
+    const clickOverlay3 = document.querySelector('#click-overlay3');
 
     const fileInput = document.querySelector('input[name="img"]');
     const alertMessage = document.querySelector('.alert');
@@ -1033,15 +1047,21 @@
         });
     });
 
-    // clickOverlay1.addEventListener('click', () => {
-    //     console.log("Clicked on overlay");
-    //     popup1.style.display = 'none';
-    //     popup2.style.display = 'none';
-    //     popup3.style.display = 'none';
-    //     popup4.style.display = 'none';
-    //     popup5.style.display = 'none';
-    //     clickOverlay1.style.display = 'none';
-    // });
+    clickOverlay1.addEventListener('click', () => {
+        console.log("Clicked on overlay");
+        popup1.style.display = 'none';
+        popup2.style.display = 'none';
+        popup3.style.display = 'none';
+        popup4.style.display = 'none';
+        popup5.style.display = 'none';
+        clickOverlay1.style.display = 'none';
+    });
+
+    clickOverlay2.addEventListener('click', () => {
+        console.log("Clicked on overlay");
+        popup6.style.display = 'none';
+        clickOverlay2.style.display = 'none';
+    });
 
     closefirstpopup.addEventListener('click', () => {
         console.log("X first popup ");
@@ -1075,7 +1095,7 @@
         console.log("back BTN second POPUP");
         popup2.style.display = 'none';
         popup1.style.display = 'block';
-        clickOverlay1.style.display = 'flex';
+        clickOverlay1.style.display = 'block';
     });
     buttonsuccesssecond.forEach(button => {
         button.addEventListener('click', () => {
@@ -1085,7 +1105,8 @@
             } else {
                 popup2.style.display = 'none'; // ปิด popup สอง
                 popup3.style.display = 'block';
-                clickOverlay1.style.display = 'block';
+                clickOverlay1.style.display = 'none';
+                clickOverlay3.style.display = 'block';
             }
         });
     });
@@ -1138,6 +1159,7 @@
             popup3.style.display = 'none'; // ปิด popup
             popup4.style.display = 'flex';
             clickOverlay2.style.display = 'none';
+            clickOverlay3.style.display = 'none';
             clickOverlay1.style.display = 'block';
         });
     });
