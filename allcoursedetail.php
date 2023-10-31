@@ -665,7 +665,7 @@
                         </button>
                         <?php if (isset($_SESSION['username'])): ?>
                             <button class="calen" style="margin-top: 5px;background-color:#FBDFCF;color:#5F6368;"
-                                data-aos="fade-up" data-aos-duration="2000">
+                                data-aos="fade-up" data-aos-duration="2000" data-aos-offset="50">
                                 <?= $free ?>
                             </button>
                         <?php endif ?>
