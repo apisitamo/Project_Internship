@@ -378,7 +378,7 @@ if ($langId == 1) {
 </script>
 
 <script>
-    document.getElementById('video').play();
+    document.getElementById('video')?.play();
 </script>
 
 <!-- <script async defer crossorigin="anonymous" src="https://connect.facebook.net/th_TH/sdk.js#xfbml=1&version=v15.0" nonce="hVkbERF9"></script> -->
