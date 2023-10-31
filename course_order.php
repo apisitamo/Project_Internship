@@ -564,7 +564,7 @@ if (isset($_GET['delete_id'])) {
                                     <?php
                                     if (isset($row['order_time'])) {
                                         $dataOT = htmlspecialchars($row['order_time']);
-                                        $sql = "SELECT * FROM `booking` WHERE order_time = '$dataOT' ";
+                                        $sql = "SELECT * FROM `booking` WHERE order_time = '$dataOT' ORDER BY `date` ASC ";
                                         $result1 = $conn->query($sql);
                                         if ($result1->num_rows > 0) {
                                             while ($row1 = $result1->fetch_assoc()) {
