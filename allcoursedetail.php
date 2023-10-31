@@ -409,6 +409,13 @@
         z-index: 1200;
         width: 600px;
         height: 400px;
+        align-items: center;
+    }
+
+    #popup6 .container p {
+        font-size: 23px;
+        margin-bottom: 5px;
+        color: red;
     }
 
     .click-overlay2 {
@@ -656,8 +663,9 @@
                                 <?= $ordernow ?>
                             </p>
                         </button>
-                        <?php if (isset($_SESSION['username'])) : ?>
-                            <button class="calen" style="margin-top: 5px;background-color:#FBDFCF;color:#5F6368;" data-aos="fade-up" data-aos-duration="2000">
+                        <?php if (isset($_SESSION['username'])): ?>
+                            <button class="calen" style="margin-top: 5px;background-color:#FBDFCF;color:#5F6368;"
+                                data-aos="fade-up" data-aos-duration="2000">
                                 <?= $free ?>
                             </button>
                         <?php endif ?>
@@ -678,12 +686,15 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="wrap-contact">
-                        <div class="item call" data-aos="fade-up" data-aos-duration="2000"><i class="fa-regular fa-phone"></i><span>086-322-1922</span></div>
+                        <div class="item call" data-aos="fade-up" data-aos-duration="2000"><i
+                                class="fa-regular fa-phone"></i><span>086-322-1922</span></div>
                         <a href="https://line.me/ti/p/~@108toots">
-                            <div class="item line" data-aos="fade-up" data-aos-duration="2000"><img class="line-img" src="assets/images/line.png" alt=""><span>@bsathailand</span></div>
+                            <div class="item line" data-aos="fade-up" data-aos-duration="2000"><img class="line-img"
+                                    src="assets/images/line.png" alt=""><span>@bsathailand</span></div>
                         </a>
                         <a href="https://th-th.facebook.com/BSABangkok/">
-                            <div class="item facebook" data-aos="fade-up" data-aos-duration="2000"><i class="bi bi-facebook"></i><span>Bangkok Spa Academy</span></div>
+                            <div class="item facebook" data-aos="fade-up" data-aos-duration="2000"><i
+                                    class="bi bi-facebook"></i><span>Bangkok Spa Academy</span></div>
                         </a>
                     </div>
                 </div>
@@ -702,7 +713,7 @@
             <div class="popup-content">
                 <span class="close-popup" id="close-popup1">&times;</span>
                 <div class="homecontent">
-                    <?php if (isset($_SESSION['username'])) : ?>
+                    <?php if (isset($_SESSION['username'])): ?>
                         <div class="box" id="box1">
                             <div class="container">
                                 <div class="row">
@@ -725,9 +736,15 @@
                                     </div>
                                 </div>
                                 <div class="text01">
-                                    <p style="color:black;"><?= $QR ?></p>
-                                    <p style="color:black;"><?= $chooseday ?></p>
-                                    <p style="color:black;"><?= $takecourse ?></p>
+                                    <p style="color:black;">
+                                        <?= $QR ?>
+                                    </p>
+                                    <p style="color:black;">
+                                        <?= $chooseday ?>
+                                    </p>
+                                    <p style="color:black;">
+                                        <?= $takecourse ?>
+                                    </p>
                                 </div>
                             </div>
                             <div class="bt1">
@@ -739,7 +756,7 @@
                                 </button>
                             </div>
                         </div>
-                    <?php else : ?>
+                    <?php else: ?>
                         <div class="box">
                             <div class="container">
                                 <div class="row">
@@ -835,7 +852,7 @@
                                     <?= $slip ?>
                                 </h5>
                             </div>
-                        <?php
+                            <?php
                         } else { ?>
                             <div class="homecontent">
                                 <div class="container">
@@ -851,7 +868,7 @@
                                     </a>
                                 </div>
                             </div>
-                <?php }
+                        <?php }
                     } else {
                         // ไม่พบข้อมูลของ username นี้
                         echo "No information found for this username.";
@@ -881,7 +898,7 @@
                     <?= $dayss ?>
                 </p>
                 <div class="right-calinput">
-                    <?php for ($i = 1; $i <= $day; $i++) : ?>
+                    <?php for ($i = 1; $i <= $day; $i++): ?>
                         <input type="date" class="form-control" name="dd" required>
                     <?php endfor ?>
                 </div>
@@ -945,13 +962,17 @@
         <div class="popup" id="popup6">
             <div class="popup-content">
                 <div class="container">
-                    <p><?= $pleasecheck1 ?></p>
-                    <p><?= $pleasecheck2 ?></p>
+                    <p>
+                        <?= $pleasecheck1 ?>
+                    </p>
+                    <p>
+                        <?= $pleasecheck2 ?>
+                    </p>
                     <button class="button-success" id="button-success6">
-                    <?= $confirm ?>
+                        <?= $confirm ?>
                     </button>
                     <button class="button-close" id="button-close6">
-                    <?= $back ?>
+                        <?= $back ?>
                     </button>
                 </div>
             </div>
@@ -1123,7 +1144,7 @@
 </script>
 
 <script>
-    document.getElementById('backButton').addEventListener('click', function() {
+    document.getElementById('backButton').addEventListener('click', function () {
         window.history.back();
     });
 </script>
@@ -1237,9 +1258,9 @@
 
 
 <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
 
-        $(".SBdate").click(function() {
+        $(".SBdate").click(function () {
 
             $(".alert1").css("display", "none");
             $(".alert2").css("display", "none");
@@ -1248,7 +1269,7 @@
             $(".alert5").css("display", "none");
 
             var dates = [];
-            $("input[name='dd']").each(function() {
+            $("input[name='dd']").each(function () {
                 dates.push($(this).val());
             });
 
@@ -1263,9 +1284,9 @@
             }
 
             // ตรวจสอบว่าทุก input type="date" มีค่าเป็นวันที่เดียวกันและซ้ำกันแม้แต่วันเดียวกัน
-            if (dates.every(function(date) {
-                    return date === dates[0];
-                })) {
+            if (dates.every(function (date) {
+                return date === dates[0];
+            })) {
                 $(".alert1").css("display", "none");
                 $(".alert2").css("display", "none");
                 $(".alert3").css("display", "block"); // เปิด alert3 ถ้ามีวันที่เดียวกัน
@@ -1285,7 +1306,7 @@
                 }
             }
 
-            var hasDuplicateDates = Object.values(dateCounts).some(function(count) {
+            var hasDuplicateDates = Object.values(dateCounts).some(function (count) {
                 return count >= 2;
             });
 
@@ -1300,14 +1321,14 @@
 
             // ตรวจสอบว่าวันที่ที่ผู้ใช้เลือกหลังวันปัจจุบันหรือไม่
             var today = new Date();
-            var selectedDates = dates.map(function(date) {
+            var selectedDates = dates.map(function (date) {
                 return new Date(date);
             });
 
             // ตรวจสอบว่ามีวันเสาร์หรืออาทิตย์ในรายการวันที่ที่ผู้ใช้เลือก
-            if (selectedDates.some(function(selectedDate) {
-                    return selectedDate.getDay() === 0 || selectedDate.getDay() === 6; // 0 คือวันอาทิตย์ และ 6 คือวันเสาร์
-                })) {
+            if (selectedDates.some(function (selectedDate) {
+                return selectedDate.getDay() === 0 || selectedDate.getDay() === 6; // 0 คือวันอาทิตย์ และ 6 คือวันเสาร์
+            })) {
                 $(".alert1").css("display", "none");
                 $(".alert2").css("display", "none");
                 $(".alert3").css("display", "none");
@@ -1316,9 +1337,9 @@
                 return; // ไม่ดำเนินการต่อ
             }
 
-            if (selectedDates.some(function(selectedDate) {
-                    return selectedDate < today;
-                })) {
+            if (selectedDates.some(function (selectedDate) {
+                return selectedDate < today;
+            })) {
                 $(".alert1").css("display", "none");
                 $(".alert2").css("display", "none");
                 $(".alert3").css("display", "none");
@@ -1335,7 +1356,7 @@
                 data: {
                     dates: dates
                 },
-                success: function(response) {
+                success: function (response) {
                     if (response == "duplicate") {
                         $(".alert1").css("display", "none");
                         $(".alert2").css("display", "block");
@@ -1348,7 +1369,7 @@
                         $("#click-overlay2").css("display", "flex");
                     }
                 },
-                error: function(xhr, status, error) {
+                error: function (xhr, status, error) {
                     // กระทำหลังจากเกิดข้อผิดพลาดในการตรวจสอบวันที่
                     alert("เกิดข้อผิดพลาดในการตรวจสอบวันที่");
                 }
@@ -1380,7 +1401,7 @@
             data: formData,
             contentType: false,
             processData: false,
-            success: function(response) {
+            success: function (response) {
                 // alert(response);
             }
         });
@@ -1389,10 +1410,10 @@
 
 
 <script>
-    $(document).ready(function() {
-        $("#button-success6").click(function() {
+    $(document).ready(function () {
+        $("#button-success6").click(function () {
             var dates = [];
-            $("input[name='dd']").each(function() {
+            $("input[name='dd']").each(function () {
                 dates.push($(this).val());
             }); // ระบุค่า dates จากข้อมูลที่คุณต้องการ
             var name = "<?php echo $name_eng ?>"; // ระบุค่า name จากข้อมูลที่คุณต้องการ

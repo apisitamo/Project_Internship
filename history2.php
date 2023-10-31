@@ -336,6 +336,10 @@ if ($totalcoursesResult) {
         border-style: groove;
         font-size: 25px;
     }
+
+    .bottom-box tr td:nth-child(6) {
+        width: 9%;
+    }
 </style>
 
 <style>

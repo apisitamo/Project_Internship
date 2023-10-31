@@ -332,6 +332,10 @@ if ($totalProductsResult) {
         background: #E88B2E;
         transition: 0.4s;
     }
+
+    .bottom-box tr td:nth-child(6) {
+        width: 9%;
+    }
 </style>
 
 <body>
@@ -393,8 +397,8 @@ if ($totalProductsResult) {
                     $result = mysqli_query($db, $query);
 
                     $i = 1 + $offset;
-                    while ($row = mysqli_fetch_assoc($result)) :
-                    ?>
+                    while ($row = mysqli_fetch_assoc($result)):
+                        ?>
                         <tr>
                             <td>
                                 <?php echo $i++; ?>
